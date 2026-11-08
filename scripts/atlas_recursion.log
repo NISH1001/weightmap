@@ -1,0 +1,40 @@
+11:20:16 175 texts
+11:20:46 L bits/byte 0.171
+11:22:18 ATLAS Qwen/Qwen2.5-0.5B-Instruct [92s] {'params_M': 494.0, 'bits_per_byte': 0.2216, 'mean_r2_L_to_S': 0.6451, 'mean_r2_S_to_L': 0.6046, 'shared_vocab': True}
+11:24:00 ATLAS HuggingFaceTB/SmolLM2-360M [102s] {'params_M': 361.8, 'bits_per_byte': 0.466, 'mean_r2_L_to_S': 0.6758, 'mean_r2_S_to_L': 0.5665, 'shared_vocab': False}
+11:25:20 ATLAS HuggingFaceTB/SmolLM2-135M [79s] {'params_M': 134.5, 'bits_per_byte': 0.5883, 'mean_r2_L_to_S': 0.7049, 'mean_r2_S_to_L': 0.5444, 'shared_vocab': False}
+11:26:37 ATLAS google/gemma-3-270m [78s] {'params_M': 268.1, 'bits_per_byte': 0.5505, 'mean_r2_L_to_S': 0.6316, 'mean_r2_S_to_L': 0.51, 'shared_vocab': False}
+11:27:34 ATLAS EleutherAI/pythia-160m [57s] {'params_M': 162.3, 'bits_per_byte': 1.0123, 'mean_r2_L_to_S': 0.4554, 'mean_r2_S_to_L': 0.4508, 'shared_vocab': False}
+11:27:36 chain layers (relative depth 0.45): {'Qwen/Qwen2.5-1.5B-Instruct': 12, 'Qwen/Qwen2.5-0.5B-Instruct': 10, 'HuggingFaceTB/SmolLM2-360M': 14, 'HuggingFaceTB/SmolLM2-135M': 13}
+11:28:16 recursion tokens: train 3301 test 936
+11:28:17 RECURSION {
+ "step Qwen2.5-1.5B-Instruct -> Qwen2.5-0.5B-Instruct": 0.6452,
+ "step Qwen2.5-0.5B-Instruct -> SmolLM2-360M": 0.6465,
+ "step SmolLM2-360M -> SmolLM2-135M": 0.7301,
+ "Qwen2.5-1.5B-Instruct -> SmolLM2-360M": {
+  "direct": 0.6526,
+  "composed_via_chain": 0.6366,
+  "composed_over_direct": 0.975
+ },
+ "Qwen2.5-1.5B-Instruct -> SmolLM2-135M": {
+  "direct": 0.6592,
+  "composed_via_chain": 0.6293,
+  "composed_over_direct": 0.955
+ },
+ "Qwen2.5-0.5B-Instruct -> SmolLM2-135M": {
+  "direct": 0.6573,
+  "composed_via_chain": 0.6491,
+  "composed_over_direct": 0.988
+ },
+ "layers": {
+  "Qwen2.5-1.5B-Instruct": 12,
+  "Qwen2.5-0.5B-Instruct": 10,
+  "SmolLM2-360M": 14,
+  "SmolLM2-135M": 13
+ },
+ "n_tokens": {
+  "train": 3301,
+  "test": 936
+ }
+}
+11:28:17 wrote /Users/npantha/dev/impact/experiments/weightmap/scripts/atlas_recursion_results.json

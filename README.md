@@ -30,13 +30,16 @@ This was inspired by [*Sparks of Weight-Space Programming*](https://rikiyat.gith
 | f is linear | **Yes** | Adding non-linear (random-feature) terms doesn't improve the map (−0.03) |
 | S looks like a *pruned* L | **Supported** | Picking 896 of L's 1,536 coordinates predicts S as well as the full map (0.641 vs 0.638); random picks lose 0.06 |
 | A map between the *weights* (embedding tables) | Weak | R² 0.31 within Qwen, 0.42 SmolLM2←Qwen, about half the hidden-state map |
-| H5: recursion | Not tested yet | |
+| H1 refined: convergence tracks capability | **Supported** | Across 5 small models from 4 families, the more capable the small model, the more of Qwen-1.5B it captures (ρ = 0.9) |
+| H5: recursion | **Supported for compression** | 1.5B → 0.5B → 360M → 135M: chaining the maps keeps 95.5% of a direct map, and errors don't compound. The "small → large adds ability" direction is still unsupported |
 
 ¹ Measured on answer text with whole texts held out. Experiment 1 originally reported 0.85 because it fitted and scored on chat-formatted text, where the system prompt and template tokens repeat in every example and are trivially easy to map. Holding out whole texts barely changes this (0.85 → 0.83). Removing the boilerplate is what matters (0.83 → 0.66). See *Measurement check* in [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md#56-measurement-check-text-level-holdout-template-tokens-layer-pairing).
 
 **In one line:** a small model looks like a compressed, partly *pruned* view of a large one. About two-thirds of it is a linear readout of a subset of the large model's coordinates, even across model families. But the map is a lossy projection, so pushing L's knowledge through it doesn't make S smarter. The extra ability is exactly what the projection discards. This matches the blog's finding that edits unlock existing abilities but don't add new ones.
 
 ![main result](docs/figures/fig4_main_result.png)
+
+![recursion](docs/figures/fig7_recursion.png)
 
 Full details, every table, the figures, and the threats to validity are in **[docs/EXPERIMENTS.md](docs/EXPERIMENTS.md)**.
 
