@@ -1,0 +1,2002 @@
+[
+ {
+  "id": 0,
+  "out": "48",
+  "ok": false
+ },
+ {
+  "id": 1,
+  "out": "Newark, New Jersey",
+  "ok": false
+ },
+ {
+  "id": 2,
+  "out": "\"Breaking Bad\" finale",
+  "ok": false
+ },
+ {
+  "id": 3,
+  "out": "The original song \"You'll Never Walk Alone\" was sung by The Beatles.",
+  "ok": false
+ },
+ {
+  "id": 4,
+  "out": "December 20, 2023",
+  "ok": false
+ },
+ {
+  "id": 5,
+  "out": "about 10,000 years",
+  "ok": false
+ },
+ {
+  "id": 6,
+  "out": "The song \"Walk It Like I Talk It\" is sung by The Black Eyed Peas.",
+  "ok": false
+ },
+ {
+  "id": 7,
+  "out": "Charles Darwin divided it up.",
+  "ok": false
+ },
+ {
+  "id": 8,
+  "out": "The Battle of Jericho was fought in 720 BC between Israel and the Ammonites.",
+  "ok": true
+ },
+ {
+  "id": 9,
+  "out": "Spring 2023",
+  "ok": false
+ },
+ {
+  "id": 10,
+  "out": "Barka da sallah means \"good day\" in Arabic.",
+  "ok": false
+ },
+ {
+  "id": 11,
+  "out": "102 km",
+  "ok": false
+ },
+ {
+  "id": 12,
+  "out": "1960",
+  "ok": false
+ },
+ {
+  "id": 13,
+  "out": "Hawaii",
+  "ok": false
+ },
+ {
+  "id": 14,
+  "out": "mid-season break is typically 1-2 weeks before the next season begins.",
+  "ok": false
+ },
+ {
+  "id": 15,
+  "out": "John Williamscomposed the Pirates of the Caribbean theme song.",
+  "ok": false
+ },
+ {
+  "id": 16,
+  "out": "Mexico",
+  "ok": false
+ },
+ {
+  "id": 17,
+  "out": "14th century",
+  "ok": false
+ },
+ {
+  "id": 18,
+  "out": "The song \"Lavender Blue Dilly Dilly\" was sung by The Flaming Lips.",
+  "ok": false
+ },
+ {
+  "id": 19,
+  "out": "17",
+  "ok": false
+ },
+ {
+  "id": 20,
+  "out": "Kendall Jenner",
+  "ok": false
+ },
+ {
+  "id": 21,
+  "out": "Jack Johnson was the first black hockey player in the NHL.",
+  "ok": false
+ },
+ {
+  "id": 22,
+  "out": "Noel Clarke",
+  "ok": false
+ },
+ {
+  "id": 23,
+  "out": "1989",
+  "ok": false
+ },
+ {
+  "id": 24,
+  "out": "every 2 weeks",
+  "ok": false
+ },
+ {
+  "id": 25,
+  "out": "Rover",
+  "ok": false
+ },
+ {
+  "id": 26,
+  "out": "It comes from the word \"dead end\" in English.",
+  "ok": false
+ },
+ {
+  "id": 27,
+  "out": "London, UK",
+  "ok": false
+ },
+ {
+  "id": 28,
+  "out": "May 12, 2023",
+  "ok": false
+ },
+ {
+  "id": 29,
+  "out": "2019",
+  "ok": false
+ },
+ {
+  "id": 30,
+  "out": "19th century",
+  "ok": false
+ },
+ {
+  "id": 31,
+  "out": "2023",
+  "ok": false
+ },
+ {
+  "id": 32,
+  "out": "Emile Durkheim",
+  "ok": false
+ },
+ {
+  "id": 33,
+  "out": "The winner of the Challenge Champions vs Stars season 3 was Team 10.",
+  "ok": false
+ },
+ {
+  "id": 34,
+  "out": "Pandit Subrahmanyan Chandrasekhar",
+  "ok": false
+ },
+ {
+  "id": 35,
+  "out": "The tiger is a character in Franz Kafka's \"Life of Pi.\"",
+  "ok": false
+ },
+ {
+  "id": 36,
+  "out": "J. K. Rowling",
+  "ok": false
+ },
+ {
+  "id": 37,
+  "out": "September 15, 2023",
+  "ok": false
+ },
+ {
+  "id": 38,
+  "out": "1982",
+  "ok": false
+ },
+ {
+  "id": 39,
+  "out": "2019-03-07",
+  "ok": false
+ },
+ {
+  "id": 40,
+  "out": "The character of Brandy Braxton in Austin & Ally is played by actor Michael B. Jordan.",
+  "ok": false
+ },
+ {
+  "id": 41,
+  "out": "April 15, 2023",
+  "ok": false
+ },
+ {
+  "id": 42,
+  "out": "The song \"Bring It On Home\" was written by John Lennon and Paul McCartney.",
+  "ok": false
+ },
+ {
+  "id": 43,
+  "out": "Kirsten Dunst plays Bianca in Orange Is The New Black.",
+  "ok": false
+ },
+ {
+  "id": 44,
+  "out": "Kendall Jenner plays Ty in \"A Bad Moms Christmas.\"",
+  "ok": false
+ },
+ {
+  "id": 45,
+  "out": "The song \"Drop It Like It's Hot\" was produced by The Weeknd.",
+  "ok": false
+ },
+ {
+  "id": 46,
+  "out": "New Delhi, India",
+  "ok": false
+ },
+ {
+  "id": 47,
+  "out": "Republican Party",
+  "ok": false
+ },
+ {
+  "id": 48,
+  "out": "the Jews",
+  "ok": false
+ },
+ {
+  "id": 49,
+  "out": "The Sleeping Beauty fairy tale.",
+  "ok": false
+ },
+ {
+  "id": 50,
+  "out": "Iron is more abundant in nonferrous minerals.",
+  "ok": false
+ },
+ {
+  "id": 51,
+  "out": "120",
+  "ok": false
+ },
+ {
+  "id": 52,
+  "out": "Brazil",
+  "ok": false
+ },
+ {
+  "id": 53,
+  "out": "During meiosis, oogonia cells are produced in a female.",
+  "ok": false
+ },
+ {
+  "id": 54,
+  "out": "12 years old",
+  "ok": false
+ },
+ {
+  "id": 55,
+  "out": "The original singer of \"I Want Candy\" was Frankie Valli.",
+  "ok": false
+ },
+ {
+  "id": 56,
+  "out": "Tom Hardy plays the role of the Punisher in the Netflix series.",
+  "ok": false
+ },
+ {
+  "id": 57,
+  "out": "\"Thriller\" is on the list.",
+  "ok": false
+ },
+ {
+  "id": 58,
+  "out": "Project team decides.",
+  "ok": false
+ },
+ {
+  "id": 59,
+  "out": "The New England Patriots are playing in Super Bowl LII halftime.",
+  "ok": false
+ },
+ {
+  "id": 60,
+  "out": "the state of Texas was admitted to the union as the 28th state on January 2, 18",
+  "ok": false
+ },
+ {
+  "id": 61,
+  "out": "1954",
+  "ok": false
+ },
+ {
+  "id": 62,
+  "out": "Jennifer Aniston plays Wendy the Waitress in \"How I Met Your Mother.\"",
+  "ok": false
+ },
+ {
+  "id": 63,
+  "out": "June 2017",
+  "ok": false
+ },
+ {
+  "id": 64,
+  "out": "Boeing is the manufacturer of the engines for the Airbus A380.",
+  "ok": false
+ },
+ {
+  "id": 65,
+  "out": "Sasuke Uchiha fights Naruto Uzumaki in the first episode.",
+  "ok": false
+ },
+ {
+  "id": 66,
+  "out": "The song \"Dance Me to the End of Love\" was written by John Lennon and produced by Paul McCartney.",
+  "ok": false
+ },
+ {
+  "id": 67,
+  "out": "The violinists sit closest to the conductor.",
+  "ok": false
+ },
+ {
+  "id": 68,
+  "out": "LeBron James was drafted first overall by the Los Angeles Lakers.",
+  "ok": false
+ },
+ {
+  "id": 69,
+  "out": "Santa Fe",
+  "ok": true
+ },
+ {
+  "id": 70,
+  "out": "convection.",
+  "ok": false
+ },
+ {
+  "id": 71,
+  "out": "Eve ate the apple from the forbidden tree first.",
+  "ok": false
+ },
+ {
+  "id": 72,
+  "out": "Gallinuleta",
+  "ok": false
+ },
+ {
+  "id": 73,
+  "out": "Helium and neon are commonly used as fuels for fusion reactors.",
+  "ok": false
+ },
+ {
+  "id": 74,
+  "out": "10 games",
+  "ok": false
+ },
+ {
+  "id": 75,
+  "out": "The M17 was a small, lightweight machine gun used in World War II. The M18 was a larger",
+  "ok": false
+ },
+ {
+  "id": 76,
+  "out": "Kobe Bryant",
+  "ok": false
+ },
+ {
+  "id": 77,
+  "out": "1984",
+  "ok": false
+ },
+ {
+  "id": 78,
+  "out": "fanny pack",
+  "ok": false
+ },
+ {
+  "id": 79,
+  "out": "1347",
+  "ok": false
+ },
+ {
+  "id": 80,
+  "out": "The winner of the Man Booker Prize in 2006 was Chimamanda Ngozi Adichie.",
+  "ok": false
+ },
+ {
+  "id": 81,
+  "out": "2",
+  "ok": false
+ },
+ {
+  "id": 82,
+  "out": "The left subclavian artery supplies blood to the upper half of the left side of the chest.",
+  "ok": false
+ },
+ {
+  "id": 83,
+  "out": "Franklin D. Roosevelt",
+  "ok": false
+ },
+ {
+  "id": 84,
+  "out": "The song \"You Take My Breath Away\" was sung by The Beatles.",
+  "ok": false
+ },
+ {
+  "id": 85,
+  "out": "105 miles (169 km) via I-78.",
+  "ok": false
+ },
+ {
+  "id": 86,
+  "out": "The world's largest consumer of food is humans.",
+  "ok": false
+ },
+ {
+  "id": 87,
+  "out": "Kirsten Dunst plays Penny Pinchelow in \"Dumb and Dumber\" to.",
+  "ok": false
+ },
+ {
+  "id": 88,
+  "out": "The Board of Governors is appointed by the President and confirmed by the Senate.",
+  "ok": false
+ },
+ {
+  "id": 89,
+  "out": "Portugal",
+  "ok": false
+ },
+ {
+  "id": 90,
+  "out": "Jared Harris plays Taylor on \"Young and the Restless.\"",
+  "ok": false
+ },
+ {
+  "id": 91,
+  "out": "The song \"Girl You'll Be A Woman Soon\" was written by John Lennon and Paul McCartney.",
+  "ok": false
+ },
+ {
+  "id": 92,
+  "out": "Cathy is played by actress Sarah Brightman.",
+  "ok": false
+ },
+ {
+  "id": 93,
+  "out": "1972",
+  "ok": false
+ },
+ {
+  "id": 94,
+  "out": "English law.",
+  "ok": false
+ },
+ {
+  "id": 95,
+  "out": "Wilt Chamberlain won the most NBA All-Star Game titles, with 10.",
+  "ok": false
+ },
+ {
+  "id": 96,
+  "out": "Financial crisis of 2001-2007",
+  "ok": false
+ },
+ {
+  "id": 97,
+  "out": "The Indiana Hoosiers play for the Big Ten Championship Game.",
+  "ok": false
+ },
+ {
+  "id": 98,
+  "out": "New York City, USA",
+  "ok": false
+ },
+ {
+  "id": 99,
+  "out": "2017-03-24",
+  "ok": false
+ },
+ {
+  "id": 100,
+  "out": "The song \"I Believe in You\" was written by Bob Dylan and recorded by The Who.",
+  "ok": false
+ },
+ {
+  "id": 101,
+  "out": "October 2, 2023",
+  "ok": false
+ },
+ {
+  "id": 102,
+  "out": "December 15, 2023",
+  "ok": false
+ },
+ {
+  "id": 103,
+  "out": "1988",
+  "ok": false
+ },
+ {
+  "id": 104,
+  "out": "The heart is located in the brain.",
+  "ok": false
+ },
+ {
+  "id": 105,
+  "out": "1982",
+  "ok": false
+ },
+ {
+  "id": 106,
+  "out": "Tommy Lee Jones played young Christopher in \"The Imitation Game.\"",
+  "ok": false
+ },
+ {
+  "id": 107,
+  "out": "Vanilla, chocolate, and strawberry ice cream are popular flavors.",
+  "ok": true
+ },
+ {
+  "id": 108,
+  "out": "Ancient times",
+  "ok": false
+ },
+ {
+  "id": 109,
+  "out": "Tom Hardy plays Brain in \"Pinky and the Brain.\"",
+  "ok": false
+ },
+ {
+  "id": 110,
+  "out": "12 championships",
+  "ok": false
+ },
+ {
+  "id": 111,
+  "out": "2023",
+  "ok": false
+ },
+ {
+  "id": 112,
+  "out": "2019-2020 season",
+  "ok": false
+ },
+ {
+  "id": 113,
+  "out": "sleepwalking",
+  "ok": false
+ },
+ {
+  "id": 114,
+  "out": "The Los Angeles Lakers are the most successful NBA team.",
+  "ok": false
+ },
+ {
+  "id": 115,
+  "out": "After she overdosed on drugs.",
+  "ok": false
+ },
+ {
+  "id": 116,
+  "out": " Bowman's capsule",
+  "ok": false
+ },
+ {
+  "id": 117,
+  "out": "Spike",
+  "ok": false
+ },
+ {
+  "id": 118,
+  "out": "The peeping pot tree.",
+  "ok": false
+ },
+ {
+  "id": 119,
+  "out": "Cork RFC won the 2016 All-Ireland Hurling Final.",
+  "ok": false
+ },
+ {
+  "id": 120,
+  "out": "1985",
+  "ok": false
+ },
+ {
+  "id": 121,
+  "out": "The song \"I've Had the Time of My Life\" was sung by The Police.",
+  "ok": false
+ },
+ {
+  "id": 122,
+  "out": "Yes, arc length is calculated using radius and central angle.",
+  "ok": false
+ },
+ {
+  "id": 123,
+  "out": "Natalie Portman won the Best Actress award for her role as the Queen of England in Iifa.",
+  "ok": false
+ },
+ {
+  "id": 124,
+  "out": "The ski team that won the 1980 Winter Olympics in Calgary, Canada.",
+  "ok": false
+ },
+ {
+  "id": 125,
+  "out": "New York City",
+  "ok": false
+ },
+ {
+  "id": 126,
+  "out": "Karan Johar played the voice of Shere Khan in Jungle Book.",
+  "ok": false
+ },
+ {
+  "id": 127,
+  "out": "1970s",
+  "ok": false
+ },
+ {
+  "id": 128,
+  "out": "190",
+  "ok": false
+ },
+ {
+  "id": 129,
+  "out": "The song \"I Don't Know What to Do With Myself\" was written and performed by The Beatles.",
+  "ok": false
+ },
+ {
+  "id": 130,
+  "out": "1984",
+  "ok": false
+ },
+ {
+  "id": 131,
+  "out": "1982-1986",
+  "ok": false
+ },
+ {
+  "id": 132,
+  "out": "Tom Hanks played Vincent in \"Nanny McPhee and the Big Bang.\"",
+  "ok": false
+ },
+ {
+  "id": 133,
+  "out": "cave\u58c1\u753b",
+  "ok": false
+ },
+ {
+  "id": 134,
+  "out": "Delhi, India.",
+  "ok": false
+ },
+ {
+  "id": 135,
+  "out": "The CIA Director is played by John Travolta in \"Madam Secretary.\"",
+  "ok": false
+ },
+ {
+  "id": 136,
+  "out": "fear and anxiety",
+  "ok": true
+ },
+ {
+  "id": 137,
+  "out": "Michael Jordan earned the most money in the NBA.",
+  "ok": false
+ },
+ {
+  "id": 138,
+  "out": "Karnataka, India",
+  "ok": false
+ },
+ {
+  "id": 139,
+  "out": "1985-1986",
+  "ok": false
+ },
+ {
+  "id": 140,
+  "out": "1964",
+  "ok": false
+ },
+ {
+  "id": 141,
+  "out": "New Delhi, India",
+  "ok": false
+ },
+ {
+  "id": 142,
+  "out": "Kendrick Lamar",
+  "ok": false
+ },
+ {
+  "id": 143,
+  "out": "1600s",
+  "ok": false
+ },
+ {
+  "id": 144,
+  "out": "200 mph",
+  "ok": false
+ },
+ {
+  "id": 145,
+  "out": "Michael Scott took over as CEO of Microsoft.",
+  "ok": false
+ },
+ {
+  "id": 146,
+  "out": "1980s",
+  "ok": false
+ },
+ {
+  "id": 147,
+  "out": "The New England Patriots won Rookie of the Year in 2016.",
+  "ok": false
+ },
+ {
+  "id": 148,
+  "out": "Roger Federer",
+  "ok": false
+ },
+ {
+  "id": 149,
+  "out": "Buddha",
+  "ok": false
+ },
+ {
+  "id": 150,
+  "out": "Jennifer Jones played Elizabeth in the 1995 film of the same name.",
+  "ok": false
+ },
+ {
+  "id": 151,
+  "out": "The name of the frat in Animal House was The Prodigal Sons.",
+  "ok": false
+ },
+ {
+  "id": 152,
+  "out": "7.0",
+  "ok": false
+ },
+ {
+  "id": 153,
+  "out": "Mike Colvin",
+  "ok": false
+ },
+ {
+  "id": 154,
+  "out": "2019-2020 season",
+  "ok": false
+ },
+ {
+  "id": 155,
+  "out": "in the small intestine",
+  "ok": false
+ },
+ {
+  "id": 156,
+  "out": "compass",
+  "ok": false
+ },
+ {
+  "id": 157,
+  "out": "Joan Crawford played Maria in West Side Story on Broadway.",
+  "ok": false
+ },
+ {
+  "id": 158,
+  "out": "Tom Kenny was the voice of the character Elvis Presley in \"Rock Star.\"",
+  "ok": false
+ },
+ {
+  "id": 159,
+  "out": "Kai Starr plays Killian on Once Upon A Time.",
+  "ok": false
+ },
+ {
+  "id": 160,
+  "out": "2018",
+  "ok": false
+ },
+ {
+  "id": 161,
+  "out": "Democrat",
+  "ok": false
+ },
+ {
+  "id": 162,
+  "out": "2019-03-06",
+  "ok": false
+ },
+ {
+  "id": 163,
+  "out": "Jennifer Aniston played Karen in \"How I Met Your Mother.\"",
+  "ok": false
+ },
+ {
+  "id": 164,
+  "out": "Kendall Jenner won American Idol in 2017.",
+  "ok": false
+ },
+ {
+  "id": 165,
+  "out": "Louis-Philippe de Roberval",
+  "ok": false
+ },
+ {
+  "id": 166,
+  "out": "The Christmas song \"Do You Hear What I Hear?\" was written by Bob Dylan.",
+  "ok": false
+ },
+ {
+  "id": 167,
+  "out": "The minimum wage in Washington State is $14.50 per hour.",
+  "ok": false
+ },
+ {
+  "id": 168,
+  "out": "The song \"One in a Million\" was written by John Lennon and Paul McCartney.",
+  "ok": false
+ },
+ {
+  "id": 169,
+  "out": "California's lower house is called the Senate.",
+  "ok": false
+ },
+ {
+  "id": 170,
+  "out": "Taraji P. Henson is playing Black Panther in the movie.",
+  "ok": false
+ },
+ {
+  "id": 171,
+  "out": "The film \"We First Met\" was filmed in Los Angeles, California.",
+  "ok": false
+ },
+ {
+  "id": 172,
+  "out": "The song \"Paved Paradise\" by The Beatles was sung by Ringo Starr.",
+  "ok": false
+ },
+ {
+  "id": 173,
+  "out": "1960s",
+  "ok": false
+ },
+ {
+  "id": 174,
+  "out": "Tom Hardy played the Monkey King in Forbidden Kingdom.",
+  "ok": false
+ },
+ {
+  "id": 175,
+  "out": "No, it was Hurricane Katrina in 2005.",
+  "ok": false
+ },
+ {
+  "id": 176,
+  "out": "Vladimir Putin",
+  "ok": false
+ },
+ {
+  "id": 177,
+  "out": "1689",
+  "ok": false
+ },
+ {
+  "id": 178,
+  "out": "\"Sweet Child O' Mine\" by Guns N' Roses",
+  "ok": false
+ },
+ {
+  "id": 179,
+  "out": "2016 Summer Olympics",
+  "ok": false
+ },
+ {
+  "id": 180,
+  "out": "President Muhammadu Buhari",
+  "ok": false
+ },
+ {
+  "id": 181,
+  "out": "New York City, New York",
+  "ok": true
+ },
+ {
+  "id": 182,
+  "out": "Wayne Gretzky",
+  "ok": true
+ },
+ {
+  "id": 183,
+  "out": "June 15, 2024",
+  "ok": false
+ },
+ {
+  "id": 184,
+  "out": "Maggie Gyllenhaal voiced Mrs. Bates.",
+  "ok": false
+ },
+ {
+  "id": 185,
+  "out": "Red Leicester",
+  "ok": false
+ },
+ {
+  "id": 186,
+  "out": "April Fool's Day",
+  "ok": false
+ },
+ {
+  "id": 187,
+  "out": "Tom Kenny played the character in the 1980s TV series.",
+  "ok": false
+ },
+ {
+  "id": 188,
+  "out": "Tom Kenny plays the Big Monkey in Jungle Book: The Last Man.",
+  "ok": false
+ },
+ {
+  "id": 189,
+  "out": "Timothy Olyphant plays Zeke Baylor in \"High School Musical.\"",
+  "ok": false
+ },
+ {
+  "id": 190,
+  "out": "colon",
+  "ok": false
+ },
+ {
+  "id": 191,
+  "out": "Horus, the god of the underworld, was kidnapped by Seth.",
+  "ok": false
+ },
+ {
+  "id": 192,
+  "out": "The story of Mumbaani is based on the life of King Mahatma Gandhi.",
+  "ok": false
+ },
+ {
+  "id": 193,
+  "out": "1858",
+  "ok": false
+ },
+ {
+  "id": 194,
+  "out": "The Vice President is elected by the Senate.",
+  "ok": true
+ },
+ {
+  "id": 195,
+  "out": "To prevent odors from spreading.",
+  "ok": false
+ },
+ {
+  "id": 196,
+  "out": "in the carotid sinus and aortic arch",
+  "ok": false
+ },
+ {
+  "id": 197,
+  "out": "Manchester City won the 2017-18 Grey Cup.",
+  "ok": false
+ },
+ {
+  "id": 198,
+  "out": "Toronto Blue Jays",
+  "ok": false
+ },
+ {
+  "id": 199,
+  "out": "Cinderella",
+  "ok": true
+ },
+ {
+  "id": 200,
+  "out": "Tom Hanks played George Washington in the John Adams series.",
+  "ok": false
+ },
+ {
+  "id": 201,
+  "out": "The character of Sarah is killed by her husband, Jack.",
+  "ok": false
+ },
+ {
+  "id": 202,
+  "out": "Gujarat",
+  "ok": false
+ },
+ {
+  "id": 203,
+  "out": "1987-1988 season",
+  "ok": false
+ },
+ {
+  "id": 204,
+  "out": "All characters in Belan Wali Bahu are named Sita.",
+  "ok": false
+ },
+ {
+  "id": 205,
+  "out": "Canyon de Chelly",
+  "ok": false
+ },
+ {
+  "id": 206,
+  "out": "The President's Cabinet Officer approves presidential appointments.",
+  "ok": false
+ },
+ {
+  "id": 207,
+  "out": "1954",
+  "ok": false
+ },
+ {
+  "id": 208,
+  "out": "2016",
+  "ok": false
+ },
+ {
+  "id": 209,
+  "out": "Chris Evans",
+  "ok": false
+ },
+ {
+  "id": 210,
+  "out": "Troposphere, stratosphere, mesosphere, thermosphere, exosphere.",
+  "ok": true
+ },
+ {
+  "id": 211,
+  "out": "poors farmers of the manor were called peasants.",
+  "ok": false
+ },
+ {
+  "id": 212,
+  "out": "September 18, 2023",
+  "ok": false
+ },
+ {
+  "id": 213,
+  "out": "1973",
+  "ok": false
+ },
+ {
+  "id": 214,
+  "out": "Mahatma Gandhi",
+  "ok": false
+ },
+ {
+  "id": 215,
+  "out": "The song \"How Far I'll Go During Credits\" is sung by The Weeknd.",
+  "ok": false
+ },
+ {
+  "id": 216,
+  "out": "The cover of the Contra album features a man and woman kissing.",
+  "ok": false
+ },
+ {
+  "id": 217,
+  "out": "Terence J. Clarke",
+  "ok": false
+ },
+ {
+  "id": 218,
+  "out": "2019-2020",
+  "ok": false
+ },
+ {
+  "id": 219,
+  "out": "2019",
+  "ok": false
+ },
+ {
+  "id": 220,
+  "out": "about 2 weeks after birth",
+  "ok": false
+ },
+ {
+  "id": 221,
+  "out": "20-35 years old",
+  "ok": false
+ },
+ {
+  "id": 222,
+  "out": "about 10 million people",
+  "ok": false
+ },
+ {
+  "id": 223,
+  "out": "Tom Hanks played the twins in Miss Peregrine's Home for Peculiar Children.",
+  "ok": false
+ },
+ {
+  "id": 224,
+  "out": "1987",
+  "ok": false
+ },
+ {
+  "id": 225,
+  "out": "December 25, 2019",
+  "ok": false
+ },
+ {
+  "id": 226,
+  "out": "In Germany, the Weg is being held in Berlin.",
+  "ok": false
+ },
+ {
+  "id": 227,
+  "out": "ethmoid bone",
+  "ok": false
+ },
+ {
+  "id": 228,
+  "out": "The song \"Light It Up I'm On Fire\" is sung by The Scripting Company.",
+  "ok": false
+ },
+ {
+  "id": 229,
+  "out": "2019",
+  "ok": false
+ },
+ {
+  "id": 230,
+  "out": "Tom Hardy played the role of the butcher in Gangs of New York.",
+  "ok": false
+ },
+ {
+  "id": 231,
+  "out": "The prosecution must prove beyond a reasonable doubt that the defendant was insane at the time of the crime.",
+  "ok": false
+ },
+ {
+  "id": 232,
+  "out": "1970-71 season",
+  "ok": false
+ },
+ {
+  "id": 233,
+  "out": "The original singer of \"Deep in the Heart of Texas\" was The Rolling Stones.",
+  "ok": false
+ },
+ {
+  "id": 234,
+  "out": "Jesse Plemons",
+  "ok": false
+ },
+ {
+  "id": 235,
+  "out": "electric power steering system",
+  "ok": false
+ },
+ {
+  "id": 236,
+  "out": "John C. Calhoun was the broker.",
+  "ok": false
+ },
+ {
+  "id": 237,
+  "out": "2017-2018",
+  "ok": false
+ },
+ {
+  "id": 238,
+  "out": "1973",
+  "ok": false
+ },
+ {
+  "id": 239,
+  "out": "1976",
+  "ok": false
+ },
+ {
+  "id": 240,
+  "out": "It costs $10 for a new passport.",
+  "ok": false
+ },
+ {
+  "id": 241,
+  "out": "2019",
+  "ok": false
+ },
+ {
+  "id": 242,
+  "out": "Lord Russell",
+  "ok": false
+ },
+ {
+  "id": 243,
+  "out": "Eugene Marcos",
+  "ok": false
+ },
+ {
+  "id": 244,
+  "out": "The character of Gargamel in the movie \"Lorax\" was played by Taylor Swift.",
+  "ok": false
+ },
+ {
+  "id": 245,
+  "out": "The Warriors played their final game of the season against the Los Angeles Lakers in the NBA Finals.",
+  "ok": false
+ },
+ {
+  "id": 246,
+  "out": " voices by Kristen Bell",
+  "ok": false
+ },
+ {
+  "id": 247,
+  "out": "The song \"God's Problem Child\" is sung by Willie Nelson.",
+  "ok": false
+ },
+ {
+  "id": 248,
+  "out": "Hipparchus of Nicaea discovered this.",
+  "ok": false
+ },
+ {
+  "id": 249,
+  "out": "India",
+  "ok": false
+ },
+ {
+  "id": 250,
+  "out": "Jenna Fischer stars as Sarah Jordan in Private Eyes on Ion Television.",
+  "ok": false
+ },
+ {
+  "id": 251,
+  "out": "Russia",
+  "ok": false
+ },
+ {
+  "id": 252,
+  "out": "59%",
+  "ok": false
+ },
+ {
+  "id": 253,
+  "out": "The winner of Series 5 of The Great British Bake Off was Sarah Tait.",
+  "ok": false
+ },
+ {
+  "id": 254,
+  "out": "10",
+  "ok": true
+ },
+ {
+  "id": 255,
+  "out": "1984",
+  "ok": false
+ },
+ {
+  "id": 256,
+  "out": "Raja Ravi Varma",
+  "ok": false
+ },
+ {
+  "id": 257,
+  "out": "Carbon taxes are implemented to reduce emissions from vehicles and industries.",
+  "ok": true
+ },
+ {
+  "id": 258,
+  "out": "John Travolta played Mark on Roseanne.",
+  "ok": false
+ },
+ {
+  "id": 259,
+  "out": "Tom Kenny plays Johnny on \"Young and the Restless.\"",
+  "ok": false
+ },
+ {
+  "id": 260,
+  "out": "1985",
+  "ok": false
+ },
+ {
+  "id": 261,
+  "out": "Denver Broncos Stadium",
+  "ok": false
+ },
+ {
+  "id": 262,
+  "out": "Ryans goes to college at the University of California, Los Angeles (UCLA) in Los Angeles, CA.",
+  "ok": false
+ },
+ {
+  "id": 263,
+  "out": "3",
+  "ok": false
+ },
+ {
+  "id": 264,
+  "out": "10",
+  "ok": false
+ },
+ {
+  "id": 265,
+  "out": "London",
+  "ok": false
+ },
+ {
+  "id": 266,
+  "out": "Tom Kenny plays Oliver Queen's father in Arrow.",
+  "ok": false
+ },
+ {
+  "id": 267,
+  "out": "Erythrocytes become macrophages.",
+  "ok": false
+ },
+ {
+  "id": 268,
+  "out": "2007",
+  "ok": false
+ },
+ {
+  "id": 269,
+  "out": "V. S. Naik",
+  "ok": false
+ },
+ {
+  "id": 270,
+  "out": "Bharat battekar plays the role of Chandragupta Maurya in the Indian film \"Chand",
+  "ok": false
+ },
+ {
+  "id": 271,
+  "out": "The honeybee represents wealth and prosperity.",
+  "ok": false
+ },
+ {
+  "id": 272,
+  "out": "Walt Disney conceived Mickey Mouse as a small, friendly talking animal.",
+  "ok": false
+ },
+ {
+  "id": 273,
+  "out": "Tim Robbins plays the role of Andy Dufresne in Planet of the Apes: The Last Airbender.",
+  "ok": false
+ },
+ {
+  "id": 274,
+  "out": "The song \"If You Can't Give Me Love\" was sung by The Beatles.",
+  "ok": false
+ },
+ {
+  "id": 275,
+  "out": "Yes, words from Bible were used.",
+  "ok": false
+ },
+ {
+  "id": 276,
+  "out": "Timothy Olyphant plays Robbie in \"Last Tango in Halifax.\"",
+  "ok": false
+ },
+ {
+  "id": 277,
+  "out": "Charlotte Hornets",
+  "ok": false
+ },
+ {
+  "id": 278,
+  "out": "The tiger is owned by John Travolta.",
+  "ok": false
+ },
+ {
+  "id": 279,
+  "out": "About 1% of US GDP is allocated to defense.",
+  "ok": false
+ },
+ {
+  "id": 280,
+  "out": "on the hood or side panel",
+  "ok": false
+ },
+ {
+  "id": 281,
+  "out": "Franklin D. Roosevelt",
+  "ok": false
+ },
+ {
+  "id": 282,
+  "out": "The Wonder Years theme song was sung by The Beatles.",
+  "ok": false
+ },
+ {
+  "id": 283,
+  "out": "Franklin D. Roosevelt",
+  "ok": false
+ },
+ {
+  "id": 284,
+  "out": "Tom Hardy plays Dr. Blake in \"Dr. Blake Mysteries.\"",
+  "ok": false
+ },
+ {
+  "id": 285,
+  "out": "The absurd school of drama includes William Shakespeare, Henrik Ibsen, and Anton Chekhov.",
+  "ok": false
+ },
+ {
+  "id": 286,
+  "out": "confrontation",
+  "ok": false
+ },
+ {
+  "id": 287,
+  "out": "Tom Kenny plays Saul in \"Adventures of the King.\"",
+  "ok": false
+ },
+ {
+  "id": 288,
+  "out": "Jennifer Aniston played Angie in \"The Fresh Prince of Bel-Air.\"",
+  "ok": false
+ },
+ {
+  "id": 289,
+  "out": "30.5 points per game",
+  "ok": false
+ },
+ {
+  "id": 290,
+  "out": "The Beatles",
+  "ok": false
+ },
+ {
+  "id": 291,
+  "out": "September 20, 2019",
+  "ok": false
+ },
+ {
+  "id": 292,
+  "out": "Sulfur dioxide.",
+  "ok": false
+ },
+ {
+  "id": 293,
+  "out": "20,000 barrels/day",
+  "ok": false
+ },
+ {
+  "id": 294,
+  "out": "function calls",
+  "ok": false
+ },
+ {
+  "id": 295,
+  "out": "Snapchat",
+  "ok": false
+ },
+ {
+  "id": 296,
+  "out": "1920",
+  "ok": false
+ },
+ {
+  "id": 297,
+  "out": "1970",
+  "ok": false
+ },
+ {
+  "id": 298,
+  "out": "Vienna",
+  "ok": false
+ },
+ {
+  "id": 299,
+  "out": "Roorkee",
+  "ok": false
+ },
+ {
+  "id": 300,
+  "out": "2019-2020 season",
+  "ok": false
+ },
+ {
+  "id": 301,
+  "out": "J.D. Salinger",
+  "ok": false
+ },
+ {
+  "id": 302,
+  "out": "The character Mr. Smith appears in Sarah Jane Adventures as a villain.",
+  "ok": false
+ },
+ {
+  "id": 303,
+  "out": "Jodie Foster plays Hermione Granger in \"Harry Potter and the Sorcerer's Stone.\"",
+  "ok": false
+ },
+ {
+  "id": 304,
+  "out": "Kathleen Turner played the role of Mother in \"The Wonder Years.\"",
+  "ok": false
+ },
+ {
+  "id": 305,
+  "out": "Robert De Niro played Armand in \"Interview with a Vampire.\"",
+  "ok": false
+ },
+ {
+  "id": 306,
+  "out": "1983",
+  "ok": false
+ },
+ {
+  "id": 307,
+  "out": "2019-03-06",
+  "ok": false
+ },
+ {
+  "id": 308,
+  "out": "about 10%",
+  "ok": false
+ },
+ {
+  "id": 309,
+  "out": "1967",
+  "ok": false
+ },
+ {
+  "id": 310,
+  "out": "Yes, citizens of New Zealand require a visa to visit Hong Kong.",
+  "ok": true
+ },
+ {
+  "id": 311,
+  "out": "The character of the bully is played by John Krasinski.",
+  "ok": false
+ },
+ {
+  "id": 312,
+  "out": "Noah Webster",
+  "ok": false
+ },
+ {
+  "id": 313,
+  "out": "September 15, 2023",
+  "ok": false
+ },
+ {
+  "id": 314,
+  "out": "Tiffany Haddish played the role of Sarah in \"School Dance.\"",
+  "ok": false
+ },
+ {
+  "id": 315,
+  "out": "to reduce alcohol-related harm",
+  "ok": false
+ },
+ {
+  "id": 316,
+  "out": "2023",
+  "ok": false
+ },
+ {
+  "id": 317,
+  "out": "The character Tara was killed by her own father, John.",
+  "ok": false
+ },
+ {
+  "id": 318,
+  "out": "The winner of the most DPPs is usually the person who wins the most matches in total, regardless of the number",
+  "ok": false
+ },
+ {
+  "id": 319,
+  "out": "On the Origin of Species",
+  "ok": true
+ },
+ {
+  "id": 320,
+  "out": "The founder of the Church of Jesus Christ of Latter-day Saints is Joseph Smith.",
+  "ok": false
+ },
+ {
+  "id": 321,
+  "out": "No one was directly involved in the WWI Christmas Truce, as it was an imagined event.",
+  "ok": false
+ },
+ {
+  "id": 322,
+  "out": "June 7, 2018",
+  "ok": false
+ },
+ {
+  "id": 323,
+  "out": "2019-2020 season",
+  "ok": false
+ },
+ {
+  "id": 324,
+  "out": "Derek Jeter scored the most points in baseball's history, with 1028.",
+  "ok": false
+ },
+ {
+  "id": 325,
+  "out": "Jenna Coleman",
+  "ok": false
+ },
+ {
+  "id": 326,
+  "out": "September 15, 2023",
+  "ok": false
+ },
+ {
+  "id": 327,
+  "out": "2019",
+  "ok": false
+ },
+ {
+  "id": 328,
+  "out": "10",
+  "ok": true
+ },
+ {
+  "id": 329,
+  "out": "Taylor Hicks won the 9th season of America's Got Talent.",
+  "ok": false
+ },
+ {
+  "id": 330,
+  "out": "The player who has scored the most goals in Australian Football League (AFL) is Wayne Gretzky, who scored",
+  "ok": false
+ },
+ {
+  "id": 331,
+  "out": "The Last Resort is a book by P. D. James.",
+  "ok": false
+ },
+ {
+  "id": 332,
+  "out": "1234567890",
+  "ok": true
+ },
+ {
+  "id": 333,
+  "out": "The era of good feelings was presided over by Pope Pius IX.",
+  "ok": false
+ },
+ {
+  "id": 334,
+  "out": "The song \"Just the Way It Is\" was written by John Lennon.",
+  "ok": false
+ },
+ {
+  "id": 335,
+  "out": "Mike Zimmer is the head coach for Notre Dame football.",
+  "ok": false
+ },
+ {
+  "id": 336,
+  "out": "September 30, 2023",
+  "ok": false
+ },
+ {
+  "id": 337,
+  "out": "The movie \"Fright and Loathing\" is about a man who becomes obsessed with a serial killer.",
+  "ok": false
+ },
+ {
+  "id": 338,
+  "out": "New York City",
+  "ok": false
+ },
+ {
+  "id": 339,
+  "out": "New York Yankees",
+  "ok": false
+ },
+ {
+  "id": 340,
+  "out": "The engine.",
+  "ok": false
+ },
+ {
+  "id": 341,
+  "out": "10",
+  "ok": false
+ },
+ {
+  "id": 342,
+  "out": "Gandalf",
+  "ok": false
+ },
+ {
+  "id": 343,
+  "out": "Rome, Italy",
+  "ok": false
+ },
+ {
+  "id": 344,
+  "out": "William of Normandy",
+  "ok": false
+ },
+ {
+  "id": 345,
+  "out": "Mike Trout won the All-Star MVP in 2019.",
+  "ok": false
+ },
+ {
+  "id": 346,
+  "out": "Tom Hanks plays the role of the boss in \"Last Man Standing.\"",
+  "ok": false
+ },
+ {
+  "id": 347,
+  "out": "The New England Patriots have the most division titles in NFL.",
+  "ok": false
+ },
+ {
+  "id": 348,
+  "out": "Puerto de Menorca Airport",
+  "ok": true
+ },
+ {
+  "id": 349,
+  "out": "Nicolaus Copernicus was credited with the discovery of the Milky Way.",
+  "ok": false
+ },
+ {
+  "id": 350,
+  "out": "1984",
+  "ok": false
+ },
+ {
+  "id": 351,
+  "out": "Cleveland Cavaliers",
+  "ok": true
+ },
+ {
+  "id": 352,
+  "out": "New York City, New York",
+  "ok": false
+ },
+ {
+  "id": 353,
+  "out": "The New York Knicks",
+  "ok": false
+ },
+ {
+  "id": 354,
+  "out": "2016",
+  "ok": false
+ },
+ {
+  "id": 355,
+  "out": "Jackie Stewart scored the first-ever goal at White Hart Lane in 1963.",
+  "ok": false
+ },
+ {
+  "id": 356,
+  "out": "1930s",
+  "ok": false
+ },
+ {
+  "id": 357,
+  "out": "The Australian 2016 $10 note features a portrait of Queen Elizabeth II.",
+  "ok": true
+ },
+ {
+  "id": 358,
+  "out": "\"Happy Birthday to You\" by The Beatles",
+  "ok": false
+ },
+ {
+  "id": 359,
+  "out": "1974",
+  "ok": false
+ },
+ {
+  "id": 360,
+  "out": "18 years old",
+  "ok": false
+ },
+ {
+  "id": 361,
+  "out": "2024",
+  "ok": false
+ },
+ {
+  "id": 362,
+  "out": "Nicolas de Condorcet",
+  "ok": false
+ },
+ {
+  "id": 363,
+  "out": "Muhammad ibn Abd al-Zahra al-Mahdi was the first caliph of Islam.",
+  "ok": false
+ },
+ {
+  "id": 364,
+  "out": "1967",
+  "ok": false
+ },
+ {
+  "id": 365,
+  "out": "15",
+  "ok": false
+ },
+ {
+  "id": 366,
+  "out": "1975-1980",
+  "ok": false
+ },
+ {
+  "id": 367,
+  "out": "In the small intestine, it's located in the villi.",
+  "ok": true
+ },
+ {
+  "id": 368,
+  "out": "Scott Glenn is played by John Krasinski in the show.",
+  "ok": false
+ },
+ {
+  "id": 369,
+  "out": "1986-87 season",
+  "ok": false
+ },
+ {
+  "id": 370,
+  "out": "Beans, corn, plantains, tomatoes, avocados, and potatoes.",
+  "ok": false
+ },
+ {
+  "id": 371,
+  "out": "Bhutan, Nepal, Bhagirath, and Sri Lanka are visa-free countries for Pakistani passports.",
+  "ok": false
+ },
+ {
+  "id": 372,
+  "out": "The news media in the US are owned by corporations and individuals, primarily by major television networks and cable companies.",
+  "ok": false
+ },
+ {
+  "id": 373,
+  "out": "Bob Dylan",
+  "ok": false
+ },
+ {
+  "id": 374,
+  "out": "Svetlana Kuznetsova won gold medal in women's singles ice dancing.",
+  "ok": false
+ },
+ {
+  "id": 375,
+  "out": "mouth",
+  "ok": false
+ },
+ {
+  "id": 376,
+  "out": "Jared Harris plays Roman Pearce in Fast & Furious.",
+  "ok": false
+ },
+ {
+  "id": 377,
+  "out": "roots, shoots and leaves.",
+  "ok": false
+ },
+ {
+  "id": 378,
+  "out": "1937",
+  "ok": true
+ },
+ {
+  "id": 379,
+  "out": "1987",
+  "ok": false
+ },
+ {
+  "id": 380,
+  "out": "Derek, the son of Big Brother, won the title.",
+  "ok": false
+ },
+ {
+  "id": 381,
+  "out": "2",
+  "ok": false
+ },
+ {
+  "id": 382,
+  "out": "September 15, 2023",
+  "ok": false
+ },
+ {
+  "id": 383,
+  "out": "John F. Kennedy",
+  "ok": false
+ },
+ {
+  "id": 384,
+  "out": "white and moist",
+  "ok": true
+ },
+ {
+  "id": 385,
+  "out": "God is called \"El\" in Hebrew.",
+  "ok": false
+ },
+ {
+  "id": 386,
+  "out": "Mexico City",
+  "ok": false
+ },
+ {
+  "id": 387,
+  "out": "By blocking calcium channels in muscles.",
+  "ok": false
+ },
+ {
+  "id": 388,
+  "out": "two years",
+  "ok": false
+ },
+ {
+  "id": 389,
+  "out": "The song \"I Wanna Be Like You\" from Jungle Book 2016 was sung by The Kid LAR",
+  "ok": false
+ },
+ {
+  "id": 390,
+  "out": "The Winnie-the-Pooh character lives in a treehouse.",
+  "ok": false
+ },
+ {
+  "id": 391,
+  "out": "Tom Hanks played Bosley in the 2013 film \"Charlie's Angels.\"",
+  "ok": false
+ },
+ {
+  "id": 392,
+  "out": "The song \"Sweet Caroline\" was written by Bob Dylan and recorded by him in 1965.",
+  "ok": false
+ },
+ {
+  "id": 393,
+  "out": "Kathleen Turner",
+  "ok": false
+ },
+ {
+  "id": 394,
+  "out": "Tokyo, Japan",
+  "ok": false
+ },
+ {
+  "id": 395,
+  "out": "1607",
+  "ok": false
+ },
+ {
+  "id": 396,
+  "out": "Ben Affleck plays President Donald Trump's son, Bill Clinton.",
+  "ok": false
+ },
+ {
+  "id": 397,
+  "out": "2023",
+  "ok": false
+ },
+ {
+  "id": 398,
+  "out": "18-20 months",
+  "ok": false
+ },
+ {
+  "id": 399,
+  "out": "October 2016",
+  "ok": false
+ }
+]

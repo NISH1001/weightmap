@@ -1,0 +1,180 @@
+{
+ "math": {
+  "best_configs": {
+   "S-native": [
+    "S-native",
+    10,
+    4
+   ],
+   "L->S": [
+    "L->S",
+    10,
+    2
+   ],
+   "transplant": [
+    "transplant",
+    14,
+    0.5
+   ],
+   "random": [
+    "random",
+    10,
+    2
+   ]
+  },
+  "table": {
+   "all": {
+    "n": 110,
+    "base": 0.255,
+    "S-native": 0.118,
+    "L->S": 0.245,
+    "transplant": 0.255,
+    "random": 0.218,
+    "L (upper bound)": 0.382
+   },
+   "target-blocked (L ok, S wrong, S pass@8>0)": {
+    "n": 13,
+    "base": 0.308,
+    "S-native": 0.154,
+    "L->S": 0.308,
+    "transplant": 0.231,
+    "random": 0.231,
+    "L (upper bound)": 1.0
+   },
+   "target-absent (L ok, S wrong, S pass@8=0)": {
+    "n": 9,
+    "base": 0.0,
+    "S-native": 0.0,
+    "L->S": 0.0,
+    "transplant": 0.0,
+    "random": 0.0,
+    "L (upper bound)": 1.0
+   },
+   "S-already-correct (damage check)": {
+    "n": 23,
+    "base": 0.913,
+    "S-native": 0.435,
+    "L->S": 0.87,
+    "transplant": 0.87,
+    "random": 0.696,
+    "L (upper bound)": 0.87
+   }
+  },
+  "delta_vs_base_all (mean, 95% CI)": {
+   "S-native": [
+    -0.13636363636363635,
+    -0.21818181818181817,
+    -0.05454545454545454
+   ],
+   "L->S": [
+    -0.00909090909090909,
+    -0.07272727272727272,
+    0.05454545454545454
+   ],
+   "transplant": [
+    0.0,
+    -0.06363636363636363,
+    0.06363636363636363
+   ],
+   "random": [
+    -0.03636363636363636,
+    -0.10909090909090909,
+    0.03636363636363636
+   ],
+   "L (upper bound)": [
+    0.12727272727272726,
+    0.045454545454545456,
+    0.20909090909090908
+   ]
+  }
+ },
+ "nq": {
+  "best_configs": {
+   "S-native": [
+    "S-native",
+    10,
+    1
+   ],
+   "L->S": [
+    "L->S",
+    10,
+    1
+   ],
+   "transplant": [
+    "transplant",
+    10,
+    0.5
+   ],
+   "random": [
+    "random",
+    10,
+    1
+   ]
+  },
+  "table": {
+   "all": {
+    "n": 300,
+    "base": 0.11,
+    "S-native": 0.077,
+    "L->S": 0.073,
+    "transplant": 0.097,
+    "random": 0.097,
+    "L (upper bound)": 0.123
+   },
+   "target-blocked (L ok, S wrong, S pass@8>0)": {
+    "n": 9,
+    "base": 0.0,
+    "S-native": 0.111,
+    "L->S": 0.111,
+    "transplant": 0.333,
+    "random": 0.111,
+    "L (upper bound)": 1.0
+   },
+   "target-absent (L ok, S wrong, S pass@8=0)": {
+    "n": 8,
+    "base": 0.0,
+    "S-native": 0.0,
+    "L->S": 0.0,
+    "transplant": 0.125,
+    "random": 0.125,
+    "L (upper bound)": 1.0
+   },
+   "S-already-correct (damage check)": {
+    "n": 34,
+    "base": 0.971,
+    "S-native": 0.618,
+    "L->S": 0.618,
+    "transplant": 0.676,
+    "random": 0.676,
+    "L (upper bound)": 0.588
+   }
+  },
+  "delta_vs_base_all (mean, 95% CI)": {
+   "S-native": [
+    -0.03333333333333333,
+    -0.06,
+    -0.01
+   ],
+   "L->S": [
+    -0.03666666666666667,
+    -0.06,
+    -0.013333333333333334
+   ],
+   "transplant": [
+    -0.013333333333333334,
+    -0.04,
+    0.013333333333333334
+   ],
+   "random": [
+    -0.013333333333333334,
+    -0.04,
+    0.013333333333333334
+   ],
+   "L (upper bound)": [
+    0.013333333333333334,
+    -0.023333333333333334,
+    0.05
+   ]
+  }
+ }
+}

@@ -1,0 +1,2002 @@
+[
+ {
+  "id": 0,
+  "out": "1982",
+  "ok": false
+ },
+ {
+  "id": 1,
+  "out": "2018",
+  "ok": false
+ },
+ {
+  "id": 2,
+  "out": "1963",
+  "ok": false
+ },
+ {
+  "id": 3,
+  "out": "Ghee",
+  "ok": false
+ },
+ {
+  "id": 4,
+  "out": "francesca mcfarlane",
+  "ok": false
+ },
+ {
+  "id": 5,
+  "out": "6",
+  "ok": true
+ },
+ {
+  "id": 6,
+  "out": "experiment, survey",
+  "ok": false
+ },
+ {
+  "id": 7,
+  "out": "Chrysler, owned by Fiat now.",
+  "ok": false
+ },
+ {
+  "id": 8,
+  "out": "1948",
+  "ok": false
+ },
+ {
+  "id": 9,
+  "out": "Lila Cavanaugh",
+  "ok": false
+ },
+ {
+  "id": 10,
+  "out": "691-692 AD",
+  "ok": false
+ },
+ {
+  "id": 11,
+  "out": "Great Britain",
+  "ok": true
+ },
+ {
+  "id": 12,
+  "out": "Alphonse Bertillon",
+  "ok": false
+ },
+ {
+  "id": 13,
+  "out": "1906",
+  "ok": false
+ },
+ {
+  "id": 14,
+  "out": "NFC",
+  "ok": true
+ },
+ {
+  "id": 15,
+  "out": "Corey, Corbin, Corbyn, Kory, Coreyce",
+  "ok": true
+ },
+ {
+  "id": 16,
+  "out": "10",
+  "ok": false
+ },
+ {
+  "id": 17,
+  "out": "20 years",
+  "ok": false
+ },
+ {
+  "id": 18,
+  "out": "merschmann",
+  "ok": false
+ },
+ {
+  "id": 19,
+  "out": "Soleus",
+  "ok": true
+ },
+ {
+  "id": 20,
+  "out": "in los angeles, california",
+  "ok": false
+ },
+ {
+  "id": 21,
+  "out": "Spain",
+  "ok": true
+ },
+ {
+  "id": 22,
+  "out": "10",
+  "ok": false
+ },
+ {
+  "id": 23,
+  "out": "8 bytes",
+  "ok": true
+ },
+ {
+  "id": 24,
+  "out": "franciscans",
+  "ok": false
+ },
+ {
+  "id": 25,
+  "out": "Line of Control",
+  "ok": false
+ },
+ {
+  "id": 26,
+  "out": "new york city, ny, usa",
+  "ok": false
+ },
+ {
+  "id": 27,
+  "out": "October 2017",
+  "ok": false
+ },
+ {
+  "id": 28,
+  "out": "siddharth kumar",
+  "ok": false
+ },
+ {
+  "id": 29,
+  "out": "Sigmund Freud",
+  "ok": true
+ },
+ {
+  "id": 30,
+  "out": "Substitute",
+  "ok": false
+ },
+ {
+  "id": 31,
+  "out": "San Jose Sharks in San Jose, California.",
+  "ok": false
+ },
+ {
+  "id": 32,
+  "out": "BITSAT",
+  "ok": false
+ },
+ {
+  "id": 33,
+  "out": "enamel",
+  "ok": false
+ },
+ {
+  "id": 34,
+  "out": "October 14, 2017",
+  "ok": false
+ },
+ {
+  "id": 35,
+  "out": "2019",
+  "ok": false
+ },
+ {
+  "id": 36,
+  "out": "24",
+  "ok": false
+ },
+ {
+  "id": 37,
+  "out": "Dan Castellaneta",
+  "ok": false
+ },
+ {
+  "id": 38,
+  "out": "The Pussycat Dolls",
+  "ok": false
+ },
+ {
+  "id": 39,
+  "out": "October 2018",
+  "ok": false
+ },
+ {
+  "id": 40,
+  "out": "up to 100 milligrams",
+  "ok": false
+ },
+ {
+  "id": 41,
+  "out": "Paul O'Grady",
+  "ok": false
+ },
+ {
+  "id": 42,
+  "out": "2019",
+  "ok": false
+ },
+ {
+  "id": 43,
+  "out": "Woodrow Wilson",
+  "ok": false
+ },
+ {
+  "id": 44,
+  "out": "matt leblanc",
+  "ok": false
+ },
+ {
+  "id": 45,
+  "out": "2006",
+  "ok": false
+ },
+ {
+  "id": 46,
+  "out": "1998",
+  "ok": true
+ },
+ {
+  "id": 47,
+  "out": "Pratibha Patil",
+  "ok": false
+ },
+ {
+  "id": 48,
+  "out": "finale",
+  "ok": false
+ },
+ {
+  "id": 49,
+  "out": "Standardized writing rules, consistency in presentation.",
+  "ok": false
+ },
+ {
+  "id": 50,
+  "out": "Mission: Impossible III",
+  "ok": false
+ },
+ {
+  "id": 51,
+  "out": "1972",
+  "ok": false
+ },
+ {
+  "id": 52,
+  "out": "Simba",
+  "ok": false
+ },
+ {
+  "id": 53,
+  "out": "John Lennon",
+  "ok": false
+ },
+ {
+  "id": 54,
+  "out": "in various locations around the world",
+  "ok": false
+ },
+ {
+  "id": 55,
+  "out": "Richard Rodgers",
+  "ok": false
+ },
+ {
+  "id": 56,
+  "out": "Harvard University",
+  "ok": false
+ },
+ {
+  "id": 57,
+  "out": "blue whale",
+  "ok": false
+ },
+ {
+  "id": 58,
+  "out": "October 1, 2008",
+  "ok": false
+ },
+ {
+  "id": 59,
+  "out": "John Bates",
+  "ok": false
+ },
+ {
+  "id": 60,
+  "out": "The Rolling Stones",
+  "ok": false
+ },
+ {
+  "id": 61,
+  "out": "colorado",
+  "ok": false
+ },
+ {
+  "id": 62,
+  "out": "Dilwale 2",
+  "ok": false
+ },
+ {
+  "id": 63,
+  "out": "The Rolling Stones",
+  "ok": false
+ },
+ {
+  "id": 64,
+  "out": "below the surface of the skin",
+  "ok": false
+ },
+ {
+  "id": 65,
+  "out": "Notable absence due to injury prevented her from participating in the tournament.",
+  "ok": false
+ },
+ {
+  "id": 66,
+  "out": "2011",
+  "ok": false
+ },
+ {
+  "id": 67,
+  "out": "England",
+  "ok": true
+ },
+ {
+  "id": 68,
+  "out": "Clearwater, Florida",
+  "ok": false
+ },
+ {
+  "id": 69,
+  "out": "kaylin harris",
+  "ok": false
+ },
+ {
+  "id": 70,
+  "out": "members",
+  "ok": true
+ },
+ {
+  "id": 71,
+  "out": "to cool steam",
+  "ok": false
+ },
+ {
+  "id": 72,
+  "out": "jasmine thomas",
+  "ok": false
+ },
+ {
+  "id": 73,
+  "out": "his foster parents",
+  "ok": false
+ },
+ {
+  "id": 74,
+  "out": "Abdulaziz Al Saud",
+  "ok": false
+ },
+ {
+  "id": 75,
+  "out": "matticus naufrageux",
+  "ok": false
+ },
+ {
+  "id": 76,
+  "out": "\u80c3\u86cb\u767d\u9176",
+  "ok": false
+ },
+ {
+  "id": 77,
+  "out": "320 pages",
+  "ok": false
+ },
+ {
+  "id": 78,
+  "out": "communication theory",
+  "ok": false
+ },
+ {
+  "id": 79,
+  "out": "downmixing",
+  "ok": false
+ },
+ {
+  "id": 80,
+  "out": "2004",
+  "ok": false
+ },
+ {
+  "id": 81,
+  "out": "distance, direction.",
+  "ok": false
+ },
+ {
+  "id": 82,
+  "out": "Central and South America",
+  "ok": false
+ },
+ {
+  "id": 83,
+  "out": "north coast of California",
+  "ok": false
+ },
+ {
+  "id": 84,
+  "out": "jim cramer",
+  "ok": false
+ },
+ {
+  "id": 85,
+  "out": "Tim Curry",
+  "ok": false
+ },
+ {
+  "id": 86,
+  "out": "mariachi",
+  "ok": false
+ },
+ {
+  "id": 87,
+  "out": "john lennon",
+  "ok": false
+ },
+ {
+  "id": 88,
+  "out": "retail company",
+  "ok": false
+ },
+ {
+  "id": 89,
+  "out": "Wilt Chamberlain",
+  "ok": false
+ },
+ {
+  "id": 90,
+  "out": "NBC",
+  "ok": true
+ },
+ {
+  "id": 91,
+  "out": "John Travolta, Rick Moranis",
+  "ok": false
+ },
+ {
+  "id": 92,
+  "out": "Pyeongchang, South Korea",
+  "ok": true
+ },
+ {
+  "id": 93,
+  "out": "rajasthan",
+  "ok": false
+ },
+ {
+  "id": 94,
+  "out": "1997",
+  "ok": false
+ },
+ {
+  "id": 95,
+  "out": "jennifer aniston",
+  "ok": false
+ },
+ {
+  "id": 96,
+  "out": "No work, fasting, prayer, confession, and avoiding harm.",
+  "ok": false
+ },
+ {
+  "id": 97,
+  "out": "president pro tempore",
+  "ok": false
+ },
+ {
+  "id": 98,
+  "out": "California Sierra Nevada Mountains",
+  "ok": true
+ },
+ {
+  "id": 99,
+  "out": "London, United Kingdom",
+  "ok": true
+ },
+ {
+  "id": 100,
+  "out": "2016",
+  "ok": false
+ },
+ {
+  "id": 101,
+  "out": "camila senatore",
+  "ok": false
+ },
+ {
+  "id": 102,
+  "out": "brainstem",
+  "ok": false
+ },
+ {
+  "id": 103,
+  "out": "John Proctor",
+  "ok": false
+ },
+ {
+  "id": 104,
+  "out": "Elvis Presley",
+  "ok": false
+ },
+ {
+  "id": 105,
+  "out": "Starts at Lake Itasca, ends near Alexandria.",
+  "ok": false
+ },
+ {
+  "id": 106,
+  "out": "Anthony Hopkins",
+  "ok": true
+ },
+ {
+  "id": 107,
+  "out": "The Pussycat Dolls",
+  "ok": false
+ },
+ {
+  "id": 108,
+  "out": "2020",
+  "ok": false
+ },
+ {
+  "id": 109,
+  "out": "Dark Phoenix Park",
+  "ok": false
+ },
+ {
+  "id": 110,
+  "out": "angelina jacoby",
+  "ok": false
+ },
+ {
+  "id": 111,
+  "out": "inside the eye, behind the lens.",
+  "ok": false
+ },
+ {
+  "id": 112,
+  "out": "billy zane",
+  "ok": false
+ },
+ {
+  "id": 113,
+  "out": "fraudulent art dealer thomas walsh",
+  "ok": false
+ },
+ {
+  "id": 114,
+  "out": "Maia Morgenstern",
+  "ok": false
+ },
+ {
+  "id": 115,
+  "out": "king harald of norway",
+  "ok": false
+ },
+ {
+  "id": 116,
+  "out": "bradenton, florida",
+  "ok": false
+ },
+ {
+  "id": 117,
+  "out": "in the retina",
+  "ok": true
+ },
+ {
+  "id": 118,
+  "out": "2013",
+  "ok": false
+ },
+ {
+  "id": 119,
+  "out": "wood, paper, medicine, fuel, wildlife habitat.",
+  "ok": false
+ },
+ {
+  "id": 120,
+  "out": "2013",
+  "ok": false
+ },
+ {
+  "id": 121,
+  "out": "September 2019",
+  "ok": false
+ },
+ {
+  "id": 122,
+  "out": "gerry and the pacemakers",
+  "ok": false
+ },
+ {
+  "id": 123,
+  "out": "2006",
+  "ok": false
+ },
+ {
+  "id": 124,
+  "out": "2003",
+  "ok": false
+ },
+ {
+  "id": 125,
+  "out": "20 years",
+  "ok": false
+ },
+ {
+  "id": 126,
+  "out": "mexico",
+  "ok": false
+ },
+ {
+  "id": 127,
+  "out": "October 2023",
+  "ok": false
+ },
+ {
+  "id": 128,
+  "out": "3 years",
+  "ok": false
+ },
+ {
+  "id": 129,
+  "out": "Baloo",
+  "ok": false
+ },
+ {
+  "id": 130,
+  "out": "Stephanie's mom on The Bold and the Beautiful is Susan Ward.",
+  "ok": false
+ },
+ {
+  "id": 131,
+  "out": "1880-1898",
+  "ok": false
+ },
+ {
+  "id": 132,
+  "out": "2013",
+  "ok": false
+ },
+ {
+  "id": 133,
+  "out": "the east river",
+  "ok": false
+ },
+ {
+  "id": 134,
+  "out": "Asia",
+  "ok": false
+ },
+ {
+  "id": 135,
+  "out": "October 10, 2017",
+  "ok": false
+ },
+ {
+  "id": 136,
+  "out": "josh charles martinez",
+  "ok": false
+ },
+ {
+  "id": 137,
+  "out": "liz hutchinson",
+  "ok": false
+ },
+ {
+  "id": 138,
+  "out": "October 2017",
+  "ok": false
+ },
+ {
+  "id": 139,
+  "out": "1962",
+  "ok": false
+ },
+ {
+  "id": 140,
+  "out": "Tobias Rado",
+  "ok": false
+ },
+ {
+  "id": 141,
+  "out": "Whitney Houston",
+  "ok": false
+ },
+ {
+  "id": 142,
+  "out": "1982",
+  "ok": false
+ },
+ {
+  "id": 143,
+  "out": "Western Wall",
+  "ok": false
+ },
+ {
+  "id": 144,
+  "out": "October 20, 2018",
+  "ok": false
+ },
+ {
+  "id": 145,
+  "out": "Ship's Company",
+  "ok": false
+ },
+ {
+  "id": 146,
+  "out": "The specific geographic location is not provided in your query.",
+  "ok": false
+ },
+ {
+  "id": 147,
+  "out": "midwest and western states",
+  "ok": false
+ },
+ {
+  "id": 148,
+  "out": "24",
+  "ok": false
+ },
+ {
+  "id": 149,
+  "out": "The Carpenters",
+  "ok": false
+ },
+ {
+  "id": 150,
+  "out": "The Temptations",
+  "ok": false
+ },
+ {
+  "id": 151,
+  "out": "Governor",
+  "ok": false
+ },
+ {
+  "id": 152,
+  "out": "1980",
+  "ok": false
+ },
+ {
+  "id": 153,
+  "out": "Hemchandra Chatterjee",
+  "ok": false
+ },
+ {
+  "id": 154,
+  "out": "August 5, 2018",
+  "ok": false
+ },
+ {
+  "id": 155,
+  "out": "maharaja rana sanga",
+  "ok": false
+ },
+ {
+  "id": 156,
+  "out": "Michael Jackson",
+  "ok": false
+ },
+ {
+  "id": 157,
+  "out": "Ricky Martin",
+  "ok": false
+ },
+ {
+  "id": 158,
+  "out": "1593",
+  "ok": false
+ },
+ {
+  "id": 159,
+  "out": "John Smith",
+  "ok": true
+ },
+ {
+  "id": 160,
+  "out": "judeo-germanic paganism",
+  "ok": false
+ },
+ {
+  "id": 161,
+  "out": "46,000",
+  "ok": false
+ },
+ {
+  "id": 162,
+  "out": "pratibha patel",
+  "ok": false
+ },
+ {
+  "id": 163,
+  "out": "freedom.",
+  "ok": false
+ },
+ {
+  "id": 164,
+  "out": "2016",
+  "ok": false
+ },
+ {
+  "id": 165,
+  "out": "September 2017",
+  "ok": false
+ },
+ {
+  "id": 166,
+  "out": "america, north carolina",
+  "ok": false
+ },
+ {
+  "id": 167,
+  "out": "3",
+  "ok": false
+ },
+ {
+  "id": 168,
+  "out": "1970",
+  "ok": true
+ },
+ {
+  "id": 169,
+  "out": "groundwater wells",
+  "ok": false
+ },
+ {
+  "id": 170,
+  "out": "27",
+  "ok": false
+ },
+ {
+  "id": 171,
+  "out": "peter davison",
+  "ok": false
+ },
+ {
+  "id": 172,
+  "out": "714",
+  "ok": false
+ },
+ {
+  "id": 173,
+  "out": "Shanghai, Tokyo, Mumbai",
+  "ok": true
+ },
+ {
+  "id": 174,
+  "out": "Tom Joyner",
+  "ok": false
+ },
+ {
+  "id": 175,
+  "out": "ranked 10th in U.S. News & World Report's 2021 survey.",
+  "ok": false
+ },
+ {
+  "id": 176,
+  "out": "2007",
+  "ok": false
+ },
+ {
+  "id": 177,
+  "out": "1892",
+  "ok": false
+ },
+ {
+  "id": 178,
+  "out": "Hydrogen ion concentration.",
+  "ok": false
+ },
+ {
+  "id": 179,
+  "out": "Rick Grimes' son",
+  "ok": false
+ },
+ {
+  "id": 180,
+  "out": "Hindi, English, Bengali, Marathi, Telugu",
+  "ok": true
+ },
+ {
+  "id": 181,
+  "out": "Roseanne Barr",
+  "ok": false
+ },
+ {
+  "id": 182,
+  "out": "season 10, episode 24",
+  "ok": false
+ },
+ {
+  "id": 183,
+  "out": "Yes, Bruce Springsteen performed \"We Shall Overcome\" at the Seeger Sessions concerts.",
+  "ok": true
+ },
+ {
+  "id": 184,
+  "out": "French origin, likely derived from \"taverne,\" meaning tavern.",
+  "ok": false
+ },
+ {
+  "id": 185,
+  "out": "1964",
+  "ok": false
+ },
+ {
+  "id": 186,
+  "out": "uranium",
+  "ok": false
+ },
+ {
+  "id": 187,
+  "out": "colorado",
+  "ok": false
+ },
+ {
+  "id": 188,
+  "out": "various venues across the United States",
+  "ok": false
+ },
+ {
+  "id": 189,
+  "out": "It opens a new tab.",
+  "ok": true
+ },
+ {
+  "id": 190,
+  "out": "elsie rudd",
+  "ok": false
+ },
+ {
+  "id": 191,
+  "out": "paradise, nevada",
+  "ok": true
+ },
+ {
+  "id": 192,
+  "out": "1903",
+  "ok": false
+ },
+ {
+  "id": 193,
+  "out": "1594",
+  "ok": false
+ },
+ {
+  "id": 194,
+  "out": "$1 billion",
+  "ok": false
+ },
+ {
+  "id": 195,
+  "out": "1972",
+  "ok": false
+ },
+ {
+  "id": 196,
+  "out": "east of New Guinea, Australia",
+  "ok": false
+ },
+ {
+  "id": 197,
+  "out": "film release date",
+  "ok": false
+ },
+ {
+  "id": 198,
+  "out": "The Blue Man Group",
+  "ok": false
+ },
+ {
+  "id": 199,
+  "out": "In Treasure Island, Long John Silver lost his leg to a parrot named Captain Flint's pet parrot.",
+  "ok": false
+ },
+ {
+  "id": 200,
+  "out": "cherri bennett",
+  "ok": false
+ },
+ {
+  "id": 201,
+  "out": "rear section of the hindquarters",
+  "ok": false
+ },
+ {
+  "id": 202,
+  "out": "Linnaeus",
+  "ok": false
+ },
+ {
+  "id": 203,
+  "out": "New Mexico",
+  "ok": false
+ },
+ {
+  "id": 204,
+  "out": "A system of government in which power is shared between elected officials and a president.",
+  "ok": false
+ },
+ {
+  "id": 205,
+  "out": "1970",
+  "ok": false
+ },
+ {
+  "id": 206,
+  "out": "bengal",
+  "ok": false
+ },
+ {
+  "id": 207,
+  "out": "begin: London, England; end: estuary of the Severn River in Wales",
+  "ok": false
+ },
+ {
+  "id": 208,
+  "out": "1763",
+  "ok": false
+ },
+ {
+  "id": 209,
+  "out": "It originated in British pubs.",
+  "ok": false
+ },
+ {
+  "id": 210,
+  "out": "Pedro Iber\u00e3",
+  "ok": false
+ },
+ {
+  "id": 211,
+  "out": "Michelangelo Buonarroti",
+  "ok": false
+ },
+ {
+  "id": 212,
+  "out": "teams",
+  "ok": false
+ },
+ {
+  "id": 213,
+  "out": "new york city",
+  "ok": false
+ },
+ {
+  "id": 214,
+  "out": "The Script",
+  "ok": false
+ },
+ {
+  "id": 215,
+  "out": "rome, italy",
+  "ok": false
+ },
+ {
+  "id": 216,
+  "out": "Barry Bonds and Mark McGwire",
+  "ok": false
+ },
+ {
+  "id": 217,
+  "out": "jonathan teachin'",
+  "ok": false
+ },
+ {
+  "id": 218,
+  "out": "joe taylor",
+  "ok": false
+ },
+ {
+  "id": 219,
+  "out": "2013",
+  "ok": false
+ },
+ {
+  "id": 220,
+  "out": "one thousand dollar bill",
+  "ok": false
+ },
+ {
+  "id": 221,
+  "out": "qatar",
+  "ok": false
+ },
+ {
+  "id": 222,
+  "out": "Jordyn Woods",
+  "ok": false
+ },
+ {
+  "id": 223,
+  "out": "trade center, gateway to china.",
+  "ok": false
+ },
+ {
+  "id": 224,
+  "out": "Kirsten Dunst",
+  "ok": false
+ },
+ {
+  "id": 225,
+  "out": "Germany, Austria-Hungary, Italy, Japan",
+  "ok": true
+ },
+ {
+  "id": 226,
+  "out": "luxembourg city, belgium",
+  "ok": false
+ },
+ {
+  "id": 227,
+  "out": "The Rolling Stones",
+  "ok": false
+ },
+ {
+  "id": 228,
+  "out": "new york city, new york",
+  "ok": false
+ },
+ {
+  "id": 229,
+  "out": "Tom Hulce",
+  "ok": false
+ },
+ {
+  "id": 230,
+  "out": "14",
+  "ok": false
+ },
+ {
+  "id": 231,
+  "out": "2017",
+  "ok": false
+ },
+ {
+  "id": 232,
+  "out": "The Rock, Chris Hemsworth, Emma Stone, Charlize Theron",
+  "ok": false
+ },
+ {
+  "id": 233,
+  "out": "Michael Bubl\u00e9",
+  "ok": false
+ },
+ {
+  "id": 234,
+  "out": "jonathan teachin'",
+  "ok": false
+ },
+ {
+  "id": 235,
+  "out": "john cosby",
+  "ok": false
+ },
+ {
+  "id": 236,
+  "out": "environment, lifestyle, genetics.",
+  "ok": false
+ },
+ {
+  "id": 237,
+  "out": "Louis Pasteur",
+  "ok": false
+ },
+ {
+  "id": 238,
+  "out": "sunflower",
+  "ok": false
+ },
+ {
+  "id": 239,
+  "out": "Tom Daley, Paul Whittingham",
+  "ok": false
+ },
+ {
+  "id": 240,
+  "out": "Sophie Linnane",
+  "ok": false
+ },
+ {
+  "id": 241,
+  "out": "March 31st",
+  "ok": false
+ },
+ {
+  "id": 242,
+  "out": "Viper, Charger, Camaro, Mustang, Infiniti QX56, Dodge Durango, BMW M",
+  "ok": false
+ },
+ {
+  "id": 243,
+  "out": "Narendra Modi",
+  "ok": false
+ },
+ {
+  "id": 244,
+  "out": "david hasselhoff",
+  "ok": false
+ },
+ {
+  "id": 245,
+  "out": "India",
+  "ok": false
+ },
+ {
+  "id": 246,
+  "out": "Alexander Graham Bell",
+  "ok": false
+ },
+ {
+  "id": 247,
+  "out": "\"Chain of Command, Part I\"",
+  "ok": false
+ },
+ {
+  "id": 248,
+  "out": "1968",
+  "ok": false
+ },
+ {
+  "id": 249,
+  "out": "20th",
+  "ok": false
+ },
+ {
+  "id": 250,
+  "out": "cincinnati bengals",
+  "ok": false
+ },
+ {
+  "id": 251,
+  "out": "florentine painter giotto di bondone",
+  "ok": false
+ },
+ {
+  "id": 252,
+  "out": "Pearl Harbor attack",
+  "ok": false
+ },
+ {
+  "id": 253,
+  "out": "1927",
+  "ok": false
+ },
+ {
+  "id": 254,
+  "out": "acid rain",
+  "ok": true
+ },
+ {
+  "id": 255,
+  "out": "julie harper",
+  "ok": false
+ },
+ {
+  "id": 256,
+  "out": "18 years old",
+  "ok": true
+ },
+ {
+  "id": 257,
+  "out": "dust bowl region of america",
+  "ok": false
+ },
+ {
+  "id": 258,
+  "out": "martin sheen",
+  "ok": false
+ },
+ {
+  "id": 259,
+  "out": "New Mexico",
+  "ok": false
+ },
+ {
+  "id": 260,
+  "out": "hydrogen",
+  "ok": false
+ },
+ {
+  "id": 261,
+  "out": "france",
+  "ok": false
+ },
+ {
+  "id": 262,
+  "out": "Miami Heat",
+  "ok": true
+ },
+ {
+  "id": 263,
+  "out": "Sigmund Freud",
+  "ok": false
+ },
+ {
+  "id": 264,
+  "out": "heart",
+  "ok": true
+ },
+ {
+  "id": 265,
+  "out": "rotating",
+  "ok": false
+ },
+ {
+  "id": 266,
+  "out": "Instruction or command.",
+  "ok": false
+ },
+ {
+  "id": 267,
+  "out": "London, England",
+  "ok": true
+ },
+ {
+  "id": 268,
+  "out": "plants, animals, soil, water.",
+  "ok": true
+ },
+ {
+  "id": 269,
+  "out": "1968",
+  "ok": false
+ },
+ {
+  "id": 270,
+  "out": "Indian uprising against British rule.",
+  "ok": false
+ },
+ {
+  "id": 271,
+  "out": "lydia brown",
+  "ok": false
+ },
+ {
+  "id": 272,
+  "out": "October 1978",
+  "ok": false
+ },
+ {
+  "id": 273,
+  "out": "Jimmy Carter",
+  "ok": false
+ },
+ {
+  "id": 274,
+  "out": "Congress",
+  "ok": false
+ },
+ {
+  "id": 275,
+  "out": "john lewis davis",
+  "ok": false
+ },
+ {
+  "id": 276,
+  "out": "heads-up display",
+  "ok": false
+ },
+ {
+  "id": 277,
+  "out": "150",
+  "ok": false
+ },
+ {
+  "id": 278,
+  "out": "1972",
+  "ok": false
+ },
+ {
+  "id": 279,
+  "out": "John Lennon",
+  "ok": false
+ },
+ {
+  "id": 280,
+  "out": "Mary, mother of Jesus.",
+  "ok": false
+ },
+ {
+  "id": 281,
+  "out": "john adams",
+  "ok": false
+ },
+ {
+  "id": 282,
+  "out": "corgi",
+  "ok": false
+ },
+ {
+  "id": 283,
+  "out": "Peter Lim",
+  "ok": false
+ },
+ {
+  "id": 284,
+  "out": "1775",
+  "ok": true
+ },
+ {
+  "id": 285,
+  "out": "muscle cells",
+  "ok": false
+ },
+ {
+  "id": 286,
+  "out": "Henry Schneer",
+  "ok": false
+ },
+ {
+  "id": 287,
+  "out": "Manmohan Singh",
+  "ok": false
+ },
+ {
+  "id": 288,
+  "out": "A positive Rh+.",
+  "ok": false
+ },
+ {
+  "id": 289,
+  "out": "1973",
+  "ok": true
+ },
+ {
+  "id": 290,
+  "out": "10",
+  "ok": false
+ },
+ {
+  "id": 291,
+  "out": "yes",
+  "ok": false
+ },
+ {
+  "id": 292,
+  "out": "Yukimaru Sada",
+  "ok": false
+ },
+ {
+  "id": 293,
+  "out": "2000 and 2001",
+  "ok": false
+ },
+ {
+  "id": 294,
+  "out": "The Carpenters",
+  "ok": false
+ },
+ {
+  "id": 295,
+  "out": "Curved, serrated.",
+  "ok": false
+ },
+ {
+  "id": 296,
+  "out": "david graham",
+  "ok": false
+ },
+ {
+  "id": 297,
+  "out": "10",
+  "ok": false
+ },
+ {
+  "id": 298,
+  "out": "waldo reinhardt",
+  "ok": false
+ },
+ {
+  "id": 299,
+  "out": "Bay of Bengal",
+  "ok": false
+ },
+ {
+  "id": 300,
+  "out": "california\u7406\u5de5\u5b66\u9662",
+  "ok": false
+ },
+ {
+  "id": 301,
+  "out": "Clancy Brown",
+  "ok": false
+ },
+ {
+  "id": 302,
+  "out": "costume for masquerade or party.",
+  "ok": true
+ },
+ {
+  "id": 303,
+  "out": "Katy Perry",
+  "ok": false
+ },
+ {
+  "id": 304,
+  "out": "electors",
+  "ok": false
+ },
+ {
+  "id": 305,
+  "out": "1837",
+  "ok": false
+ },
+ {
+  "id": 306,
+  "out": "2006",
+  "ok": false
+ },
+ {
+  "id": 307,
+  "out": "Brazil, Pel\u00e9",
+  "ok": false
+ },
+ {
+  "id": 308,
+  "out": "Kaitlyn Dever",
+  "ok": false
+ },
+ {
+  "id": 309,
+  "out": "society and self-love",
+  "ok": false
+ },
+ {
+  "id": 310,
+  "out": "Julia Roberts",
+  "ok": false
+ },
+ {
+  "id": 311,
+  "out": "france",
+  "ok": false
+ },
+ {
+  "id": 312,
+  "out": "Barton",
+  "ok": false
+ },
+ {
+  "id": 313,
+  "out": "Stockton, Modesto, Fresno",
+  "ok": true
+ },
+ {
+  "id": 314,
+  "out": "white",
+  "ok": false
+ },
+ {
+  "id": 315,
+  "out": "madison, wi",
+  "ok": false
+ },
+ {
+  "id": 316,
+  "out": "Martin Freeman",
+  "ok": false
+ },
+ {
+  "id": 317,
+  "out": "Bob Dylan",
+  "ok": false
+ },
+ {
+  "id": 318,
+  "out": "Kathy Griffin",
+  "ok": false
+ },
+ {
+  "id": 319,
+  "out": "header",
+  "ok": false
+ },
+ {
+  "id": 320,
+  "out": "Jana Gaon Ke Mohan",
+  "ok": false
+ },
+ {
+  "id": 321,
+  "out": "episode 10 of season 2",
+  "ok": false
+ },
+ {
+  "id": 322,
+  "out": "Platinum, gold, copper",
+  "ok": false
+ },
+ {
+  "id": 323,
+  "out": "episode 10",
+  "ok": false
+ },
+ {
+  "id": 324,
+  "out": "Speaker of the House, Nancy Pelosi",
+  "ok": false
+ },
+ {
+  "id": 325,
+  "out": "4, 765 square feet",
+  "ok": false
+ },
+ {
+  "id": 326,
+  "out": "1977",
+  "ok": true
+ },
+ {
+  "id": 327,
+  "out": "post office, driver's license bureau",
+  "ok": false
+ },
+ {
+  "id": 328,
+  "out": "Four years",
+  "ok": false
+ },
+ {
+  "id": 329,
+  "out": "mental skills training and motivation.",
+  "ok": false
+ },
+ {
+  "id": 330,
+  "out": "The Wiggles",
+  "ok": false
+ },
+ {
+  "id": 331,
+  "out": "Wembley Stadium",
+  "ok": true
+ },
+ {
+  "id": 332,
+  "out": "the president of the united states",
+  "ok": true
+ },
+ {
+  "id": 333,
+  "out": "public company",
+  "ok": true
+ },
+ {
+  "id": 334,
+  "out": "Lithium.",
+  "ok": true
+ },
+ {
+  "id": 335,
+  "out": "david zabel",
+  "ok": false
+ },
+ {
+  "id": 336,
+  "out": "1945",
+  "ok": false
+ },
+ {
+  "id": 337,
+  "out": "2013",
+  "ok": false
+ },
+ {
+  "id": 338,
+  "out": "Kylie Minogue",
+  "ok": false
+ },
+ {
+  "id": 339,
+  "out": "31",
+  "ok": true
+ },
+ {
+  "id": 340,
+  "out": "nitrogen, oxygen, argon, carbon dioxide, and others.",
+  "ok": true
+ },
+ {
+  "id": 341,
+  "out": "74",
+  "ok": false
+ },
+ {
+  "id": 342,
+  "out": "characters include animals, objects, and concepts.",
+  "ok": false
+ },
+ {
+  "id": 343,
+  "out": "Rubeus Hagrid",
+  "ok": false
+ },
+ {
+  "id": 344,
+  "out": "V P Singh",
+  "ok": false
+ },
+ {
+  "id": 345,
+  "out": "July 20, 1969",
+  "ok": false
+ },
+ {
+  "id": 346,
+  "out": "small intestine",
+  "ok": false
+ },
+ {
+  "id": 347,
+  "out": "rom\u00e9o dandylion",
+  "ok": false
+ },
+ {
+  "id": 348,
+  "out": "jerry stiller",
+  "ok": false
+ },
+ {
+  "id": 349,
+  "out": "2018",
+  "ok": false
+ },
+ {
+  "id": 350,
+  "out": "narendra modi",
+  "ok": true
+ },
+ {
+  "id": 351,
+  "out": "high school",
+  "ok": false
+ },
+ {
+  "id": 352,
+  "out": "New York City",
+  "ok": false
+ },
+ {
+  "id": 353,
+  "out": "10",
+  "ok": false
+ },
+ {
+  "id": 354,
+  "out": "Rohit Sharma",
+  "ok": false
+ },
+ {
+  "id": 355,
+  "out": "October 3, 2018",
+  "ok": false
+ },
+ {
+  "id": 356,
+  "out": "microscope",
+  "ok": false
+ },
+ {
+  "id": 357,
+  "out": "1750",
+  "ok": false
+ },
+ {
+  "id": 358,
+  "out": "Sophocles; 496 BC - 405 BC",
+  "ok": true
+ },
+ {
+  "id": 359,
+  "out": "Brutus",
+  "ok": false
+ },
+ {
+  "id": 360,
+  "out": "john locke",
+  "ok": false
+ },
+ {
+  "id": 361,
+  "out": "succinate dehydrogenase",
+  "ok": false
+ },
+ {
+  "id": 362,
+  "out": "1945",
+  "ok": false
+ },
+ {
+  "id": 363,
+  "out": "jose garcia",
+  "ok": false
+ },
+ {
+  "id": 364,
+  "out": "David Caruso",
+  "ok": false
+ },
+ {
+  "id": 365,
+  "out": "susan bates",
+  "ok": false
+ },
+ {
+  "id": 366,
+  "out": "desert regions of North America",
+  "ok": false
+ },
+ {
+  "id": 367,
+  "out": "Tom Waits",
+  "ok": false
+ },
+ {
+  "id": 368,
+  "out": "ridgecrest, california 2019",
+  "ok": false
+ },
+ {
+  "id": 369,
+  "out": "54 Mbps",
+  "ok": false
+ },
+ {
+  "id": 370,
+  "out": "s2n 1965",
+  "ok": false
+ },
+ {
+  "id": 371,
+  "out": "Dr. Sarvepalli Radhakrishnan",
+  "ok": false
+ },
+ {
+  "id": 372,
+  "out": "New Orleans, Louisiana",
+  "ok": false
+ },
+ {
+  "id": 373,
+  "out": "1789",
+  "ok": false
+ },
+ {
+  "id": 374,
+  "out": "China",
+  "ok": true
+ },
+ {
+  "id": 375,
+  "out": "1951",
+  "ok": false
+ },
+ {
+  "id": 376,
+  "out": "Sammys",
+  "ok": false
+ },
+ {
+  "id": 377,
+  "out": "October 10, 2017",
+  "ok": false
+ },
+ {
+  "id": 378,
+  "out": "1918",
+  "ok": true
+ },
+ {
+  "id": 379,
+  "out": "140 mph",
+  "ok": false
+ },
+ {
+  "id": 380,
+  "out": "continent, Oceania region",
+  "ok": true
+ },
+ {
+  "id": 381,
+  "out": "10 episodes",
+  "ok": false
+ },
+ {
+  "id": 382,
+  "out": "Paganism",
+  "ok": false
+ },
+ {
+  "id": 383,
+  "out": "The Cure",
+  "ok": false
+ },
+ {
+  "id": 384,
+  "out": "cost accounting model",
+  "ok": false
+ },
+ {
+  "id": 385,
+  "out": "1982, IBM",
+  "ok": false
+ },
+ {
+  "id": 386,
+  "out": "paul nicoll",
+  "ok": false
+ },
+ {
+  "id": 387,
+  "out": "episode 16",
+  "ok": false
+ },
+ {
+  "id": 388,
+  "out": "Cardi B",
+  "ok": false
+ },
+ {
+  "id": 389,
+  "out": "toronto, canada",
+  "ok": false
+ },
+ {
+  "id": 390,
+  "out": "to promote Bantu self-governance in South Africa",
+  "ok": false
+ },
+ {
+  "id": 391,
+  "out": "northern venezuela, colombia, and brazil",
+  "ok": false
+ },
+ {
+  "id": 392,
+  "out": "June 1940",
+  "ok": false
+ },
+ {
+  "id": 393,
+  "out": "Santiago Ram\u00f3n y Cajal",
+  "ok": false
+ },
+ {
+  "id": 394,
+  "out": "Siamese",
+  "ok": false
+ },
+ {
+  "id": 395,
+  "out": "The Rock",
+  "ok": false
+ },
+ {
+  "id": 396,
+  "out": "Troy Donahue",
+  "ok": false
+ },
+ {
+  "id": 397,
+  "out": "richard nixon",
+  "ok": false
+ },
+ {
+  "id": 398,
+  "out": "dryness, aging, or allergies.",
+  "ok": true
+ },
+ {
+  "id": 399,
+  "out": "1946",
+  "ok": false
+ }
+]

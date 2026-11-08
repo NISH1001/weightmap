@@ -1,0 +1,28 @@
+=== s1_generate 20:53:52
+20:54:00 S math train 120
+20:54:45   acc=0.292
+20:54:46 S math test 150
+20:55:40   acc=0.207
+20:55:42 S nq train 400
+20:55:47   acc=0.052
+20:55:47 S nq test 400
+20:55:52   acc=0.100
+20:55:58 L math train 120
+20:57:29   acc=0.408
+20:57:30 L math test 150
+20:59:22   acc=0.387
+20:59:24 L nq train 400
+20:59:36   acc=0.100
+20:59:37 L nq test 400
+20:59:51   acc=0.120
+20:59:51 math train {'both': 28, 'target(L only)': 21, 'S only': 7, 'neither': 64}
+20:59:51 math test {'both': 26, 'target(L only)': 32, 'S only': 5, 'neither': 87}
+20:59:51 nq train {'both': 15, 'target(L only)': 25, 'S only': 6, 'neither': 354}
+20:59:51 nq test {'both': 25, 'target(L only)': 23, 'S only': 15, 'neither': 337}
+=== s2_latent 20:59:51
+20:59:57 math target 32
+21:02:30   blocked=20 absent=12  (pass@8 on target = 0.625)
+21:02:31 nq target 23
+21:02:36   blocked=13 absent=10  (pass@8 on target = 0.565)
+=== s3_map 21:02:36
+21:02:47 fit texts 520

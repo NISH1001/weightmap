@@ -1,0 +1,18 @@
+{
+ "10": {
+  "L->S": 0.8508,
+  "S->L": 0.8202,
+  "L->S shuffled-control": -0.1133,
+  "S(l-1)->S(l) reference": 0.9664,
+  "L_layer": 13,
+  "cka": 0.9269
+ },
+ "14": {
+  "L->S": 0.8519,
+  "S->L": 0.8338,
+  "L->S shuffled-control": -0.1084,
+  "S(l-1)->S(l) reference": 0.9407,
+  "L_layer": 17,
+  "cka": 0.9208
+ }
+}
