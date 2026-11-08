@@ -250,6 +250,50 @@ The two rules pick different layers, but the map quality is the same. Several ne
 
 **Cross-family result (H1).** A different family (SmolLM2, its own tokenizer and training data) maps to Qwen-1.5B as well as Qwen-0.5B does (0.66–0.68 vs 0.66–0.67), with a larger L→S vs S→L asymmetry (0.07–0.12 vs 0.04).
 
+### 5.7 Quick follow-ups: weight-level map, linear vs non-linear, pruning-like structure
+
+*Added 2026-11-08. Script: `scripts/quick_tests.py`; raw output: `scripts/quick_tests_results.json`, `scripts/quick_tests.log`. Everything is closed-form ridge; T2/T3 use answer texts with text-level holdout (12k train / 3k test tokens). The absolute R² here (0.64–0.65) is slightly below §5.6 (0.66–0.67) because of a different random token subsample and per-dimension standardization of L's states.*
+
+**T1. Is there a map between the *weights* themselves?** Ridge from L's word-embedding table to S's, row by row (one row per token; 80/20 split over tokens). All three models tie input and output embeddings.
+
+| Pair | Rows | R² L→S | R² S→L | Shuffled |
+|---|---|---|---|---|
+| Qwen2.5-1.5B → Qwen2.5-0.5B (same vocab) | 40,000 tokens | **0.31** | 0.21 | −0.04 |
+| Qwen2.5-1.5B → SmolLM2-360M (shared token strings) | 39,237 strings | **0.42** | 0.30 | −0.04 |
+
+A linear weight-space map exists, but it is about **half as strong as in hidden states** (0.31 vs 0.64). The models' representations agree more after computation than in their raw input tables. The L→S > S→L asymmetry appears here too. The cross-family number is higher, probably because the shared-string subset is mostly common, well-trained tokens, while Qwen's full vocabulary includes many rare tokens (an unverified explanation).
+
+**T2. Linear or non-linear?** Linear ridge vs linear + 4,096 random Fourier features (a closed-form approximation to a Gaussian-kernel map; the bandwidth sweep is 0.5/1/2× the median distance).
+
+| Pair | Linear | Linear + RFF (best) | Gain |
+|---|---|---|---|
+| S10 ← L13 | 0.638 | 0.605 | −0.033 |
+| S14 ← L17 | 0.650 | 0.620 | −0.030 |
+
+**Non-linear features add nothing** (slightly worse: the extra features overfit at this data size). At this scale f is effectively linear, so the missing ~35% is not "curved" structure that a richer map could recover. This removes "the linear transport was the bottleneck" as an explanation for the H4 null result. *Caveat:* with far more tokens, a non-linear map could still edge ahead.
+
+**T3. Is S like a *pruned* L?** Predict S from a subset of L's coordinates. *Axis selection* keeps k of L's 1,536 residual dimensions, chosen by their weight in the full map (training data only), which is pruning-like. Compare this with L's top-k principal components (an unsupervised rotated subspace), k random dimensions, and all dimensions. The full linear map is already rank ≤ 896 (S's width), so "all 1536" is also the best possible rank-896 linear map.
+
+| k (of 1536) | Axis selection | PCA top-k (rotated) | Random axes | All 1536 |
+|---|---|---|---|---|
+| 896 | **0.641 / 0.650** | 0.626 / 0.641 | 0.577 / 0.588 | 0.638 / 0.650 |
+| 448 | **0.620 / 0.625** | 0.584 / 0.607 | – | |
+| 224 | **0.557 / 0.563** | 0.530 / 0.560 | – | |
+
+*(S10←L13 / S14←L17.)*
+
+- **Selecting 896 of L's own coordinates matches the best linear map** (0.641 vs 0.638). No rotation is needed: S is recoverable from a *subset of L's neurons*, which is the pruning picture.
+- **Which coordinates matters:** a random 896 loses ~0.06.
+- **Half of L's dimensions (448) keep ~96%** of the map quality.
+- *Caveat:* the PCA comparison is unsupervised, so it is a weaker baseline than selection, which uses the target. The clean statement is "axis selection reaches the optimum," not "axes beat rotations."
+
+**Takeaways.**
+1. f(L)→S is **linear**: non-linear features don't help.
+2. f is **pruning-like**: S ≈ a linear readout of a *subset* of L's coordinates.
+3. The weight-level f (embeddings) **exists but is weaker** than the representation-level f.
+
+All three support the picture "S ≈ a compressed, partly pruned view of L," and none reopens H4.
+
 ---
 
 ## 6. Conclusion
@@ -261,6 +305,9 @@ The two rules pick different layers, but the map quality is the same. Several ne
 | H2: a map F exists | **Supported** | R² **0.66–0.67** on held-out answer texts (0.85 originally, inflated by template tokens, §5.6) vs −0.15 shuffled; transplanted states remain usable by S; holds cross-family (SmolLM2 ← Qwen 0.66–0.68) |
 | H3: S contained in L | **Weak to moderate** | L→S beats S→L by 0.04 (Qwen pair), 0.07–0.12 (SmolLM2 ← Qwen) |
 | H4: F transfers capability without training | **Not supported** (at this scale and method) | L→S Δ −0.9 [−7, +5] (MATH), −3.7 [−6, −1] (NQ); 0/9 absent fixed |
+| f is linear | **Yes** (at this scale) | Random-Fourier-feature map adds nothing (−0.03), §5.7 |
+| S looks like a pruned L | **Supported** | 896 selected L coordinates match the full map (0.641 vs 0.638); random 896: 0.577, §5.7 |
+| Weight-level map (embedding tables) | **Weak** | R² 0.31 (Qwen→Qwen), 0.42 (Qwen→SmolLM2 shared tokens), §5.7 |
 | H5: recursion | Not tested | – |
 
 **Interpretation.** F behaves like a faithful translation, not an upgrade. L's correct-vs-wrong direction, projected into S, is close to S's own (cos 0.85). Whatever in L's representation has no counterpart in S's coordinates is discarded by the projection, and that is plausibly the part that makes L better.

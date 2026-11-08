@@ -27,11 +27,14 @@ This was inspired by [*Sparks of Weight-Space Programming*](https://rikiyat.gith
 | H2: a map exists | **Supported** | A linear map predicts **~66%** of S's hidden-state variance from L's on held-out texts¹ (shuffled control −0.15; S's own adjacent layer: 0.86–0.91). It holds across model families too: SmolLM2-360M ← Qwen-1.5B gives 0.66–0.68. S still works when its states are replaced by mapped L states |
 | H3: S inside L | Weak to moderate | R² L→S beats S→L by 0.04 within Qwen and 0.07–0.12 across families (SmolLM2 ← Qwen) |
 | H4: the map transfers ability | **Not supported** | L-derived edits: MATH −0.9 points [95% CI −7, +5], NQ −3.7 [−6, −1]. 0/9 "absent" problems fixed |
+| f is linear | **Yes** | Adding non-linear (random-feature) terms doesn't improve the map (−0.03) |
+| S looks like a *pruned* L | **Supported** | Picking 896 of L's 1,536 coordinates predicts S as well as the full map (0.641 vs 0.638); random picks lose 0.06 |
+| A map between the *weights* (embedding tables) | Weak | R² 0.31 within Qwen, 0.42 SmolLM2←Qwen, about half the hidden-state map |
 | H5: recursion | Not tested yet | |
 
 ¹ Measured on answer text with whole texts held out. Experiment 1 originally reported 0.85 because it fitted and scored on chat-formatted text, where the system prompt and template tokens repeat in every example and are trivially easy to map. Holding out whole texts barely changes this (0.85 → 0.83). Removing the boilerplate is what matters (0.83 → 0.66). See *Measurement check* in [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md#56-measurement-check-text-level-holdout-template-tokens-layer-pairing).
 
-**In one line:** the map is a faithful *translation*, not an *upgrade*. L's notion of "correct vs. wrong", projected into S, is almost S's own (cosine 0.85). Whatever L has that S cannot represent is lost in the projection. This matches the blog's finding that edits unlock existing abilities but don't add new ones.
+**In one line:** a small model looks like a compressed, partly *pruned* view of a large one. About two-thirds of it is a linear readout of a subset of the large model's coordinates, even across model families. But the map is a lossy projection, so pushing L's knowledge through it doesn't make S smarter. The extra ability is exactly what the projection discards. This matches the blog's finding that edits unlock existing abilities but don't add new ones.
 
 ![main result](docs/figures/fig4_main_result.png)
 
