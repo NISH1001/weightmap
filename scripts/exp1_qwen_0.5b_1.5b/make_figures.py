@@ -16,7 +16,7 @@ from matplotlib.colors import LinearSegmentedColormap
 
 ROOT = Path(__file__).parent
 R = ROOT / "results"
-FIG = ROOT / "docs" / "figures"
+FIG = ROOT.parents[1] / "docs" / "figures"   # repo-level docs/figures
 FIG.mkdir(parents=True, exist_ok=True)
 
 # ---- palette (light mode; print)

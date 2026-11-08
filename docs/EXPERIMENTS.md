@@ -1,6 +1,6 @@
 # Experiments: Can a training-free map from a larger model's representations improve a smaller model?
 
-*Experiment 1: Qwen2.5-0.5B-Instruct (S) ↔ Qwen2.5-1.5B-Instruct (L). Run 2026-11-02 to 11-07 on an Apple M3 Max (36 GB), commit `d107e0c`.*
+*Experiment 1: Qwen2.5-0.5B-Instruct (S) ↔ Qwen2.5-1.5B-Instruct (L). Run 2026-11-02 to 11-07 on an Apple M3 Max (36 GB), commit `d107e0c`. Code: `scripts/exp1_qwen_0.5b_1.5b/` (stand-alone; the reusable `weightmap` package was extracted from it afterwards).*
 
 ---
 
@@ -56,7 +56,7 @@ The sizes were deliberately small, chosen so the whole pipeline runs in about 15
 
 | Stage | Script | What it does |
 |---|---|---|
-| 1 | `s1_generate.py` | Greedy outputs of S and L on all four splits, partitioned into both / L-only (target) / S-only / neither |
+| 1 | `scripts/exp1_qwen_0.5b_1.5b/s1_generate.py` | Greedy outputs of S and L on all four splits, partitioned into both / L-only (target) / S-only / neither |
 | 2 | `s2_latent.py` | For test-split target problems, sample S k = 8 times: blocked (≥1 correct) vs absent (0 correct) |
 | 3 | `s3_map.py` | (a) Linear CKA between every S layer and every L layer. (b) Closed-form ridge maps L→S and S→L at S layers {10, 14} paired with their best-CKA L layer, plus controls. (c) Correct-vs-wrong contrast directions |
 | 4 | `s4_steer.py` | Training-free edits of S, tuned on a slice of the test split and evaluated on the disjoint remainder |
@@ -215,7 +215,7 @@ The best static L→S vector folds exactly into S as a bias on layer 10's `mlp.d
 | bf16 | 0.81 (MATH), 0.58 (NQ): rounding from a different summation order |
 | **fp32** | **1.4 × 10⁻⁴**, with logit scale ≈ 32 |
 
-The folded checkpoints are written to `results/S_edited_{math,nq}/`. They are git-ignored at 953 MB each, and since they improve nothing, they can be deleted.
+The folded checkpoints are written to `scripts/exp1_qwen_0.5b_1.5b/results/S_edited_{math,nq}/`. They are git-ignored at 953 MB each, and since they improve nothing, they can be deleted.
 
 ---
 
@@ -256,8 +256,9 @@ This agrees with the blog's "unlock, don't add" conclusion. It also suggests tha
 ## 8. Reproduce
 
 ```bash
-uv sync
+uv sync --extra experiments
 export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.4 PYTORCH_MPS_LOW_WATERMARK_RATIO=0.3
+cd scripts/exp1_qwen_0.5b_1.5b
 uv run python s1_generate.py    # ~6 min
 uv run python s2_latent.py      # ~3 min
 uv run python s3_map.py         # ~3 min
@@ -266,7 +267,7 @@ uv run python s5_fold.py        # ~1 min
 uv run python make_figures.py   # figures -> docs/figures/
 ```
 
-Sizes are set in `common.py` (`N`, `S_LAYERS`, `max_new`). Every stage caches its outputs in `results/`, and stage 4 caches each run in `results/s4_cache.json`. Delete the relevant file to recompute.
+Sizes are set in `scripts/exp1_qwen_0.5b_1.5b/common.py` (`N`, `S_LAYERS`, `max_new`). Every stage caches its outputs in `results/`, and stage 4 caches each run in `results/s4_cache.json`. Delete the relevant file to recompute.
 
 ## 9. Next experiments
 

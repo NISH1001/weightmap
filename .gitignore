@@ -10,6 +10,7 @@ wheels/
 .venv
 
 # Large / regenerable experiment artifacts
-results/S_edited_*/
-results/maps.pt
+**/results/S_edited_*/
+**/results/maps.pt
+.pytest_cache/
 .DS_Store
