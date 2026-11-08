@@ -1,4 +1,5 @@
-"""Closed-form linear algebra: linear CKA, ridge regression, R^2. Float64 on CPU for stability."""
+"""Closed-form linear algebra: linear CKA, ridge regression, R^2, and train/test splitting.
+Float64 on CPU for stability."""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -24,6 +25,21 @@ class Ridge:
         return X.to(self.W.dtype) @ self.W + self.b
 
 
+def split(n: int, holdout: float, seed: int, groups: torch.Tensor | None = None):
+    """Train/test row indices. With `groups` (e.g. the text each token came from), whole groups go to
+    one side, so near-duplicate tokens of one text can't sit on both sides of the split."""
+    g = torch.Generator().manual_seed(seed)
+    if groups is None:
+        perm = torch.randperm(n, generator=g)
+        ntr = int((1 - holdout) * n)
+        return perm[:ntr], perm[ntr:]
+    uniq = groups.unique()
+    uniq = uniq[torch.randperm(len(uniq), generator=g)]
+    test_groups = uniq[: max(1, int(round(holdout * len(uniq))))]
+    is_test = torch.isin(groups, test_groups)
+    return (~is_test).nonzero().squeeze(-1), is_test.nonzero().squeeze(-1)
+
+
 def fit_ridge(X: torch.Tensor, Y: torch.Tensor, lam_rel: float) -> Ridge:
     """Ridge with penalty lam_rel * mean feature variance * n (scale-free across models)."""
     X, Y = X.double(), Y.double()
@@ -42,24 +58,21 @@ def r2(model: Ridge, X: torch.Tensor, Y: torch.Tensor) -> float:
     return float(1 - resid / total)
 
 
-def fit_ridge_cv(X: torch.Tensor, Y: torch.Tensor, grid, holdout: float, seed: int) -> tuple[Ridge, float]:
-    """Pick lambda on a held-out split; return (model refit on all data, held-out R^2 of best lambda)."""
-    n = len(X)
-    perm = torch.randperm(n, generator=torch.Generator().manual_seed(seed))
-    ntr = int((1 - holdout) * n)
-    tr, te = perm[:ntr], perm[ntr:]
+def fit_ridge_cv(X: torch.Tensor, Y: torch.Tensor, grid, tr: torch.Tensor, te: torch.Tensor) -> tuple[Ridge, float]:
+    """Pick lambda on (tr, te); return (model refit on all rows, held-out R^2 of the best lambda)."""
     best = None
     for lam in grid:
-        m = fit_ridge(X[tr], Y[tr], lam)
-        s = r2(m, X[te], Y[te])
+        s = r2(fit_ridge(X[tr], Y[tr], lam), X[te], Y[te])
         if best is None or s > best[1]:
             best = (lam, s)
     return fit_ridge(X, Y, best[0]), best[1]
 
 
-def heldout_r2(X: torch.Tensor, Y: torch.Tensor, lam: float, holdout: float, seed: int) -> float:
-    n = len(X)
-    perm = torch.randperm(n, generator=torch.Generator().manual_seed(seed))
-    ntr = int((1 - holdout) * n)
-    m = fit_ridge(X[perm[:ntr]], Y[perm[:ntr]], lam)
-    return r2(m, X[perm[ntr:]], Y[perm[ntr:]])
+def heldout_r2(X: torch.Tensor, Y: torch.Tensor, lam: float, tr: torch.Tensor, te: torch.Tensor) -> float:
+    return r2(fit_ridge(X[tr], Y[tr], lam), X[te], Y[te])
+
+
+def shuffled_r2(X: torch.Tensor, Y: torch.Tensor, lam: float, tr: torch.Tensor, te: torch.Tensor, seed: int) -> float:
+    """Control: fit on training rows with the X<->Y pairing broken, evaluate on true held-out pairs."""
+    perm = tr[torch.randperm(len(tr), generator=torch.Generator().manual_seed(seed + 1))]
+    return r2(fit_ridge(X[perm], Y[tr], lam), X[te], Y[te])

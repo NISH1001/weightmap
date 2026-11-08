@@ -24,12 +24,12 @@ This was inspired by [*Sparks of Weight-Space Programming*](https://rikiyat.gith
 |---|---|---|
 | Much of L's advantage is latent in S | **Supported** | 62% of MATH problems only L solves are solved by S at least once in 8 samples |
 | H1: related sets | **Supported** | Layer correspondence by CKA is monotone, CKA ≈ 0.92 |
-| H2: a map exists | **Strongly supported** | A linear map predicts 70–85% of S's hidden-state variance from L's¹ (shuffled control −0.11 to −0.14). S still works when its states are replaced by mapped L states |
-| H3: S inside L | Weak | R² L→S 0.85 vs S→L 0.82–0.83 |
+| H2: a map exists | **Supported** | A linear map predicts **~66%** of S's hidden-state variance from L's on held-out texts¹ (shuffled control −0.15; S's own adjacent layer: 0.86–0.91). It holds across model families too: SmolLM2-360M ← Qwen-1.5B gives 0.66–0.68. S still works when its states are replaced by mapped L states |
+| H3: S inside L | Weak to moderate | R² L→S beats S→L by 0.04 within Qwen and 0.07–0.12 across families (SmolLM2 ← Qwen) |
 | H4: the map transfers ability | **Not supported** | L-derived edits: MATH −0.9 points [95% CI −7, +5], NQ −3.7 [−6, −1]. 0/9 "absent" problems fixed |
 | H5: recursion | Not tested yet | |
 
-¹ 0.85 in experiment 1, which fitted on chat-formatted text; 0.69–0.70 when the library refits on completions only. The likely cause is repeated template tokens on both sides of experiment 1's token-level holdout. A text-level holdout check is pending.
+¹ Measured on answer text with whole texts held out. Experiment 1 originally reported 0.85 because it fitted and scored on chat-formatted text, where the system prompt and template tokens repeat in every example and are trivially easy to map. Holding out whole texts barely changes this (0.85 → 0.83). Removing the boilerplate is what matters (0.83 → 0.66). See *Measurement check* in [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md#56-measurement-check-text-level-holdout-template-tokens-layer-pairing).
 
 **In one line:** the map is a faithful *translation*, not an *upgrade*. L's notion of "correct vs. wrong", projected into S, is almost S's own (cosine 0.85). Whatever L has that S cannot represent is lost in the projection. This matches the blog's finding that edits unlock existing abilities but don't add new ones.
 
@@ -61,8 +61,8 @@ wm.fit(texts, layers=[10, 14])
 ```
 
 `fit` does two passes:
-1. It runs both models on the same texts, computes linear CKA between **every** small layer and **every** large layer, and pairs each small layer with its most similar large layer (`wm.layer_match`, `wm.cka`).
-2. For the requested layers, it fits closed-form ridge maps **L→S** and **S→L** on hidden states at aligned tokens.
+1. It runs both models on the same texts, computes linear CKA between **every** small layer and **every** large layer, and pairs each small layer with its most similar large layer (`wm.layer_match`, `wm.cka`). Pass `pair_by="r2"` to pair by held-out predictability instead. It is slower and, so far, gives the same map quality.
+2. For the requested layers, it fits closed-form ridge maps **L→S** and **S→L** on hidden states at aligned tokens, and scores them on **held-out texts** (`holdout_by="text"`, the default; `"token"` is available but optimistic).
 
 Nothing is trained.
 
@@ -71,11 +71,12 @@ Nothing is trained.
 ```python
 for row in wm.report():
     print(row)
-# {'small_layer': 10, 'large_layer': 13, 'cka': 0.906, 'r2_large_to_small': 0.693,
-#  'r2_small_to_large': 0.648, 'r2_shuffled_control': -0.139, 'r2_small_prev_layer': 0.921, ...}
+# {'small_layer': 10, 'large_layer': 13, 'cka': 0.913, 'r2_large_to_small': 0.664,
+#  'r2_small_to_large': 0.621, 'r2_shuffled_control': -0.154, 'r2_small_prev_layer': 0.914,
+#  'holdout_by': 'text', 'pair_by': 'cka', ...}
 ```
 
-(Real output: Qwen2.5-0.5B ↔ 1.5B, fitted on 520 MATH/NQ completions.)
+(Real output: Qwen2.5-0.5B ↔ 1.5B, fitted on 520 MATH/NQ answer texts. Fit on content text rather than chat-templated prompts: repeated boilerplate tokens inflate R².)
 
 | Field | Meaning | What to look for |
 |---|---|---|

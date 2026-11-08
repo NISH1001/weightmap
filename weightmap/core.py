@@ -79,31 +79,58 @@ class WeightMap:
         self.cka: torch.Tensor | None = None
         self.layer_match: dict[int, int] = {}
         self.maps: dict[int, LayerMap] = {}
+        self.pairing_r2: dict[int, dict[int, float]] = {}   # small layer -> {large layer: held-out R^2}
         self._dev_cache: dict = {}
 
     # ------------------------------------------------------------------ discovery
     def fit(self, texts: Sequence[str], layers: Iterable[int] | None = None, positions_per_text: int = 32,
             batch_size: int = 4, max_length: int = 1024, cka_texts: int = 64,
             ridge_grid: Sequence[float] = (1e-4, 1e-3, 1e-2, 1e-1), holdout: float = 0.2,
-            outlier_factor: float = 5.0, max_tokens: int = 50_000, seed: int = 0) -> "WeightMap":
-        """Discover the layer correspondence (linear CKA) and fit ridge maps in both directions.
+            holdout_by: str = "text", pair_by: str = "cka", outlier_factor: float = 5.0,
+            max_tokens: int = 50_000, seed: int = 0) -> "WeightMap":
+        """Discover the layer correspondence and fit ridge maps in both directions.
 
         texts: any text both models can read; in-domain text gives better maps.
         layers: small-model layers to fit maps for (default: all except the final one).
+        holdout_by: "text" (default) keeps every token of a text on one side of the train/test split;
+            "token" splits tokens at random (optimistic when texts share repeated tokens, e.g. templates).
+        pair_by: "cka" (default) pairs each small layer with the large layer of highest linear CKA;
+            "r2" pairs with the large layer that best *predicts* it on held-out texts (slower). On
+            SmolLM2-360M <- Qwen2.5-1.5B the two picked different layers but gave the same map quality
+            (neighbouring large layers predict about equally well), so CKA is the default.
         """
+        if holdout_by not in ("text", "token") or pair_by not in ("r2", "cka"):
+            raise ValueError("holdout_by must be 'text'|'token' and pair_by must be 'r2'|'cka'")
         texts = list(texts)
         all_s, all_l = list(range(self.n_small)), list(range(self.n_large))
-        # pass 1: all-pairs CKA on a subset of texts
-        XS, XL = self._collect(texts[:cka_texts], all_s, all_l, positions_per_text, batch_size, max_length, seed)
+        layers = sorted(set(all_s if layers is None else layers))
+        # pass 1 (subset of texts): all-pairs CKA, and R^2-based pairing for the requested layers
+        XS, XL, groups = self._collect(texts[:cka_texts], all_s, all_l, positions_per_text, batch_size,
+                                       max_length, seed)
         keep = _inlier_mask(XS[self.n_small // 2], XL[self.n_large // 2], outlier_factor)
         self.cka = torch.tensor([[linalg.linear_cka(XS[a][keep], XL[b][keep]) for b in all_l] for a in all_s])
         self.layer_match = {a: int(self.cka[a].argmax()) for a in all_s}
+        self.pairing_r2 = {}
+        if pair_by == "r2":
+            g1 = groups[keep] if holdout_by == "text" else None
+            tr, te = linalg.split(int(keep.sum()), holdout, seed, g1)
+            for a in layers:
+                y = XS[a][keep].double()
+                scores = {}
+
+                def score(b):
+                    if b not in scores:
+                        scores[b] = linalg.heldout_r2(XL[b][keep].double(), y, 1e-2, tr, te)
+                    return scores[b]
+                coarse = max(range(0, self.n_large, 3), key=score)
+                best = max(range(max(0, coarse - 2), min(self.n_large, coarse + 3)), key=score)
+                self.layer_match[a] = best
+                self.pairing_r2[a] = scores
         del XS, XL
-        # pass 2: selected layer pairs over all texts
-        layers = sorted(set(all_s if layers is None else layers))
+        # pass 2 (all texts): fit the selected layer pairs
         need_s = sorted(set(layers) | {a - 1 for a in layers if a > 0})
         need_l = sorted({self.layer_match[a] for a in layers})
-        XS, XL = self._collect(texts, need_s, need_l, positions_per_text, batch_size, max_length, seed)
+        XS, XL, groups = self._collect(texts, need_s, need_l, positions_per_text, batch_size, max_length, seed)
         gen = torch.Generator().manual_seed(seed)
         self.maps = {}
         for a in layers:
@@ -113,16 +140,17 @@ class WeightMap:
             idx = keep.nonzero().squeeze(-1)
             idx = idx[torch.randperm(len(idx), generator=gen)][:max_tokens]
             xs, xl = xs[idx], xl[idx]
-            ls, r2_ls = linalg.fit_ridge_cv(xl, xs, ridge_grid, holdout, seed)
-            sl, r2_sl = linalg.fit_ridge_cv(xs, xl, ridge_grid, holdout, seed)
-            shuffled = xl[torch.randperm(len(xl), generator=gen)]
-            r2_shuf = _shuffled_r2(shuffled, xl, xs, ls.lam, holdout, seed)
+            tr, te = linalg.split(len(idx), holdout, seed, groups[idx] if holdout_by == "text" else None)
+            ls, r2_ls = linalg.fit_ridge_cv(xl, xs, ridge_grid, tr, te)
+            sl, r2_sl = linalg.fit_ridge_cv(xs, xl, ridge_grid, tr, te)
             stats = {"small_layer": a, "large_layer": b, "cka": float(self.cka[a, b]),
                      "r2_large_to_small": r2_ls, "r2_small_to_large": r2_sl,
-                     "r2_shuffled_control": r2_shuf, "n_tokens": len(idx)}
+                     "r2_shuffled_control": linalg.shuffled_r2(xl, xs, ls.lam, tr, te, seed),
+                     "n_tokens": len(idx), "n_test_tokens": len(te), "holdout_by": holdout_by,
+                     "pair_by": pair_by}
             if a > 0:
                 prev = XS[a - 1].double()[idx]
-                stats["r2_small_prev_layer"] = linalg.heldout_r2(prev, xs, 1e-3, holdout, seed)
+                stats["r2_small_prev_layer"] = linalg.heldout_r2(prev, xs, 1e-3, tr, te)
             else:
                 stats["r2_small_prev_layer"] = float("nan")
             self.maps[a] = LayerMap(a, b, ls, sl, stats)
@@ -280,9 +308,11 @@ class WeightMap:
     @torch.no_grad()
     def _collect(self, texts, s_layers, l_layers, k, batch_size, max_length, seed):
         """Residual states of both models at aligned tokens (shared character boundaries; k random
-        aligned pairs per text, first token excluded). Returns ({s: [N, dS]}, {l: [N, dL]}), fp16 on CPU."""
+        aligned pairs per text, first token excluded).
+        Returns ({s: [N, dS]}, {l: [N, dL]}) in fp16 on CPU, and groups [N] = index of the source text."""
         XS = {a: [] for a in s_layers}
         XL = {b: [] for b in l_layers}
+        groups = []
         dev_s, dev_l = model_device(self.small), model_device(self.large)
         for i in range(0, len(texts), batch_size):
             chunk = list(texts[i:i + batch_size])
@@ -298,6 +328,7 @@ class WeightMap:
                     pairs = [pairs[t] for t in sel]
                 picks_s.append(torch.tensor([p[0] for p in pairs], dtype=torch.long))
                 picks_l.append(torch.tensor([p[1] for p in pairs], dtype=torch.long))
+                groups.append(torch.full((len(pairs),), i + j, dtype=torch.long))
             for model, dev, enc, picks, layers, store in (
                     (self.small, dev_s, enc_s, picks_s, s_layers, XS),
                     (self.large, dev_l, enc_l, picks_l, l_layers, XL)):
@@ -308,7 +339,8 @@ class WeightMap:
                         store[a].append(hs[a][j, pos].to(torch.float16).cpu())
                 del hs
                 empty_cache(dev)
-        return ({a: torch.cat(v) for a, v in XS.items()}, {b: torch.cat(v) for b, v in XL.items()})
+        return ({a: torch.cat(v) for a, v in XS.items()}, {b: torch.cat(v) for b, v in XL.items()},
+                torch.cat(groups))
 
     @contextmanager
     def _transplant_ctx(self, prompts, enc_s, offs_s, layer, beta, outlier_factor):
@@ -367,13 +399,3 @@ def _inlier_mask(xs: torch.Tensor, xl: torch.Tensor, factor: float) -> torch.Ten
     """Drop attention-sink / massive-activation tokens (norm > factor x median in either model)."""
     ns, nl = xs.float().norm(dim=1), xl.float().norm(dim=1)
     return (ns < factor * ns.median()) & (nl < factor * nl.median())
-
-
-def _shuffled_r2(x_shuffled, x_true, y, lam, holdout, seed) -> float:
-    """Fit on shuffled (broken) pairs, evaluate on true held-out pairs: is token correspondence needed?"""
-    n = len(y)
-    perm = torch.randperm(n, generator=torch.Generator().manual_seed(seed))
-    ntr = int((1 - holdout) * n)
-    tr, te = perm[:ntr], perm[ntr:]
-    m = linalg.fit_ridge(x_shuffled[tr], y[tr], lam)
-    return linalg.r2(m, x_true[te], y[te])

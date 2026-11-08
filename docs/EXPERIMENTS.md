@@ -149,7 +149,7 @@ The peak CKA per S layer is 0.92–0.94 for layers 0–15, falling to 0.81 at la
 Norms for context: at layer 10, ‖d_S‖ = 0.55 on MATH and 1.84 on NQ, against a median residual-stream norm of about 15.1.
 
 **Reading.**
-- **H2, a map exists: strongly supported.** A single linear map explains 85% of S's state variance from L's state at the same token. Breaking the token pairing drives R² negative.
+- **H2, a map exists: supported.** A single linear map explains 85% of S's state variance from L's state at the same token. Breaking the token pairing drives R² negative. **Correction (§5.6):** the 0.85 is inflated by chat-template tokens. On answer text with whole texts held out, it is **0.66–0.67**.
 - **H1, related sets: supported** in representation space. Layer order is preserved, and the map approaches the S-to-itself reference.
 - **H3, S contained in L: weak.** L→S beats S→L by only 0.02–0.03 R². Predicting a wider target is somewhat harder anyway, so this asymmetry is not strong evidence.
 - Stage 4 adds evidence for H2: replacing S's layer-14 prompt states entirely (β = 1) with *mapped L states* leaves S solving MATH at its normal rate (22.5% vs a 30% tune baseline; see 5.4). So the translated representation is usable by S's downstream layers.
@@ -217,6 +217,39 @@ The best static L→S vector folds exactly into S as a bias on layer 10's `mlp.d
 
 The folded checkpoints are written to `scripts/exp1_qwen_0.5b_1.5b/results/S_edited_{math,nq}/`. They are git-ignored at 953 MB each, and since they improve nothing, they can be deleted.
 
+### 5.6 Measurement check: text-level holdout, template tokens, layer pairing
+
+*Added 2026-11-07, after extracting the `weightmap` library. Script: `scripts/validate_measurement.py`; raw output: `scripts/validate_measurement_results.json`.*
+
+Refitting with the library on answer texts gave R² ≈ 0.69, not 0.85, so the stage-3 measurement was re-examined.
+
+**Q1. Why 0.85?** The Qwen pair at layers 10/14 with CKA pairing, as in stage 3: a 2×2 of text type × holdout unit.
+
+| Fit/score text | Token holdout | **Text holdout** |
+|---|---|---|
+| Answers only (520 texts) | 0.693 / 0.707 | **0.664 / 0.673** |
+| Chat-formatted prompt + answer (as in stage 3) | 0.848 / 0.851 | 0.829 / 0.828 |
+
+*(R² L→S at S10↔L13 / S14↔L17. S→L: 0.62–0.63 on answers with text holdout, 0.80–0.81 on chat with text holdout. Shuffled control: −0.15 on answers, −0.05 on chat. Self-reference S(ℓ−1)→S(ℓ): 0.86–0.91 on answers, 0.93–0.96 on chat.)*
+
+- The chat-formatted + token-holdout cell **reproduces stage 3 exactly** (0.848 vs 0.851).
+- **Holdout unit barely matters** (−0.02 to −0.03). Token-level leakage was not the main issue.
+- **Boilerplate matters most** (−0.17). Every chat-formatted text, held-out ones included, contains the same system prompt and template tokens. Both models encode those near-identically, so they are easy points that lift the average.
+- The meaningful figure for "how much of S is recoverable from L on *content*" is therefore **≈ 0.66**, not 0.85.
+- **Unchanged:** the layer correspondence, the negative shuffled control, the L→S > S→L direction, and every stage-4 conclusion (stage 4 never used the R² value).
+
+**Q2. Does pairing by predictability beat CKA across families?** SmolLM2-360M ← Qwen2.5-1.5B (different tokenizers), text holdout.
+
+| SmolLM2 layer | CKA pairing → L layer, R² L→S | R²-pairing → L layer, R² L→S |
+|---|---|---|
+| 10 | L2 (CKA 0.41), 0.663 | L5, 0.655 |
+| 15 | L6, 0.680 | L6, 0.680 |
+| 20 | L17, 0.672 | L12, 0.670 |
+
+The two rules pick different layers, but the map quality is the same. Several neighbouring large layers predict a small layer about equally well. CKA pairing stays the library default; `pair_by="r2"` is available.
+
+**Cross-family result (H1).** A different family (SmolLM2, its own tokenizer and training data) maps to Qwen-1.5B as well as Qwen-0.5B does (0.66–0.68 vs 0.66–0.67), with a larger L→S vs S→L asymmetry (0.07–0.12 vs 0.04).
+
 ---
 
 ## 6. Conclusion
@@ -225,8 +258,8 @@ The folded checkpoints are written to `scripts/exp1_qwen_0.5b_1.5b/results/S_edi
 |---|---|---|
 | Precondition: much of P_L \ P_S is latent in S | **Supported** | 62.5% of MATH targets are blocked |
 | H1: related sets | **Supported** (representation space) | Monotone CKA layer correspondence; CKA ≈ 0.92 |
-| H2: a map F exists | **Strongly supported** | R² 0.85 vs −0.11 shuffled; transplanted states remain usable by S |
-| H3: S contained in L | **Weak** | L→S 0.85 vs S→L 0.82–0.83 |
+| H2: a map F exists | **Supported** | R² **0.66–0.67** on held-out answer texts (0.85 originally, inflated by template tokens, §5.6) vs −0.15 shuffled; transplanted states remain usable by S; holds cross-family (SmolLM2 ← Qwen 0.66–0.68) |
+| H3: S contained in L | **Weak to moderate** | L→S beats S→L by 0.04 (Qwen pair), 0.07–0.12 (SmolLM2 ← Qwen) |
 | H4: F transfers capability without training | **Not supported** (at this scale and method) | L→S Δ −0.9 [−7, +5] (MATH), −3.7 [−6, −1] (NQ); 0/9 absent fixed |
 | H5: recursion | Not tested | – |
 
@@ -245,6 +278,7 @@ This agrees with the blog's "unlock, don't add" conclusion. It also suggests tha
 5. **512-token cap on MATH.** It truncates long solutions and lowers absolute accuracy.
 6. **CKA is inflated by token identity.** For that reason the ridge map with a shuffled control, not CKA, is the primary evidence for H2.
 7. **NQ has little headroom.** L barely beats S (12.0% vs 10.0%), so NQ is weak for testing H4.
+8. **Template tokens inflated stage-3 R²** (0.85 → 0.66 on content). Corrected in §5.6. Fit and score maps on content text, not chat-templated prompts.
 
 **Bugs fixed during the run** (recorded for reproducibility):
 - `hidden_states()` originally ran the full model, materializing [B, T, 152k] logits. The process reached 33 GB and stalled in swap. It now calls `model.model(...)`.

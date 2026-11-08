@@ -1,0 +1,21 @@
+--- Q1 completions / holdout_by=token [95s]
+{'small_layer': 10, 'large_layer': 13, 'cka': 0.913, 'r2_large_to_small': 0.693, 'r2_small_to_large': 0.648, 'r2_shuffled_control': -0.151, 'n_tokens': 6193, 'n_test_tokens': 1239, 'holdout_by': 'token', 'pair_by': 'cka', 'r2_small_prev_layer': 0.921, 'texts': 'completions'}
+{'small_layer': 14, 'large_layer': 17, 'cka': 0.923, 'r2_large_to_small': 0.707, 'r2_small_to_large': 0.663, 'r2_shuffled_control': -0.145, 'n_tokens': 6193, 'n_test_tokens': 1239, 'holdout_by': 'token', 'pair_by': 'cka', 'r2_small_prev_layer': 0.877, 'texts': 'completions'}
+--- Q1 completions / holdout_by=text [95s]
+{'small_layer': 10, 'large_layer': 13, 'cka': 0.913, 'r2_large_to_small': 0.664, 'r2_small_to_large': 0.621, 'r2_shuffled_control': -0.154, 'n_tokens': 6193, 'n_test_tokens': 1302, 'holdout_by': 'text', 'pair_by': 'cka', 'r2_small_prev_layer': 0.914, 'texts': 'completions'}
+{'small_layer': 14, 'large_layer': 17, 'cka': 0.923, 'r2_large_to_small': 0.673, 'r2_small_to_large': 0.632, 'r2_shuffled_control': -0.156, 'n_tokens': 6193, 'n_test_tokens': 1302, 'holdout_by': 'text', 'pair_by': 'cka', 'r2_small_prev_layer': 0.862, 'texts': 'completions'}
+--- Q1 chat-formatted / holdout_by=token [121s]
+{'small_layer': 10, 'large_layer': 13, 'cka': 0.903, 'r2_large_to_small': 0.848, 'r2_small_to_large': 0.818, 'r2_shuffled_control': -0.046, 'n_tokens': 15000, 'n_test_tokens': 3000, 'holdout_by': 'token', 'pair_by': 'cka', 'r2_small_prev_layer': 0.965, 'texts': 'chat-formatted'}
+{'small_layer': 14, 'large_layer': 17, 'cka': 0.916, 'r2_large_to_small': 0.851, 'r2_small_to_large': 0.833, 'r2_shuffled_control': -0.042, 'n_tokens': 15000, 'n_test_tokens': 3000, 'holdout_by': 'token', 'pair_by': 'cka', 'r2_small_prev_layer': 0.94, 'texts': 'chat-formatted'}
+--- Q1 chat-formatted / holdout_by=text [122s]
+{'small_layer': 10, 'large_layer': 13, 'cka': 0.903, 'r2_large_to_small': 0.829, 'r2_small_to_large': 0.798, 'r2_shuffled_control': -0.05, 'n_tokens': 15000, 'n_test_tokens': 2999, 'holdout_by': 'text', 'pair_by': 'cka', 'r2_small_prev_layer': 0.959, 'texts': 'chat-formatted'}
+{'small_layer': 14, 'large_layer': 17, 'cka': 0.916, 'r2_large_to_small': 0.828, 'r2_small_to_large': 0.808, 'r2_shuffled_control': -0.05, 'n_tokens': 15000, 'n_test_tokens': 2984, 'holdout_by': 'text', 'pair_by': 'cka', 'r2_small_prev_layer': 0.929, 'texts': 'chat-formatted'}
+--- Q2 pair_by=cka [113s]  layer_match(fitted)= {10: 2, 15: 6, 20: 17}
+{'small_layer': 10, 'large_layer': 2, 'cka': 0.407, 'r2_large_to_small': 0.663, 'r2_small_to_large': 0.54, 'r2_shuffled_control': -0.22, 'n_tokens': 6132, 'n_test_tokens': 1290, 'holdout_by': 'text', 'pair_by': 'cka', 'r2_small_prev_layer': 0.92}
+{'small_layer': 15, 'large_layer': 6, 'cka': 0.861, 'r2_large_to_small': 0.68, 'r2_small_to_large': 0.556, 'r2_shuffled_control': -0.177, 'n_tokens': 6140, 'n_test_tokens': 1292, 'holdout_by': 'text', 'pair_by': 'cka', 'r2_small_prev_layer': 0.946}
+{'small_layer': 20, 'large_layer': 17, 'cka': 0.858, 'r2_large_to_small': 0.672, 'r2_small_to_large': 0.601, 'r2_shuffled_control': -0.162, 'n_tokens': 6140, 'n_test_tokens': 1292, 'holdout_by': 'text', 'pair_by': 'cka', 'r2_small_prev_layer': 0.938}
+--- Q2 pair_by=r2 [120s]  layer_match(fitted)= {10: 5, 15: 6, 20: 12}
+{'small_layer': 10, 'large_layer': 5, 'cka': 0.405, 'r2_large_to_small': 0.655, 'r2_small_to_large': 0.53, 'r2_shuffled_control': -0.214, 'n_tokens': 6132, 'n_test_tokens': 1290, 'holdout_by': 'text', 'pair_by': 'r2', 'r2_small_prev_layer': 0.92}
+{'small_layer': 15, 'large_layer': 6, 'cka': 0.861, 'r2_large_to_small': 0.68, 'r2_small_to_large': 0.556, 'r2_shuffled_control': -0.177, 'n_tokens': 6140, 'n_test_tokens': 1292, 'holdout_by': 'text', 'pair_by': 'r2', 'r2_small_prev_layer': 0.946}
+{'small_layer': 20, 'large_layer': 12, 'cka': 0.847, 'r2_large_to_small': 0.67, 'r2_small_to_large': 0.594, 'r2_shuffled_control': -0.157, 'n_tokens': 6140, 'n_test_tokens': 1292, 'holdout_by': 'text', 'pair_by': 'r2', 'r2_small_prev_layer': 0.938}
+wrote /Users/npantha/dev/impact/experiments/weightmap/scripts/validate_measurement_results.json

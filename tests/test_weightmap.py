@@ -10,7 +10,7 @@ import pytest
 import torch
 from transformers import AutoTokenizer, Qwen2Config, Qwen2ForCausalLM
 
-from weightmap import WeightMap, align
+from weightmap import WeightMap, align, linalg
 
 TOK_NAME = "Qwen/Qwen2.5-0.5B-Instruct"
 
@@ -195,3 +195,22 @@ def test_unfitted_map_raises(tok, small):
     wm = WeightMap(large=(small, tok), small=(small, tok), device="cpu")
     with pytest.raises(RuntimeError, match="fit"):
         wm.to_small(torch.randn(2, 64), 0)
+
+
+def test_text_holdout_never_splits_a_text():
+    groups = torch.tensor([0] * 5 + [1] * 7 + [2] * 3 + [3] * 9 + [4] * 4)
+    tr, te = linalg.split(len(groups), 0.4, seed=0, groups=groups)
+    assert set(groups[tr].tolist()).isdisjoint(groups[te].tolist())
+    assert len(tr) + len(te) == len(groups) and len(te) > 0
+
+
+@pytest.mark.parametrize("pair_by", ["r2", "cka"])
+def test_self_map_pairs_diagonally_under_both_pairings(tok, small, pair_by):
+    wm = WeightMap(large=(small, tok), small=(small, tok), device="cpu").fit(TEXTS, pair_by=pair_by, **FIT)
+    assert all(l == s for s, l in wm.layer_match.items())
+    assert all(r["holdout_by"] == "text" and r["pair_by"] == pair_by for r in wm.report())
+
+
+def test_token_holdout_option_still_available(tok, small, large):
+    wm = WeightMap(large=(large, tok), small=(small, tok), device="cpu").fit(TEXTS, holdout_by="token", **FIT)
+    assert all(r["holdout_by"] == "token" for r in wm.report())
