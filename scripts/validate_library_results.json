@@ -1,0 +1,56 @@
+{
+ "qwen0.5b<-qwen1.5b (shared tokenizer)": [
+  {
+   "small_layer": 10,
+   "large_layer": 13,
+   "cka": 0.90602046251297,
+   "r2_large_to_small": 0.6930053867975329,
+   "r2_small_to_large": 0.6484809637649791,
+   "r2_shuffled_control": -0.1387513832581433,
+   "n_tokens": 6193,
+   "r2_small_prev_layer": 0.9212807686360704
+  },
+  {
+   "small_layer": 14,
+   "large_layer": 17,
+   "cka": 0.9193578362464905,
+   "r2_large_to_small": 0.7029906560212825,
+   "r2_small_to_large": 0.6593096772703758,
+   "r2_shuffled_control": -0.13386393627771698,
+   "n_tokens": 6193,
+   "r2_small_prev_layer": 0.8728952735635722
+  }
+ ],
+ "smollm2-360m<-qwen1.5b (different tokenizers)": [
+  {
+   "small_layer": 10,
+   "large_layer": 2,
+   "cka": 0.3935810327529907,
+   "r2_large_to_small": 0.6812162207327848,
+   "r2_small_to_large": 0.5588118139629121,
+   "r2_shuffled_control": -0.1591911186598849,
+   "n_tokens": 6132,
+   "r2_small_prev_layer": 0.9269469559140538
+  },
+  {
+   "small_layer": 15,
+   "large_layer": 6,
+   "cka": 0.8551608920097351,
+   "r2_large_to_small": 0.7096235544173889,
+   "r2_small_to_large": 0.5925320468844637,
+   "r2_shuffled_control": -0.1442407047452101,
+   "n_tokens": 6140,
+   "r2_small_prev_layer": 0.9522977666738843
+  },
+  {
+   "small_layer": 20,
+   "large_layer": 17,
+   "cka": 0.854059100151062,
+   "r2_large_to_small": 0.69993810403149,
+   "r2_small_to_large": 0.6315817873141538,
+   "r2_shuffled_control": -0.14018891869405592,
+   "n_tokens": 6140,
+   "r2_small_prev_layer": 0.9425788866518892
+  }
+ ]
+}
