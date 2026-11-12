@@ -1,0 +1,26 @@
+20:54:16 models loaded; S layers: 30 shared vocab: False
+20:55:06 train base {'loop_rate': 0.2375, 'accuracy': 0.0175, 'mean_chars': 755.1}
+20:55:06 looping texts: 95 productive texts: 305
+20:56:56 map {'small_layer': 12, 'large_layer': 6, 'cka': 0.851, 'r2_large_to_small': 0.835, 'r2_small_to_large': 0.716, 'r2_shuffled_control': -0.067, 'n_tokens': 12000, 'n_test_tokens': 2424, 'holdout_by': 'text', 'pair_by': 'cka', 'r2_small_prev_layer': 0.967}
+20:56:56 map {'small_layer': 18, 'large_layer': 10, 'cka': 0.846, 'r2_large_to_small': 0.771, 'r2_small_to_large': 0.695, 'r2_shuffled_control': -0.055, 'n_tokens': 12000, 'n_test_tokens': 2394, 'holdout_by': 'text', 'pair_by': 'cka', 'r2_small_prev_layer': 0.932}
+20:58:02 layer 12 (L6): cos(d_S, Map(d_L)) = 0.984, |d_S| = 14.86
+20:59:07 layer 18 (L10): cos(d_S, Map(d_L)) = 0.985, |d_S| = 23.54
+20:59:22 tune base {'loop_rate': 0.2333, 'accuracy': 0.0167, 'mean_chars': 790.5, 'early_nll_qwen': 1.3622}
+20:59:37 tune S-native L12 x1 {'loop_rate': 0.2333, 'accuracy': 0.0167, 'mean_chars': 810.3, 'early_nll_qwen': 1.3308}
+20:59:52 tune S-native L12 x2 {'loop_rate': 0.2333, 'accuracy': 0.0, 'mean_chars': 765.0, 'early_nll_qwen': 1.3079}
+21:00:20 tune S-native L12 x4 {'loop_rate': 0.2667, 'accuracy': 0.0, 'mean_chars': 601.7, 'early_nll_qwen': 1.5691}
+21:00:39 tune S-native L18 x1 {'loop_rate': 0.2167, 'accuracy': 0.0167, 'mean_chars': 856.7, 'early_nll_qwen': 1.3557}
+21:00:53 tune S-native L18 x2 {'loop_rate': 0.0167, 'accuracy': 0.0, 'mean_chars': 939.9, 'early_nll_qwen': 1.8064}
+21:01:08 tune S-native L18 x4 {'loop_rate': 0.55, 'accuracy': 0.0, 'mean_chars': 963.3, 'early_nll_qwen': 3.1991}
+21:01:23 tune L->S L12 x1 {'loop_rate': 0.2333, 'accuracy': 0.0167, 'mean_chars': 819.4, 'early_nll_qwen': 1.2958}
+21:01:38 tune L->S L12 x2 {'loop_rate': 0.25, 'accuracy': 0.0167, 'mean_chars': 757.7, 'early_nll_qwen': 1.2865}
+21:01:52 tune L->S L12 x4 {'loop_rate': 0.2833, 'accuracy': 0.0, 'mean_chars': 640.4, 'early_nll_qwen': 1.4027}
+21:02:07 tune L->S L18 x1 {'loop_rate': 0.2833, 'accuracy': 0.0167, 'mean_chars': 876.9, 'early_nll_qwen': 1.282}
+21:02:22 tune L->S L18 x2 {'loop_rate': 0.0833, 'accuracy': 0.0, 'mean_chars': 975.2, 'early_nll_qwen': 1.7446}
+21:02:37 tune L->S L18 x4 {'loop_rate': 0.5333, 'accuracy': 0.0, 'mean_chars': 1129.8, 'early_nll_qwen': 3.1962}
+21:02:37 best configs {'S-native': (18, 1), 'L->S': (12, 1), 'random': (12, 1)}
+21:03:17 TEST base {'loop_rate': 0.21, 'accuracy': 0.02, 'mean_chars': 770.9, 'early_nll_qwen': 1.4356}
+21:03:59 TEST S-native L18 x1 {'loop_rate': 0.24, 'accuracy': 0.01, 'mean_chars': 852.2, 'early_nll_qwen': 1.4187}
+21:04:43 TEST L->S L12 x1 {'loop_rate': 0.24, 'accuracy': 0.03, 'mean_chars': 789.1, 'early_nll_qwen': 1.3809}
+21:05:48 TEST random L12 x1 {'loop_rate': 0.395, 'accuracy': 0.01, 'mean_chars': 785.8, 'early_nll_qwen': 1.4913}
+21:05:48 wrote /Users/npantha/dev/impact/experiments/weightmap/scripts/loop_diagnostic_results.json

@@ -337,6 +337,36 @@ All three support the picture "S ≈ a compressed, partly pruned view of L," and
 - **H5 is supported in the compression direction** (large → small → smaller). The expansion direction (small → large adding ability) remains unsupported (§5.4).
 - *Caveat:* there are only 3.3k training / 0.9k test tokens, because NQ answers are short and few positions align across all four models. It is one layer per model, chosen by relative depth.
 
+### 5.9 Can the large model's view diagnose a small model's failure? (loop removal)
+
+*Added 2026-11-11. Scripts: `scripts/loop_diagnostic.py` (main run with tuning; `FIXED=18:2` for the held-out comparison); raw output: `scripts/loop_diagnostic_results.json`, `scripts/loop_diagnostic_fixed_18x2.json`, logs; figure: `scripts/fig_loop_diagnostic.py`. No training: steering only.*
+
+**Motivation.** Barry (2026, "Can a Linear Program Do Weight-Space Programming?") showed that the blog's Qwen3.5-0.8B fix was a single "looping minus productive" direction: a rank-1 edit or even a constant steering vector moved MATH-500 from 7% to 51%. Our Qwen2.5-0.5B never loops (0% by the same detector; its MATH failures are 512-token truncations, §7), so there was nothing to remove. SmolLM2-135M (base) does loop. It is the test bed here, with Qwen2.5-1.5B (which never loops) as the "healthy" large model, connected by a cross-tokenizer map.
+
+**Method.**
+1. S answers 400 GSM8K *train* prompts (greedy, 256 tokens). A repetition detector (16-token windows; loop = suffix with ≥80% repeats, ≥64 tokens) labels 95 outputs looping and 305 productive.
+2. **Loop direction** = mean state over loop regions − mean state over productive completions, built from the *same texts* two ways: **S-native** (S encodes them) and **L→S** (Qwen-1.5B encodes them, transported through the map; layer pairing S12↔L6, S18↔L10; held-out R² 0.84 / 0.77, inflated by repeated prompt and loop tokens; shuffled control −0.07 / −0.06). A **random** direction of the same norm is the control.
+3. Steer S *against* the direction. The grid is layer ∈ {12, 18} × strength ∈ {1, 2, 4}·‖d_S‖ on 60 tune prompts; evaluation is on 200 held-out GSM8K *test* prompts.
+
+**Directions agree almost perfectly:** cos(d_S, Map(d_L)) = **0.984** (layer 12) and **0.985** (layer 18), against 0.85 for the correct-vs-wrong direction in §5.3.
+
+**Tune grid (loop rate / early coherence; base 23.3% / 1.36).** Only layer 18 at 2× removes loops: S-native 1.7% / 1.81, L→S 8.3% / 1.74. At 1× there is no effect, and 4× degenerates (53–55% / 3.20). The main run's selection rule (coherence within +15% of base) excluded the 2× setting and picked 1×, which did nothing on test (S-native 24%, L→S 24%, random 39.5%, base 21%). The comparison below fixes layer 18, 2× for every method. That setting comes from the tune grid, not the test set.
+
+![Figure 8](figures/fig8_loop_diagnostic.png)
+
+| Held-out (200 GSM8K test prompts), layer 18, 2× | Loop rate | Accuracy | Early coherence (Qwen NLL/tok, first 48 tokens) |
+|---|---|---|---|
+| No steering | 21.0% | 2.0% | 1.44 |
+| **S's own loop direction** | **6.5%** | 1.5% | 1.83 |
+| **Qwen's loop direction, mapped into S** | **10.0%** | 2.5% | 1.71 |
+| Random direction, same norm | 37.0% | 2.0% | 1.46 |
+
+**Reading.**
+- **The diagnosis transfers.** A loop direction located through the *large* model's representation (Qwen never loops; it only re-encodes S's outputs), translated through the map, removes about half of S's loops (21% → 10%). A random direction of the same size *increases* loops (37%). So the map carries the failure direction, not just generic disruption.
+- **It is not better than S's own.** S-native removes more loops (6.5%); L→S costs slightly less coherence (1.71 vs 1.83). With cos 0.985 these are essentially the same direction at slightly different effective strength. The difference (13 vs 20 looping answers of 200) is within noise. So the large model's view *works* for diagnosis but adds nothing S couldn't find itself.
+- **Removing the blocker adds no ability:** accuracy stays at 1.5–2.5%. SmolLM2-135M can't solve GSM8K whether or not it loops. This replicates the blog's Gemma-270M null and the "unlock, don't add" conclusion.
+- *Caveats:* loop direction and test use the same prompt template; one strength/layer comparison; coherence is a proxy (full-text NLL would reward loops, so only the first 48 tokens are scored); n = 200.
+
 ---
 
 ## 6. Conclusion
@@ -352,6 +382,7 @@ All three support the picture "S ≈ a compressed, partly pruned view of L," and
 | S looks like a pruned L | **Supported** | 896 selected L coordinates match the full map (0.641 vs 0.638); random 896: 0.577, §5.7 |
 | Weight-level map (embedding tables) | **Weak** | R² 0.31 (Qwen→Qwen), 0.42 (Qwen→SmolLM2 shared tokens), §5.7 |
 | H1 refined: convergence tracks capability | **Supported** | small→L R² rises with small-model capability across 5 models / 4 families (ρ = 0.9), §5.8 |
+| Map as a diagnostic tool (failure directions transfer) | **Yes, but no advantage** | Qwen's loop direction mapped into SmolLM2-135M cuts loops 21% → 10% (random: 37%); S's own: 6.5%; cos 0.985; accuracy unchanged, §5.9 |
 | H5: recursion | **Supported for compression** (L→S→T) | Composing 3 step maps keeps 95.5% of the direct map; errors don't compound (0.63 vs 0.30), §5.8. Expansion direction unsupported |
 
 **Interpretation.** F behaves like a faithful translation, not an upgrade. L's correct-vs-wrong direction, projected into S, is close to S's own (cos 0.85). Whatever in L's representation has no counterpart in S's coordinates is discarded by the projection, and that is plausibly the part that makes L better.

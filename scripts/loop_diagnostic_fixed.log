@@ -1,0 +1,12 @@
+21:06:17 models loaded; S layers: 30 shared vocab: False
+21:07:08 train base {'loop_rate': 0.2375, 'accuracy': 0.0175, 'mean_chars': 755.1}
+21:07:08 looping texts: 95 productive texts: 305
+21:09:01 map {'small_layer': 12, 'large_layer': 6, 'cka': 0.851, 'r2_large_to_small': 0.835, 'r2_small_to_large': 0.716, 'r2_shuffled_control': -0.067, 'n_tokens': 12000, 'n_test_tokens': 2424, 'holdout_by': 'text', 'pair_by': 'cka', 'r2_small_prev_layer': 0.967}
+21:09:01 map {'small_layer': 18, 'large_layer': 10, 'cka': 0.846, 'r2_large_to_small': 0.771, 'r2_small_to_large': 0.695, 'r2_shuffled_control': -0.055, 'n_tokens': 12000, 'n_test_tokens': 2394, 'holdout_by': 'text', 'pair_by': 'cka', 'r2_small_prev_layer': 0.932}
+21:10:06 layer 12 (L6): cos(d_S, Map(d_L)) = 0.984, |d_S| = 14.86
+21:11:10 layer 18 (L10): cos(d_S, Map(d_L)) = 0.985, |d_S| = 23.54
+21:11:51 TEST base {'loop_rate': 0.21, 'accuracy': 0.02, 'mean_chars': 770.9, 'early_nll_qwen': 1.4356}
+21:12:33 TEST S-native L18 x2 {'loop_rate': 0.065, 'accuracy': 0.015, 'mean_chars': 939.5, 'early_nll_qwen': 1.8325}
+21:13:15 TEST L->S L18 x2 {'loop_rate': 0.1, 'accuracy': 0.025, 'mean_chars': 950.2, 'early_nll_qwen': 1.713}
+21:13:57 TEST random L18 x2 {'loop_rate': 0.37, 'accuracy': 0.02, 'mean_chars': 863.5, 'early_nll_qwen': 1.4616}
+21:13:57 wrote /Users/npantha/dev/impact/experiments/weightmap/scripts/loop_diagnostic_fixed_18x2.json

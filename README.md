@@ -31,6 +31,7 @@ This was inspired by [*Sparks of Weight-Space Programming*](https://rikiyat.gith
 | S looks like a *pruned* L | **Supported** | Picking 896 of L's 1,536 coordinates predicts S as well as the full map (0.641 vs 0.638); random picks lose 0.06 |
 | A map between the *weights* (embedding tables) | Weak | R² 0.31 within Qwen, 0.42 SmolLM2←Qwen, about half the hidden-state map |
 | H1 refined: convergence tracks capability | **Supported** | Across 5 small models from 4 families, the more capable the small model, the more of Qwen-1.5B it captures (ρ = 0.9) |
+| The map as a *diagnostic* tool | **Works, no advantage** | Qwen's "looping" direction, mapped into SmolLM2-135M, cuts its loops 21% → 10% (random: 37%). S's own direction does as well (6.5%), and accuracy doesn't change. A failure direction transfers, but no new ability does |
 | H5: recursion | **Supported for compression** | 1.5B → 0.5B → 360M → 135M: chaining the maps keeps 95.5% of a direct map, and errors don't compound. The "small → large adds ability" direction is still unsupported |
 
 ¹ Measured on answer text with whole texts held out. Experiment 1 originally reported 0.85 because it fitted and scored on chat-formatted text, where the system prompt and template tokens repeat in every example and are trivially easy to map. Holding out whole texts barely changes this (0.85 → 0.83). Removing the boilerplate is what matters (0.83 → 0.66). See *Measurement check* in [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md#56-measurement-check-text-level-holdout-template-tokens-layer-pairing).
