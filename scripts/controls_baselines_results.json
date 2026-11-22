@@ -1,0 +1,150 @@
+{
+ "setup": {
+  "large": "Qwen/Qwen2.5-1.5B-Instruct",
+  "k": 32,
+  "max_length": 512,
+  "cap_tokens": 12000,
+  "grid": [
+   0.001,
+   0.01,
+   0.1,
+   1.0
+  ]
+ },
+ "pairs": [
+  {
+   "small": "Qwen/Qwen2.5-0.5B-Instruct",
+   "n_tokens": 4262,
+   "n_test": 937,
+   "layers": [
+    {
+     "small_layer": 9,
+     "L_to_S": {
+      "trained_best": {
+       "layer": 10,
+       "r2": 0.6514,
+       "val": 0.6333
+      },
+      "trained_embedding": 0.4192,
+      "random_best": {
+       "layer": 0,
+       "r2": 0.3439,
+       "val": 0.2889
+      },
+      "random_embedding": 0.3439,
+      "S_own_embedding": 0.4018
+     },
+     "S_to_L": {
+      "trained_best": {
+       "layer": 13,
+       "r2": 0.6062,
+       "val": 0.5766
+      },
+      "random_best": {
+       "layer": 0,
+       "r2": 0.3827,
+       "val": 0.3392
+      }
+     }
+    },
+    {
+     "small_layer": 14,
+     "L_to_S": {
+      "trained_best": {
+       "layer": 19,
+       "r2": 0.6405,
+       "val": 0.6317
+      },
+      "trained_embedding": 0.3464,
+      "random_best": {
+       "layer": 0,
+       "r2": 0.2782,
+       "val": 0.2369
+      },
+      "random_embedding": 0.2782,
+      "S_own_embedding": 0.3336
+     },
+     "S_to_L": {
+      "trained_best": {
+       "layer": 18,
+       "r2": 0.6031,
+       "val": 0.5835
+      },
+      "random_best": {
+       "layer": 0,
+       "r2": 0.357,
+       "val": 0.3184
+      }
+     }
+    }
+   ]
+  },
+  {
+   "small": "HuggingFaceTB/SmolLM2-135M",
+   "n_tokens": 4237,
+   "n_test": 936,
+   "layers": [
+    {
+     "small_layer": 12,
+     "L_to_S": {
+      "trained_best": {
+       "layer": 4,
+       "r2": 0.7265,
+       "val": 0.718
+      },
+      "trained_embedding": 0.5942,
+      "random_best": {
+       "layer": 0,
+       "r2": 0.488,
+       "val": 0.4692
+      },
+      "random_embedding": 0.488,
+      "S_own_embedding": 0.5817
+     },
+     "S_to_L": {
+      "trained_best": {
+       "layer": 7,
+       "r2": 0.5658,
+       "val": 0.5419
+      },
+      "random_best": {
+       "layer": 0,
+       "r2": 0.3907,
+       "val": 0.3822
+      }
+     }
+    },
+    {
+     "small_layer": 17,
+     "L_to_S": {
+      "trained_best": {
+       "layer": 8,
+       "r2": 0.6643,
+       "val": 0.6645
+      },
+      "trained_embedding": 0.4888,
+      "random_best": {
+       "layer": 0,
+       "r2": 0.4008,
+       "val": 0.3917
+      },
+      "random_embedding": 0.4008,
+      "S_own_embedding": 0.4676
+     },
+     "S_to_L": {
+      "trained_best": {
+       "layer": 8,
+       "r2": 0.544,
+       "val": 0.5259
+      },
+      "random_best": {
+       "layer": 0,
+       "r2": 0.3612,
+       "val": 0.3543
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

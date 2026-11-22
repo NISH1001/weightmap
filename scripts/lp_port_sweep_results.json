@@ -1,0 +1,139 @@
+{
+ "setup": {
+  "S": "HuggingFaceTB/SmolLM2-135M",
+  "L": "Qwen/Qwen2.5-1.5B-Instruct",
+  "S_layer": 18,
+  "L_layer": 10,
+  "n_cols": 8,
+  "eps": 0.1,
+  "lam": 1.0,
+  "scale_x_dS_norm": 2.0,
+  "n_test": 200,
+  "prefilter": 1000,
+  "chosen_scale": 4.0
+ },
+ "direction_cosine": 0.9853,
+ "map": [
+  {
+   "small_layer": 18,
+   "large_layer": 10,
+   "cka": 0.8459284901618958,
+   "r2_large_to_small": 0.7702485301417625,
+   "r2_small_to_large": 0.6937216751913098,
+   "r2_shuffled_control": -0.06391097480219043,
+   "n_tokens": 12000,
+   "n_test_tokens": 2424,
+   "holdout_by": "text",
+   "pair_by": "cka",
+   "r2_small_prev_layer": 0.9325529191514583
+  }
+ ],
+ "columns": {
+  "S_native": [
+   616,
+   316,
+   676,
+   248,
+   873,
+   129,
+   520,
+   1464
+  ],
+  "L": [
+   3299,
+   661,
+   1599,
+   7286,
+   3279,
+   3107,
+   5495,
+   6718
+  ],
+  "ported": [
+   1218,
+   1191,
+   503,
+   409,
+   1397,
+   1489,
+   458,
+   932
+  ],
+  "random": [
+   1154,
+   555,
+   1375,
+   558,
+   830,
+   1210,
+   1239,
+   118
+  ],
+  "overlap_S_native_vs_ported": 0
+ },
+ "trigger_auc_heldout": {
+  "S_native": 0.7223,
+  "L_in_L": 0.7691,
+  "ported": 0.6119,
+  "random": 0.5663
+ },
+ "port_fidelity_r2": 0.0454,
+ "tune": {
+  "base": {
+   "loop_rate": 0.2333,
+   "accuracy": 0.0167,
+   "early_nll_qwen": 1.3622
+  },
+  "S_native x2.0": {
+   "loop_rate": 0.1833,
+   "accuracy": 0.0333,
+   "early_nll_qwen": 1.3964
+  },
+  "S_native x4.0": {
+   "loop_rate": 0.0833,
+   "accuracy": 0.0167,
+   "early_nll_qwen": 1.5066
+  },
+  "S_native x8.0": {
+   "loop_rate": 0.0667,
+   "accuracy": 0.0167,
+   "early_nll_qwen": 2.4139
+  },
+  "S_native x16.0": {
+   "loop_rate": 0.4,
+   "accuracy": 0.0167,
+   "early_nll_qwen": 3.4499
+  }
+ },
+ "test": {
+  "base": {
+   "loop_rate": 0.21,
+   "accuracy": 0.02,
+   "early_nll_qwen": 1.4356
+  },
+  "S_native": {
+   "loop_rate": 0.085,
+   "accuracy": 0.025,
+   "early_nll_qwen": 1.6008,
+   "weights_changed": 4608
+  },
+  "hybrid_S_trigger_L_direction": {
+   "loop_rate": 0.14,
+   "accuracy": 0.02,
+   "early_nll_qwen": 1.5962,
+   "weights_changed": 4608
+  },
+  "ported": {
+   "loop_rate": 0.28,
+   "accuracy": 0.005,
+   "early_nll_qwen": 1.4176,
+   "weights_changed": 4608
+  },
+  "random": {
+   "loop_rate": 0.605,
+   "accuracy": 0.01,
+   "early_nll_qwen": 1.872,
+   "weights_changed": 4608
+  }
+ }
+}

@@ -1,0 +1,462 @@
+<title>The Weightmap Notebook</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+/* Layout: a single preprint column (~68ch) with full-width figures, a sticky contents rail on wide screens. */
+:root{
+  --bg:#f6f7f9; --paper:#ffffff; --ink:#15181d; --ink2:#4d535c; --rule:#dfe2e7; --soft:#eef1f5;
+  --blue:#2a6fd6; --orange:#e2622b; --grey:#9aa1ab; --good:#1f8a57; --bad:#c2412d;
+  --blue-soft:#dbe7fa; --orange-soft:#fbe3d8;
+  --serif:"IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --sans:"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#111418; --paper:#181c21; --ink:#e7eaee; --ink2:#a3aab4; --rule:#2c323a; --soft:#20252c;
+  --blue:#6aa1f0; --orange:#f08a5c; --grey:#6e7682; --good:#4cc08a; --bad:#ef7a66;
+  --blue-soft:#1e2d44; --orange-soft:#3d2a20; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#111418; --paper:#181c21; --ink:#e7eaee; --ink2:#a3aab4; --rule:#2c323a; --soft:#20252c;
+  --blue:#6aa1f0; --orange:#f08a5c; --grey:#6e7682; --good:#4cc08a; --bad:#ef7a66;
+  --blue-soft:#1e2d44; --orange-soft:#3d2a20; color-scheme:dark }
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.62}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 80px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:48px}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr);gap:0}.toc{display:none}}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start;font-family:var(--sans);font-size:13px;line-height:1.5}
+.toc b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin-bottom:8px}
+.toc a{display:block;color:var(--ink2);text-decoration:none;padding:3px 0 3px 10px;border-left:2px solid var(--rule)}
+.toc a:hover,.toc a:focus-visible{color:var(--ink);border-left-color:var(--blue);outline:none}
+main{min-width:0;max-width:760px}
+h1,h2,h3{font-family:var(--sans);text-wrap:balance;line-height:1.2;color:var(--ink)}
+h1{font-size:2.3rem;font-weight:700;letter-spacing:-.015em;margin:.2em 0 .3em}
+h2{font-size:1.45rem;font-weight:600;margin:2.4em 0 .5em;padding-top:.6em;border-top:1px solid var(--rule)}
+h3{font-size:1.08rem;font-weight:600;margin:1.8em 0 .4em}
+h2 .n{color:var(--blue);font-weight:500;margin-right:.4em;font-variant-numeric:tabular-nums}
+p{margin:.7em 0}
+a{color:var(--blue)}
+.meta{font-family:var(--sans);font-size:13px;color:var(--ink2)}
+.abstract{background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:18px 22px;margin:22px 0}
+.abstract h4,.box h4{font-family:var(--sans);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink2);margin:0 0 6px}
+.box{background:var(--soft);border-radius:6px;padding:14px 18px;margin:18px 0;font-size:.96rem}
+.math{font-family:var(--mono);font-size:.9rem;background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:12px 16px;margin:14px 0;overflow-x:auto;white-space:pre;line-height:1.55}
+code{font-family:var(--mono);font-size:.86em;background:var(--soft);padding:.05em .35em;border-radius:3px}
+figure{margin:26px 0;background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:16px 16px 12px}
+figcaption{font-family:var(--sans);font-size:13px;color:var(--ink2);line-height:1.5;margin-top:8px}
+figcaption b{color:var(--ink)}
+.fig{overflow-x:auto}
+svg{display:block;max-width:100%;height:auto}
+svg text{font-family:var(--sans);fill:var(--ink)}
+svg .muted{fill:var(--ink2)}
+.muted{color:var(--ink2)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;color:var(--ink2);font-size:12px;letter-spacing:.03em;text-transform:uppercase}
+td.num,th.num{text-align:right}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--orange);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--sans);font-size:12.5px;color:var(--ink2);margin:4px 0 8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-2px}
+ul,ol{padding-left:1.3em}li{margin:.25em 0}
+dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:6px 18px;font-size:.95rem}
+dt{font-family:var(--sans);font-weight:600}dd{margin:0}
+@media (max-width:520px){dl{grid-template-columns:minmax(0,1fr)}dd{margin-bottom:8px}h1{font-size:1.8rem}body{font-size:16px}}
+</style>
+
+<div class="wrap">
+<nav class="toc" aria-label="Contents">
+  <b>Contents</b>
+  <a href="#verdict">Verdict</a>
+  <a href="#question">1 · The question</a>
+  <a href="#primer">2 · Primer</a>
+  <a href="#map">3 · Building the map</a>
+  <a href="#real">4 · Is the map real?</a>
+  <a href="#atlas">5 · Atlas and chains</a>
+  <a href="#ability">6 · Moving ability</a>
+  <a href="#behavior">7 · Moving a behavior</a>
+  <a href="#weights">8 · Weight-space tests</a>
+  <a href="#scorecard">9 · Scorecard</a>
+  <a href="#context">10 · Related work</a>
+  <a href="#caveats">11 · Caveats, next steps</a>
+  <a href="#glossary">Glossary</a>
+  <a href="#repro">Reproduce</a>
+</nav>
+
+<main>
+<p class="meta">Working notes · weightmap project · November 2026 · all experiments training-free, run on one laptop (M3 Max, 36 GB)</p>
+<h1>Can a big model's knowledge be mapped into a small one?</h1>
+<p class="meta">A tutorial on what we did, why, how the maths works, and what we found.</p>
+
+<div class="abstract" id="verdict">
+<h4>Verdict in four lines</h4>
+<p style="margin:.3em 0">1. A simple linear map between a small and a large language model's internal states exists. It looks strong (R² ≈ 0.66), but half to three quarters of that comes from both models simply seeing the same token.</p>
+<p style="margin:.3em 0">2. The map carries <b>directions</b>: a "looping" direction found in Qwen-1.5B and carried into SmolLM2-135M cuts its loops from 21% to 10%.</p>
+<p style="margin:.3em 0">3. It does not carry <b>computation</b>: a transplanted block of the big model is worse than deleting the small model's block, and a sparse weight edit's trigger neurons have no counterpart (R² 0.05).</p>
+<p style="margin:.3em 0">4. It never transferred <b>ability</b>. In one line: models share a coordinate system for <i>what</i> they represent, not for <i>how</i> they compute.</p>
+</div>
+
+<!-- ============================================================ 1 -->
+<h2 id="question"><span class="n">1</span>The question</h2>
+<p>In November 2026 the "Sparks of Weight-Space Programming" post showed an AI agent (Astra) editing the weights of Qwen3.5-0.8B by hand, with no training, to stop it looping. Nathan Barry then showed that the fix is essentially one direction ("looping minus productive") and that a linear program can find an equivalent edit touching only 8 weight columns.</p>
+<p>That raised a bigger question, which became this project:</p>
+<div class="box">
+<h4>The hypotheses</h4>
+<ul style="margin:.2em 0">
+<li><b>H1</b> Models of different sizes live in related regions of a shared space.</li>
+<li><b>H2</b> A map <b>F</b> exists between the small model (S) and the large model (L).</li>
+<li><b>H3</b> S is roughly contained in L.</li>
+<li><b>H4</b> F can carry L's ability into S without training ("reverse distillation").</li>
+<li><b>H5</b> F composes: tiny → small → large chains work.</li>
+</ul>
+</div>
+<p>One rule held throughout: <b>no training</b>. Every experiment uses only forward passes, closed-form least squares, and (at the end) linear programs.</p>
+
+<!-- ============================================================ 2 -->
+<h2 id="primer"><span class="n">2</span>Primer: weights, activations, and the residual stream</h2>
+<p>A transformer language model is a stack of blocks. Each token carries a vector, the <b>residual stream</b> <code>h</code>, through the stack. Every block reads <code>h</code>, computes something with its <b>weights</b> (attention and an MLP), and adds the result back:</p>
+<div class="math">h₍ℓ+1₎ = h₍ℓ₎ + Block_ℓ(h₍ℓ₎)        Block = attention + MLP, built from weight matrices</div>
+<p>So there are two different things you could try to map between models:</p>
+<ul>
+<li><b>Activations</b> (representations): the vectors <code>h</code> the models produce on the same text. This is <i>what</i> each model represents.</li>
+<li><b>Weights</b>: the matrices inside the blocks. This is <i>how</i> each model computes.</li>
+</ul>
+<p>Raw weights of different-sized models cannot be compared directly. They have different shapes, and any neuron ordering or rotation gives an equivalent model. So we built the map on activations first, then asked whether it also works on weights (section 8).</p>
+
+<figure>
+<div class="fig" id="fig-primer"></div>
+<figcaption><b>Figure 1.</b> The setup. Both models read the same text. We record their residual streams at matching tokens and fit a linear map between them. Later tests push things through this map: a direction (section 7), a whole block (8.1), and a sparse weight edit (8.2).</figcaption>
+</figure>
+
+<!-- ============================================================ 3 -->
+<h2 id="map"><span class="n">3</span>Building the map</h2>
+<h3>Step 1 · Line up the tokens</h3>
+<p>Different model families split text into different tokens. "unbelievable" may be one token in one model and three in another. We pair positions where <b>both tokenizers end a token at the same character</b>. At those points both models have read exactly the same text, so their states are comparable. Same-family pairs (Qwen 0.5B and 1.5B) share a tokenizer, so every token lines up.</p>
+
+<h3>Step 2 · Fit a linear map in closed form</h3>
+<p>Stack the paired states into matrices: <code>X</code> (one model, n tokens × d₁) and <code>Y</code> (other model, n × d₂). Ridge regression finds the matrix <code>W</code> that best predicts Y from X, with a small penalty that keeps it stable:</p>
+<div class="math">W* = argmin_W ‖Y − XW‖² + λ‖W‖²
+   = (XᵀX + λI)⁻¹ XᵀY            ← one matrix solve, no gradient descent</div>
+<p>λ is picked on a held-out slice of the training texts.</p>
+
+<h3>Step 3 · Score it honestly</h3>
+<p>We measure the map with <b>R²</b> on <i>texts it never saw</i>:</p>
+<div class="math">R² = 1 − Σ‖yₜ − ŷₜ‖² / Σ‖yₜ − ȳ‖²     1 = perfect, 0 = no better than predicting the average</div>
+<p>Holding out whole texts matters. Tokens within one text are very similar, so a token-level split leaks answers. Our first experiment reported R² = 0.85; after switching to text-level holdout and removing chat-template tokens, the real number was about <b>0.66</b>.</p>
+
+<h3>Step 4 · Choose which layers to pair</h3>
+<p>Linear CKA scores how similar two layers' representations are (1 = same up to rotation and scale):</p>
+<div class="math">CKA(X, Y) = ‖XᵀY‖²_F / (‖XᵀX‖_F · ‖YᵀY‖_F)        (X, Y centred)</div>
+<p>Matches come out in depth order (Qwen-0.5B layer 10 ↔ Qwen-1.5B layer 13, 14 ↔ 17). Picking layers by R² instead gives the same quality.</p>
+
+<!-- ============================================================ 4 -->
+<h2 id="real"><span class="n">4</span>Is the map real?</h2>
+<p>Several quick checks said yes:</p>
+<ul>
+<li><b>It is linear.</b> Adding 4,096 random nonlinear features made it slightly worse (0.638 → 0.605).</li>
+<li><b>It looks like pruning.</b> Keeping just 896 of L's 1,536 coordinates (picked by importance) predicts S as well as all of them (0.641 vs 0.638). 896 random coordinates give 0.577.</li>
+<li><b>It works across families.</b> SmolLM2-360M ← Qwen-1.5B reaches 0.66–0.68.</li>
+<li><b>A weight-level version is weak.</b> Mapping the embedding tables directly gives only 0.31–0.42.</li>
+</ul>
+<p>Then the control that changed the story. If both models see the word "the", their states are partly predictable just from that fact. How much of R² is only that?</p>
+
+<figure>
+<div class="legend"><span><i style="background:var(--grey)"></i>token identity alone (L's embedding layer)</span><span><i style="background:var(--blue)"></i>extra explained by the trained map</span><span><i style="background:var(--orange)"></i>untrained L (random weights, same architecture)</span></div>
+<div class="fig" id="fig-controls"></div>
+<figcaption><b>Figure 2.</b> Where the map's R² comes from, predicting S's mid layers from Qwen-1.5B. Grey: L's input embedding alone, which only knows "which token is this". Blue: what the trained map adds on top. Orange tick: the best layer of an untrained copy of L. The genuinely shared, context-dependent part is about 0.15–0.30. <span class="muted">Source: scripts/controls_baselines.py</span></figcaption>
+</figure>
+<p><b>Takeaway.</b> The map is real, but most of its headline number is shared vocabulary. The part that reflects shared <i>understanding</i> of context is modest.</p>
+
+<!-- ============================================================ 5 -->
+<h2 id="atlas"><span class="n">5</span>The atlas and the chains</h2>
+<h3>Atlas: more capable small models map better</h3>
+<p>We mapped five small models from four families into Qwen-1.5B and compared map quality with each model's capability, measured as bits per byte on the same texts (lower is better; this measure ignores tokenizer differences).</p>
+<figure>
+<div class="fig" id="fig-atlas"></div>
+<figcaption><b>Figure 3.</b> Small-model capability (x, more capable to the left) against how well it predicts Qwen-1.5B (y). Spearman ρ = 0.9 across 5 models. With only 5 points this is a trend, not proof (exact p ≈ 0.08). <span class="muted">Source: scripts/atlas_recursion.py</span></figcaption>
+</figure>
+
+<h3>Chains: maps compose</h3>
+<p>We chained Qwen-1.5B → Qwen-0.5B → SmolLM2-360M → SmolLM2-135M. If each step lost information independently, the composed map should score about the product of the step scores. It doesn't. It keeps about 95% of a direct map.</p>
+<figure>
+<div class="legend"><span><i style="background:var(--blue)"></i>direct map</span><span><i style="background:var(--orange)"></i>composed step maps</span><span><i style="background:var(--grey)"></i>product of step R² (if errors compounded)</span></div>
+<div class="fig" id="fig-chain"></div>
+<figcaption><b>Figure 4.</b> Direct vs composed maps, held-out R². Single seed; a 5-seed rerun is written but not yet run. <span class="muted">Source: scripts/atlas_recursion.py</span></figcaption>
+</figure>
+
+<!-- ============================================================ 6 -->
+<h2 id="ability"><span class="n">6</span>Can the map move ability?</h2>
+<p>The first experiment asked the central question directly. Qwen-1.5B solves 38.7% of MATH problems, Qwen-0.5B 20.7%. Of the problems only L solves, 62% are "blocked" (S solves them in at least one of 8 tries) and the rest "absent" (S never does).</p>
+<p>We took L's direction for "solving correctly vs failing", mapped it into S, and pushed S's residual stream along it during generation (<b>steering</b>):</p>
+<div class="math">h ← h + α · d̂          d = mean(h | correct) − mean(h | wrong),  d̂ = d / ‖d‖</div>
+<div class="tbl"><table>
+<tr><th>Edit on Qwen-0.5B</th><th class="num">MATH (n=110)</th><th class="num">change [95% CI]</th><th class="num">NQ (n=300)</th></tr>
+<tr><td>none</td><td class="num">25.5%</td><td class="num">–</td><td class="num">11.0%</td></tr>
+<tr><td>L's direction, mapped into S</td><td class="num">24.5%</td><td class="num">−0.9 [−7.3, +5.5]</td><td class="num">7.3%</td></tr>
+<tr><td>L's states transplanted through the map</td><td class="num">25.5%</td><td class="num">0.0 [−6.4, +6.4]</td><td class="num">9.7%</td></tr>
+<tr><td>S's own direction</td><td class="num">11.8%</td><td class="num">−13.6 [−21.8, −5.5]</td><td class="num">7.7%</td></tr>
+<tr><td>L itself (ceiling)</td><td class="num">38.2%</td><td class="num">+12.7</td><td class="num">12.3%</td></tr>
+</table></div>
+<p>Nothing helped. Zero of 9 "absent" problems were fixed by any method. L's and S's directions point the same way (cosine 0.85), so the map is not carrying anything S lacks. We also confirmed that writing the steering vector into a bias (<code>fold</code>) is exactly equivalent to steering (difference 1.4×10⁻⁴), so a steering result is also a weight-edit result.</p>
+
+<!-- ============================================================ 7 -->
+<h2 id="behavior"><span class="n">7</span>Can the map move a behavior?</h2>
+<p>If ability doesn't move, maybe a narrower behavior does. SmolLM2-135M falls into repetition loops on GSM8K; Qwen-1.5B doesn't. We labeled S's outputs as looping or productive, built the loop direction twice (once from S's own states, once from L's states mapped into S), and steered S against each.</p>
+<figure>
+<div class="fig" id="fig-loops"></div>
+<figcaption><b>Figure 5.</b> Loop rate on 200 held-out GSM8K problems, with 95% intervals, steering at layer 18 with strength 2. The directions built in S and in L agree almost exactly (cosine 0.985). L→S cuts loops (p = 0.002); it is not distinguishable from S's own direction (p = 0.20). Accuracy stays near 2% throughout, so loops are a symptom, not the cause of failure. <span class="muted">Source: scripts/loop_diagnostic.py, scripts/loop_stats.py</span></figcaption>
+</figure>
+<p><b>Takeaway.</b> A behavior direction transfers through the map. It gives no advantage over what S can find in itself, and adds no ability.</p>
+
+<!-- ============================================================ 8 -->
+<h2 id="weights"><span class="n">8</span>Weight-space tests</h2>
+<p>Everything so far works on activations. Weight-space programming edits weights. So the remaining question is whether F is a map between the <i>models</i> or only between their <i>representations</i>. Two tests.</p>
+
+<h3>8.1 · Block transplant</h3>
+<p>If F really translates between models, we should be able to run one of L's blocks inside S by translating in and out:</p>
+<div class="math">x_S ──A──▶ L coordinates ──Block_L (L's own weights)──▶ ──B──▶ S coordinates</div>
+<p>We replace one block of Qwen-0.5B this way and measure its loss on held-out text. A useful scale: 0% means "as bad as deleting the block", 100% means "as good as S's own block".</p>
+<figure>
+<div class="legend"><span><i style="background:var(--grey)"></i>linear stand-in for S's block</span><span><i style="background:var(--blue)"></i>L's block, maps only (strict test)</span><span><i style="background:var(--blue-soft);outline:1px solid var(--blue)"></i>L's block, output map refit</span><span><i style="background:var(--orange)"></i>random block, output map refit</span></div>
+<div class="fig" id="fig-transplant"></div>
+<figcaption><b>Figure 6.</b> Share of the deletion damage each replacement recovers, for blocks 6, 12 and 18 of Qwen-0.5B. Bars beyond −100% are cut off and labeled. The strict transplant is worse than deleting the block. Refitting the output map helps, but a random block helps almost as much, and a plain linear stand-in built from S's own activations beats every version of L's block. <span class="muted">Source: scripts/block_transplant.py</span></figcaption>
+</figure>
+
+<h3>8.2 · Porting a sparse weight edit (the linear-programming route)</h3>
+<p>Barry's edit is a rank-1 change to one MLP output matrix (<code>down_proj</code>):</p>
+<div class="math">ΔW = δ · u vᵀ      u = loop direction ("what to push")
+                   v = sparse trigger over MLP neurons ("when to push")
+
+v from a linear program on the model's own neuron activations hₜ:
+  minimise  Σⱼ |vⱼ| + λ Σₜ slackₜ
+  subject to   v·hₜ ≤ −1      on looping tokens      (push hard)
+               |v·hₜ| ≤ ε     on productive tokens   (stay quiet)
+then keep the 8 strongest columns and re-solve.</div>
+<p>The L1 objective makes v sparse, so the LP picks the columns as well as the amounts. To <b>port</b> L's edit into S we carry both halves across. The direction u goes through the activation map. For the trigger, a second LP finds the 8 S neurons that best reproduce L's trigger values on the same text, without using any S loop labels:</p>
+<div class="math">port LP:  minimise Σ|cⱼ| + λ Σ slack   subject to  |c·hₜ^S − v_L·hₜ^L| ≤ ε   on every aligned token</div>
+<figure>
+<div class="fig" id="fig-lp"></div>
+<figcaption><b>Figure 7.</b> Loop rate on 200 held-out GSM8K problems after each 8-column edit (about 4,600 weights changed), at the strength picked on a separate tuning slice (4× the loop direction's size). <b>Hybrid</b> = S's own trigger neurons with L's mapped direction. The ported trigger reproduces L's trigger with R² = 0.05, which is no better than noise, so the fully ported edit does nothing. <span class="muted">Source: scripts/lp_port.py (SWEEP=1)</span></figcaption>
+</figure>
+<div class="tbl"><table>
+<tr><th>Edit</th><th class="num">loop rate</th><th class="num">vs none</th><th class="num">trigger AUC</th></tr>
+<tr><td>none</td><td class="num">21.0%</td><td class="num">–</td><td class="num">–</td></tr>
+<tr><td>S's own LP edit</td><td class="num">8.5%</td><td class="num">p ≈ 0.0004</td><td class="num">0.72</td></tr>
+<tr><td>hybrid: S trigger + L direction</td><td class="num">14.0%</td><td class="num">p ≈ 0.07</td><td class="num">0.72</td></tr>
+<tr><td>fully ported from L</td><td class="num">28.0%</td><td class="num">no help</td><td class="num">0.61</td></tr>
+<tr><td>random 8 columns</td><td class="num">60.5%</td><td class="num">harmful</td><td class="num">0.57</td></tr>
+</table></div>
+<p>AUC is how well the trigger separates looping from productive tokens on held-out text (0.5 = chance). L's own trigger scores 0.77 inside L, so it is a good trigger. It just has no counterpart among S's neurons.</p>
+
+<figure>
+<div class="fig" id="fig-ports"></div>
+<figcaption><b>Figure 8.</b> Summary of what crosses the map. The residual stream is the shared "language" between blocks, and directions in it port. Anything wired to specific neurons or to a block's internal computation does not.</figcaption>
+</figure>
+
+<!-- ============================================================ 9 -->
+<h2 id="scorecard"><span class="n">9</span>Scorecard</h2>
+<div class="tbl"><table>
+<tr><th>Hypothesis</th><th>Result</th><th>Evidence</th></tr>
+<tr><td>H1 related spaces</td><td class="part">Yes, weakly</td><td>R² 0.64–0.73, but token identity alone gives 0.35–0.59</td></tr>
+<tr><td>H2 a map F exists</td><td class="part">For representations only</td><td>Linear, cross-family; fails on blocks and neurons</td></tr>
+<tr><td>H3 S contained in L</td><td class="yes">Consistent</td><td>Pruning-like structure; L→S beats S→L</td></tr>
+<tr><td>H4 ability transfer</td><td class="no">No</td><td>MATH −0.9 pts; 0/9 absent problems fixed</td></tr>
+<tr><td>H5 composition</td><td class="yes">Yes</td><td>Chains keep ~95% of direct maps</td></tr>
+<tr><td>Weight programs port</td><td class="part">Half</td><td>Direction ports (cos 0.985; hybrid 21→14%); trigger does not (R² 0.05)</td></tr>
+</table></div>
+
+<!-- ============================================================ 10 -->
+<h2 id="context"><span class="n">10</span>Where this sits</h2>
+<p>The weight-space programming wave on Hacker News (November 2026) is large: hand-edited loop fixes, hidden triggers, output-head edits, AI-written MNIST and Breakout networks, and big LLMs acting as agents that edit small ones. In the nine most relevant posts we read, <b>every edit is built for one model at a time</b>. One post notes "each model needs its own fit" without testing it. None maps between models or tries to port an edit.</p>
+<p>So our contribution is the portability question: <i>can a weight-space program found in one model work in another?</i> Our answer is that the direction half ports and the neuron half doesn't. This agrees with a line quoted in another post: editing weights "could remove an obstacle that hid an ability, but it could not add an ability the model lacked."</p>
+
+<!-- ============================================================ 11 -->
+<h2 id="caveats"><span class="n">11</span>Caveats and next steps</h2>
+<ul>
+<li><b>Scale.</b> All models are 1.5B parameters or smaller. Larger models might share more.</li>
+<li><b>Small samples.</b> Loop tests use 200 problems; the atlas has 5 models; the chain result is one seed.</li>
+<li><b>One behavior.</b> Only looping was tested as a portable program. Tone or refusal directions may behave differently.</li>
+<li><b>The hybrid result is borderline</b> (p ≈ 0.07). It recovers about 55% of S's own edit, consistent with the earlier steering result (10% vs 6.5%).</li>
+</ul>
+<p><b>Possible next steps:</b> rerun the atlas with 10 models and the chains with 5 seeds (scripts written); port a second behavior such as refusal; test a 3B model as L; then write the blog post with the transplant and LP-port figures at its centre.</p>
+
+<!-- ============================================================ glossary -->
+<h2 id="glossary">Glossary</h2>
+<dl>
+<dt>Residual stream</dt><dd>The vector each token carries through the model; every block reads it and adds to it.</dd>
+<dt>Ridge regression</dt><dd>Least-squares fit with a small penalty on weight size; solved with one matrix inversion.</dd>
+<dt>R²</dt><dd>Share of variance a prediction explains on held-out data. 1 is perfect, 0 is "predict the mean".</dd>
+<dt>CKA</dt><dd>Similarity score between two sets of representations, insensitive to rotation and scale.</dd>
+<dt>Steering</dt><dd>Adding a fixed vector to the residual stream during generation.</dd>
+<dt>Fold</dt><dd>Writing a steering vector into a layer's bias, turning it into a weight edit with identical effect.</dd>
+<dt>Linear program (LP)</dt><dd>Optimisation with a linear objective and linear constraints; with an L1 objective it finds sparse solutions.</dd>
+<dt>Trigger / payload</dt><dd>In a rank-1 edit u vᵀ, v decides when the edit fires, u decides what it adds.</dd>
+<dt>AUC</dt><dd>Probability that a randomly chosen positive (looping) token scores beyond a random negative one; 0.5 is chance.</dd>
+<dt>Bits per byte</dt><dd>Next-token loss normalised by text length in bytes; lets models with different tokenizers be compared.</dd>
+</dl>
+
+<h2 id="repro">Reproduce</h2>
+<p>Code lives in the <code>weightmap</code> repository. The library (<code>weightmap/</code>) provides <code>WeightMap(large, small).fit(texts)</code>, <code>transport</code>, <code>steer</code>, <code>fold</code> and <code>generate</code>. One-off experiments live in <code>scripts/</code>:</p>
+<div class="tbl"><table>
+<tr><th>Section</th><th>Script</th></tr>
+<tr><td>6 · ability transfer</td><td><code>scripts/exp1_qwen_0.5b_1.5b/s1–s5</code></td></tr>
+<tr><td>4 · linear, pruning, embedding map</td><td><code>scripts/quick_tests.py</code></td></tr>
+<tr><td>4 · token-identity controls</td><td><code>scripts/controls_baselines.py</code></td></tr>
+<tr><td>5 · atlas and chains</td><td><code>scripts/atlas_recursion.py</code></td></tr>
+<tr><td>7 · loop direction</td><td><code>scripts/loop_diagnostic.py</code>, <code>loop_stats.py</code></td></tr>
+<tr><td>8.1 · block transplant</td><td><code>scripts/block_transplant.py</code></td></tr>
+<tr><td>8.2 · LP port</td><td><code>SWEEP=1 scripts/lp_port.py</code></td></tr>
+</table></div>
+</main>
+</div>
+
+<script>
+(function(){
+const NS="http://www.w3.org/2000/svg";
+function el(tag, attrs, parent, text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;if(parent)parent.appendChild(e);return e;}
+function svg(id,w,h,label){const s=el("svg",{viewBox:`0 0 ${w} ${h}`,width:w,role:"img","aria-label":label});document.getElementById(id).appendChild(s);return s;}
+const C={blue:"var(--blue)",orange:"var(--orange)",grey:"var(--grey)",rule:"var(--rule)",ink2:"var(--ink2)",soft:"var(--blue-soft)",bad:"var(--bad)",good:"var(--good)",paper:"var(--paper)"};
+
+/* ---------- Fig 1: setup diagram ---------- */
+(function(){
+  const s=svg("fig-primer",700,250,"Two models read the same text; a linear map connects their residual streams");
+  el("text",{x:350,y:22,"text-anchor":"middle","font-size":13,class:"muted"},s,"same text: \"Question: Tom has 3 apples…\"");
+  function model(x,name,n,w){
+    el("text",{x:x+w/2,y:50,"text-anchor":"middle","font-size":14,"font-weight":600},s,name);
+    for(let i=0;i<n;i++){const y=62+i*(150/n);el("rect",{x:x,y:y,width:w,height:150/n-5,rx:3,fill:C.soft,stroke:C.blue,"stroke-width":1},s);}
+    el("line",{x1:x+w+10,y1:60,x2:x+w+10,y2:212,stroke:C.orange,"stroke-width":3},s);
+    el("text",{x:x+w/2,y:232,"text-anchor":"middle","font-size":12,class:"muted"},s,"blocks (weights)");
+  }
+  model(60,"small model S",6,130);
+  model(470,"large model L",9,150);
+  el("text",{x:215,y:120,"font-size":12,fill:C.orange},s,"residual");
+  el("text",{x:215,y:135,"font-size":12,fill:C.orange},s,"stream h");
+  // map arrow
+  el("defs",{},s).innerHTML='<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>';
+  const g=el("g",{style:"color:var(--ink)"},s);
+  el("line",{x1:285,y1:150,x2:455,y2:150,stroke:"currentColor","stroke-width":1.6,"marker-start":"url(#ah)","marker-end":"url(#ah)"},g);
+  el("text",{x:370,y:140,"text-anchor":"middle","font-size":14,"font-weight":600},s,"F: h_S ≈ W·h_L + b");
+  el("text",{x:370,y:172,"text-anchor":"middle","font-size":12,class:"muted"},s,"closed-form ridge,");
+  el("text",{x:370,y:187,"text-anchor":"middle","font-size":12,class:"muted"},s,"at character-aligned tokens");
+})();
+
+/* ---------- generic horizontal bars ---------- */
+function hbars(id,rows,o){
+  const labelW=o.labelW||210, W=o.width||700, plotW=W-labelW-70, rowH=o.rowH||30, top=26;
+  const H=top+rows.length*rowH+30;
+  const s=svg(id,W,H,o.label);
+  const x=v=>labelW+(Math.max(o.min,Math.min(o.max,v))-o.min)/(o.max-o.min)*plotW;
+  for(const t of o.ticks){el("line",{x1:x(t),y1:top-6,x2:x(t),y2:H-26,stroke:C.rule,"stroke-width":1},s);
+    el("text",{x:x(t),y:H-10,"text-anchor":"middle","font-size":11,class:"muted"},s,o.fmt(t));}
+  if(o.min<0)el("line",{x1:x(0),y1:top-6,x2:x(0),y2:H-26,stroke:C.ink2,"stroke-width":1.2},s);
+  if(o.axis)el("text",{x:labelW+plotW/2,y:14,"text-anchor":"middle","font-size":11.5,class:"muted"},s,o.axis);
+  rows.forEach((r,i)=>{
+    const y=top+i*rowH;
+    if(r.group){el("text",{x:0,y:y+rowH*0.62,"font-size":12.5,"font-weight":600},s,r.group);return;}
+    el("text",{x:labelW-10,y:y+rowH*0.62,"text-anchor":"end","font-size":12.5},s,r.label);
+    const x0=x(Math.max(0,o.min)), x1=x(r.value), bx=Math.min(x0,x1), bw=Math.max(1.5,Math.abs(x1-x0));
+    el("rect",{x:bx,y:y+5,width:bw,height:rowH-11,rx:2,fill:r.fill,stroke:r.stroke||"none","stroke-width":r.stroke?1:0},s);
+    if(r.lo!=null){el("line",{x1:x(r.lo),x2:x(r.hi),y1:y+rowH/2-1,y2:y+rowH/2-1,stroke:"var(--ink)","stroke-width":1.2},s);
+      for(const e of [r.lo,r.hi])el("line",{x1:x(e),x2:x(e),y1:y+rowH/2-5,y2:y+rowH/2+3,stroke:"var(--ink)","stroke-width":1.2},s);}
+    const clipped=r.value<o.min, tx=(r.value<0? Math.min(x1,x0)-6 : Math.max(x1,r.hi!=null?x(r.hi):x1)+6);
+    if(clipped){el("text",{x:x(o.min)+4,y:y+rowH*0.62,"font-size":11.5,"font-weight":600,fill:C.paper},s,"◀ "+o.fmt(r.value));}
+    else el("text",{x:tx,y:y+rowH*0.62,"text-anchor":r.value<0?"end":"start","font-size":11.5,class:"muted"},s,o.fmt(r.value));
+  });
+}
+
+/* ---------- Fig 2: controls stacked ---------- */
+(function(){
+  const rows=[["Qwen-0.5B · layer 9",0.4192,0.6514,0.3439],["Qwen-0.5B · layer 14",0.3464,0.6405,0.2782],
+              ["SmolLM2-135M · layer 12",0.5942,0.7265,0.488],["SmolLM2-135M · layer 17",0.4888,0.6643,0.4008]];
+  const W=700,labelW=190,plotW=440,rowH=40,top=24,H=top+rows.length*rowH+30;
+  const s=svg("fig-controls",W,H,"Stacked bars: token identity versus extra from the trained map");
+  const x=v=>labelW+v/0.8*plotW;
+  for(const t of [0,0.2,0.4,0.6,0.8]){el("line",{x1:x(t),y1:top-6,x2:x(t),y2:H-26,stroke:C.rule},s);el("text",{x:x(t),y:H-10,"text-anchor":"middle","font-size":11,class:"muted"},s,t.toFixed(1));}
+  el("text",{x:labelW+plotW/2,y:13,"text-anchor":"middle","font-size":11.5,class:"muted"},s,"held-out R² predicting the small model's layer");
+  rows.forEach((r,i)=>{const y=top+i*rowH;
+    el("text",{x:labelW-10,y:y+rowH*0.6,"text-anchor":"end","font-size":12.5},s,r[0]);
+    el("rect",{x:x(0),y:y+8,width:x(r[1])-x(0),height:rowH-16,fill:C.grey,rx:2},s);
+    el("rect",{x:x(r[1]),y:y+8,width:x(r[2])-x(r[1]),height:rowH-16,fill:C.blue,rx:2},s);
+    el("line",{x1:x(r[3]),x2:x(r[3]),y1:y+4,y2:y+rowH-4,stroke:C.orange,"stroke-width":3},s);
+    el("text",{x:x(r[2])+6,y:y+rowH*0.6,"font-size":11.5,class:"muted"},s,`${r[2].toFixed(2)} (+${(r[2]-r[1]).toFixed(2)})`);
+  });
+})();
+
+/* ---------- Fig 3: atlas scatter ---------- */
+(function(){
+  const pts=[["Qwen2.5-0.5B",0.2216,0.6046],["SmolLM2-360M",0.466,0.5665],["SmolLM2-135M",0.5883,0.5444],["Gemma-3-270M",0.5505,0.51],["Pythia-160M",1.0123,0.4508]];
+  const W=700,H=320,L=70,R=40,T=20,B=50;
+  const s=svg("fig-atlas",W,H,"Scatter of capability versus map quality");
+  const x=v=>L+(v-0.1)/(1.1-0.1)*(W-L-R), y=v=>T+(0.65-v)/(0.65-0.42)*(H-T-B);
+  for(const t of [0.2,0.4,0.6,0.8,1.0]){el("line",{x1:x(t),x2:x(t),y1:T,y2:H-B,stroke:C.rule},s);el("text",{x:x(t),y:H-B+18,"text-anchor":"middle","font-size":11,class:"muted"},s,t.toFixed(1));}
+  for(const t of [0.45,0.5,0.55,0.6,0.65]){el("line",{x1:L,x2:W-R,y1:y(t),y2:y(t),stroke:C.rule},s);el("text",{x:L-8,y:y(t)+4,"text-anchor":"end","font-size":11,class:"muted"},s,t.toFixed(2));}
+  el("text",{x:(L+W-R)/2,y:H-10,"text-anchor":"middle","font-size":12,class:"muted"},s,"small model's bits per byte  (← more capable)");
+  el("text",{x:16,y:(T+H-B)/2,"text-anchor":"middle","font-size":12,class:"muted",transform:`rotate(-90 16 ${(T+H-B)/2})`},s,"R², small → Qwen-1.5B");
+  pts.forEach(p=>{el("circle",{cx:x(p[1]),cy:y(p[2]),r:6,fill:C.blue,stroke:C.paper,"stroke-width":1.5},s);
+    const right=p[1]<0.9; el("text",{x:x(p[1])+(right?10:-10),y:y(p[2])+(p[0]==="Gemma-3-270M"?14:-8),"text-anchor":right?"start":"end","font-size":12},s,p[0]);});
+})();
+
+/* ---------- Fig 4: chain grouped bars ---------- */
+(function(){
+  const g=[["1.5B → 360M","via 0.5B",0.6526,0.6366,0.6452*0.6465],["0.5B → 135M","via 360M",0.6573,0.6491,0.6465*0.7301],["1.5B → 135M","via 0.5B, 360M",0.6592,0.6293,0.6452*0.6465*0.7301]];
+  const W=700,H=300,L=60,T=16,B=58,gw=(W-L-20)/3;
+  const s=svg("fig-chain",W,H,"Grouped bars: direct versus composed maps");
+  const y=v=>T+(0.8-v)/0.8*(H-T-B);
+  for(const t of [0,0.2,0.4,0.6,0.8]){el("line",{x1:L,x2:W-20,y1:y(t),y2:y(t),stroke:C.rule},s);el("text",{x:L-8,y:y(t)+4,"text-anchor":"end","font-size":11,class:"muted"},s,t.toFixed(1));}
+  g.forEach((d,i)=>{const cx=L+gw*i+gw/2,bw=58;
+    [[d[2],C.blue,-bw-4],[d[3],C.orange,4]].forEach(([v,c,dx])=>{el("rect",{x:cx+dx,y:y(v),width:bw,height:y(0)-y(v),fill:c,rx:2},s);el("text",{x:cx+dx+bw/2,y:y(v)-5,"text-anchor":"middle","font-size":11.5,class:"muted"},s,v.toFixed(2));});
+    el("line",{x1:cx-bw-14,x2:cx+bw+14,y1:y(d[4]),y2:y(d[4]),stroke:C.grey,"stroke-width":2.5,"stroke-dasharray":"4 3"},s);
+    el("text",{x:cx+bw+16,y:y(d[4])+4,"font-size":11,class:"muted"},s,d[4].toFixed(2));
+    el("text",{x:cx,y:H-B+20,"text-anchor":"middle","font-size":12.5,"font-weight":600},s,d[0]);
+    el("text",{x:cx,y:H-B+36,"text-anchor":"middle","font-size":11.5,class:"muted"},s,d[1]);
+  });
+})();
+
+/* ---------- Fig 5: loops ---------- */
+hbars("fig-loops",[
+  {label:"no edit",value:21,lo:15.9,hi:27.2,fill:C.grey},
+  {label:"S's own direction",value:6.5,lo:3.8,hi:10.8,fill:C.blue},
+  {label:"L's direction, mapped into S",value:10,lo:6.6,hi:14.9,fill:C.orange},
+  {label:"random direction (control)",value:37,lo:30.6,hi:43.9,fill:"var(--soft)",stroke:"var(--ink2)"}
+],{min:0,max:50,ticks:[0,10,20,30,40,50],fmt:v=>Math.round(v)+"%",axis:"loop rate, held-out (lower is better)",label:"Loop rates by steering direction"});
+
+/* ---------- Fig 6: transplant ---------- */
+(function(){
+  const data={6:[61,-9.7,42.7,38.6],12:[52.4,-283.3,30.1,10.8],18:[41.6,-340.5,-17.3,-6.3]};
+  const rows=[];
+  for(const b of [6,12,18]){rows.push({group:`block ${b}`});
+    const d=data[b];
+    rows.push({label:"linear stand-in (S's own)",value:d[0],fill:C.grey});
+    rows.push({label:"L's block, maps only",value:d[1],fill:C.blue});
+    rows.push({label:"L's block, refit output",value:d[2],fill:C.soft,stroke:C.blue});
+    rows.push({label:"random block, refit output",value:d[3],fill:C.orange});}
+  hbars("fig-transplant",rows,{min:-100,max:100,ticks:[-100,-50,0,50,100],fmt:v=>Math.round(v)+"%",rowH:26,labelW:200,axis:"share of deletion damage recovered (100% = S's own block)",label:"Block transplant results"});
+})();
+
+/* ---------- Fig 7: LP port ---------- */
+hbars("fig-lp",[
+  {label:"no edit",value:21,lo:15.9,hi:27.2,fill:C.grey},
+  {label:"S's own LP edit",value:8.5,lo:5.4,hi:13.2,fill:C.blue},
+  {label:"hybrid: S trigger + L direction",value:14,lo:9.9,hi:19.5,fill:C.soft,stroke:C.blue},
+  {label:"fully ported from L",value:28,lo:22.2,hi:34.6,fill:C.orange},
+  {label:"random 8 columns (control)",value:60.5,lo:53.6,hi:67.0,fill:"var(--soft)",stroke:"var(--ink2)"}
+],{min:0,max:70,ticks:[0,10,20,30,40,50,60,70],fmt:v=>(Math.round(v*10)/10)+"%",labelW:230,axis:"loop rate, held-out (lower is better)",label:"Loop rates after sparse weight edits"});
+
+/* ---------- Fig 8: what ports ---------- */
+(function(){
+  const s=svg("fig-ports",700,210,"Diagram: directions in the residual stream port, neurons and blocks do not");
+  const items=[["Direction","what to push","ports","cos 0.985 · loops 21→10%",true],
+               ["Trigger neurons","when to push","doesn't port","R² 0.05 · no matching neurons",false],
+               ["Whole block","the computation","doesn't port","worse than deleting it",false],
+               ["Ability","solving new problems","doesn't port","MATH −0.9 pts · 0/9 absent fixed",false]];
+  items.forEach((it,i)=>{const x=8+i*172,w=160;
+    el("rect",{x:x,y:16,width:w,height:178,rx:6,fill:"var(--paper)",stroke:it[4]?C.good:C.rule,"stroke-width":it[4]?2:1},s);
+    el("text",{x:x+12,y:44,"font-size":13.5,"font-weight":600},s,it[0]);
+    el("text",{x:x+12,y:64,"font-size":12,class:"muted"},s,it[1]);
+    el("text",{x:x+12,y:112,"font-size":22,"font-weight":700,fill:it[4]?C.good:C.bad},s,it[4]?"✓":"✗");
+    el("text",{x:x+40,y:110,"font-size":14,"font-weight":600,fill:it[4]?C.good:C.bad},s,it[2]);
+    const words=it[3].split(" · ");
+    words.forEach((t,k)=>el("text",{x:x+12,y:150+k*17,"font-size":11.5,class:"muted"},s,t));
+  });
+})();
+})();
+</script>

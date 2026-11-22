@@ -1,0 +1,13 @@
+W1113 20:35:30.445000 21960 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+20:35:31 175 texts
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 5770.60it/s]
+20:35:51 loaded trained + random-init L
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 6766.21it/s]
+20:37:16 Qwen/Qwen2.5-0.5B-Instruct S layer 9 {"small_layer": 9, "L_to_S": {"trained_best": {"layer": 10, "r2": 0.6514, "val": 0.6333}, "trained_embedding": 0.4192, "random_best": {"layer": 0, "r2": 0.3439, "val": 0.2889}, "random_embedding": 0.3439, "S_own_embedding": 0.4018}, "S_to_L": {"trained_best": {"layer": 13, "r2": 0.6062, "val": 0.5766}, "random_best": {"layer": 0, "r2": 0.3827, "val": 0.3392}}}
+20:37:46 Qwen/Qwen2.5-0.5B-Instruct S layer 14 {"small_layer": 14, "L_to_S": {"trained_best": {"layer": 19, "r2": 0.6405, "val": 0.6317}, "trained_embedding": 0.3464, "random_best": {"layer": 0, "r2": 0.2782, "val": 0.2369}, "random_embedding": 0.2782, "S_own_embedding": 0.3336}, "S_to_L": {"trained_best": {"layer": 18, "r2": 0.6031, "val": 0.5835}, "random_best": {"layer": 0, "r2": 0.357, "val": 0.3184}}}
+20:37:46 done Qwen/Qwen2.5-0.5B-Instruct [114s]
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 4667.76it/s]
+20:39:00 HuggingFaceTB/SmolLM2-135M S layer 12 {"small_layer": 12, "L_to_S": {"trained_best": {"layer": 4, "r2": 0.7265, "val": 0.718}, "trained_embedding": 0.5942, "random_best": {"layer": 0, "r2": 0.488, "val": 0.4692}, "random_embedding": 0.488, "S_own_embedding": 0.5817}, "S_to_L": {"trained_best": {"layer": 7, "r2": 0.5658, "val": 0.5419}, "random_best": {"layer": 0, "r2": 0.3907, "val": 0.3822}}}
+20:39:24 HuggingFaceTB/SmolLM2-135M S layer 17 {"small_layer": 17, "L_to_S": {"trained_best": {"layer": 8, "r2": 0.6643, "val": 0.6645}, "trained_embedding": 0.4888, "random_best": {"layer": 0, "r2": 0.4008, "val": 0.3917}, "random_embedding": 0.4008, "S_own_embedding": 0.4676}, "S_to_L": {"trained_best": {"layer": 8, "r2": 0.544, "val": 0.5259}, "random_best": {"layer": 0, "r2": 0.3612, "val": 0.3543}}}
+20:39:24 done HuggingFaceTB/SmolLM2-135M [98s]
+20:39:24 wrote /Users/npantha/dev/impact/experiments/weightmap/scripts/controls_baselines_results.json

@@ -1,0 +1,30 @@
+W1122 12:08:13.121000 46010 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at /Users/npantha/.cache/huggingface/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Wed Nov 11 20:54:13 2026).
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at /Users/npantha/.cache/huggingface/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Wed Nov 11 20:54:13 2026).
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 7430.82it/s]
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 5573.77it/s]
+12:09:06 loop texts 95 productive 305
+12:10:51 map [{'small_layer': 18, 'large_layer': 10, 'cka': 0.8459284901618958, 'r2_large_to_small': 0.7702485301417625, 'r2_small_to_large': 0.6937216751913098, 'r2_shuffled_control': -0.06391097480219043, 'n_tokens': 12000, 'n_test_tokens': 2424, 'holdout_by': 'text', 'pair_by': 'cka', 'r2_small_prev_layer': 0.9325529191514583}]
+12:11:56 S18/L10: cos(d_S, Map(d_L)) = 0.985
+12:12:57 tokens: loop 1140 productive 1220
+12:12:57 S-native LP
+12:13:02   LP over 1000 cols: 450 nonzero -> 8 cols [5s]
+12:13:02 L LP
+12:13:06   LP over 1000 cols: 336 nonzero -> 8 cols [4s]
+12:13:06 port LP
+12:13:19   LP over 1536 cols: 574 nonzero -> 8 cols [13s]
+12:13:19 trigger AUC (held-out tokens) {'S_native': 0.7223, 'L_in_L': 0.7691, 'ported': 0.6119, 'random': 0.5663} port fidelity R2 0.0454
+12:13:34 TUNE base {'loop_rate': 0.2333, 'accuracy': 0.0167, 'early_nll_qwen': 1.3622}
+12:13:48 TUNE S_native x2.0 {'loop_rate': 0.1833, 'accuracy': 0.0333, 'early_nll_qwen': 1.3964}
+12:14:03 TUNE S_native x4.0 {'loop_rate': 0.0833, 'accuracy': 0.0167, 'early_nll_qwen': 1.5066}
+12:14:17 TUNE S_native x8.0 {'loop_rate': 0.0667, 'accuracy': 0.0167, 'early_nll_qwen': 2.4139}
+12:14:31 TUNE S_native x16.0 {'loop_rate': 0.4, 'accuracy': 0.0167, 'early_nll_qwen': 3.4499}
+12:14:31 chosen strength 4.0
+12:15:12 TEST base {'loop_rate': 0.21, 'accuracy': 0.02, 'early_nll_qwen': 1.4356}
+12:15:52 TEST S_native x4.0 {'loop_rate': 0.085, 'accuracy': 0.025, 'early_nll_qwen': 1.6008}
+12:16:34 TEST hybrid_S_trigger_L_direction x4.0 {'loop_rate': 0.14, 'accuracy': 0.02, 'early_nll_qwen': 1.5962}
+12:17:15 TEST ported x4.0 {'loop_rate': 0.28, 'accuracy': 0.005, 'early_nll_qwen': 1.4176}
+12:17:58 TEST random x4.0 {'loop_rate': 0.605, 'accuracy': 0.01, 'early_nll_qwen': 1.872}
+12:17:58 wrote /Users/npantha/dev/impact/experiments/weightmap/scripts/lp_port_sweep_results.json

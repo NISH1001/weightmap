@@ -369,6 +369,52 @@ All three support the picture "S ≈ a compressed, partly pruned view of L," and
 
 ---
 
+### 5.10 Token-identity control: how much of R² is "same token"?
+
+`scripts/controls_baselines.py`. Predict S's mid layers from: trained L (best layer, chosen on an inner split), L's input embedding only, an untrained copy of L, and S's own embedding. Same texts, aligned tokens, text holdout.
+
+| S, layer | trained L (best) | L embedding only | untrained L | S's own embedding |
+|---|---|---|---|---|
+| Qwen-0.5B, 9 | 0.651 (L layer 10) | 0.419 | 0.344 | 0.402 |
+| Qwen-0.5B, 14 | 0.641 (L19) | 0.346 | 0.278 | 0.334 |
+| SmolLM2-135M, 12 | 0.727 (L4) | 0.594 | 0.488 | 0.582 |
+| SmolLM2-135M, 17 | 0.664 (L8) | 0.489 | 0.401 | 0.468 |
+
+**Reading.** Half to three quarters of the map's R² is token identity. The context-dependent shared part is about +0.13 to +0.30. For SmolLM2 the best L layers are shallow (4–8 of 28). H1 holds only weakly.
+
+### 5.11 Error bars for the loop result
+
+`scripts/loop_stats.py` (no compute). Wilson 95% intervals, two-proportion tests, n = 200: base 21% [16, 27]; S-own 6.5% [4, 11]; L→S 10% [7, 15]; random 37% [31, 44]. Base vs L→S p = 0.002; S-own vs L→S p = 0.20 (indistinguishable); accuracy unchanged for all (p > 0.4).
+
+### 5.12 Block transplant: is F a map between weights?
+
+`scripts/block_transplant.py`. Replace block s of Qwen-0.5B with Qwen-1.5B's block at matched depth, conjugated by ridge maps (S_in → L_in, L block, L_out → S_out). Held-out next-token loss, as a share of the damage from deleting the block (100% = S's own block). Position 0 keeps S's output in all conditions.
+
+| replacement | block 6 | block 12 | block 18 |
+|---|---|---|---|
+| linear stand-in for S's own block | 61% | 52% | 42% |
+| L block, natural maps only (strict) | −10% | −283% | −341% |
+| L block, output map refit through it | 43% | 30% | −17% |
+| random block, output map refit | 39% | 11% | −6% |
+
+**Reading.** The strict transplant is worse than deletion. Refitting helps about as much for a random block, and S's own linear stand-in beats every version. F relates representations, not computations.
+
+### 5.13 Porting a sparse LP weight edit (Barry-style)
+
+`scripts/lp_port.py` (`SWEEP=1`). Edit dW = δ·u vᵀ on SmolLM2-135M block 18 down_proj, 8 columns. v from Barry's LP (min ‖v‖₁ + slack, v·h ≤ −1 on loop tokens, |v·h| ≤ ε on productive tokens). Ported edit: u = Map(d_L); v = L's own 8-column LP trigger carried to S neurons by a label-free matching LP. Strength picked on a 60-problem tune slice (4× ‖d_S‖), test n = 200.
+
+| edit | loop rate | trigger AUC (held-out tokens) |
+|---|---|---|
+| none | 21.0% | – |
+| S's own LP edit | 8.5% (p ≈ 0.0004) | 0.72 |
+| hybrid: S trigger + L direction | 14.0% (p ≈ 0.07) | 0.72 |
+| fully ported | 28.0% | 0.61 (L's trigger inside L: 0.77) |
+| random 8 columns | 60.5% | 0.57 |
+
+S's 8 neurons reproduce L's trigger with R² = 0.05. **Reading.** The payload direction ports partly (the hybrid gets about half of S's own effect). The neuron-level trigger does not port. An untuned first run at 2× is in `lp_port_single.log` / `lp_port_results.json`.
+
+Written but not yet run: `scripts/atlas_extend.py` (5 more atlas models, exact permutation p) and `scripts/recursion_seeds.py` (5-seed recursion).
+
 ## 6. Conclusion
 
 | Hypothesis | Verdict | Key evidence |
@@ -384,8 +430,11 @@ All three support the picture "S ≈ a compressed, partly pruned view of L," and
 | H1 refined: convergence tracks capability | **Supported** | small→L R² rises with small-model capability across 5 models / 4 families (ρ = 0.9), §5.8 |
 | Map as a diagnostic tool (failure directions transfer) | **Yes, but no advantage** | Qwen's loop direction mapped into SmolLM2-135M cuts loops 21% → 10% (random: 37%); S's own: 6.5%; cos 0.985; accuracy unchanged, §5.9 |
 | H5: recursion | **Supported for compression** (L→S→T) | Composing 3 step maps keeps 95.5% of the direct map; errors don't compound (0.63 vs 0.30), §5.8. Expansion direction unsupported |
+| Token-identity control | **Weakens H1** | L's embedding alone gives 0.35–0.59; shared context part ≈ +0.13–0.30, §5.10 |
+| F as a weight-space map (block transplant) | **Not supported** | L's block through the maps is worse than deleting S's block; random block ≈ refit L block, §5.12 |
+| Weight-space programs port (LP edit) | **Half** | Direction ports partly (hybrid 21% → 14%); trigger neurons don't (R² 0.05), §5.13 |
 
-**Interpretation.** F behaves like a faithful translation, not an upgrade. L's correct-vs-wrong direction, projected into S, is close to S's own (cos 0.85). Whatever in L's representation has no counterpart in S's coordinates is discarded by the projection, and that is plausibly the part that makes L better.
+**Interpretation.** Models share a coordinate system for *what* they represent, not for *how* they compute: residual-stream directions port, neurons and blocks do not (§5.12–5.13). F behaves like a faithful translation, not an upgrade. L's correct-vs-wrong direction, projected into S, is close to S's own (cos 0.85). Whatever in L's representation has no counterpart in S's coordinates is discarded by the projection, and that is plausibly the part that makes L better.
 
 This agrees with the blog's "unlock, don't add" conclusion. It also suggests that Astra's edits came from reasoning plus experimentation (its forward-pass budget), not from an implicit cross-scale weight map.
 

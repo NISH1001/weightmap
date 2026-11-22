@@ -1,0 +1,122 @@
+{
+ "source": "loop_diagnostic_fixed_18x2.json",
+ "n_test": 200,
+ "rates": {
+  "base": {
+   "loop_rate": {
+    "rate": 0.21,
+    "wilson95": [
+     0.1593,
+     0.2716
+    ]
+   },
+   "accuracy": {
+    "rate": 0.02,
+    "wilson95": [
+     0.0078,
+     0.0503
+    ]
+   }
+  },
+  "S-native": {
+   "loop_rate": {
+    "rate": 0.065,
+    "wilson95": [
+     0.0384,
+     0.108
+    ]
+   },
+   "accuracy": {
+    "rate": 0.015,
+    "wilson95": [
+     0.0051,
+     0.0432
+    ]
+   }
+  },
+  "L->S": {
+   "loop_rate": {
+    "rate": 0.1,
+    "wilson95": [
+     0.0657,
+     0.1494
+    ]
+   },
+   "accuracy": {
+    "rate": 0.025,
+    "wilson95": [
+     0.0107,
+     0.0572
+    ]
+   }
+  },
+  "random": {
+   "loop_rate": {
+    "rate": 0.37,
+    "wilson95": [
+     0.3061,
+     0.4388
+    ]
+   },
+   "accuracy": {
+    "rate": 0.02,
+    "wilson95": [
+     0.0078,
+     0.0503
+    ]
+   }
+  }
+ },
+ "comparisons": {
+  "loop_rate: base vs L->S": {
+   "diff": 0.11,
+   "z": 3.04,
+   "p": 0.0024
+  },
+  "accuracy: base vs L->S": {
+   "diff": -0.005,
+   "z": -0.34,
+   "p": 0.736
+  },
+  "loop_rate: base vs S-native": {
+   "diff": 0.145,
+   "z": 4.21,
+   "p": 0.0
+  },
+  "accuracy: base vs S-native": {
+   "diff": 0.005,
+   "z": 0.38,
+   "p": 0.703
+  },
+  "loop_rate: S-native vs L->S": {
+   "diff": -0.035,
+   "z": -1.27,
+   "p": 0.2033
+  },
+  "accuracy: S-native vs L->S": {
+   "diff": -0.01,
+   "z": -0.71,
+   "p": 0.4751
+  },
+  "loop_rate: base vs random": {
+   "diff": -0.16,
+   "z": -3.53,
+   "p": 0.0004
+  },
+  "accuracy: base vs random": {
+   "diff": 0.0,
+   "z": 0.0,
+   "p": 1.0
+  },
+  "loop_rate: L->S vs random": {
+   "diff": -0.27,
+   "z": -6.37,
+   "p": 0.0
+  },
+  "accuracy: L->S vs random": {
+   "diff": 0.005,
+   "z": 0.34,
+   "p": 0.736
+  }
+ }
+}
