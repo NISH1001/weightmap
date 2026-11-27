@@ -1,0 +1,61 @@
+{
+ "payload": "S's own loop direction",
+ "strength": 2.0,
+ "firing": {
+  "ported_all_neurons (real)": {
+   "nonzero": 574,
+   "mean_on_looping": -0.619,
+   "mean_on_productive": -0.286,
+   "sd_on_productive": 0.483,
+   "auc_loop_vs_productive": 0.6715
+  },
+  "port_program_on_shuffled_targets": {
+   "nonzero": 596,
+   "mean_on_looping": -0.605,
+   "mean_on_productive": -0.686,
+   "sd_on_productive": 1.015,
+   "auc_loop_vs_productive": 0.4846
+  },
+  "real_weights_shuffled_over_same_neurons": {
+   "nonzero": 574,
+   "mean_on_looping": 0.2,
+   "mean_on_productive": 0.487,
+   "sd_on_productive": 0.867,
+   "auc_loop_vs_productive": 0.5873
+  },
+  "real_weights_random_signs": {
+   "nonzero": 574,
+   "mean_on_looping": -0.553,
+   "mean_on_productive": -0.293,
+   "sd_on_productive": 0.967,
+   "auc_loop_vs_productive": 0.5685
+  }
+ },
+ "test": {
+  "base": {
+   "loop_rate": 0.21,
+   "accuracy": 0.02,
+   "early_nll_qwen": 1.4356
+  },
+  "ported_all_neurons (real)": {
+   "loop_rate": 0.1,
+   "accuracy": 0.01,
+   "early_nll_qwen": 1.4801
+  },
+  "port_program_on_shuffled_targets": {
+   "loop_rate": 0.3,
+   "accuracy": 0.02,
+   "early_nll_qwen": 2.5599
+  },
+  "real_weights_shuffled_over_same_neurons": {
+   "loop_rate": 0.32,
+   "accuracy": 0.015,
+   "early_nll_qwen": 1.5628
+  },
+  "real_weights_random_signs": {
+   "loop_rate": 0.215,
+   "accuracy": 0.015,
+   "early_nll_qwen": 1.8724
+  }
+ }
+}

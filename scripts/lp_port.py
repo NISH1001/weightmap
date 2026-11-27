@@ -364,7 +364,7 @@ EDITS = [("S_native", dS, cols_S, v_S), ("hybrid_S_trigger_L_direction", dLS, co
 # use every S neuron? The 8-neuron port fails (above), but a dense readout reproduces L's trigger (DENSE=1).
 # Here the port program runs without the 8-neuron limit and the result is applied as a rank-1 edit. The payload
 # is S's own loop direction in every condition, so only the trigger differs. Writes lp_port_followup_results.json.
-if os.environ.get("FOLLOWUP") in ("1", "2"):
+if os.environ.get("FOLLOWUP") in ("1", "2", "3"):
     allc = np.arange(Xtr_S.shape[1])
     v_full = match_lp(Xtr_S[pick], y, allc)                       # L's trigger over all of S's neurons, no labels
     colsS_full = prescreen(R_S, P_S)
@@ -396,6 +396,35 @@ if os.environ.get("FOLLOWUP") in ("1", "2"):
     if os.environ.get("FOLLOWUP") == "2":
         (HERE / "lp_port_trigger_firing.json").write_text(json.dumps(fu["trigger_firing_heldout_tokens"], indent=1))
         log("FIRING", json.dumps(fu["trigger_firing_heldout_tokens"]))
+        raise SystemExit
+
+    # FOLLOWUP=3: is the dense ported edit's effect due to L's trigger, or would any dense trigger of the same
+    # size do? Three unselective controls over the same payload (S's own direction) and strength, each scaled to
+    # fire as strongly as the real ported trigger on looping training tokens. Writes lp_port_dense_controls.json.
+    if os.environ.get("FOLLOWUP") == "3":
+        Rtr = R_S[rtr]
+        target = float(np.abs(Rtr @ v_full).mean())
+
+        def matched(v):
+            m_ = float(np.abs(Rtr @ v).mean())
+            return v * (target / m_) if m_ > 0 else v
+
+        nz = np.flatnonzero(np.abs(v_full) > 1e-6)
+        v_shuf_w = np.zeros_like(v_full)
+        v_shuf_w[nz] = np.random.default_rng(2).permutation(v_full[nz])            # real weights, shuffled over the same neurons
+        ctrl = {"ported_all_neurons (real)": v_full,
+                "port_program_on_shuffled_targets": matched(match_lp(Xtr_S[pick], y[np.random.default_rng(1).permutation(len(y))], allc)),
+                "real_weights_shuffled_over_same_neurons": matched(v_shuf_w),
+                "real_weights_random_signs": matched(v_full * np.random.default_rng(3).choice([-1.0, 1.0], len(v_full)))}
+        dc = {"payload": "S's own loop direction", "strength": 2.0,
+              "firing": {k_: {"nonzero": int((np.abs(v_) > 1e-6).sum()), **fire(allc, v_)} for k_, v_ in ctrl.items()},
+              "test": {"base": summarize("TEST base", *run(test))}}
+        for k_, v_ in ctrl.items():
+            apply_edit(dS, allc, v_, 2.0)
+            dc["test"][k_] = summarize(f"TEST {k_} x2", *run(test))
+            down.weight.data = W0.clone()
+            (HERE / "lp_port_dense_controls.json").write_text(json.dumps(dc, indent=1, default=float))
+        log("FOLLOWUP 3 wrote lp_port_dense_controls.json")
         raise SystemExit
     fu["test"] = {"base": summarize("TEST base", *run(test))}
     for name, cols, v in (("S_own_trigger_8_neurons", cols_S, v_S), ("S_own_trigger_unreduced", colsS_full, v_Sfull),

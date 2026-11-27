@@ -490,6 +490,8 @@ Dose response: S's own 23% / 5% / 19% / 58.5% at 1× / 2× / 3× / 4×; L's thro
 
 As rank-1 edits with S's own direction as payload (n = 200; base 21%): S's own 8-neuron trigger 15.5% (2×) / 8.5% (4×); ported 8-neuron trigger 21.5% / 28.0%; ported 574-neuron trigger **10.0%** (2×, early NLL 1.48) / 7.0% (4×, NLL 1.85); S's own unreduced trigger (450 neurons) 20.5% / 15.5%. Mean trigger on looping / productive tokens: S's own 8: −0.68 / −0.37; ported 574: −0.62 / −0.29; L in L: −0.79 / −0.24.
 
+**Dense controls** (`FOLLOWUP=3`, `lp_port_dense_controls.json`): same payload (S's own direction), strength 2, each scaled to fire as strongly as the real ported trigger on looping training tokens. Real ported trigger 10.0% (reproduced); port program fitted to shuffled targets 30.0% (NLL 2.56); real weights shuffled over the same 574 neurons 32.0%; real weights with random signs 21.5% (NLL 1.87). The effect is specific to the real trigger. Note the edit uses the port program's 574-neuron fit (R² 0.16, AUC 0.67 against L's trigger), not the ridge fit (R² 0.46, AUC 0.76).
+
 **Reading.** The trigger does transfer when dense and fails only under the 8-neuron limit. Combined with the loop-direction control this replaces the §6 interpretation: what transfers is distributed (states, facts, a dense detector); what does not is compact (one steering direction, an 8-neuron trigger) or structural (a block). *Caveat:* L's trigger was fitted with loop labels from S's outputs and the port is fitted on the same texts, so this shows the detector can be re-expressed in S's neurons, not that L supplies information S lacks.
 
 Written but not yet run: `scripts/atlas_extend.py` (5 more atlas models, exact permutation p) and `scripts/recursion_seeds.py` (5-seed recursion).
