@@ -1,0 +1,67 @@
+{
+ "ported_trigger_all_neurons": {
+  "nonzero_weights": 574,
+  "r2_vs_L_trigger": 0.1649,
+  "auc_loop_vs_productive": 0.6715
+ },
+ "S_own_trigger_unreduced": {
+  "nonzero_weights": 450,
+  "auc_loop_vs_productive": 0.8255
+ },
+ "payload": "S's own loop direction in every condition",
+ "test": {
+  "base": {
+   "loop_rate": 0.21,
+   "accuracy": 0.02,
+   "early_nll_qwen": 1.4356
+  },
+  "S_own_trigger_8_neurons x2.0": {
+   "loop_rate": 0.155,
+   "accuracy": 0.03,
+   "early_nll_qwen": 1.4475,
+   "weights_changed": 4608
+  },
+  "S_own_trigger_8_neurons x4.0": {
+   "loop_rate": 0.085,
+   "accuracy": 0.025,
+   "early_nll_qwen": 1.6008,
+   "weights_changed": 4608
+  },
+  "S_own_trigger_unreduced x2.0": {
+   "loop_rate": 0.205,
+   "accuracy": 0.01,
+   "early_nll_qwen": 1.4428,
+   "weights_changed": 259200
+  },
+  "S_own_trigger_unreduced x4.0": {
+   "loop_rate": 0.155,
+   "accuracy": 0.025,
+   "early_nll_qwen": 1.9751,
+   "weights_changed": 259200
+  },
+  "ported_trigger_8_neurons x2.0": {
+   "loop_rate": 0.215,
+   "accuracy": 0.03,
+   "early_nll_qwen": 1.4148,
+   "weights_changed": 4608
+  },
+  "ported_trigger_8_neurons x4.0": {
+   "loop_rate": 0.28,
+   "accuracy": 0.03,
+   "early_nll_qwen": 1.4217,
+   "weights_changed": 4608
+  },
+  "ported_trigger_all_neurons x2.0": {
+   "loop_rate": 0.1,
+   "accuracy": 0.01,
+   "early_nll_qwen": 1.4801,
+   "weights_changed": 330624
+  },
+  "ported_trigger_all_neurons x4.0": {
+   "loop_rate": 0.07,
+   "accuracy": 0.025,
+   "early_nll_qwen": 1.8478,
+   "weights_changed": 330624
+  }
+ }
+}

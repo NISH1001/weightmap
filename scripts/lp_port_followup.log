@@ -1,0 +1,28 @@
+W1127 11:54:12.979000 56942 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/.cache/huggingface/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Wed Nov 11 20:54:13 2026).
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/.cache/huggingface/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Wed Nov 11 20:54:13 2026).
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 5883.37it/s]
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 5030.43it/s]
+11:55:05 loop texts 95 productive 305
+11:56:51 map [{'small_layer': 18, 'large_layer': 10, 'cka': 0.8459284901618958, 'r2_large_to_small': 0.7702485301417625, 'r2_small_to_large': 0.6937216751913098, 'r2_shuffled_control': -0.06391097480219043, 'n_tokens': 12000, 'n_test_tokens': 2424, 'holdout_by': 'text', 'pair_by': 'cka', 'r2_small_prev_layer': 0.9325529191514583}]
+11:57:54 S18/L10: cos(d_S, Map(d_L)) = 0.985
+11:58:55 tokens: loop 1140 productive 1220
+11:58:55 S-native LP
+11:59:00   LP over 1000 cols: 450 nonzero -> 8 cols [5s]
+11:59:00 L LP
+11:59:04   LP over 1000 cols: 336 nonzero -> 8 cols [4s]
+11:59:04 port LP
+11:59:17   LP over 1536 cols: 574 nonzero -> 8 cols [12s]
+11:59:17 trigger AUC (held-out tokens) {'S_native': 0.7223, 'L_in_L': 0.7691, 'ported': 0.6119, 'random': 0.5663} port fidelity R2 0.0454
+12:00:14 TEST base {'loop_rate': 0.21, 'accuracy': 0.02, 'early_nll_qwen': 1.4356}
+12:00:55 TEST S_own_trigger_8_neurons x2.0 {'loop_rate': 0.155, 'accuracy': 0.03, 'early_nll_qwen': 1.4475}
+12:01:35 TEST S_own_trigger_8_neurons x4.0 {'loop_rate': 0.085, 'accuracy': 0.025, 'early_nll_qwen': 1.6008}
+12:02:15 TEST S_own_trigger_unreduced x2.0 {'loop_rate': 0.205, 'accuracy': 0.01, 'early_nll_qwen': 1.4428}
+12:02:55 TEST S_own_trigger_unreduced x4.0 {'loop_rate': 0.155, 'accuracy': 0.025, 'early_nll_qwen': 1.9751}
+12:03:36 TEST ported_trigger_8_neurons x2.0 {'loop_rate': 0.215, 'accuracy': 0.03, 'early_nll_qwen': 1.4148}
+12:04:16 TEST ported_trigger_8_neurons x4.0 {'loop_rate': 0.28, 'accuracy': 0.03, 'early_nll_qwen': 1.4217}
+12:04:56 TEST ported_trigger_all_neurons x2.0 {'loop_rate': 0.1, 'accuracy': 0.01, 'early_nll_qwen': 1.4801}
+12:05:36 TEST ported_trigger_all_neurons x4.0 {'loop_rate': 0.07, 'accuracy': 0.025, 'early_nll_qwen': 1.8478}
+12:05:36 FOLLOWUP wrote lp_port_followup_results.json

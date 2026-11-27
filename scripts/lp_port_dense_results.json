@@ -1,0 +1,45 @@
+{
+ "n_train_tokens": 1888,
+ "n_test_tokens": 472,
+ "n_S_neurons": 1536,
+ "lp_8_neurons": {
+  "r2_heldout": 0.0454,
+  "auc_loop_vs_productive": 0.6119
+ },
+ "ridge_on_the_8_lp_neurons": {
+  "r2_heldout": 0.1186,
+  "lambda": 0.0001,
+  "auc_loop_vs_productive": 0.6272
+ },
+ "ridge_all_neurons": {
+  "r2_heldout": 0.4629,
+  "lambda": 1.0,
+  "auc_loop_vs_productive": 0.7564
+ },
+ "ridge_top_k_neurons_of_dense_fit": {
+  "8": {
+   "r2_heldout": 0.122,
+   "lambda": 0.1,
+   "auc_loop_vs_productive": 0.5771
+  },
+  "32": {
+   "r2_heldout": 0.2499,
+   "lambda": 0.1,
+   "auc_loop_vs_productive": 0.6802
+  },
+  "128": {
+   "r2_heldout": 0.4024,
+   "lambda": 0.1,
+   "auc_loop_vs_productive": 0.7219
+  },
+  "512": {
+   "r2_heldout": 0.4518,
+   "lambda": 1.0,
+   "auc_loop_vs_productive": 0.7536
+  }
+ },
+ "reference_auc": {
+  "L_trigger_in_L": 0.7691,
+  "S_own_trigger": 0.7223
+ }
+}

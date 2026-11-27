@@ -1,0 +1,126 @@
+{
+ "setup": {
+  "S": "HuggingFaceTB/SmolLM2-135M",
+  "L": "Qwen/Qwen2.5-1.5B-Instruct",
+  "S_layer": 18,
+  "L_layer": 10,
+  "scale": 2,
+  "n_dir": 400,
+  "n_test": 200
+ },
+ "n_loop_texts": 95,
+ "n_prod_texts": 305,
+ "maps": {
+  "same_texts": {
+   "n_texts": 400,
+   "n_tokens": 12800,
+   "r2_L10_to_S18": 0.7719,
+   "r2_Lembedding_to_S18": 0.5101
+  },
+  "unrelated_texts": {
+   "n_texts": 175,
+   "n_tokens": 4237,
+   "r2_L10_to_S18": 0.6465,
+   "r2_Lembedding_to_S18": 0.4742
+  }
+ },
+ "cosine_with_S_own": {
+  "L_same_map": 0.9853,
+  "L_independent_map": 0.8205,
+  "L_embedding_only_independent_map": 0.6442,
+  "L_embedding_only_same_map": 0.7686
+ },
+ "norm_S_own": 23.542,
+ "random_split_cosine": {
+  "same_map": {
+   "mean": 0.9241,
+   "min": 0.8577,
+   "max": 0.9676
+  },
+  "independent_map": {
+   "mean": 0.7024,
+   "min": 0.5135,
+   "max": 0.8482
+  },
+  "embedding_only_independent_map": {
+   "mean": 0.4946,
+   "min": 0.2222,
+   "max": 0.7647
+  },
+  "vs_true_direction": {
+   "mean": 0.0398,
+   "min": -0.5945,
+   "max": 0.6277
+  }
+ },
+ "test": {
+  "base": {
+   "loop_rate": 0.21,
+   "accuracy": 0.02,
+   "early_nll_qwen": 1.4356
+  },
+  "S_own": {
+   "loop_rate": 0.05,
+   "accuracy": 0.025,
+   "early_nll_qwen": 1.8462
+  },
+  "L_same_map": {
+   "loop_rate": 0.11,
+   "accuracy": 0.03,
+   "early_nll_qwen": 1.6987
+  },
+  "L_independent_map": {
+   "loop_rate": 0.185,
+   "accuracy": 0.03,
+   "early_nll_qwen": 1.5702
+  },
+  "L_embedding_only_independent_map": {
+   "loop_rate": 0.265,
+   "accuracy": 0.02,
+   "early_nll_qwen": 1.5061
+  },
+  "random": {
+   "loop_rate": 0.235,
+   "accuracy": 0.01,
+   "early_nll_qwen": 1.4519
+  }
+ },
+ "dose_response": {
+  "S_own x1": {
+   "loop_rate": 0.23,
+   "accuracy": 0.02,
+   "early_nll_qwen": 1.4333
+  },
+  "S_own x3": {
+   "loop_rate": 0.19,
+   "accuracy": 0.03,
+   "early_nll_qwen": 2.6027
+  },
+  "S_own x4": {
+   "loop_rate": 0.585,
+   "accuracy": 0.01,
+   "early_nll_qwen": 3.0725
+  },
+  "L_independent_map x1": {
+   "loop_rate": 0.28,
+   "accuracy": 0.02,
+   "early_nll_qwen": 1.3484
+  },
+  "L_independent_map x3": {
+   "loop_rate": 0.315,
+   "accuracy": 0.02,
+   "early_nll_qwen": 2.2499
+  },
+  "L_independent_map x4": {
+   "loop_rate": 0.605,
+   "accuracy": 0.0,
+   "early_nll_qwen": 2.9446
+  }
+ },
+ "large_model_on_test_prompts": {
+  "n": 200,
+  "loop_rate_detector_on_S_tokens": 0.0,
+  "loop_rate_detector_on_L_tokens": 0.0,
+  "accuracy": 0.25
+ }
+}

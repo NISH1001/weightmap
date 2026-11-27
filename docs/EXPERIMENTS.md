@@ -460,6 +460,38 @@ S's 8 neurons reproduce L's trigger with R² = 0.05. **Reading.** The payload di
 
 The full write-up of all experiments is the technical report at <https://nishparadox.com/research/weightmap/>.
 
+### 5.17 Controls added after review: loop direction and trigger port
+
+Three independent reviews of the write-up flagged that (a) in §5.9 the map was fitted on the same SmolLM2 outputs that define the looping and productive groups, so the mapped direction could match S's own by construction, and (b) in §5.13 the "no counterpart" claim for the trigger rested on an 8-neuron heuristic with no dense baseline. Both were tested.
+
+**Loop direction** (`scripts/loop_controls.py`, results in `loop_controls_results.json`). Same models, layers (S block 18, L block 10), prompts and detector. Maps: original (fitted on S's 400 outputs, R² 0.77), independent (fitted on 175 unrelated texts, R² 0.65), embedding-only independent (L's input embeddings, R² 0.47).
+
+| direction | cosine with S's own | random-split cosine, mean (range) | loop rate at 2× (n = 200) | early NLL |
+|---|---|---|---|---|
+| none | | | 21.0% | 1.44 |
+| S's own | 1 | | 5.0% | 1.85 |
+| L's, original map | 0.985 | 0.92 (0.86–0.97) | 11.0% | 1.70 |
+| L's, independent map | 0.82 | 0.70 (0.51–0.85) | 18.5% | 1.57 |
+| L's input embeddings, independent map | 0.64 | 0.49 (0.22–0.76) | 26.5% | 1.51 |
+| random | | | 23.5% | 1.45 |
+
+Dose response: S's own 23% / 5% / 19% / 58.5% at 1× / 2× / 3× / 4×; L's through the independent map 28% / 18.5% / 31.5% / 60.5%. Qwen-1.5B on the same 200 prompts: 0 looping outputs, 25% correct.
+
+**Reading.** The 0.985 cosine and the 21% → 10% reduction of §5.9 were mostly produced by fitting the map on the looping texts: a random split of the same texts transfers at cosine 0.92. Through an independent map the direction is recognisable (0.82) but does not reduce loops at any strength. S's own direction works only at 2×, at a coherence cost above the +15% rule. *Caveat:* the unrelated texts are fewer and of a different kind, so the independent map is also a weaker map.
+
+**Trigger port** (`DENSE=1`, `FOLLOWUP=1`, `FOLLOWUP=2` in `scripts/lp_port.py`; results in `lp_port_dense_results.json`, `lp_port_followup_results.json`, `lp_port_trigger_firing.json`). L's trigger fitted from S's neurons, held-out tokens (1,888 train / 472 test):
+
+| fit | neurons | R² | AUC |
+|---|---|---|---|
+| port program, reduced | 8 | 0.05 | 0.61 |
+| ridge, top-k of dense fit | 8 / 32 / 128 / 512 | 0.12 / 0.25 / 0.40 / 0.45 | 0.58 / 0.68 / 0.72 / 0.75 |
+| ridge, all neurons | 1,536 | 0.46 | 0.76 |
+| port program, no limit | 574 | 0.16 | 0.67 |
+
+As rank-1 edits with S's own direction as payload (n = 200; base 21%): S's own 8-neuron trigger 15.5% (2×) / 8.5% (4×); ported 8-neuron trigger 21.5% / 28.0%; ported 574-neuron trigger **10.0%** (2×, early NLL 1.48) / 7.0% (4×, NLL 1.85); S's own unreduced trigger (450 neurons) 20.5% / 15.5%. Mean trigger on looping / productive tokens: S's own 8: −0.68 / −0.37; ported 574: −0.62 / −0.29; L in L: −0.79 / −0.24.
+
+**Reading.** The trigger does transfer when dense and fails only under the 8-neuron limit. Combined with the loop-direction control this replaces the §6 interpretation: what transfers is distributed (states, facts, a dense detector); what does not is compact (one steering direction, an 8-neuron trigger) or structural (a block). *Caveat:* L's trigger was fitted with loop labels from S's outputs and the port is fitted on the same texts, so this shows the detector can be re-expressed in S's neurons, not that L supplies information S lacks.
+
 Written but not yet run: `scripts/atlas_extend.py` (5 more atlas models, exact permutation p) and `scripts/recursion_seeds.py` (5-seed recursion).
 
 ## 6. Conclusion
@@ -479,9 +511,10 @@ Written but not yet run: `scripts/atlas_extend.py` (5 more atlas models, exact p
 | H5: recursion | **Supported for compression** (L→S→T) | Composing 3 step maps keeps 95.5% of the direct map; errors don't compound (0.63 vs 0.30), §5.8. Expansion direction unsupported |
 | Token-identity control | **Weakens H1** | L's embedding alone gives 0.35–0.59; shared context part ≈ +0.13–0.30, §5.10 |
 | F as a weight-space map (block transplant) | **Not supported** | L's block through the maps is worse than deleting S's block; random block ≈ refit L block, §5.12 |
-| Weight-space programs port (LP edit) | **Half** | Direction ports partly (hybrid 21% → 14%); trigger neurons don't (R² 0.05), §5.13 |
+| Weight-space programs port (LP edit) | **Only when dense** | 8-neuron trigger: no (R² 0.05). 574-neuron trigger: loops 21% → 10%, §5.17. Supersedes the "half" reading of §5.13 |
+| Steering direction transfers | **Not in behaviour** | Through an independent map: cosine 0.82, loops 18.5% vs 21%, §5.17. Supersedes §5.9 |
 
-**Interpretation.** Models share a coordinate system for *what* they represent, not for *how* they compute: residual-stream directions port, neurons and blocks do not (§5.12–5.13). F behaves like a faithful translation, not an upgrade. L's correct-vs-wrong direction, projected into S, is close to S's own (cos 0.85). Whatever in L's representation has no counterpart in S's coordinates is discarded by the projection, and that is plausibly the part that makes L better.
+**Interpretation (revised after the controls of §5.17).** What transfers between these models is distributed (whole states, facts, a dense detector); what does not is compact (one steering direction, an 8-neuron trigger) or structural (a block). The earlier reading, "residual-stream directions port, neurons do not", did not survive the controls. F behaves like a faithful translation, not an upgrade. L's correct-vs-wrong direction, projected into S, is close to S's own (cos 0.85). Whatever in L's representation has no counterpart in S's coordinates is discarded by the projection, and that is plausibly the part that makes L better.
 
 This agrees with the blog's "unlock, don't add" conclusion. It also suggests that Astra's edits came from reasoning plus experimentation (its forward-pass budget), not from an implicit cross-scale weight map.
 

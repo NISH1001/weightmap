@@ -1,0 +1,27 @@
+W1127 12:11:43.020000 59297 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/.cache/huggingface/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Wed Nov 11 20:54:13 2026).
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/.cache/huggingface/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Wed Nov 11 20:54:13 2026).
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 6082.20it/s]
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 5062.28it/s]
+12:11:46 models loaded
+12:12:36 loop texts 95 productive 305
+12:13:38 map same_texts {'n_texts': 400, 'n_tokens': 12800, 'r2_L10_to_S18': 0.7719, 'r2_Lembedding_to_S18': 0.5101}
+12:14:06 map unrelated_texts {'n_texts': 175, 'n_tokens': 4237, 'r2_L10_to_S18': 0.6465, 'r2_Lembedding_to_S18': 0.4742}
+12:16:03 cosine with S's own direction {'L_same_map': 0.9853, 'L_independent_map': 0.8205, 'L_embedding_only_independent_map': 0.6442, 'L_embedding_only_same_map': 0.7686}
+12:16:03 random-split cosine (20 shuffles) {'same_map': {'mean': 0.9241, 'min': 0.8577, 'max': 0.9676}, 'independent_map': {'mean': 0.7024, 'min': 0.5135, 'max': 0.8482}, 'embedding_only_independent_map': {'mean': 0.4946, 'min': 0.2222, 'max': 0.7647}, 'vs_true_direction': {'mean': 0.0398, 'min': -0.5945, 'max': 0.6277}}
+12:16:44 TEST base {'loop_rate': 0.21, 'accuracy': 0.02, 'early_nll_qwen': 1.4356}
+12:17:25 TEST S_own {'loop_rate': 0.05, 'accuracy': 0.025, 'early_nll_qwen': 1.8462}
+12:18:06 TEST L_same_map {'loop_rate': 0.11, 'accuracy': 0.03, 'early_nll_qwen': 1.6987}
+12:18:47 TEST L_independent_map {'loop_rate': 0.185, 'accuracy': 0.03, 'early_nll_qwen': 1.5702}
+12:19:29 TEST L_embedding_only_independent_map {'loop_rate': 0.265, 'accuracy': 0.02, 'early_nll_qwen': 1.5061}
+12:20:10 TEST random {'loop_rate': 0.235, 'accuracy': 0.01, 'early_nll_qwen': 1.4519}
+12:20:51 DOSE S_own x1 {'loop_rate': 0.23, 'accuracy': 0.02, 'early_nll_qwen': 1.4333}
+12:21:32 DOSE S_own x3 {'loop_rate': 0.19, 'accuracy': 0.03, 'early_nll_qwen': 2.6027}
+12:22:14 DOSE S_own x4 {'loop_rate': 0.585, 'accuracy': 0.01, 'early_nll_qwen': 3.0725}
+12:22:55 DOSE L_independent_map x1 {'loop_rate': 0.28, 'accuracy': 0.02, 'early_nll_qwen': 1.3484}
+12:23:36 DOSE L_independent_map x3 {'loop_rate': 0.315, 'accuracy': 0.02, 'early_nll_qwen': 2.2499}
+12:24:17 DOSE L_independent_map x4 {'loop_rate': 0.605, 'accuracy': 0.0, 'early_nll_qwen': 2.9446}
+12:26:18 Qwen-1.5B on the same held-out prompts {'n': 200, 'loop_rate_detector_on_S_tokens': 0.0, 'loop_rate_detector_on_L_tokens': 0.0, 'accuracy': 0.25}
+12:26:18 wrote scripts/loop_controls_results.json

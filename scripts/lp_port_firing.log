@@ -1,0 +1,19 @@
+W1127 12:06:18.466000 58910 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/.cache/huggingface/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Wed Nov 11 20:54:13 2026).
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/.cache/huggingface/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Wed Nov 11 20:54:13 2026).
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 5904.79it/s]
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 5187.29it/s]
+12:07:11 loop texts 95 productive 305
+12:08:57 map [{'small_layer': 18, 'large_layer': 10, 'cka': 0.8459284901618958, 'r2_large_to_small': 0.7702485301417625, 'r2_small_to_large': 0.6937216751913098, 'r2_shuffled_control': -0.06391097480219043, 'n_tokens': 12000, 'n_test_tokens': 2424, 'holdout_by': 'text', 'pair_by': 'cka', 'r2_small_prev_layer': 0.9325529191514583}]
+12:10:00 S18/L10: cos(d_S, Map(d_L)) = 0.985
+12:11:01 tokens: loop 1140 productive 1220
+12:11:01 S-native LP
+12:11:06   LP over 1000 cols: 450 nonzero -> 8 cols [5s]
+12:11:06 L LP
+12:11:10   LP over 1000 cols: 336 nonzero -> 8 cols [4s]
+12:11:10 port LP
+12:11:22   LP over 1536 cols: 574 nonzero -> 8 cols [12s]
+12:11:22 trigger AUC (held-out tokens) {'S_native': 0.7223, 'L_in_L': 0.7691, 'ported': 0.6119, 'random': 0.5663} port fidelity R2 0.0454
+12:11:40 FIRING {"S_own_8_neurons": {"mean_on_looping": -0.678, "mean_on_productive": -0.365, "sd_on_productive": 0.393, "auc_loop_vs_productive": 0.7223}, "S_own_unreduced": {"mean_on_looping": -0.924, "mean_on_productive": -0.218, "sd_on_productive": 0.477, "auc_loop_vs_productive": 0.8255}, "ported_8_neurons": {"mean_on_looping": -0.434, "mean_on_productive": -0.323, "sd_on_productive": 0.296, "auc_loop_vs_productive": 0.6119}, "ported_all_neurons": {"mean_on_looping": -0.619, "mean_on_productive": -0.286, "sd_on_productive": 0.483, "auc_loop_vs_productive": 0.6715}, "L_trigger_in_L": {"mean_on_looping": -0.789, "mean_on_productive": -0.244, "sd_on_productive": 0.434}}

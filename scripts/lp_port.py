@@ -299,6 +299,52 @@ yp = np.vstack([R_S[rte], P_S[pte]])[:, cols_P] @ v_P
 res["port_fidelity_r2"] = round(float(1 - ((yt - yp) ** 2).sum() / ((yt - yt.mean()) ** 2).sum()), 4)
 log("trigger AUC (held-out tokens)", res["trigger_auc_heldout"], "port fidelity R2", res["port_fidelity_r2"])
 
+# ------------------------------------------------ 3b. DENSE=1: is the port limited by using only 8 neurons?
+# The port above keeps 8 S neurons chosen by an L1 program. Here L's trigger is fitted from ALL of S's MLP neurons
+# with ridge (lambda on an inner split by text), and from the top-k neurons of that dense fit. If the dense fit is
+# also poor, L's trigger is not linearly readable from S's neurons at all; if it is good, the 8-neuron limit is
+# what fails. Writes lp_port_dense_results.json and exits before any generation.
+if os.environ.get("DENSE") == "1":
+    def r2_of(y_, p_):
+        return float(1 - ((y_ - p_) ** 2).sum() / ((y_ - y_.mean()) ** 2).sum())
+
+    Xtr = np.vstack([R_S[rtr], P_S[ptr]]).astype(np.float64)
+    ytr = np.vstack([R_L[rtr], P_L[ptr]])[:, cols_L].astype(np.float64) @ v_L
+    Xte = np.vstack([R_S[rte], P_S[pte]]).astype(np.float64)
+    gtr = np.concatenate([R_G[rtr], P_G[ptr] + 10 ** 6])                # text id of each training token
+    mu, sd = Xtr.mean(0), Xtr.std(0) + 1e-6
+    Z, Zte = (Xtr - mu) / sd, (Xte - mu) / sd
+    ug = np.unique(gtr)
+    va_texts = set(np.random.default_rng(0).choice(ug, max(1, len(ug) // 5), replace=False).tolist())
+    va = np.array([g in va_texts for g in gtr])
+
+    def ridge(Zf, yf, lam_):
+        ym = yf.mean()
+        w_ = np.linalg.solve(Zf.T @ Zf + lam_ * len(Zf) * np.eye(Zf.shape[1]), Zf.T @ (yf - ym))
+        return w_, ym
+
+    def fit_eval(cols_):
+        best = max((r2_of(ytr[va], Z[va][:, cols_] @ ridge(Z[~va][:, cols_], ytr[~va], lam_)[0]
+                          + ytr[~va].mean()), lam_) for lam_ in (1e-4, 1e-3, 1e-2, 1e-1, 1.0, 10.0))
+        w_, ym = ridge(Z[:, cols_], ytr, best[1])
+        pred = Zte[:, cols_] @ w_ + ym
+        nR = int(rte.sum())
+        return {"r2_heldout": round(r2_of(yt, pred), 4), "lambda": best[1],
+                "auc_loop_vs_productive": round(auc(pred[:nR], pred[nR:]), 4)}, w_
+
+    dense, w_all = fit_eval(np.arange(Z.shape[1]))
+    order = np.argsort(-np.abs(w_all))
+    out = {"n_train_tokens": int(len(Z)), "n_test_tokens": int(len(Zte)), "n_S_neurons": int(Z.shape[1]),
+           "lp_8_neurons": {"r2_heldout": res["port_fidelity_r2"], "auc_loop_vs_productive": res["trigger_auc_heldout"]["ported"]},
+           "ridge_on_the_8_lp_neurons": fit_eval(np.asarray(cols_P))[0],
+           "ridge_all_neurons": dense,
+           "ridge_top_k_neurons_of_dense_fit": {str(k_): fit_eval(order[:k_])[0] for k_ in (8, 32, 128, 512)},
+           "reference_auc": {"L_trigger_in_L": res["trigger_auc_heldout"]["L_in_L"],
+                             "S_own_trigger": res["trigger_auc_heldout"]["S_native"]}}
+    (HERE / "lp_port_dense_results.json").write_text(json.dumps(out, indent=1))
+    log("DENSE", json.dumps(out))
+    raise SystemExit
+
 # ------------------------------------------------ 4. apply each edit to S's weights, generate held-out
 down = S.model.layers[S_LAYER].mlp.down_proj
 W0 = down.weight.data.clone()
@@ -314,6 +360,55 @@ def apply_edit(u, cols, v, scale):
 
 EDITS = [("S_native", dS, cols_S, v_S), ("hybrid_S_trigger_L_direction", dLS, cols_S, v_S),
          ("ported", dLS, cols_P, v_P), ("random", dS, cols_R, v_R)]
+# ------------------------------------------------ 4b. FOLLOWUP=1: does L's trigger work as an edit when it may
+# use every S neuron? The 8-neuron port fails (above), but a dense readout reproduces L's trigger (DENSE=1).
+# Here the port program runs without the 8-neuron limit and the result is applied as a rank-1 edit. The payload
+# is S's own loop direction in every condition, so only the trigger differs. Writes lp_port_followup_results.json.
+if os.environ.get("FOLLOWUP") in ("1", "2"):
+    allc = np.arange(Xtr_S.shape[1])
+    v_full = match_lp(Xtr_S[pick], y, allc)                       # L's trigger over all of S's neurons, no labels
+    colsS_full = prescreen(R_S, P_S)
+    v_Sfull = loop_lp(HR_S, HP_S, colsS_full)                     # S's own trigger before the reduction to 8
+    Xte_S = np.vstack([R_S[rte], P_S[pte]])
+    nR = int(rte.sum())
+
+    def fid(pred):
+        return {"r2_vs_L_trigger": round(float(1 - ((yt - pred) ** 2).sum() / ((yt - yt.mean()) ** 2).sum()), 4),
+                "auc_loop_vs_productive": round(auc(pred[:nR], pred[nR:]), 4)}
+
+    fu = {"ported_trigger_all_neurons": {"nonzero_weights": int((np.abs(v_full) > 1e-6).sum()), **fid(Xte_S @ v_full)},
+          "S_own_trigger_unreduced": {"nonzero_weights": int((np.abs(v_Sfull) > 1e-6).sum()),
+                                      "auc_loop_vs_productive": round(auc((Xte_S[:, colsS_full] @ v_Sfull)[:nR],
+                                                                          (Xte_S[:, colsS_full] @ v_Sfull)[nR:]), 4)},
+          "payload": "S's own loop direction in every condition"}
+
+    # FOLLOWUP=2: only the trigger statistics. A dense trigger that fires on every token would act as constant
+    # steering, not as a gate, so report how each trigger fires on held-out looping and productive tokens.
+    def fire(cols, v):
+        tv = Xte_S[:, cols] @ np.asarray(v)
+        return {"mean_on_looping": round(float(tv[:nR].mean()), 3), "mean_on_productive": round(float(tv[nR:].mean()), 3),
+                "sd_on_productive": round(float(tv[nR:].std()), 3), "auc_loop_vs_productive": round(auc(tv[:nR], tv[nR:]), 4)}
+    fu["trigger_firing_heldout_tokens"] = {
+        "S_own_8_neurons": fire(cols_S, v_S), "S_own_unreduced": fire(colsS_full, v_Sfull),
+        "ported_8_neurons": fire(cols_P, v_P), "ported_all_neurons": fire(allc, v_full),
+        "L_trigger_in_L": {"mean_on_looping": round(float(yt[:nR].mean()), 3), "mean_on_productive": round(float(yt[nR:].mean()), 3),
+                           "sd_on_productive": round(float(yt[nR:].std()), 3)}}
+    if os.environ.get("FOLLOWUP") == "2":
+        (HERE / "lp_port_trigger_firing.json").write_text(json.dumps(fu["trigger_firing_heldout_tokens"], indent=1))
+        log("FIRING", json.dumps(fu["trigger_firing_heldout_tokens"]))
+        raise SystemExit
+    fu["test"] = {"base": summarize("TEST base", *run(test))}
+    for name, cols, v in (("S_own_trigger_8_neurons", cols_S, v_S), ("S_own_trigger_unreduced", colsS_full, v_Sfull),
+                          ("ported_trigger_8_neurons", cols_P, v_P), ("ported_trigger_all_neurons", allc, v_full)):
+        for sc in (2.0, 4.0):
+            apply_edit(dS, cols, v, sc)
+            fu["test"][f"{name} x{sc}"] = summarize(f"TEST {name} x{sc}", *run(test))
+            down.weight.data = W0.clone()
+            fu["test"][f"{name} x{sc}"]["weights_changed"] = int((np.abs(np.asarray(v)) > 1e-6).sum() * W0.shape[0])
+        (HERE / "lp_port_followup_results.json").write_text(json.dumps(fu, indent=1, default=float))
+    log("FOLLOWUP wrote lp_port_followup_results.json")
+    raise SystemExit
+
 best_scale = SCALE
 if SWEEP:
     res["tune"] = {"base": summarize("TUNE base", *run(tune))}

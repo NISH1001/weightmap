@@ -1,0 +1,31 @@
+{
+ "S_own_8_neurons": {
+  "mean_on_looping": -0.678,
+  "mean_on_productive": -0.365,
+  "sd_on_productive": 0.393,
+  "auc_loop_vs_productive": 0.7223
+ },
+ "S_own_unreduced": {
+  "mean_on_looping": -0.924,
+  "mean_on_productive": -0.218,
+  "sd_on_productive": 0.477,
+  "auc_loop_vs_productive": 0.8255
+ },
+ "ported_8_neurons": {
+  "mean_on_looping": -0.434,
+  "mean_on_productive": -0.323,
+  "sd_on_productive": 0.296,
+  "auc_loop_vs_productive": 0.6119
+ },
+ "ported_all_neurons": {
+  "mean_on_looping": -0.619,
+  "mean_on_productive": -0.286,
+  "sd_on_productive": 0.483,
+  "auc_loop_vs_productive": 0.6715
+ },
+ "L_trigger_in_L": {
+  "mean_on_looping": -0.789,
+  "mean_on_productive": -0.244,
+  "sd_on_productive": 0.434
+ }
+}
