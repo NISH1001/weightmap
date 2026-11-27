@@ -1,0 +1,17 @@
+W1127 09:52:28.896000 5758 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 338/338 [00:00<00:00, 6488.66it/s]
+
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 290/290 [00:00<00:00, 6905.62it/s]
+09:54:03 Qwen/Qwen2.5-0.5B-Instruct {"small_layer": 9, "trained_layer": 10, "random_layer": 0, "trained_best": {"ridge": 0.6514, "rotation": 0.5544}, "L_embedding": {"ridge": 0.4192, "rotation": 0.2534}, "random_best": {"ridge": 0.3439, "rotation": 0.1638}, "S_to_L_trained": {"ridge": 0.5974, "rotation": 0.5026}, "shared_part_ridge": 0.2322, "shared_part_rotation": 0.301}
+09:54:18 Qwen/Qwen2.5-0.5B-Instruct {"small_layer": 14, "trained_layer": 19, "random_layer": 0, "trained_best": {"ridge": 0.6405, "rotation": 0.5568}, "L_embedding": {"ridge": 0.3464, "rotation": 0.1903}, "random_best": {"ridge": 0.2782, "rotation": 0.1143}, "S_to_L_trained": {"ridge": 0.5988, "rotation": 0.5028}, "shared_part_ridge": 0.2941, "shared_part_rotation": 0.3665}
+09:54:18 done Qwen/Qwen2.5-0.5B-Instruct [86s]
+
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 272/272 [00:00<00:00, 5867.00it/s]
+09:55:20 HuggingFaceTB/SmolLM2-135M {"small_layer": 12, "trained_layer": 4, "random_layer": 0, "trained_best": {"ridge": 0.7265, "rotation": 0.5621}, "L_embedding": {"ridge": 0.5942, "rotation": 0.3864}, "random_best": {"ridge": 0.488, "rotation": 0.2357}, "S_to_L_trained": {"ridge": 0.5397, "rotation": 0.4585}, "shared_part_ridge": 0.1323, "shared_part_rotation": 0.1757}
+09:55:33 HuggingFaceTB/SmolLM2-135M {"small_layer": 17, "trained_layer": 8, "random_layer": 0, "trained_best": {"ridge": 0.6643, "rotation": 0.5273}, "L_embedding": {"ridge": 0.4888, "rotation": 0.3029}, "random_best": {"ridge": 0.4008, "rotation": 0.184}, "S_to_L_trained": {"ridge": 0.544, "rotation": 0.4465}, "shared_part_ridge": 0.1755, "shared_part_rotation": 0.2244}
+09:55:33 done HuggingFaceTB/SmolLM2-135M [75s]
+09:55:33 wrote scripts/rotation_vs_ridge_results.json

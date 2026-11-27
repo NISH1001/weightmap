@@ -1,10 +1,14 @@
 W1122 12:08:13.121000 46010 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
 Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
-Found the latest cached dataset configuration 'main' at /Users/npantha/.cache/huggingface/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Wed Nov 11 20:54:13 2026).
+Found the latest cached dataset configuration 'main' at ~/.cache/huggingface/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Wed Nov 11 20:54:13 2026).
 Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
-Found the latest cached dataset configuration 'main' at /Users/npantha/.cache/huggingface/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Wed Nov 11 20:54:13 2026).
-Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 7430.82it/s]
-Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 5573.77it/s]
+Found the latest cached dataset configuration 'main' at ~/.cache/huggingface/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Wed Nov 11 20:54:13 2026).
+
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 338/338 [00:00<00:00, 7430.82it/s]
+
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 272/272 [00:00<00:00, 5573.77it/s]
 12:09:06 loop texts 95 productive 305
 12:10:51 map [{'small_layer': 18, 'large_layer': 10, 'cka': 0.8459284901618958, 'r2_large_to_small': 0.7702485301417625, 'r2_small_to_large': 0.6937216751913098, 'r2_shuffled_control': -0.06391097480219043, 'n_tokens': 12000, 'n_test_tokens': 2424, 'holdout_by': 'text', 'pair_by': 'cka', 'r2_small_prev_layer': 0.9325529191514583}]
 12:11:56 S18/L10: cos(d_S, Map(d_L)) = 0.985
@@ -27,4 +31,4 @@ Found the latest cached dataset configuration 'main' at /Users/npantha/.cache/hu
 12:16:34 TEST hybrid_S_trigger_L_direction x4.0 {'loop_rate': 0.14, 'accuracy': 0.02, 'early_nll_qwen': 1.5962}
 12:17:15 TEST ported x4.0 {'loop_rate': 0.28, 'accuracy': 0.005, 'early_nll_qwen': 1.4176}
 12:17:58 TEST random x4.0 {'loop_rate': 0.605, 'accuracy': 0.01, 'early_nll_qwen': 1.872}
-12:17:58 wrote /Users/npantha/dev/impact/experiments/weightmap/scripts/lp_port_sweep_results.json
+12:17:58 wrote scripts/lp_port_sweep_results.json

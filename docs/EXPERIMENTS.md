@@ -413,6 +413,53 @@ All three support the picture "S ≈ a compressed, partly pruned view of L," and
 
 S's 8 neurons reproduce L's trigger with R² = 0.05. **Reading.** The payload direction ports partly (the hybrid gets about half of S's own effect). The neuron-level trigger does not port. An untuned first run at 2× is in `lp_port_single.log` / `lp_port_results.json`.
 
+### 5.14 Who solves what: tiny, small, large (behavioural containment)
+
+`scripts/tiny_venn.py`. Greedy answers on the exp1 held-out problems (same prompts and token budgets as stage 1), adding tiny = SmolLM2-135M-Instruct. The base SmolLM2-135M has no chat template, so the Instruct version is used. Tiny never writes `\boxed{}`, so MATH is re-graded for all three models with a lenient grader (the boxed answer, or else the last number). Strict grading gives tiny 0, small 31 and large 58.
+
+| region (problems) | MATH, lenient (n = 150) | NQ (n = 400) |
+|---|---|---|
+| solved by tiny / small / large | 5 / 34 / 63 | 34 / 40 / 48 |
+| all three | 4 | 13 |
+| small + large only | 24 | 12 |
+| tiny + small only / tiny + large only | 0 / 0 | 6 / 5 |
+| tiny only / small only / large only | 1 / 6 / 35 | 10 / 9 / 18 |
+| none | 80 | 327 |
+
+**Reading.** For reasoning (MATH) the solved sets nest: tiny ⊂ small ⊂ large, with only a handful of exceptions. For facts (NQ) they don't: each model knows facts the others miss (tiny alone gets 10). Behavioural containment (H3) holds for reasoning, not for memorised facts.
+
+### 5.15 Rotation + scale versus ridge
+
+`scripts/rotation_vs_ridge.py`. Same data, split and layer choice as §5.10. Rotation = orthogonal Procrustes (semi-orthogonal across widths) with one least-squares scale. Held-out R² predicting the small model's layer from Qwen-1.5B, ridge / rotation:
+
+| small model, layer | trained L | L embedding only | untrained L | shared part (trained − embedding) |
+|---|---|---|---|---|
+| Qwen-0.5B, 9 | 0.651 / 0.554 | 0.419 / 0.253 | 0.344 / 0.164 | 0.232 / 0.301 |
+| Qwen-0.5B, 14 | 0.641 / 0.557 | 0.346 / 0.190 | 0.278 / 0.114 | 0.294 / 0.367 |
+| SmolLM2-135M, 12 | 0.727 / 0.562 | 0.594 / 0.386 | 0.488 / 0.236 | 0.132 / 0.176 |
+| SmolLM2-135M, 17 | 0.664 / 0.527 | 0.489 / 0.303 | 0.401 / 0.184 | 0.176 / 0.224 |
+
+**Reading.** The rotation fits less overall but credits token identity less, so its shared part is slightly larger. Token identity is still 34–69% of what the rotation explains.
+
+### 5.16 Fact swap with token-identity controls
+
+`scripts/fact_swap.py`. The swap test of the concurrent work "Plato's Key" (Cheng et al., Hazy Research, 2026-11-25) on this project's models. CounterFact, 6,555 prompts from 34 relations; a model knows a fact if its greedy next token is the first answer token (Qwen-1.5B 986, SmolLM2-360M 718, Gemma-3-270M 611, Qwen-0.5B 597, SmolLM2-135M 409). The donor's state at the last subject token of fact A is mapped and written over the recipient's state at the last subject token of fact B (same relation, different answer); success = the recipient outputs A's answer. Subjects split 60/15/25; layer pairs at equal relative depth, chosen per method on validation facts.
+
+| donor → recipient | test facts | own state | ridge | rotation | subject tokens only | last token only | random rotation | unrelated fact |
+|---|---|---|---|---|---|---|---|---|
+| Qwen-1.5B → Qwen-0.5B | 117 | 33.3% | 27.4% | 20.5% | 16.2% | 11.1% | 6.0% | 0.9% |
+| Qwen-0.5B → SmolLM2-360M | 91 | 46.2% | 36.3% | 30.8% | 23.1% | 13.2% | 6.6% | 0.0% |
+| SmolLM2-360M → SmolLM2-135M | 87 | 28.7% | 20.7% | 21.8% | 10.3% | 12.6% | 8.0% | 4.6% |
+| Qwen-1.5B → SmolLM2-135M | 86 | 30.2% | 22.1% | 20.9% | 18.6% | 14.0% | 10.5% | 3.5% |
+| Qwen-1.5B → Gemma-3-270M | 126 | 24.6% | 17.5% | 9.5% | 6.3% | 6.3% | 1.6% | 0.0% |
+| Qwen-0.5B → Qwen-1.5B | 117 | 50.4% | 28.2% | 29.9% | 25.6% | 10.3% | 7.7% | 0.0% |
+
+"Subject tokens only" is a ridge map from the mean of the donor's input embeddings of the subject's tokens. Composed chain Qwen-1.5B → 0.5B → 360M → 135M: ridge 11.6% (direct 22.1%), rotation 16.3% (direct 20.9%).
+
+**Reading.** The ridge map transfers 56–82% as many facts as the recipient's own states. The subject-token control reaches 26–62% of that ceiling, so roughly half of the transfer needs nothing the donor computed. Composition loses more in behaviour than in R² (§5.8). *Caveats:* 86–126 test facts per pair; first-token match; Instruct models on raw completion prompts.
+
+The full write-up of all experiments is the technical report at <https://nishparadox.com/research/weightmap/>.
+
 Written but not yet run: `scripts/atlas_extend.py` (5 more atlas models, exact permutation p) and `scripts/recursion_seeds.py` (5-seed recursion).
 
 ## 6. Conclusion
@@ -422,7 +469,7 @@ Written but not yet run: `scripts/atlas_extend.py` (5 more atlas models, exact p
 | Precondition: much of P_L \ P_S is latent in S | **Supported** | 62.5% of MATH targets are blocked |
 | H1: related sets | **Supported** (representation space) | Monotone CKA layer correspondence; CKA ≈ 0.92 |
 | H2: a map F exists | **Supported** | R² **0.66–0.67** on held-out answer texts (0.85 originally, inflated by template tokens, §5.6) vs −0.15 shuffled; transplanted states remain usable by S; holds cross-family (SmolLM2 ← Qwen 0.66–0.68) |
-| H3: S contained in L | **Weak to moderate** | L→S beats S→L by 0.04 (Qwen pair), 0.07–0.12 (SmolLM2 ← Qwen) |
+| H3: S contained in L | **Weak to moderate** (representations); **yes for reasoning, no for facts** (behaviour) | L→S beats S→L by 0.04 (Qwen pair), 0.07–0.12 (SmolLM2 ← Qwen); MATH solved sets nest tiny ⊂ small ⊂ large (4 of tiny's 5 solved by all), NQ facts don't (tiny alone 10), §5.14 |
 | H4: F transfers capability without training | **Not supported** (at this scale and method) | L→S Δ −0.9 [−7, +5] (MATH), −3.7 [−6, −1] (NQ); 0/9 absent fixed |
 | f is linear | **Yes** (at this scale) | Random-Fourier-feature map adds nothing (−0.03), §5.7 |
 | S looks like a pruned L | **Supported** | 896 selected L coordinates match the full map (0.641 vs 0.638); random 896: 0.577, §5.7 |

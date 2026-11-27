@@ -1,6 +1,10 @@
 W1114 19:05:06.219000 39607 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
-Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 25217.13it/s]
-Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 31445.19it/s]
+
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 290/290 [00:00<00:00, 25217.13it/s]
+
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 338/338 [00:00<00:00, 31445.19it/s]
 19:05:07 texts train/test 140 35 block pairs S->L {6: 7, 12: 14, 18: 21}
 19:05:09 sanity: L block 7 re-run relative error 0.0000
 19:05:34 S6<->L7 val R2: A 0.6372  B_nat 0.6956  linear surrogate 0.8414
@@ -12,4 +16,4 @@ W1114 19:05:06.219000 39607 torch/distributed/elastic/multiprocessing/redirects.
 19:06:05 S block 6 (L block 7): {"intact": {"nll": 0.4075, "fidelity_r2": 1.0, "recovered_of_skip_damage": 1.0}, "skip": {"nll": 0.5871, "fidelity_r2": 0.6277, "recovered_of_skip_damage": 0.0}, "linear": {"nll": 0.4785, "fidelity_r2": 0.8638, "recovered_of_skip_damage": 0.605}, "transplant_pure": {"nll": 0.6045, "fidelity_r2": 0.7716, "recovered_of_skip_damage": -0.097}, "transplant_fit": {"nll": 0.5104, "fidelity_r2": 0.8226, "recovered_of_skip_damage": 0.427}, "random_fit": {"nll": 0.5177, "fidelity_r2": 0.8151, "recovered_of_skip_damage": 0.386}}
 19:06:17 S block 12 (L block 14): {"intact": {"nll": 0.4075, "fidelity_r2": 1.0, "recovered_of_skip_damage": 1.0}, "skip": {"nll": 0.5299, "fidelity_r2": 0.777, "recovered_of_skip_damage": 0.0}, "linear": {"nll": 0.4658, "fidelity_r2": 0.9047, "recovered_of_skip_damage": 0.524}, "transplant_pure": {"nll": 0.8767, "fidelity_r2": 0.6484, "recovered_of_skip_damage": -2.833}, "transplant_fit": {"nll": 0.4931, "fidelity_r2": 0.8556, "recovered_of_skip_damage": 0.301}, "random_fit": {"nll": 0.5167, "fidelity_r2": 0.8314, "recovered_of_skip_damage": 0.108}}
 19:06:30 S block 18 (L block 21): {"intact": {"nll": 0.4075, "fidelity_r2": 1.0, "recovered_of_skip_damage": 1.0}, "skip": {"nll": 0.5367, "fidelity_r2": 0.7454, "recovered_of_skip_damage": 0.0}, "linear": {"nll": 0.483, "fidelity_r2": 0.8825, "recovered_of_skip_damage": 0.416}, "transplant_pure": {"nll": 0.9766, "fidelity_r2": 0.6313, "recovered_of_skip_damage": -3.405}, "transplant_fit": {"nll": 0.5591, "fidelity_r2": 0.8043, "recovered_of_skip_damage": -0.173}, "random_fit": {"nll": 0.5448, "fidelity_r2": 0.8101, "recovered_of_skip_damage": -0.063}}
-19:06:30 wrote /Users/npantha/dev/impact/experiments/weightmap/scripts/block_transplant_results.json
+19:06:30 wrote scripts/block_transplant_results.json

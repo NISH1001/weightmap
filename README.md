@@ -6,6 +6,8 @@
 
 > Naming note: despite the name, the map lives in **activation (representation) space**: hidden states at aligned tokens. Comparing raw weight spaces across different widths isn't meaningful, because of the dimension mismatch and the permutation and rotation symmetries. The one true weight edit is `fold()`, which writes a steering vector into the small model's weights.
 
+**Write-up:** the full technical report, with interactive figures, is at <https://nishparadox.com/research/weightmap/>. The experiment log is [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md).
+
 ## Hypothesis
 
 This was inspired by [*Sparks of Weight-Space Programming*](https://rikiyat.github.io/blog/weight-space-programming/) (MIT, Nov 2026), in which a frontier LLM edits small networks' weights directly.

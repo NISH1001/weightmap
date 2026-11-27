@@ -1,0 +1,119 @@
+{
+ "setup": {
+  "large": "Qwen/Qwen2.5-1.5B-Instruct",
+  "k": 32,
+  "cap_tokens": 12000,
+  "grid": [
+   0.001,
+   0.01,
+   0.1,
+   1.0
+  ]
+ },
+ "pairs": [
+  {
+   "small": "Qwen/Qwen2.5-0.5B-Instruct",
+   "n_tokens": 4262,
+   "layers": [
+    {
+     "small_layer": 9,
+     "trained_layer": 10,
+     "random_layer": 0,
+     "trained_best": {
+      "ridge": 0.6514,
+      "rotation": 0.5544
+     },
+     "L_embedding": {
+      "ridge": 0.4192,
+      "rotation": 0.2534
+     },
+     "random_best": {
+      "ridge": 0.3439,
+      "rotation": 0.1638
+     },
+     "S_to_L_trained": {
+      "ridge": 0.5974,
+      "rotation": 0.5026
+     },
+     "shared_part_ridge": 0.2322,
+     "shared_part_rotation": 0.301
+    },
+    {
+     "small_layer": 14,
+     "trained_layer": 19,
+     "random_layer": 0,
+     "trained_best": {
+      "ridge": 0.6405,
+      "rotation": 0.5568
+     },
+     "L_embedding": {
+      "ridge": 0.3464,
+      "rotation": 0.1903
+     },
+     "random_best": {
+      "ridge": 0.2782,
+      "rotation": 0.1143
+     },
+     "S_to_L_trained": {
+      "ridge": 0.5988,
+      "rotation": 0.5028
+     },
+     "shared_part_ridge": 0.2941,
+     "shared_part_rotation": 0.3665
+    }
+   ]
+  },
+  {
+   "small": "HuggingFaceTB/SmolLM2-135M",
+   "n_tokens": 4237,
+   "layers": [
+    {
+     "small_layer": 12,
+     "trained_layer": 4,
+     "random_layer": 0,
+     "trained_best": {
+      "ridge": 0.7265,
+      "rotation": 0.5621
+     },
+     "L_embedding": {
+      "ridge": 0.5942,
+      "rotation": 0.3864
+     },
+     "random_best": {
+      "ridge": 0.488,
+      "rotation": 0.2357
+     },
+     "S_to_L_trained": {
+      "ridge": 0.5397,
+      "rotation": 0.4585
+     },
+     "shared_part_ridge": 0.1323,
+     "shared_part_rotation": 0.1757
+    },
+    {
+     "small_layer": 17,
+     "trained_layer": 8,
+     "random_layer": 0,
+     "trained_best": {
+      "ridge": 0.6643,
+      "rotation": 0.5273
+     },
+     "L_embedding": {
+      "ridge": 0.4888,
+      "rotation": 0.3029
+     },
+     "random_best": {
+      "ridge": 0.4008,
+      "rotation": 0.184
+     },
+     "S_to_L_trained": {
+      "ridge": 0.544,
+      "rotation": 0.4465
+     },
+     "shared_part_ridge": 0.1755,
+     "shared_part_rotation": 0.2244
+    }
+   ]
+  }
+ ]
+}

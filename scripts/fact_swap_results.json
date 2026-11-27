@@ -1,0 +1,1217 @@
+{
+ "setup": {
+  "models": {
+   "qwen1.5b": "Qwen/Qwen2.5-1.5B-Instruct",
+   "qwen0.5b": "Qwen/Qwen2.5-0.5B-Instruct",
+   "smol360m": "HuggingFaceTB/SmolLM2-360M",
+   "smol135m": "HuggingFaceTB/SmolLM2-135M",
+   "gemma270m": "google/gemma-3-270m"
+  },
+  "pairs": [
+   [
+    "qwen1.5b",
+    "qwen0.5b"
+   ],
+   [
+    "qwen0.5b",
+    "smol360m"
+   ],
+   [
+    "smol360m",
+    "smol135m"
+   ],
+   [
+    "qwen1.5b",
+    "smol135m"
+   ],
+   [
+    "qwen1.5b",
+    "gemma270m"
+   ],
+   [
+    "qwen0.5b",
+    "qwen1.5b"
+   ]
+  ],
+  "depths": [
+   0.1,
+   0.2,
+   0.3,
+   0.4,
+   0.5
+  ],
+  "per_relation": 200,
+  "n_facts": 6555
+ },
+ "knows": {
+  "gemma270m": 611,
+  "qwen0.5b": 597,
+  "smol135m": 409,
+  "smol360m": 718,
+  "qwen1.5b": 986
+ },
+ "pairs": {
+  "qwen1.5b->qwen0.5b": {
+   "n_known_both": 489,
+   "n_train": 307,
+   "n_val": 64,
+   "n_test": 117,
+   "by_depth": {
+    "0.1": {
+     "donor_layer": 3,
+     "recipient_layer": 2,
+     "key_r2_test": {
+      "ridge": 0.2541,
+      "rotation": -0.0116,
+      "token_id": 0.2392,
+      "subject_bag": 0.0603
+     },
+     "val": {
+      "self": 0.1406,
+      "ridge": 0.1406,
+      "rotation": 0.0938,
+      "token_id": 0.0938,
+      "subject_bag": 0.1094,
+      "random_rotation": 0.0156,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.1795,
+      "ridge": 0.094,
+      "rotation": 0.0684,
+      "token_id": 0.1111,
+      "subject_bag": 0.0769,
+      "random_rotation": 0.0342,
+      "other_fact": 0.0085
+     }
+    },
+    "0.2": {
+     "donor_layer": 6,
+     "recipient_layer": 5,
+     "key_r2_test": {
+      "ridge": 0.2887,
+      "rotation": -3.8873,
+      "token_id": 0.1379,
+      "subject_bag": 0.0851
+     },
+     "val": {
+      "self": 0.3125,
+      "ridge": 0.2188,
+      "rotation": 0.1562,
+      "token_id": 0.1406,
+      "subject_bag": 0.1719,
+      "random_rotation": 0.0312,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.2991,
+      "ridge": 0.188,
+      "rotation": 0.1538,
+      "token_id": 0.094,
+      "subject_bag": 0.1624,
+      "random_rotation": 0.0598,
+      "other_fact": 0.0085
+     }
+    },
+    "0.3": {
+     "donor_layer": 8,
+     "recipient_layer": 7,
+     "key_r2_test": {
+      "ridge": 0.3644,
+      "rotation": -5.5695,
+      "token_id": 0.1557,
+      "subject_bag": 0.116
+     },
+     "val": {
+      "self": 0.3438,
+      "ridge": 0.2656,
+      "rotation": 0.2188,
+      "token_id": 0.1562,
+      "subject_bag": 0.1562,
+      "random_rotation": 0.0156,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.3333,
+      "ridge": 0.2821,
+      "rotation": 0.1795,
+      "token_id": 0.1111,
+      "subject_bag": 0.1538,
+      "random_rotation": 0.0598,
+      "other_fact": 0.0
+     }
+    },
+    "0.4": {
+     "donor_layer": 11,
+     "recipient_layer": 10,
+     "key_r2_test": {
+      "ridge": 0.4101,
+      "rotation": -12.0612,
+      "token_id": 0.1693,
+      "subject_bag": 0.1528
+     },
+     "val": {
+      "self": 0.3438,
+      "ridge": 0.2812,
+      "rotation": 0.2344,
+      "token_id": 0.1562,
+      "subject_bag": 0.1562,
+      "random_rotation": 0.0,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.3162,
+      "ridge": 0.2735,
+      "rotation": 0.2051,
+      "token_id": 0.1026,
+      "subject_bag": 0.1453,
+      "random_rotation": 0.0342,
+      "other_fact": 0.0085
+     }
+    },
+    "0.5": {
+     "donor_layer": 14,
+     "recipient_layer": 12,
+     "key_r2_test": {
+      "ridge": 0.4257,
+      "rotation": -13.1385,
+      "token_id": 0.1764,
+      "subject_bag": 0.1504
+     },
+     "val": {
+      "self": 0.3281,
+      "ridge": 0.2812,
+      "rotation": 0.2031,
+      "token_id": 0.125,
+      "subject_bag": 0.1562,
+      "random_rotation": 0.0,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.2906,
+      "ridge": 0.2479,
+      "rotation": 0.1795,
+      "token_id": 0.1111,
+      "subject_bag": 0.1709,
+      "random_rotation": 0.0342,
+      "other_fact": 0.0085
+     }
+    }
+   },
+   "test_at_best_val_depth": {
+    "self": {
+     "depth": 0.3,
+     "acc": 0.3333
+    },
+    "ridge": {
+     "depth": 0.4,
+     "acc": 0.2735
+    },
+    "rotation": {
+     "depth": 0.4,
+     "acc": 0.2051
+    },
+    "token_id": {
+     "depth": 0.3,
+     "acc": 0.1111
+    },
+    "subject_bag": {
+     "depth": 0.2,
+     "acc": 0.1624
+    },
+    "random_rotation": {
+     "depth": 0.2,
+     "acc": 0.0598
+    },
+    "other_fact": {
+     "depth": 0.1,
+     "acc": 0.0085
+    }
+   },
+   "share_of_self": {
+    "self": 1.0,
+    "ridge": 0.821,
+    "rotation": 0.615,
+    "token_id": 0.333,
+    "subject_bag": 0.487,
+    "random_rotation": 0.179,
+    "other_fact": 0.026
+   }
+  },
+  "qwen0.5b->smol360m": {
+   "n_known_both": 389,
+   "n_train": 248,
+   "n_val": 50,
+   "n_test": 91,
+   "by_depth": {
+    "0.1": {
+     "donor_layer": 2,
+     "recipient_layer": 3,
+     "key_r2_test": {
+      "ridge": 0.1929,
+      "rotation": -0.2937,
+      "token_id": 0.1307,
+      "subject_bag": 0.0125
+     },
+     "val": {
+      "self": 0.26,
+      "ridge": 0.14,
+      "rotation": 0.12,
+      "token_id": 0.12,
+      "subject_bag": 0.14,
+      "random_rotation": 0.02,
+      "other_fact": 0.04
+     },
+     "test": {
+      "self": 0.2857,
+      "ridge": 0.1429,
+      "rotation": 0.1538,
+      "token_id": 0.0879,
+      "subject_bag": 0.1648,
+      "random_rotation": 0.044,
+      "other_fact": 0.022
+     }
+    },
+    "0.2": {
+     "donor_layer": 5,
+     "recipient_layer": 6,
+     "key_r2_test": {
+      "ridge": 0.1471,
+      "rotation": -0.275,
+      "token_id": 0.0897,
+      "subject_bag": -0.0084
+     },
+     "val": {
+      "self": 0.3,
+      "ridge": 0.28,
+      "rotation": 0.3,
+      "token_id": 0.14,
+      "subject_bag": 0.16,
+      "random_rotation": 0.02,
+      "other_fact": 0.06
+     },
+     "test": {
+      "self": 0.4176,
+      "ridge": 0.3407,
+      "rotation": 0.2967,
+      "token_id": 0.0989,
+      "subject_bag": 0.2418,
+      "random_rotation": 0.022,
+      "other_fact": 0.0
+     }
+    },
+    "0.3": {
+     "donor_layer": 7,
+     "recipient_layer": 10,
+     "key_r2_test": {
+      "ridge": 0.2405,
+      "rotation": -0.117,
+      "token_id": 0.094,
+      "subject_bag": 0.0428
+     },
+     "val": {
+      "self": 0.48,
+      "ridge": 0.36,
+      "rotation": 0.4,
+      "token_id": 0.18,
+      "subject_bag": 0.2,
+      "random_rotation": 0.06,
+      "other_fact": 0.04
+     },
+     "test": {
+      "self": 0.4615,
+      "ridge": 0.3187,
+      "rotation": 0.3077,
+      "token_id": 0.0879,
+      "subject_bag": 0.2198,
+      "random_rotation": 0.044,
+      "other_fact": 0.011
+     }
+    },
+    "0.4": {
+     "donor_layer": 10,
+     "recipient_layer": 13,
+     "key_r2_test": {
+      "ridge": 0.2993,
+      "rotation": 0.0164,
+      "token_id": 0.1186,
+      "subject_bag": 0.0748
+     },
+     "val": {
+      "self": 0.48,
+      "ridge": 0.4,
+      "rotation": 0.36,
+      "token_id": 0.2,
+      "subject_bag": 0.2,
+      "random_rotation": 0.12,
+      "other_fact": 0.04
+     },
+     "test": {
+      "self": 0.4286,
+      "ridge": 0.3626,
+      "rotation": 0.2967,
+      "token_id": 0.1429,
+      "subject_bag": 0.2198,
+      "random_rotation": 0.0659,
+      "other_fact": 0.044
+     }
+    },
+    "0.5": {
+     "donor_layer": 12,
+     "recipient_layer": 16,
+     "key_r2_test": {
+      "ridge": 0.3546,
+      "rotation": 0.0899,
+      "token_id": 0.1255,
+      "subject_bag": 0.0946
+     },
+     "val": {
+      "self": 0.44,
+      "ridge": 0.38,
+      "rotation": 0.38,
+      "token_id": 0.22,
+      "subject_bag": 0.22,
+      "random_rotation": 0.04,
+      "other_fact": 0.04
+     },
+     "test": {
+      "self": 0.4066,
+      "ridge": 0.3516,
+      "rotation": 0.2857,
+      "token_id": 0.1319,
+      "subject_bag": 0.2308,
+      "random_rotation": 0.033,
+      "other_fact": 0.044
+     }
+    }
+   },
+   "test_at_best_val_depth": {
+    "self": {
+     "depth": 0.3,
+     "acc": 0.4615
+    },
+    "ridge": {
+     "depth": 0.4,
+     "acc": 0.3626
+    },
+    "rotation": {
+     "depth": 0.3,
+     "acc": 0.3077
+    },
+    "token_id": {
+     "depth": 0.5,
+     "acc": 0.1319
+    },
+    "subject_bag": {
+     "depth": 0.5,
+     "acc": 0.2308
+    },
+    "random_rotation": {
+     "depth": 0.4,
+     "acc": 0.0659
+    },
+    "other_fact": {
+     "depth": 0.2,
+     "acc": 0.0
+    }
+   },
+   "share_of_self": {
+    "self": 1.0,
+    "ridge": 0.786,
+    "rotation": 0.667,
+    "token_id": 0.286,
+    "subject_bag": 0.5,
+    "random_rotation": 0.143,
+    "other_fact": 0.0
+   }
+  },
+  "smol360m->smol135m": {
+   "n_known_both": 346,
+   "n_train": 219,
+   "n_val": 40,
+   "n_test": 87,
+   "by_depth": {
+    "0.1": {
+     "donor_layer": 3,
+     "recipient_layer": 3,
+     "key_r2_test": {
+      "ridge": 0.2466,
+      "rotation": 0.0208,
+      "token_id": 0.1768,
+      "subject_bag": -0.0538
+     },
+     "val": {
+      "self": 0.15,
+      "ridge": 0.075,
+      "rotation": 0.075,
+      "token_id": 0.075,
+      "subject_bag": 0.075,
+      "random_rotation": 0.025,
+      "other_fact": 0.025
+     },
+     "test": {
+      "self": 0.1839,
+      "ridge": 0.1494,
+      "rotation": 0.092,
+      "token_id": 0.1264,
+      "subject_bag": 0.1034,
+      "random_rotation": 0.046,
+      "other_fact": 0.046
+     }
+    },
+    "0.2": {
+     "donor_layer": 6,
+     "recipient_layer": 6,
+     "key_r2_test": {
+      "ridge": 0.2001,
+      "rotation": -0.0525,
+      "token_id": 0.086,
+      "subject_bag": -0.0318
+     },
+     "val": {
+      "self": 0.3,
+      "ridge": 0.125,
+      "rotation": 0.05,
+      "token_id": 0.05,
+      "subject_bag": 0.025,
+      "random_rotation": 0.05,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.2989,
+      "ridge": 0.1839,
+      "rotation": 0.2069,
+      "token_id": 0.1149,
+      "subject_bag": 0.1379,
+      "random_rotation": 0.046,
+      "other_fact": 0.0575
+     }
+    },
+    "0.3": {
+     "donor_layer": 10,
+     "recipient_layer": 9,
+     "key_r2_test": {
+      "ridge": 0.2886,
+      "rotation": 0.0227,
+      "token_id": 0.1078,
+      "subject_bag": 0.0279
+     },
+     "val": {
+      "self": 0.325,
+      "ridge": 0.175,
+      "rotation": 0.25,
+      "token_id": 0.05,
+      "subject_bag": 0.075,
+      "random_rotation": 0.025,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.2874,
+      "ridge": 0.2069,
+      "rotation": 0.2184,
+      "token_id": 0.1609,
+      "subject_bag": 0.1264,
+      "random_rotation": 0.092,
+      "other_fact": 0.046
+     }
+    },
+    "0.4": {
+     "donor_layer": 13,
+     "recipient_layer": 12,
+     "key_r2_test": {
+      "ridge": -77.0033,
+      "rotation": -2.6448,
+      "token_id": -60.2288,
+      "subject_bag": -69.7054
+     },
+     "val": {
+      "self": 0.35,
+      "ridge": 0.125,
+      "rotation": 0.25,
+      "token_id": 0.075,
+      "subject_bag": 0.05,
+      "random_rotation": 0.075,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.2989,
+      "ridge": 0.1149,
+      "rotation": 0.2184,
+      "token_id": 0.1494,
+      "subject_bag": 0.092,
+      "random_rotation": 0.0805,
+      "other_fact": 0.0575
+     }
+    },
+    "0.5": {
+     "donor_layer": 16,
+     "recipient_layer": 15,
+     "key_r2_test": {
+      "ridge": -56.3881,
+      "rotation": -2.1092,
+      "token_id": -50.7582,
+      "subject_bag": -58.536
+     },
+     "val": {
+      "self": 0.375,
+      "ridge": 0.1,
+      "rotation": 0.175,
+      "token_id": 0.075,
+      "subject_bag": 0.075,
+      "random_rotation": 0.075,
+      "other_fact": 0.025
+     },
+     "test": {
+      "self": 0.2874,
+      "ridge": 0.1379,
+      "rotation": 0.1839,
+      "token_id": 0.1379,
+      "subject_bag": 0.1034,
+      "random_rotation": 0.092,
+      "other_fact": 0.069
+     }
+    }
+   },
+   "test_at_best_val_depth": {
+    "self": {
+     "depth": 0.5,
+     "acc": 0.2874
+    },
+    "ridge": {
+     "depth": 0.3,
+     "acc": 0.2069
+    },
+    "rotation": {
+     "depth": 0.3,
+     "acc": 0.2184
+    },
+    "token_id": {
+     "depth": 0.1,
+     "acc": 0.1264
+    },
+    "subject_bag": {
+     "depth": 0.1,
+     "acc": 0.1034
+    },
+    "random_rotation": {
+     "depth": 0.4,
+     "acc": 0.0805
+    },
+    "other_fact": {
+     "depth": 0.1,
+     "acc": 0.046
+    }
+   },
+   "share_of_self": {
+    "self": 1.0,
+    "ridge": 0.72,
+    "rotation": 0.76,
+    "token_id": 0.44,
+    "subject_bag": 0.36,
+    "random_rotation": 0.28,
+    "other_fact": 0.16
+   }
+  },
+  "qwen1.5b->smol135m": {
+   "n_known_both": 341,
+   "n_train": 214,
+   "n_val": 40,
+   "n_test": 86,
+   "by_depth": {
+    "0.1": {
+     "donor_layer": 3,
+     "recipient_layer": 3,
+     "key_r2_test": {
+      "ridge": 0.2136,
+      "rotation": 0.0564,
+      "token_id": 0.2415,
+      "subject_bag": -0.0474,
+      "ridge_chain": 0.1821,
+      "rotation_chain": -0.0199
+     },
+     "val": {
+      "self": 0.175,
+      "ridge": 0.05,
+      "rotation": 0.075,
+      "token_id": 0.075,
+      "subject_bag": 0.075,
+      "random_rotation": 0.05,
+      "other_fact": 0.025,
+      "ridge_chain": 0.05,
+      "rotation_chain": 0.025
+     },
+     "test": {
+      "self": 0.1512,
+      "ridge": 0.1279,
+      "rotation": 0.1047,
+      "token_id": 0.1163,
+      "subject_bag": 0.0698,
+      "random_rotation": 0.0581,
+      "other_fact": 0.0349,
+      "ridge_chain": 0.093,
+      "rotation_chain": 0.0465
+     }
+    },
+    "0.2": {
+     "donor_layer": 6,
+     "recipient_layer": 6,
+     "key_r2_test": {
+      "ridge": 0.1667,
+      "rotation": -0.0028,
+      "token_id": 0.1644,
+      "subject_bag": -0.0117,
+      "ridge_chain": 0.0204,
+      "rotation_chain": -1111.2326
+     },
+     "val": {
+      "self": 0.3,
+      "ridge": 0.125,
+      "rotation": 0.125,
+      "token_id": 0.025,
+      "subject_bag": 0.075,
+      "random_rotation": 0.05,
+      "other_fact": 0.0,
+      "ridge_chain": 0.025,
+      "rotation_chain": 0.05
+     },
+     "test": {
+      "self": 0.2791,
+      "ridge": 0.1744,
+      "rotation": 0.1395,
+      "token_id": 0.1628,
+      "subject_bag": 0.1279,
+      "random_rotation": 0.093,
+      "other_fact": 0.0581,
+      "ridge_chain": 0.0698,
+      "rotation_chain": 0.0814
+     }
+    },
+    "0.3": {
+     "donor_layer": 8,
+     "recipient_layer": 9,
+     "key_r2_test": {
+      "ridge": 0.2691,
+      "rotation": -1.7173,
+      "token_id": 0.1802,
+      "subject_bag": 0.0621,
+      "ridge_chain": 0.1727,
+      "rotation_chain": 0.1116
+     },
+     "val": {
+      "self": 0.325,
+      "ridge": 0.225,
+      "rotation": 0.25,
+      "token_id": 0.025,
+      "subject_bag": 0.05,
+      "random_rotation": 0.125,
+      "other_fact": 0.0,
+      "ridge_chain": 0.1,
+      "rotation_chain": 0.175
+     },
+     "test": {
+      "self": 0.2907,
+      "ridge": 0.2209,
+      "rotation": 0.186,
+      "token_id": 0.1628,
+      "subject_bag": 0.1395,
+      "random_rotation": 0.1047,
+      "other_fact": 0.0465,
+      "ridge_chain": 0.1279,
+      "rotation_chain": 0.1395
+     }
+    },
+    "0.4": {
+     "donor_layer": 11,
+     "recipient_layer": 12,
+     "key_r2_test": {
+      "ridge": -75.2839,
+      "rotation": -2.4436,
+      "token_id": -30.2685,
+      "subject_bag": -69.0227,
+      "ridge_chain": -3.5123,
+      "rotation_chain": -14295.3082
+     },
+     "val": {
+      "self": 0.375,
+      "ridge": 0.225,
+      "rotation": 0.35,
+      "token_id": 0.125,
+      "subject_bag": 0.075,
+      "random_rotation": 0.075,
+      "other_fact": 0.025,
+      "ridge_chain": 0.15,
+      "rotation_chain": 0.1
+     },
+     "test": {
+      "self": 0.3023,
+      "ridge": 0.186,
+      "rotation": 0.2093,
+      "token_id": 0.1395,
+      "subject_bag": 0.1395,
+      "random_rotation": 0.1047,
+      "other_fact": 0.0465,
+      "ridge_chain": 0.1163,
+      "rotation_chain": 0.0698
+     }
+    },
+    "0.5": {
+     "donor_layer": 14,
+     "recipient_layer": 15,
+     "key_r2_test": {
+      "ridge": -76.3329,
+      "rotation": -2.1357,
+      "token_id": -25.6258,
+      "subject_bag": -58.2973,
+      "ridge_chain": -2.3957,
+      "rotation_chain": -1.0274
+     },
+     "val": {
+      "self": 0.375,
+      "ridge": 0.225,
+      "rotation": 0.2,
+      "token_id": 0.1,
+      "subject_bag": 0.1,
+      "random_rotation": 0.125,
+      "other_fact": 0.0,
+      "ridge_chain": 0.15,
+      "rotation_chain": 0.225
+     },
+     "test": {
+      "self": 0.3256,
+      "ridge": 0.1512,
+      "rotation": 0.2093,
+      "token_id": 0.1512,
+      "subject_bag": 0.186,
+      "random_rotation": 0.1163,
+      "other_fact": 0.0465,
+      "ridge_chain": 0.1279,
+      "rotation_chain": 0.1628
+     }
+    }
+   },
+   "test_at_best_val_depth": {
+    "self": {
+     "depth": 0.4,
+     "acc": 0.3023
+    },
+    "ridge": {
+     "depth": 0.3,
+     "acc": 0.2209
+    },
+    "rotation": {
+     "depth": 0.4,
+     "acc": 0.2093
+    },
+    "token_id": {
+     "depth": 0.4,
+     "acc": 0.1395
+    },
+    "subject_bag": {
+     "depth": 0.5,
+     "acc": 0.186
+    },
+    "random_rotation": {
+     "depth": 0.3,
+     "acc": 0.1047
+    },
+    "other_fact": {
+     "depth": 0.1,
+     "acc": 0.0349
+    },
+    "ridge_chain": {
+     "depth": 0.4,
+     "acc": 0.1163
+    },
+    "rotation_chain": {
+     "depth": 0.5,
+     "acc": 0.1628
+    }
+   },
+   "share_of_self": {
+    "self": 1.0,
+    "ridge": 0.731,
+    "rotation": 0.692,
+    "token_id": 0.461,
+    "subject_bag": 0.615,
+    "random_rotation": 0.346,
+    "other_fact": 0.115,
+    "ridge_chain": 0.385,
+    "rotation_chain": 0.539
+   }
+  },
+  "qwen1.5b->gemma270m": {
+   "n_known_both": 481,
+   "n_train": 296,
+   "n_val": 59,
+   "n_test": 126,
+   "by_depth": {
+    "0.1": {
+     "donor_layer": 3,
+     "recipient_layer": 2,
+     "key_r2_test": {
+      "ridge": 0.4399,
+      "rotation": 0.0482,
+      "token_id": 0.3665,
+      "subject_bag": 0.2952
+     },
+     "val": {
+      "self": 0.2203,
+      "ridge": 0.0508,
+      "rotation": 0.0339,
+      "token_id": 0.0508,
+      "subject_bag": 0.0339,
+      "random_rotation": 0.0,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.1905,
+      "ridge": 0.0714,
+      "rotation": 0.0476,
+      "token_id": 0.0476,
+      "subject_bag": 0.0556,
+      "random_rotation": 0.0079,
+      "other_fact": 0.0
+     }
+    },
+    "0.2": {
+     "donor_layer": 6,
+     "recipient_layer": 4,
+     "key_r2_test": {
+      "ridge": 0.3265,
+      "rotation": 0.0635,
+      "token_id": 0.228,
+      "subject_bag": 0.1514
+     },
+     "val": {
+      "self": 0.3051,
+      "ridge": 0.1356,
+      "rotation": 0.0339,
+      "token_id": 0.1017,
+      "subject_bag": 0.0847,
+      "random_rotation": 0.0,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.246,
+      "ridge": 0.1032,
+      "rotation": 0.0714,
+      "token_id": 0.0556,
+      "subject_bag": 0.0635,
+      "random_rotation": 0.0159,
+      "other_fact": 0.0
+     }
+    },
+    "0.3": {
+     "donor_layer": 8,
+     "recipient_layer": 5,
+     "key_r2_test": {
+      "ridge": 0.2805,
+      "rotation": 0.0672,
+      "token_id": 0.1471,
+      "subject_bag": 0.0672
+     },
+     "val": {
+      "self": 0.2712,
+      "ridge": 0.2034,
+      "rotation": 0.0678,
+      "token_id": 0.0847,
+      "subject_bag": 0.0678,
+      "random_rotation": 0.0339,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.3016,
+      "ridge": 0.1429,
+      "rotation": 0.1111,
+      "token_id": 0.0556,
+      "subject_bag": 0.0714,
+      "random_rotation": 0.0238,
+      "other_fact": 0.0
+     }
+    },
+    "0.4": {
+     "donor_layer": 11,
+     "recipient_layer": 7,
+     "key_r2_test": {
+      "ridge": 0.3232,
+      "rotation": 0.0787,
+      "token_id": -0.0055,
+      "subject_bag": 0.0288
+     },
+     "val": {
+      "self": 0.3051,
+      "ridge": 0.3051,
+      "rotation": 0.1017,
+      "token_id": 0.1186,
+      "subject_bag": 0.1356,
+      "random_rotation": 0.0508,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.254,
+      "ridge": 0.1746,
+      "rotation": 0.0952,
+      "token_id": 0.0635,
+      "subject_bag": 0.0635,
+      "random_rotation": 0.0159,
+      "other_fact": 0.0
+     }
+    },
+    "0.5": {
+     "donor_layer": 14,
+     "recipient_layer": 9,
+     "key_r2_test": {
+      "ridge": 0.3601,
+      "rotation": -4.2717,
+      "token_id": 0.0506,
+      "subject_bag": 0.088
+     },
+     "val": {
+      "self": 0.2373,
+      "ridge": 0.2373,
+      "rotation": 0.0508,
+      "token_id": 0.1017,
+      "subject_bag": 0.1186,
+      "random_rotation": 0.0339,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.2302,
+      "ridge": 0.1429,
+      "rotation": 0.0476,
+      "token_id": 0.0556,
+      "subject_bag": 0.0556,
+      "random_rotation": 0.0079,
+      "other_fact": 0.0
+     }
+    }
+   },
+   "test_at_best_val_depth": {
+    "self": {
+     "depth": 0.2,
+     "acc": 0.246
+    },
+    "ridge": {
+     "depth": 0.4,
+     "acc": 0.1746
+    },
+    "rotation": {
+     "depth": 0.4,
+     "acc": 0.0952
+    },
+    "token_id": {
+     "depth": 0.4,
+     "acc": 0.0635
+    },
+    "subject_bag": {
+     "depth": 0.4,
+     "acc": 0.0635
+    },
+    "random_rotation": {
+     "depth": 0.4,
+     "acc": 0.0159
+    },
+    "other_fact": {
+     "depth": 0.1,
+     "acc": 0.0
+    }
+   },
+   "share_of_self": {
+    "self": 1.0,
+    "ridge": 0.71,
+    "rotation": 0.387,
+    "token_id": 0.258,
+    "subject_bag": 0.258,
+    "random_rotation": 0.065,
+    "other_fact": 0.0
+   }
+  },
+  "qwen0.5b->qwen1.5b": {
+   "n_known_both": 489,
+   "n_train": 307,
+   "n_val": 65,
+   "n_test": 117,
+   "by_depth": {
+    "0.1": {
+     "donor_layer": 2,
+     "recipient_layer": 3,
+     "key_r2_test": {
+      "ridge": 0.1864,
+      "rotation": -0.2459,
+      "token_id": 0.113,
+      "subject_bag": 0.0375
+     },
+     "val": {
+      "self": 0.3385,
+      "ridge": 0.0923,
+      "rotation": 0.0308,
+      "token_id": 0.0923,
+      "subject_bag": 0.0462,
+      "random_rotation": 0.0154,
+      "other_fact": 0.0154
+     },
+     "test": {
+      "self": 0.3248,
+      "ridge": 0.1197,
+      "rotation": 0.1197,
+      "token_id": 0.0855,
+      "subject_bag": 0.1453,
+      "random_rotation": 0.0427,
+      "other_fact": 0.0
+     }
+    },
+    "0.2": {
+     "donor_layer": 5,
+     "recipient_layer": 6,
+     "key_r2_test": {
+      "ridge": 0.1509,
+      "rotation": -0.2139,
+      "token_id": 0.0261,
+      "subject_bag": 0.0122
+     },
+     "val": {
+      "self": 0.4154,
+      "ridge": 0.2462,
+      "rotation": 0.2769,
+      "token_id": 0.0769,
+      "subject_bag": 0.0923,
+      "random_rotation": 0.0154,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.5043,
+      "ridge": 0.3077,
+      "rotation": 0.2821,
+      "token_id": 0.1111,
+      "subject_bag": 0.1795,
+      "random_rotation": 0.0427,
+      "other_fact": 0.0085
+     }
+    },
+    "0.3": {
+     "donor_layer": 7,
+     "recipient_layer": 8,
+     "key_r2_test": {
+      "ridge": 0.2563,
+      "rotation": -0.0441,
+      "token_id": 0.0528,
+      "subject_bag": 0.0506
+     },
+     "val": {
+      "self": 0.4769,
+      "ridge": 0.3385,
+      "rotation": 0.3692,
+      "token_id": 0.1077,
+      "subject_bag": 0.1077,
+      "random_rotation": 0.0154,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.5043,
+      "ridge": 0.3162,
+      "rotation": 0.2991,
+      "token_id": 0.1026,
+      "subject_bag": 0.265,
+      "random_rotation": 0.0684,
+      "other_fact": 0.0171
+     }
+    },
+    "0.4": {
+     "donor_layer": 10,
+     "recipient_layer": 11,
+     "key_r2_test": {
+      "ridge": 0.325,
+      "rotation": -3.0716,
+      "token_id": 0.0712,
+      "subject_bag": 0.0781
+     },
+     "val": {
+      "self": 0.4769,
+      "ridge": 0.3385,
+      "rotation": 0.3538,
+      "token_id": 0.0769,
+      "subject_bag": 0.1692,
+      "random_rotation": 0.0154,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.4786,
+      "ridge": 0.3248,
+      "rotation": 0.2735,
+      "token_id": 0.1453,
+      "subject_bag": 0.2564,
+      "random_rotation": 0.0769,
+      "other_fact": 0.0171
+     }
+    },
+    "0.5": {
+     "donor_layer": 12,
+     "recipient_layer": 14,
+     "key_r2_test": {
+      "ridge": 0.3599,
+      "rotation": -2.3008,
+      "token_id": 0.0908,
+      "subject_bag": 0.1038
+     },
+     "val": {
+      "self": 0.4462,
+      "ridge": 0.3538,
+      "rotation": 0.3385,
+      "token_id": 0.0769,
+      "subject_bag": 0.1538,
+      "random_rotation": 0.0615,
+      "other_fact": 0.0
+     },
+     "test": {
+      "self": 0.4103,
+      "ridge": 0.2821,
+      "rotation": 0.2735,
+      "token_id": 0.1111,
+      "subject_bag": 0.2137,
+      "random_rotation": 0.0769,
+      "other_fact": 0.0085
+     }
+    }
+   },
+   "test_at_best_val_depth": {
+    "self": {
+     "depth": 0.3,
+     "acc": 0.5043
+    },
+    "ridge": {
+     "depth": 0.5,
+     "acc": 0.2821
+    },
+    "rotation": {
+     "depth": 0.3,
+     "acc": 0.2991
+    },
+    "token_id": {
+     "depth": 0.3,
+     "acc": 0.1026
+    },
+    "subject_bag": {
+     "depth": 0.4,
+     "acc": 0.2564
+    },
+    "random_rotation": {
+     "depth": 0.5,
+     "acc": 0.0769
+    },
+    "other_fact": {
+     "depth": 0.1,
+     "acc": 0.0
+    }
+   },
+   "share_of_self": {
+    "self": 1.0,
+    "ridge": 0.559,
+    "rotation": 0.593,
+    "token_id": 0.203,
+    "subject_bag": 0.508,
+    "random_rotation": 0.152,
+    "other_fact": 0.0
+   }
+  }
+ }
+}

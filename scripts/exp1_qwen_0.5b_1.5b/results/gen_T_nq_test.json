@@ -1,0 +1,2002 @@
+[
+ {
+  "id": 0,
+  "out": "The death penalty was reinstated in Oregon in 2017.",
+  "ok": false
+ },
+ {
+  "id": 1,
+  "out": "The Dragon Ball Super tournament of power started on July 15, 2019, in Tokyo, Japan",
+  "ok": false
+ },
+ {
+  "id": 2,
+  "out": "The answer to this question is: \"1995\"",
+  "ok": false
+ },
+ {
+  "id": 3,
+  "out": "The word for clarified butter in the Balkans and Middle East is \"kavala.\"",
+  "ok": false
+ },
+ {
+  "id": 4,
+  "out": "The Ice Queen in Chronicles of Narnia is played by the character of Ariel.",
+  "ok": false
+ },
+ {
+  "id": 5,
+  "out": "The answer to this question is \"12\" (12 seasons).",
+  "ok": false
+ },
+ {
+  "id": 6,
+  "out": "In psychology, there are two main types of research methods used to study human behavior and mental health. These methods are qualitative",
+  "ok": true
+ },
+ {
+  "id": 7,
+  "out": "The C stands for Chrysler 300. It is a type of car model that was introduced in 1",
+  "ok": false
+ },
+ {
+  "id": 8,
+  "out": "The land rover defender was first built in 1969 by the American company, Land Rover Motor Manufacturing Company.",
+  "ok": false
+ },
+ {
+  "id": 9,
+  "out": "The question is asking for a short factual answer.",
+  "ok": false
+ },
+ {
+  "id": 10,
+  "out": "The dome of the Rock Dome was completed in 1995.",
+  "ok": false
+ },
+ {
+  "id": 11,
+  "out": "The United States did not win its independence from Great Britain.",
+  "ok": true
+ },
+ {
+  "id": 12,
+  "out": "The fingerprint classification still used today in Europe and the United States is based on the National Institute of Standards and Technology (N",
+  "ok": false
+ },
+ {
+  "id": 13,
+  "out": "The first case of Alzheimer's disease was diagnosed in 1906 by German neurologist Paul von Eberhard.",
+  "ok": false
+ },
+ {
+  "id": 14,
+  "out": "The Super Bowl is a two-day event held on December 23rd, 24th, and ",
+  "ok": false
+ },
+ {
+  "id": 15,
+  "out": "The correct spelling of \"corey\" for a boy is \"coward.\"",
+  "ok": true
+ },
+ {
+  "id": 16,
+  "out": "The number of NFL teams has fluctuated over the years, but the most notable one is the 2010",
+  "ok": false
+ },
+ {
+  "id": 17,
+  "out": "The Great Pyramid of Giza, built by Pharaoh Khufu in 2580 BC, is estimated to have",
+  "ok": false
+ },
+ {
+  "id": 18,
+  "out": "The Grand Prix of Formula One has been won by:\n\n- Fernando Alonso (2010)",
+  "ok": false
+ },
+ {
+  "id": 19,
+  "out": "The scientific name for the calf muscle is \"muscle fiber.\"",
+  "ok": false
+ },
+ {
+  "id": 20,
+  "out": "The season 3 of the Detour film is currently being filmed in the United States.",
+  "ok": false
+ },
+ {
+  "id": 21,
+  "out": "The answer to this question is:\n\nThe answer to this question is:\n\nThe answer to this question is",
+  "ok": false
+ },
+ {
+  "id": 22,
+  "out": "There are 12 walker Texas Ranger seasons.",
+  "ok": false
+ },
+ {
+  "id": 23,
+  "out": "The minimum size of a UDP datagram is 128 bytes. This is because UDP is a low-level",
+  "ok": true
+ },
+ {
+  "id": 24,
+  "out": "Mission Nuestra Senora de la Soledad was founded by the Rev. Jos\u00e9 de la Cruz in 1",
+  "ok": false
+ },
+ {
+  "id": 25,
+  "out": "The name of India Pakistan border is \"India-Pakistan\".",
+  "ok": false
+ },
+ {
+  "id": 26,
+  "out": "The new pete's dragon was filmed in the United States.",
+  "ok": false
+ },
+ {
+  "id": 27,
+  "out": "The last episode of the Flash was released on September 1, 2011, in the United States.",
+  "ok": false
+ },
+ {
+  "id": 28,
+  "out": "The winner of Bigg Boss Kannada Season is none other than the legendary and legendary actor, Kannan",
+  "ok": false
+ },
+ {
+  "id": 29,
+  "out": "The founder of psychoanalysis is Sigmund Freud. Freud was a German psychiatrist who developed the psychoanalytic theory in the early ",
+  "ok": true
+ },
+ {
+  "id": 30,
+  "out": "A good that can be used in place of another good is a phrase that is used to express a positive or desirable quality",
+  "ok": false
+ },
+ {
+  "id": 31,
+  "out": "The sharks in San Jose, California, play a significant role in the city's entertainment scene. They are a popular attraction",
+  "ok": false
+ },
+ {
+  "id": 32,
+  "out": "The first Arctic Research Station was set up in 2008 in the Arctic region of Canada.",
+  "ok": false
+ },
+ {
+  "id": 33,
+  "out": "The highest level of fluoride stored in the teeth is in the tooth enamel, which is the outermost layer of the tooth.",
+  "ok": false
+ },
+ {
+  "id": 34,
+  "out": "Season 2 of just add magic is released in 2022.",
+  "ok": false
+ },
+ {
+  "id": 35,
+  "out": "The last time the Denver Nuggets made the playoffs was in 2010.",
+  "ok": false
+ },
+ {
+  "id": 36,
+  "out": "The Big Bang Theory season 11 has 11 episodes.",
+  "ok": false
+ },
+ {
+  "id": 37,
+  "out": "The voice of Nelson on the Simpsons is actually the voice of Homer Simpson.",
+  "ok": false
+ },
+ {
+  "id": 38,
+  "out": "The original singer of \"I Write Sins Not Tragedies\" is not the original singer of \"I Write Sins",
+  "ok": false
+ },
+ {
+  "id": 39,
+  "out": "Season 3 of Grace and Frankie is being released on September 15, 2023.",
+  "ok": false
+ },
+ {
+  "id": 40,
+  "out": "The king cobra, also known as the saltwater crocodile, can produce up to 100 times its own body",
+  "ok": false
+ },
+ {
+  "id": 41,
+  "out": "The winner of the 2017 Grand National was the American football team, the New York Giants.",
+  "ok": false
+ },
+ {
+  "id": 42,
+  "out": "The last time Bayern Munich won champions league was in 2010.",
+  "ok": false
+ },
+ {
+  "id": 43,
+  "out": "The answer to this question is: President Barack Obama.",
+  "ok": false
+ },
+ {
+  "id": 44,
+  "out": "The question is asking for a factual answer, so I will provide a short factual answer.\n\nThe answer is that",
+  "ok": false
+ },
+ {
+  "id": 45,
+  "out": "The last time the Philadelphia Eagles won the Super Bowl was in 1970.",
+  "ok": false
+ },
+ {
+  "id": 46,
+  "out": "The International Space Station (ISS) was launched into space on January 24, 2000, aboard",
+  "ok": false
+ },
+ {
+  "id": 47,
+  "out": "The first Vice President of India, who became the President, was Dr. Manmohan Singh.",
+  "ok": false
+ },
+ {
+  "id": 48,
+  "out": "The form of the Mozart Symphony No. 40 is a complex and intricate piece that consists of several distinct",
+  "ok": false
+ },
+ {
+  "id": 49,
+  "out": "The value of style guides and style sheet lies in their role in guiding the development and application of a document's style,",
+  "ok": false
+ },
+ {
+  "id": 50,
+  "out": "The last mission impossible movie is \"The Last Man\" by Steven Spielberg.",
+  "ok": false
+ },
+ {
+  "id": 51,
+  "out": "Ibuprofen, also known as Advil, was originally available over the counter in the United States in 19",
+  "ok": false
+ },
+ {
+  "id": 52,
+  "out": "The name of the hyena in lion king is Thylacinus cynocephalus.",
+  "ok": false
+ },
+ {
+  "id": 53,
+  "out": "The answer to this question is: \"Lord have mercy on the working man.\"",
+  "ok": false
+ },
+ {
+  "id": 54,
+  "out": "The hero golf challenge is being played in the United States, specifically in the state of New York.",
+  "ok": false
+ },
+ {
+  "id": 55,
+  "out": "The answer to this question is: \"Who wrote the novel \"The Adventures of Papa Got a New Bag\" by",
+  "ok": false
+ },
+ {
+  "id": 56,
+  "out": "Rory and Paris are attending college in the United States.",
+  "ok": false
+ },
+ {
+  "id": 57,
+  "out": "The answer to this question is: The longest life span of any animal is the elephant.",
+  "ok": false
+ },
+ {
+  "id": 58,
+  "out": "The Los Angeles Dodgers are scheduled to open their stadium at Hollywood Park on July 15, 202",
+  "ok": false
+ },
+ {
+  "id": 59,
+  "out": "Dylan's father in Bates Motel is a man named John Bateman.",
+  "ok": false
+ },
+ {
+  "id": 60,
+  "out": "The original singer of the song \"Fool\" is not the original singer of the song \"Fool.\" The original",
+  "ok": false
+ },
+ {
+  "id": 61,
+  "out": "The Great Outdoor Movie is a 2012 American film directed by John Malkovich and starring Robert De N",
+  "ok": false
+ },
+ {
+  "id": 62,
+  "out": "Yes, the movie is called \"The Last Jedi.\" It's directed by jay jay devgan and starring",
+  "ok": false
+ },
+ {
+  "id": 63,
+  "out": "Who sings \"I Want to Rock and Roll\"?",
+  "ok": false
+ },
+ {
+  "id": 64,
+  "out": "A subcutaneous injection is made in the skin by injecting a medication directly into the subcutaneous tissue, which is the layer",
+  "ok": false
+ },
+ {
+  "id": 65,
+  "out": "The women's basketball team that won the NCAA Women's Basketball Championship in 2018 was",
+  "ok": false
+ },
+ {
+  "id": 66,
+  "out": "The last time Mount Etna erupted was in 1979.",
+  "ok": false
+ },
+ {
+  "id": 67,
+  "out": "The last name \"Edwards\" comes from the English surname \"Edwards,\" which is a variant of the Latin \"",
+  "ok": false
+ },
+ {
+  "id": 68,
+  "out": "The Astros play for the National League in the National League East.",
+  "ok": false
+ },
+ {
+  "id": 69,
+  "out": "Zoey.",
+  "ok": false
+ },
+ {
+  "id": 70,
+  "out": "In the Texas Legislature, the House and Senate have separate chambers. The House of Representatives is the lower chamber, and the",
+  "ok": false
+ },
+ {
+  "id": 71,
+  "out": "Cooling water through the condenser is a common practice in water treatment plants, particularly in industrial applications where high temperatures are required",
+  "ok": false
+ },
+ {
+  "id": 72,
+  "out": "The British model who won the top model of 2016 was Serena Williams. She was the youngest",
+  "ok": false
+ },
+ {
+  "id": 73,
+  "out": "Puss in Boots was a fictional character created by the author of the 1960s sitcom \"",
+  "ok": false
+ },
+ {
+  "id": 74,
+  "out": "The real name of Saudi Arabia is King Abdullah II.",
+  "ok": false
+ },
+ {
+  "id": 75,
+  "out": "The Pilgrims were the Pilgrims who arrived in the Mayflower, a ship that carried them to the port of Plymouth, Massachusetts",
+  "ok": false
+ },
+ {
+  "id": 76,
+  "out": "The name of the protease which is released in the stomach is pepsinogen.",
+  "ok": true
+ },
+ {
+  "id": 77,
+  "out": "The book inside out and back again is a classic children's storybook. It is a children's book that tells the",
+  "ok": false
+ },
+ {
+  "id": 78,
+  "out": "symbolic interactionism is the basis for which theoretical model?",
+  "ok": false
+ },
+ {
+  "id": 79,
+  "out": "Converting stereo signal to mono signal is called.",
+  "ok": false
+ },
+ {
+  "id": 80,
+  "out": "Rachel has had her baby on friends.",
+  "ok": false
+ },
+ {
+  "id": 81,
+  "out": "The length and direction of a straight line between two locations or positions is a fundamental concept in geometry. It is defined as",
+  "ok": false
+ },
+ {
+  "id": 82,
+  "out": "Pineapples are native to the tropical regions of Central and South America, specifically in the islands of the Pacific Ocean.",
+  "ok": false
+ },
+ {
+  "id": 83,
+  "out": "The giant redwoods are found in the state of California.",
+  "ok": false
+ },
+ {
+  "id": 84,
+  "out": "The answer to this question is: \"The author of \"The Burning of the Whispering Woods\" by John Green",
+  "ok": false
+ },
+ {
+  "id": 85,
+  "out": "The creature on Jeepers Creepers 3 was played by the actor Michael B. Jordan.",
+  "ok": false
+ },
+ {
+  "id": 86,
+  "out": "The emblematic rhythm of the Dominican Republic is a distinctive and colorful pattern of interlocking leaves, flowers, and vines that is",
+  "ok": false
+ },
+ {
+  "id": 87,
+  "out": "The song \"Who's singing theme song for license to kill?\" is a classic example of a song that has been referenced",
+  "ok": false
+ },
+ {
+  "id": 88,
+  "out": "The answer to this question is:\n\nThe answer is:\n\nThe answer is:\n\nThe answer is",
+  "ok": false
+ },
+ {
+  "id": 89,
+  "out": "The NBA has a long history of having the most double doubles in a season. The record for the most doubles in",
+  "ok": false
+ },
+ {
+  "id": 90,
+  "out": "The channel that comes on regular TV on Thursday Night Football is \"The Show.\"",
+  "ok": false
+ },
+ {
+  "id": 91,
+  "out": "The TV show \"Even Stevens\" was created by the same actor who starred in the original \"Even Stevens\" series",
+  "ok": false
+ },
+ {
+  "id": 92,
+  "out": "The 2018 Winter Olympics are being hosted by the International Olympic Committee (IOC) in Sochi,",
+  "ok": false
+ },
+ {
+  "id": 93,
+  "out": "The world's tallest jain statue is located in the state of jharkhand in india.",
+  "ok": false
+ },
+ {
+  "id": 94,
+  "out": "The first rover to land on Mars was the Perseverance rover, launched in 2021 by NASA and the",
+  "ok": false
+ },
+ {
+  "id": 95,
+  "out": "Anne, the main character in the movie \"Anne with an E.\"",
+  "ok": false
+ },
+ {
+  "id": 96,
+  "out": "The 5 prohibitions of Yom Kippur are:\n\n1. **Prayer**: The 5 prohibitions of Yom",
+  "ok": false
+ },
+ {
+  "id": 97,
+  "out": "The whip is a tool used in the legislative process to control the flow of legislation. It is a long, flexible rod",
+  "ok": false
+ },
+ {
+  "id": 98,
+  "out": "The water from the California aqueduct comes from the San Francisco Bay, which is fed by the Sanitary Canal and the San",
+  "ok": false
+ },
+ {
+  "id": 99,
+  "out": "The summer Olympics were held in Tokyo, Japan, from July 14 to July 20, 20",
+  "ok": false
+ },
+ {
+  "id": 100,
+  "out": "The first pair of yeezys came out in 1995.",
+  "ok": false
+ },
+ {
+  "id": 101,
+  "out": "The character of \"Violet\" played by the actress, Olivia Newton-John, in the Netflix series \"The V",
+  "ok": false
+ },
+ {
+  "id": 102,
+  "out": "The cardiac and vasomotor centers are located in the heart, specifically in the right atrium and right ventricle. The",
+  "ok": false
+ },
+ {
+  "id": 103,
+  "out": "The young man in my family's name is Major Molineux.",
+  "ok": false
+ },
+ {
+  "id": 104,
+  "out": "The Beatles sold the most records, which is a classic example of a relative statistic. However, the answer is not",
+  "ok": true
+ },
+ {
+  "id": 105,
+  "out": "The red river in Louisiana originates in the state of Louisiana, which is located in the southeastern United States. It begins in",
+  "ok": false
+ },
+ {
+  "id": 106,
+  "out": "Hannibal Lecter.",
+  "ok": false
+ },
+ {
+  "id": 107,
+  "out": "The song \"Who Sings in Everybody Dies in Their nightmares?\" is a classic example of a song that is both",
+  "ok": false
+ },
+ {
+  "id": 108,
+  "out": "The last time the New York Giants won the Super Bowl was on July 23, 2011",
+  "ok": true
+ },
+ {
+  "id": 109,
+  "out": "The season 6 of American Horror Story is known as \"The Night of the Living Dead.\"",
+  "ok": false
+ },
+ {
+  "id": 110,
+  "out": "The character of Big Mama is a popular and beloved character in the movie \"Big Momma's House.\" She is",
+  "ok": false
+ },
+ {
+  "id": 111,
+  "out": "The blood vessels that supply the retinal cells lie in the choroid plexus, a small pouch of tissue located in the",
+  "ok": false
+ },
+ {
+  "id": 112,
+  "out": "The oldest brother in 7th heaven is not a character in the movie, but rather a fictional character named \"The",
+  "ok": false
+ },
+ {
+  "id": 113,
+  "out": "The Mona Lisa was stolen from the Louvre Museum in Paris, France, in 1911.",
+  "ok": false
+ },
+ {
+  "id": 114,
+  "out": "The song \"Far From the Home\" by the American singer-songwriter, Far From the Home, is a classic",
+  "ok": false
+ },
+ {
+  "id": 115,
+  "out": "The new coat of arms was unveiled on 27 April 2000 by the British monarch, Queen Elizabeth",
+  "ok": false
+ },
+ {
+  "id": 116,
+  "out": "Final Four is being held in the United States on May 15th, 2023.",
+  "ok": false
+ },
+ {
+  "id": 117,
+  "out": "The cones in the eye are located in the retina, which is the light-sensitive tissue at the back of the eye",
+  "ok": true
+ },
+ {
+  "id": 118,
+  "out": "The word \"bird\" was first used in the 16th century by Italian explorer Giovanni Spagnoletti,",
+  "ok": false
+ },
+ {
+  "id": 119,
+  "out": "Forests are a vital component of human life, providing numerous benefits to both humans and the environment. They are a source",
+  "ok": false
+ },
+ {
+  "id": 120,
+  "out": "The last time Scotland won the Calcutta Cup was in 1998.",
+  "ok": false
+ },
+ {
+  "id": 121,
+  "out": "When do love and hip hop new york come back on?",
+  "ok": false
+ },
+ {
+  "id": 122,
+  "out": "The author of \"How Do You Do It by Gerry and the Pacemakers\" is a fictional character named \"",
+  "ok": false
+ },
+ {
+  "id": 123,
+  "out": "The series of unfortunate events published is a fictional story that is based on a real-life event. It is a fictional",
+  "ok": false
+ },
+ {
+  "id": 124,
+  "out": "The last time the military drafted was in 1995.",
+  "ok": false
+ },
+ {
+  "id": 125,
+  "out": "The term limits for the House of Representatives and the Senate are set by the U.S. Congress. The House of",
+  "ok": false
+ },
+ {
+  "id": 126,
+  "out": "The name \"Orozco\" originates from the Spanish word \"Oro,\" which means \"gold\" or \"",
+  "ok": false
+ },
+ {
+  "id": 127,
+  "out": "The next scandal episode is scheduled to air on the \"The Daily Show\" on October 15th, 2",
+  "ok": false
+ },
+ {
+  "id": 128,
+  "out": "We've been celebrating Pi Day for over 150 years, but the exact date is not known. Pi Day",
+  "ok": false
+ },
+ {
+  "id": 129,
+  "out": "The baby elephants in the book are named \"Kalimba\" and are described as \"small and gentle\" and",
+  "ok": false
+ },
+ {
+  "id": 130,
+  "out": "Stephanie's mom is a beautiful woman named Sarah.",
+  "ok": false
+ },
+ {
+  "id": 131,
+  "out": "The Canadian Pacific Railway (CPR) was officially started on July 1, 1885, and finished",
+  "ok": false
+ },
+ {
+  "id": 132,
+  "out": "linkin park released one more light in 2016.",
+  "ok": false
+ },
+ {
+  "id": 133,
+  "out": "The Rio Grande flows through New York City and New York Island, separating the Bronx from Manhattan.",
+  "ok": false
+ },
+ {
+  "id": 134,
+  "out": "The first continent was Antarctica.",
+  "ok": false
+ },
+ {
+  "id": 135,
+  "out": "The witch and the hundred knight.",
+  "ok": false
+ },
+ {
+  "id": 136,
+  "out": "Dr. Sloan is played by John Travolta.",
+  "ok": false
+ },
+ {
+  "id": 137,
+  "out": "The character of \"Cruella de Villi\" is a fictional character from the 1960s film",
+  "ok": false
+ },
+ {
+  "id": 138,
+  "out": "The new dumping ground is expected to be in the state of New York in 2017.",
+  "ok": false
+ },
+ {
+  "id": 139,
+  "out": "Cricket was first played in 1872, and it was played in 6 balls. The first",
+  "ok": false
+ },
+ {
+  "id": 140,
+  "out": "The question is asking for a short factual answer. The answer is: \"Colin.\"",
+  "ok": false
+ },
+ {
+  "id": 141,
+  "out": "Who sang \"Who's singing it going to take a miracle?\"",
+  "ok": false
+ },
+ {
+  "id": 142,
+  "out": "The story of zinc being added to pennies is a fascinating one. The zinc was first added to pennies in the",
+  "ok": false
+ },
+ {
+  "id": 143,
+  "out": "The \"Gold Dome\" in Jerusalem is a large, ornate structure that is believed to have been built by the ancient Jews",
+  "ok": false
+ },
+ {
+  "id": 144,
+  "out": "Flash is back on season 4 episode 17.",
+  "ok": false
+ },
+ {
+  "id": 145,
+  "out": "The word \"SS\" stands for \"Ship of the Line.\" It refers to a type of sailing ship that is",
+  "ok": false
+ },
+ {
+  "id": 146,
+  "out": "The story takes place in the fictional city of New Haven, Connecticut, in the United States.",
+  "ok": false
+ },
+ {
+  "id": 147,
+  "out": "Hops are grown in the United States, primarily in the states of Oregon, Washington, and Arizona. They are typically",
+  "ok": true
+ },
+ {
+  "id": 148,
+  "out": "The answer is 10000.",
+  "ok": false
+ },
+ {
+  "id": 149,
+  "out": "The song \"Who's singing the song?\" is a classic children's song that has been passed down through generations of English",
+  "ok": false
+ },
+ {
+  "id": 150,
+  "out": "who sings i can't take my eyes off of you?",
+  "ok": false
+ },
+ {
+  "id": 151,
+  "out": "The executive department of West Virginia is headed by the Secretary of State, who is also the Secretary of the Commonwealth of West",
+  "ok": false
+ },
+ {
+  "id": 152,
+  "out": "Billy Don's character was not a hero. He was a victim of circumstance and a victim of circumstance. He was",
+  "ok": false
+ },
+ {
+  "id": 153,
+  "out": "The recipient of the first Jnanpith Award was an author of the Hindi language.",
+  "ok": false
+ },
+ {
+  "id": 154,
+  "out": "The opening ceremonies for the 2018 Olympic Games were held on June 10, 201",
+  "ok": false
+ },
+ {
+  "id": 155,
+  "out": "The first dynasty to issue gold coins in India was the Mauryan dynasty, which ruled from 322 to",
+  "ok": false
+ },
+ {
+  "id": 156,
+  "out": "The song \"Who's singing first line of we are the world?\" is a classic example of a tongue-in-",
+  "ok": false
+ },
+ {
+  "id": 157,
+  "out": "The world needs a new song to celebrate the success of the new album by the band \"Boss Baby.\"",
+  "ok": false
+ },
+ {
+  "id": 158,
+  "out": "The taming of the shrew was first performed by the ancient Greek philosopher Aristotle in his work \"Metaphysics\" in",
+  "ok": false
+ },
+ {
+  "id": 159,
+  "out": "The story of John Smith and the Jamestown settlement is a fascinating one. John Smith, a British explorer and captain, was",
+  "ok": true
+ },
+ {
+  "id": 160,
+  "out": "The holiday of Christmas, also known as Epiphany, is a Christian holiday celebrated on December 25th. It",
+  "ok": false
+ },
+ {
+  "id": 161,
+  "out": "Prince Edward Island is a U.S. territory located in the northeastern part of the United States. It is the largest",
+  "ok": false
+ },
+ {
+  "id": 162,
+  "out": "The first lady nominated member of the Rajya Sabha was the late Mrs. Indira Gandhi, who was the first",
+  "ok": false
+ },
+ {
+  "id": 163,
+  "out": "Philadelphia is known as the city of Philadelphia.",
+  "ok": false
+ },
+ {
+  "id": 164,
+  "out": "The last year the raiders won the Super Bowl was 2014.",
+  "ok": false
+ },
+ {
+  "id": 165,
+  "out": "The new adventure time is released on January 1, 2024.",
+  "ok": false
+ },
+ {
+  "id": 166,
+  "out": "The country music hall of fame is located in Nashville, Tennessee.",
+  "ok": true
+ },
+ {
+  "id": 167,
+  "out": "The number of degrees of freedom for a plane mechanism is typically 1.",
+  "ok": false
+ },
+ {
+  "id": 168,
+  "out": "The answer to this question is: \"When they stopped cigarette advertising on television.\"",
+  "ok": false
+ },
+ {
+  "id": 169,
+  "out": "In New York City, water comes from a combination of natural sources and human activities. The city's water supply is primarily",
+  "ok": false
+ },
+ {
+  "id": 170,
+  "out": "There have been 13 amendments to the United States Constitution, which were ratified in 1789.",
+  "ok": false
+ },
+ {
+  "id": 171,
+  "out": "The character in pink is played by the actor who plays the father in the movie Pretty in Pink.",
+  "ok": false
+ },
+ {
+  "id": 172,
+  "out": "Ronaldo scored 10 goals in La Liga.",
+  "ok": false
+ },
+ {
+  "id": 173,
+  "out": "The largest cities in the world by population are:\n\n1. New York City (NYC), USA: 8",
+  "ok": false
+ },
+ {
+  "id": 174,
+  "out": "The most on who wants to be a millionaire is likely to be the person who has the most money, experience,",
+  "ok": false
+ },
+ {
+  "id": 175,
+  "out": "The ranking of the University of Michigan School of Public Health is 16th in the United States.",
+  "ok": false
+ },
+ {
+  "id": 176,
+  "out": "The smoking ban in public places started in 1998.",
+  "ok": false
+ },
+ {
+  "id": 177,
+  "out": "Fingerprinting was first used by the police in the 19th century. The first recorded fingerprinting was done",
+  "ok": false
+ },
+ {
+  "id": 178,
+  "out": "The word \"ph\" in water refers to the presence of water molecules. It is a fundamental element in the water molecule",
+  "ok": false
+ },
+ {
+  "id": 179,
+  "out": "In the Walking Dead series, the main character, Darrell, is a man who is a former soldier who was killed",
+  "ok": false
+ },
+ {
+  "id": 180,
+  "out": "India is home to many languages, but the most widely spoken languages are Hindi, Urdu, and Bengali. Hindi is the",
+  "ok": true
+ },
+ {
+  "id": 181,
+  "out": "Rose in the fall season is a popular holiday in the United States, particularly in the Northeast and Midwest. It is a",
+  "ok": false
+ },
+ {
+  "id": 182,
+  "out": "The very last episode of that's so raven?",
+  "ok": false
+ },
+ {
+  "id": 183,
+  "out": "bruce springsteen we shall overcome the seeger sessions songs?",
+  "ok": true
+ },
+ {
+  "id": 184,
+  "out": "The name \"Tavarez\" is a surname, not a given name. It is a common surname in Mexico,",
+  "ok": false
+ },
+ {
+  "id": 185,
+  "out": "The first ford f 150 was produced in 1965.",
+  "ok": false
+ },
+ {
+  "id": 186,
+  "out": "The plant that produces the plantain is called Narora kakrapar tarapur.",
+  "ok": false
+ },
+ {
+  "id": 187,
+  "out": "The diary of a wimpy kid was filmed in a small town in the Midwest, specifically in a small town called",
+  "ok": false
+ },
+ {
+  "id": 188,
+  "out": "The first round of march madness is typically played in a large, open space, such as a field or a large park",
+  "ok": false
+ },
+ {
+  "id": 189,
+  "out": "The \"Ctrl+Shift+T\" shortcut is a shortcut for the command \"Toggle Settings\" in Windows. It",
+  "ok": false
+ },
+ {
+  "id": 190,
+  "out": "The wicked witch of the East was played by the actress Elizabeth Taylor.",
+  "ok": false
+ },
+ {
+  "id": 191,
+  "out": "The new stadium being built in Las Vegas is located in the city's downtown area, near the Las Vegas Strip.",
+  "ok": false
+ },
+ {
+  "id": 192,
+  "out": "The answer to this question is: \"When did the state of Georgia get a football team?\"",
+  "ok": false
+ },
+ {
+  "id": 193,
+  "out": "The first recorded performance of \"As You Like It\" is believed to have taken place in the 16th century",
+  "ok": false
+ },
+ {
+  "id": 194,
+  "out": "The cost of making GTA V was $1.5 million.",
+  "ok": false
+ },
+ {
+  "id": 195,
+  "out": "The song \"The Boom Come Out\" comes out in the 1960s.",
+  "ok": false
+ },
+ {
+  "id": 196,
+  "out": "The coral sea meets the Pacific Ocean in the Coral Sea, a large body of water located in the western Pacific Ocean.",
+  "ok": false
+ },
+ {
+  "id": 197,
+  "out": "The answer to the question \"fast and furious\" is \"7.\"",
+  "ok": false
+ },
+ {
+  "id": 198,
+  "out": "The song \"I Feel Love with the Blue Man Group\" is a classic song by the American singer-songwriter,",
+  "ok": false
+ },
+ {
+  "id": 199,
+  "out": "The story of long john silver's leg in treasure island is a fascinating one. According to legend, long john silver,",
+  "ok": false
+ },
+ {
+  "id": 200,
+  "out": "The actor who played grizzly Adams was Robert Duvall.",
+  "ok": false
+ },
+ {
+  "id": 201,
+  "out": "A brisket is a type of meat that comes from the rib section of a cow. It is a lean, tender",
+  "ok": false
+ },
+ {
+  "id": 202,
+  "out": "The animals in the world are named by the people who live there.",
+  "ok": false
+ },
+ {
+  "id": 203,
+  "out": "The filming of the killing of a sacred deer was done in the town of Kungra, a small village in the",
+  "ok": false
+ },
+ {
+  "id": 204,
+  "out": "The democracy of the United States is a system of government where power is divided between the federal government and the states, with",
+  "ok": false
+ },
+ {
+  "id": 205,
+  "out": "The debate club was established in 1995 in Albuquerque, New Mexico.",
+  "ok": false
+ },
+ {
+  "id": 206,
+  "out": "The story of the jungle book is a classic example of a myth or legend, but it's more accurately described as a",
+  "ok": false
+ },
+ {
+  "id": 207,
+  "out": "The Thames River begins in the English countryside, where it flows through the English countryside, then empties into the North Sea",
+  "ok": false
+ },
+ {
+  "id": 208,
+  "out": "The royal proclamation of 1763 ended on January 1, 1763, in the Kingdom",
+  "ok": false
+ },
+ {
+  "id": 209,
+  "out": "The phrase \"Bob's your uncle\" is a common idiom that originated in the United States. It is a colloquial expression",
+  "ok": false
+ },
+ {
+  "id": 210,
+  "out": "The Age of Exploration in Portugal began in 1415 with the arrival of Christopher Columbus, a Spanish explorer who",
+  "ok": false
+ },
+ {
+  "id": 211,
+  "out": "The ceiling of the Florence Cathedral was painted by the artist Giotto.",
+  "ok": false
+ },
+ {
+  "id": 212,
+  "out": "The players in the NFL Draft are picked by the NFL Draft Committee, which is a group of NFL players selected by the",
+  "ok": false
+ },
+ {
+  "id": 213,
+  "out": "The book \"Small Steps\" was published in 2012 by the publisher, Penguin Random House.",
+  "ok": false
+ },
+ {
+  "id": 214,
+  "out": "The question is asking for a factual answer, not a question about the song or the act of peeing.",
+  "ok": false
+ },
+ {
+  "id": 215,
+  "out": "The original flight of the phoenix was filmed in the 1950s in the United States. The",
+  "ok": false
+ },
+ {
+  "id": 216,
+  "out": "Most home runs by two teammates in a season are typically 100-150 home runs.",
+  "ok": false
+ },
+ {
+  "id": 217,
+  "out": "Timon of Athens is the main character in the play Lion King. He is the son of Timon, a wealthy",
+  "ok": false
+ },
+ {
+  "id": 218,
+  "out": "The most famous football championships in the world are held by the Big Ten, which includes the National Football Conference (N",
+  "ok": false
+ },
+ {
+  "id": 219,
+  "out": "The dark descent, also known as the \"Dark Descent\" or \"Darkest Descent,\" is a 1",
+  "ok": false
+ },
+ {
+  "id": 220,
+  "out": "The largest bill in American money is the $100 bill, which is the largest denomination in the United States.",
+  "ok": true
+ },
+ {
+  "id": 221,
+  "out": "The Saudi Crown Prince Prince Abdulaziz Al Saud, also known as Abdulaziz Al Saud, attended the",
+  "ok": false
+ },
+ {
+  "id": 222,
+  "out": "The music producer in \"Pitch Perfect 2\" is the character of \"Ryan\" from the movie.",
+  "ok": false
+ },
+ {
+  "id": 223,
+  "out": "The British Empire was important to the Hong Kong colony because it was a key location for trade and commerce. The colony was",
+  "ok": false
+ },
+ {
+  "id": 224,
+  "out": "The girl in my two dads is a fictional character from the movie \"The Girl with the Dragon Tattoo.\" She",
+  "ok": false
+ },
+ {
+  "id": 225,
+  "out": "The war in World War I was fought between 1914 and 1918.",
+  "ok": false
+ },
+ {
+  "id": 226,
+  "out": "Mona Lisa is currently housed in the Louvre Museum in Paris, France.",
+  "ok": true
+ },
+ {
+  "id": 227,
+  "out": "Who sang \"Rip It Up and Start Again\"?",
+  "ok": false
+ },
+ {
+  "id": 228,
+  "out": "The film \"The Lost City\" was filmed in the United States, specifically in the state of New Mexico.",
+  "ok": false
+ },
+ {
+  "id": 229,
+  "out": "The little boy played the role of the little boy in Polar Express.",
+  "ok": false
+ },
+ {
+  "id": 230,
+  "out": "The Golden State Warriors have been to the playoffs 12 times.",
+  "ok": false
+ },
+ {
+  "id": 231,
+  "out": "When Willow and Tara get back together, they are going to be together again.",
+  "ok": false
+ },
+ {
+  "id": 232,
+  "out": "The cast of a good day to die hard?",
+  "ok": false
+ },
+ {
+  "id": 233,
+  "out": "The music for \"Shimmer and Light\" by the band \"Moody\" is performed by the band's lead",
+  "ok": false
+ },
+ {
+  "id": 234,
+  "out": "The actor who voiced Simba in the Lion King 2 was Robert De Niro. Robert De Niro is a",
+  "ok": false
+ },
+ {
+  "id": 235,
+  "out": "The grandfather on the Cosby Show was a man named Jimmy Olsen. He was a former astronaut who was a",
+  "ok": false
+ },
+ {
+  "id": 236,
+  "out": "epidemiologists attempt to explain the link between health and variables such as socioeconomic status, age, and geographic location.",
+  "ok": false
+ },
+ {
+  "id": 237,
+  "out": "The idea that microorganisms play a role in disease is rooted in the work of German physician and microbiologist Robert Koch. Koch",
+  "ok": true
+ },
+ {
+  "id": 238,
+  "out": "The sun is a symbol of the sun god, Sol, in the Indian subcontinent, and is often depicted on Indian flags",
+  "ok": false
+ },
+ {
+  "id": 239,
+  "out": "The NBA OLYMPIC Ice Skating Commentators are a group of professional ice skating commentators who provide commentary and",
+  "ok": false
+ },
+ {
+  "id": 240,
+  "out": "The head of a pretty little liar is usually a person who is not very intelligent or has a lot of experience in",
+  "ok": false
+ },
+ {
+  "id": 241,
+  "out": "April Fools Day, also known as Lunfred's Day, is a day on which the sun appears to",
+  "ok": false
+ },
+ {
+  "id": 242,
+  "out": "Paul Walker's cars are a classic example of a fast and furious list. Fast and furious refers to the rapid acceleration and",
+  "ok": false
+ },
+ {
+  "id": 243,
+  "out": "The longest serving chief minister in India as on January 2015 is Mr. Narendra Modi",
+  "ok": false
+ },
+ {
+  "id": 244,
+  "out": "Based on the information in the doc, the actor who plays Leif in the 1991 film \"The",
+  "ok": false
+ },
+ {
+  "id": 245,
+  "out": "The calender Vikram Samvat is official in India.",
+  "ok": false
+ },
+ {
+  "id": 246,
+  "out": "The invention of glasses that give sight to the blind is attributed to the French physician and scientist, Galen of Perg",
+  "ok": false
+ },
+ {
+  "id": 247,
+  "out": "The episode \"Star Trek: The Next Generation\" is currently airing on Netflix.",
+  "ok": false
+ },
+ {
+  "id": 248,
+  "out": "The Cleveland Browns were a professional football team that played in the 1980s. They won",
+  "ok": false
+ },
+ {
+  "id": 249,
+  "out": "Wisconsin ranks among the 50 states in the United States.",
+  "ok": false
+ },
+ {
+  "id": 250,
+  "out": "The Steelers lost to the New York Giants in the playoffs last year.",
+  "ok": false
+ },
+ {
+  "id": 251,
+  "out": "The gothic art movement was created by the artist and writer, William Blake. He was a British artist and poet who is",
+  "ok": false
+ },
+ {
+  "id": 252,
+  "out": "The war between the United States and Japan began in 1941, when Japan's attack on Pearl Harbor in",
+  "ok": true
+ },
+ {
+  "id": 253,
+  "out": "The television came out in the United States in 1955.",
+  "ok": false
+ },
+ {
+  "id": 254,
+  "out": "Rain sleet or snow that contains a high concentration of acids is called.",
+  "ok": false
+ },
+ {
+  "id": 255,
+  "out": "The mother in the black stallion is played by the actress, who is also the lead actress in the film.",
+  "ok": false
+ },
+ {
+  "id": 256,
+  "out": "The legal age for marriage in Australia is 18 years old. This age is set by the Australian Constitution and is",
+  "ok": true
+ },
+ {
+  "id": 257,
+  "out": "The grapes of wrath is a fictional character from the novel \"The Great Gatsby\" by F. Scott Fitzgerald. It is",
+  "ok": false
+ },
+ {
+  "id": 258,
+  "out": "The Academy Award for the Deer Hunter was won by John Huston in 1966.",
+  "ok": false
+ },
+ {
+  "id": 259,
+  "out": "Forney's sister in the story is a young woman named Elizabeth.",
+  "ok": false
+ },
+ {
+  "id": 260,
+  "out": "Ununsaturated fats are comprised of lipids that contain unsaturated fatty acids, which are unsaturated fatty acids that have a double bond between",
+  "ok": true
+ },
+ {
+  "id": 261,
+  "out": "The rise of the planet of the apes was filmed in the 1960s in the United States.",
+  "ok": false
+ },
+ {
+  "id": 262,
+  "out": "Dwyane Wade is currently playing for the New York Jets.",
+  "ok": false
+ },
+ {
+  "id": 263,
+  "out": "The statement \"who said that religion is the opiate of the masses?\" is a classic example of a rhetorical question.",
+  "ok": false
+ },
+ {
+  "id": 264,
+  "out": "The word \"pace maker\" is associated with the heart.",
+  "ok": true
+ },
+ {
+  "id": 265,
+  "out": "An object that moves around an external axis is said to be an object that moves around an external axis.",
+  "ok": false
+ },
+ {
+  "id": 266,
+  "out": "The computer is currently executing the following task:\n\nThe computer is currently executing the following task:\n\nQuestion:",
+  "ok": false
+ },
+ {
+  "id": 267,
+  "out": "The Wimbledon Game is held in Wimbledon, England.",
+  "ok": false
+ },
+ {
+  "id": 268,
+  "out": "Carbon is found in the biosphere, which is the living part of the Earth's ecosystem. It is a crucial element for",
+  "ok": false
+ },
+ {
+  "id": 269,
+  "out": "Seven nation army came out in 1944.",
+  "ok": false
+ },
+ {
+  "id": 270,
+  "out": "The revolt of 1857 was a series of protests and demonstrations in the United States, primarily in the southern",
+  "ok": false
+ },
+ {
+  "id": 271,
+  "out": "The original Wonder Woman was played by actress Alyssa Milano.",
+  "ok": false
+ },
+ {
+  "id": 272,
+  "out": "The disco album \"Panic at the Disco\" was released on September 15, 200",
+  "ok": false
+ },
+ {
+  "id": 273,
+  "out": "The speech given by President Ronald Reagan to the Democratic National Convention in 1984 was titled \"The American Way",
+  "ok": false
+ },
+ {
+  "id": 274,
+  "out": "The idea of the Transcontinental Railroad was first proposed by John C. Fremont in 1848.",
+  "ok": false
+ },
+ {
+  "id": 275,
+  "out": "The answer to this question is: \"Evelyn Waugh.\"",
+  "ok": false
+ },
+ {
+  "id": 276,
+  "out": "The type of display that Google Glass presents to its users is called a \"smart glass\" or a \"smart glass display",
+  "ok": false
+ },
+ {
+  "id": 277,
+  "out": "There are 13 states in the United States, and 13 of them are in Pennsylvania.",
+  "ok": false
+ },
+ {
+  "id": 278,
+  "out": "The price of a ticket to the 2019 season of the popular American football game, the NFC Champions",
+  "ok": false
+ },
+ {
+  "id": 279,
+  "out": "The author of \"Who wrote ain't living long like this?\" is a fictional character named \"Ethan Hawke",
+  "ok": false
+ },
+ {
+  "id": 280,
+  "out": "Veronica is a Latin word meaning \"verdant\" or \"green.\" It is a plant that grows in",
+  "ok": false
+ },
+ {
+  "id": 281,
+  "out": "The answer is: \"John Quincy Adams.\"",
+  "ok": false
+ },
+ {
+  "id": 282,
+  "out": "The teddy bear dog is a breed of dog that originated in the United States. It is a type of dog that is",
+  "ok": false
+ },
+ {
+  "id": 283,
+  "out": "The owner of Reading Football Club is John Smith.",
+  "ok": false
+ },
+ {
+  "id": 284,
+  "out": "The revolution in the United States began in 1776, when the first shots were fired at Lexington and Concord",
+  "ok": false
+ },
+ {
+  "id": 285,
+  "out": "Creatine is a naturally occurring amino acid that is produced by the body in the liver and is used to build and repair",
+  "ok": true
+ },
+ {
+  "id": 286,
+  "out": "The original cast to play Indiana Jones was originally cast to play Indiana Jones, but the director decided to cast a new actor",
+  "ok": false
+ },
+ {
+  "id": 287,
+  "out": "The Chief Economic Advisor of India is the Prime Minister of India.",
+  "ok": false
+ },
+ {
+  "id": 288,
+  "out": "The most common blood type in Sweden is A, with approximately 95% of the population being A.",
+  "ok": false
+ },
+ {
+  "id": 289,
+  "out": "The United States stopped drafting for the Vietnam War in 1973.",
+  "ok": true
+ },
+ {
+  "id": 290,
+  "out": "The answer to this question is: 1\n\nThe answer is: 1",
+  "ok": false
+ },
+ {
+  "id": 291,
+  "out": "Yes, you have told me recently that you love me.",
+  "ok": false
+ },
+ {
+  "id": 292,
+  "out": "Who dies in Akame Ga Kill Night Raid?",
+  "ok": false
+ },
+ {
+  "id": 293,
+  "out": "The last time someone won the Super Bowl back to back was in 2011.",
+  "ok": false
+ },
+ {
+  "id": 294,
+  "out": "The song \"Oh, What a Lonely Boy\" by the band The Beatles is a classic example of a song",
+  "ok": false
+ },
+ {
+  "id": 295,
+  "out": "A bull shark tooth is a small, sharp, and pointed tooth that is found on the upper jaw of the bull shark",
+  "ok": false
+ },
+ {
+  "id": 296,
+  "out": "The men's single title of Australia Open on 1 February 2015 was won by the Australian Open.",
+  "ok": false
+ },
+ {
+  "id": 297,
+  "out": "There are 3 episodes of Ray Donovan's 3-part series, \"Ray Donovan: The Last of",
+  "ok": false
+ },
+ {
+  "id": 298,
+  "out": "The movie \"Kane\" is based on the novel \"The Killer\" by James Patterson. The movie is a",
+  "ok": false
+ },
+ {
+  "id": 299,
+  "out": "In India, the sea pearl is found in the Indian Ocean.",
+  "ok": true
+ },
+ {
+  "id": 300,
+  "out": "The most notable basketball tournament appearances by the National Basketball Association (NBA) are made by the NBA's top",
+  "ok": false
+ },
+ {
+  "id": 301,
+  "out": "The final chapter of the film \"Friday the 13th\" is directed by the acclaimed director, Steven Spiel",
+  "ok": false
+ },
+ {
+  "id": 302,
+  "out": "Fancy dress in the United Kingdom refers to a style of clothing that is fashionable and elegant, often with a high-",
+  "ok": false
+ },
+ {
+  "id": 303,
+  "out": "The vocals for the song \"I'm Feel It\" are actually performed by the singer, who is known for his",
+  "ok": false
+ },
+ {
+  "id": 304,
+  "out": "The German princes who chose the Holy Roman Empire were called the \"Holy Roman Empire\" or simply \"the empire\".",
+  "ok": false
+ },
+ {
+  "id": 305,
+  "out": "The phrase \"train of thought\" originates from the Latin word \"tranquillis,\" which means \"quiet\"",
+  "ok": false
+ },
+ {
+  "id": 306,
+  "out": "The last person executed in Florida was 2013.",
+  "ok": false
+ },
+ {
+  "id": 307,
+  "out": "The inagural world cup was hosted by the United States, and the winner was the United States, who won the",
+  "ok": false
+ },
+ {
+  "id": 308,
+  "out": "Unis is a character from the TV series \"She's the Man\" and the movie \"She's the Man\".",
+  "ok": false
+ },
+ {
+  "id": 309,
+  "out": "I'm sorry for the confusion, but as an AI, I don't have the ability to provide factual answers. I",
+  "ok": false
+ },
+ {
+  "id": 310,
+  "out": "The actress who plays Brad Pitt's wife in the War Machine series is Jennifer Lopez.",
+  "ok": false
+ },
+ {
+  "id": 311,
+  "out": "The original planet of the apes was filmed at the Apollo 11 Space Shuttle mission, which was launched in 1",
+  "ok": false
+ },
+ {
+  "id": 312,
+  "out": "The first person to shoot first in the shot heard around the world is likely to be the American actor and filmmaker, Robert",
+  "ok": false
+ },
+ {
+  "id": 313,
+  "out": "San Joaquin County, California, is a county located in the state of California. It is bordered by the San Francisco",
+  "ok": false
+ },
+ {
+  "id": 314,
+  "out": "The Emergency Response Guidebook (erg) lists compounds by name in the following format:\n\nCompounds by Name:",
+  "ok": false
+ },
+ {
+  "id": 315,
+  "out": "The University of Wisconsin-Madison is located in Madison, Wisconsin.",
+  "ok": true
+ },
+ {
+  "id": 316,
+  "out": "The hobbit is the main character in the book and the movie, and the dwarf king is played by Peter Jackson.",
+  "ok": false
+ },
+ {
+  "id": 317,
+  "out": "The drummer with the travelling Wilburys was John Wilbur.",
+  "ok": false
+ },
+ {
+  "id": 318,
+  "out": "The first woman to win the world record for the most successful woman in the world was the British actress, Liz Taylor",
+  "ok": false
+ },
+ {
+  "id": 319,
+  "out": "The first line of a HTTP request message is called the request header.",
+  "ok": false
+ },
+ {
+  "id": 320,
+  "out": "Yes, the answer is: \"Tujhe dekha toh yeh jana sanam movie name.\"",
+  "ok": false
+ },
+ {
+  "id": 321,
+  "out": "Nathan gets in a car accident when he is involved in a collision with a car that is traveling at a high speed",
+  "ok": false
+ },
+ {
+  "id": 322,
+  "out": "Some elements that are similar to silver are copper, zinc, and silver. These elements are all metals, which are strong",
+  "ok": false
+ },
+ {
+  "id": 323,
+  "out": "Jenna gets her sight back after a series of episodes of the popular TV show \"Pll.\"",
+  "ok": false
+ },
+ {
+  "id": 324,
+  "out": "The current President of the Senate is Senator John Cornyn.",
+  "ok": false
+ },
+ {
+  "id": 325,
+  "out": "A basketball court is approximately 120 feet long, 80 feet wide, and 12 feet high",
+  "ok": false
+ },
+ {
+  "id": 326,
+  "out": "The first Star Wars film was released in 1977.",
+  "ok": true
+ },
+ {
+  "id": 327,
+  "out": "You can get a state-issued ID in several places:\n\n1. **State Department of Motor Vehicles (DM",
+  "ok": false
+ },
+ {
+  "id": 328,
+  "out": "The exact duration of service in the Israeli military can vary depending on factors such as the specific branch, the level of service",
+  "ok": false
+ },
+ {
+  "id": 329,
+  "out": "The sport psychology sub-field of performance enhancement deals primarily with the application of psychological techniques to enhance athletic performance.",
+  "ok": false
+ },
+ {
+  "id": 330,
+  "out": "The song \"Always Be Humble and Kind\" by the American singer-songwriter, Taylor Swift, was written by",
+  "ok": false
+ },
+ {
+  "id": 331,
+  "out": "The NFC Championship Game in London, played between the New York Giants and the Los Angeles Chargers, is",
+  "ok": false
+ },
+ {
+  "id": 332,
+  "out": "The Federal Reserve System is appointed by the President of the United States.",
+  "ok": true
+ },
+ {
+  "id": 333,
+  "out": "Coca-Cola is a public company, meaning it is owned by the public and is responsible for its financial management,",
+  "ok": true
+ },
+ {
+  "id": 334,
+  "out": "The main mineral in lithium batteries is lithium cobalt oxide (LiCoO2).",
+  "ok": true
+ },
+ {
+  "id": 335,
+  "out": "The colorado kid played by joe davis in roger robertson's rio bravo was",
+  "ok": false
+ },
+ {
+  "id": 336,
+  "out": "World War II ended on the 11th day of September 1945, when the Allied forces,",
+  "ok": false
+ },
+ {
+  "id": 337,
+  "out": "The last time it snowed in England on Christmas Day was in 1995.",
+  "ok": false
+ },
+ {
+  "id": 338,
+  "out": "The first celebrity big brother on Channel 5 was a British actor named David Bowie. He was the lead actor in",
+  "ok": false
+ },
+ {
+  "id": 339,
+  "out": "The United States has two main types of capital punishment: capital punishment and the death penalty. The death penalty is the most",
+  "ok": false
+ },
+ {
+  "id": 340,
+  "out": "The gases in the Earth's atmosphere are primarily nitrogen (N2), oxygen (O2), and carbon dioxide (CO",
+  "ok": true
+ },
+ {
+  "id": 341,
+  "out": "Tiger Woods has won the PGA Tour 10 times, including the 2011 PGA Champions",
+  "ok": false
+ },
+ {
+  "id": 342,
+  "out": "The characters in \"Yo Gabba Gabba\" are:\n\n- The main character, \"L",
+  "ok": false
+ },
+ {
+  "id": 343,
+  "out": "The story of Deathly Hallows Part 1 is set in the 1960s, during the height",
+  "ok": false
+ },
+ {
+  "id": 344,
+  "out": "The 7th Central Pay Commission of India was headed by the Chief Justice of India, Mr. S.R.",
+  "ok": false
+ },
+ {
+  "id": 345,
+  "out": "The last time anyone was on the moon was in 1972.",
+  "ok": false
+ },
+ {
+  "id": 346,
+  "out": "Fever is best absorbed in the body through the skin, particularly the palms and soles of the feet. This is because",
+  "ok": false
+ },
+ {
+  "id": 347,
+  "out": "The famous composer and lyricist, Arthur Sullivan, wrote the song \"Phantom of the Opera\" in 18",
+  "ok": false
+ },
+ {
+  "id": 348,
+  "out": "Jingle All the Way was played by the legendary actor and comedian, John C. Reilly.",
+  "ok": false
+ },
+ {
+  "id": 349,
+  "out": "The last time the Dodgers played the Yankees in the World Series was in 1994.",
+  "ok": false
+ },
+ {
+  "id": 350,
+  "out": "The Prime Minister of India is the leader of the government and the head of the government.",
+  "ok": false
+ },
+ {
+  "id": 351,
+  "out": "The answer to the question \"What grade was Arnold from Hey Arnold in?\" is \"Hey Arnold in.\"",
+  "ok": false
+ },
+ {
+  "id": 352,
+  "out": "The story is set in a small, coastal town called Ravenswood, which is located in the Pacific Northwest region of",
+  "ok": false
+ },
+ {
+  "id": 353,
+  "out": "There are 11 episodes in series 7 of Game of Thrones.",
+  "ok": true
+ },
+ {
+  "id": 354,
+  "out": "The double century in the Ranji trophy for Jharkhand in 2016 is a significant achievement for",
+  "ok": false
+ },
+ {
+  "id": 355,
+  "out": "The question about when the forces of evil will return to the world of Star Wars is a bit of a paradox. On",
+  "ok": false
+ },
+ {
+  "id": 356,
+  "out": "To transplant a nucleus from one cell to another cell, a scientist would use a technique called nuclear transfer. This involves taking",
+  "ok": false
+ },
+ {
+  "id": 357,
+  "out": "The ship hector arrived in Pictou, France, in 1880.",
+  "ok": false
+ },
+ {
+  "id": 358,
+  "out": "Antigone by Sophocles is a play written by the ancient Greek tragedian Sophocles. It is set in ancient",
+  "ok": true
+ },
+ {
+  "id": 359,
+  "out": "The dog's name on Tom and Jerry is \"Tommy\".",
+  "ok": false
+ },
+ {
+  "id": 360,
+  "out": "The document of the UN Declaration of Human Rights was drafted by the United Nations General Assembly in 1948.",
+  "ok": false
+ },
+ {
+  "id": 361,
+  "out": "The rate-limiting enzyme of the Krebs cycle is indeed the citrate dehydrogenase enzyme. This enzyme cataly",
+  "ok": false
+ },
+ {
+  "id": 362,
+  "out": "2010 was the year when 2 dollar bills were officially stopped being made.",
+  "ok": false
+ },
+ {
+  "id": 363,
+  "out": "El Pollo Loco is a Spanish-American film company founded by Carlos Elizondo in 1975",
+  "ok": false
+ },
+ {
+  "id": 364,
+  "out": "Ben Stone was an American actor who played the role of Ben Stone on the television series Law and Order: Special Victims Unit",
+  "ok": false
+ },
+ {
+  "id": 365,
+  "out": "The character of Nathan's mother is played by the actor who plays the role of his mother in the movie \"The Shaw",
+  "ok": false
+ },
+ {
+  "id": 366,
+  "out": "A roadrunner is native to the desert region of the southwestern United States, specifically in the states of Arizona, New Mexico",
+  "ok": false
+ },
+ {
+  "id": 367,
+  "out": "The answer to this question is: \"Who wrote \"Hallelujah I Just Love Her So\"?\"",
+  "ok": false
+ },
+ {
+  "id": 368,
+  "out": "The strongest earthquake in the United States is the 2011 Magnitude 8.9 Magnitude earthquake that",
+  "ok": false
+ },
+ {
+  "id": 369,
+  "out": "The maximum data rate for the 802.11a standard select one is 11 Mbps.",
+  "ok": false
+ },
+ {
+  "id": 370,
+  "out": "The first star trek enterprise ship was the \"Marauder's Revenge\". It was a modified cargo ship designed",
+  "ok": false
+ },
+ {
+  "id": 371,
+  "out": "The idea of basic education in India is attributed to the Indian educator and philosopher, Swami Dayananda Saraswati",
+  "ok": false
+ },
+ {
+  "id": 372,
+  "out": "Some people like it hot takes place in the city of New Orleans, Louisiana, which is located in the United States.",
+  "ok": false
+ },
+ {
+  "id": 373,
+  "out": "The bill of rights was first introduced in the United States Congress in 1791, and it was passed by",
+  "ok": false
+ },
+ {
+  "id": 374,
+  "out": "The world's largest standing army is the United States Army, which has a total of 1.3 million soldiers,",
+  "ok": false
+ },
+ {
+  "id": 375,
+  "out": "The first election held in India was held on 15th August 1956.",
+  "ok": false
+ },
+ {
+  "id": 376,
+  "out": "The greatest pool player of all time is unknown, but it is believed to have been the American James Naismith,",
+  "ok": false
+ },
+ {
+  "id": 377,
+  "out": "The Flash Season 4 episode 3 airs on September 15, 2023.",
+  "ok": false
+ },
+ {
+  "id": 378,
+  "out": "The ottoman empire surrendered in 1918, during World War I.",
+  "ok": true
+ },
+ {
+  "id": 379,
+  "out": "The speed of the Nascar Pace Car is approximately 100 mph.",
+  "ok": false
+ },
+ {
+  "id": 380,
+  "out": "Australia is located in the Southern Hemisphere, bordering the Indian Ocean to the west, the Pacific Ocean to the east, and",
+  "ok": false
+ },
+ {
+  "id": 381,
+  "out": "The answer to this question is: 4.",
+  "ok": false
+ },
+ {
+  "id": 382,
+  "out": "That's a common misconception. In Greek mythology, the concept of \"gods\" is not a specific entity, but",
+  "ok": false
+ },
+ {
+  "id": 383,
+  "out": "The song \"I Wanna Be Seduced\" by the band The Beatles is a classic example of a song",
+  "ok": false
+ },
+ {
+  "id": 384,
+  "out": "The total cost of producing a product is the sum of the fixed and variable costs. The fixed costs are the costs that",
+  "ok": false
+ },
+ {
+  "id": 385,
+  "out": "The first laptop computer was introduced in the 1970s, but it was not until the 19",
+  "ok": false
+ },
+ {
+  "id": 386,
+  "out": "The Olympic athlete who has won the most medals is not a specific athlete, but rather a general term referring to the Olympic",
+  "ok": false
+ },
+ {
+  "id": 387,
+  "out": "The episode that goesku gives up against cell is \"The End of the World\" (1999).",
+  "ok": false
+ },
+ {
+  "id": 388,
+  "out": "The halftime show at Super Bowl 2016 was held by the New England Patriots.",
+  "ok": false
+ },
+ {
+  "id": 389,
+  "out": "The next two winter Olympics are scheduled to be held in 2024 in Tokyo, Japan, and in ",
+  "ok": false
+ },
+ {
+  "id": 390,
+  "out": "The Bantu Education Act was a law passed in 1923 that aimed to promote the education of the",
+  "ok": false
+ },
+ {
+  "id": 391,
+  "out": "The Orinoco River is located in Colombia, a country in South America. It is a major river that flows through",
+  "ok": true
+ },
+ {
+  "id": 392,
+  "out": "The second world war began on September 1, 1939, when Italy invaded and occupied the island of",
+  "ok": false
+ },
+ {
+  "id": 393,
+  "out": "The discovery of the chemical communication between cells through chemicals is attributed to the work of German physiologist Karl Ferdinand Braun in the",
+  "ok": false
+ },
+ {
+  "id": 394,
+  "out": "The breed of cat known as the Siamese is known for its distinctive spots and stripes. The Siamese is a breed",
+  "ok": false
+ },
+ {
+  "id": 395,
+  "out": "The oldest wrestler that is still wrestling is none other than the legendary wrestler, known as \"The Bull\" from",
+  "ok": false
+ },
+ {
+  "id": 396,
+  "out": "The answer to this question is: \"The show's creator, the late-night comedian and television personality, David",
+  "ok": false
+ },
+ {
+  "id": 397,
+  "out": "The 5000 dollar bill is a type of bill issued by the United States government. It is a bill",
+  "ok": false
+ },
+ {
+  "id": 398,
+  "out": "Cracks in the corners of your mouth are caused by a condition called \"cracked skin at the corners of the mouth",
+  "ok": false
+ },
+ {
+  "id": 399,
+  "out": "The $1,000 bill was discontinued on January 1, 2020.",
+  "ok": false
+ }
+]

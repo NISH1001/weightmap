@@ -18,4 +18,4 @@
 {'small_layer': 10, 'large_layer': 5, 'cka': 0.405, 'r2_large_to_small': 0.655, 'r2_small_to_large': 0.53, 'r2_shuffled_control': -0.214, 'n_tokens': 6132, 'n_test_tokens': 1290, 'holdout_by': 'text', 'pair_by': 'r2', 'r2_small_prev_layer': 0.92}
 {'small_layer': 15, 'large_layer': 6, 'cka': 0.861, 'r2_large_to_small': 0.68, 'r2_small_to_large': 0.556, 'r2_shuffled_control': -0.177, 'n_tokens': 6140, 'n_test_tokens': 1292, 'holdout_by': 'text', 'pair_by': 'r2', 'r2_small_prev_layer': 0.946}
 {'small_layer': 20, 'large_layer': 12, 'cka': 0.847, 'r2_large_to_small': 0.67, 'r2_small_to_large': 0.594, 'r2_shuffled_control': -0.157, 'n_tokens': 6140, 'n_test_tokens': 1292, 'holdout_by': 'text', 'pair_by': 'r2', 'r2_small_prev_layer': 0.938}
-wrote /Users/npantha/dev/impact/experiments/weightmap/scripts/validate_measurement_results.json
+wrote scripts/validate_measurement_results.json

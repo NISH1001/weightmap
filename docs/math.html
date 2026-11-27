@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Weightmap Maths</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+:root{
+  --bg:#f6f7f9; --paper:#ffffff; --ink:#15181d; --ink2:#4d535c; --rule:#dfe2e7; --soft:#eef1f5;
+  --blue:#2a6fd6; --orange:#e2622b; --grey:#9aa1ab; --good:#1f8a57; --bad:#c2412d;
+  --blue-soft:#dbe7fa; --orange-soft:#fbe3d8;
+  --serif:"IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --sans:"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#111418; --paper:#181c21; --ink:#e7eaee; --ink2:#a3aab4; --rule:#2c323a; --soft:#20252c;
+  --blue:#6aa1f0; --orange:#f08a5c; --grey:#6e7682; --good:#4cc08a; --bad:#ef7a66;
+  --blue-soft:#1e2d44; --orange-soft:#3d2a20; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#111418; --paper:#181c21; --ink:#e7eaee; --ink2:#a3aab4; --rule:#2c323a; --soft:#20252c;
+  --blue:#6aa1f0; --orange:#f08a5c; --grey:#6e7682; --good:#4cc08a; --bad:#ef7a66;
+  --blue-soft:#1e2d44; --orange-soft:#3d2a20; color-scheme:dark }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.62}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 80px;display:grid;grid-template-columns:210px minmax(0,1fr);gap:48px}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr);gap:0}.toc{display:none}}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start;font-family:var(--sans);font-size:13px;line-height:1.45;max-height:calc(100vh - 48px);overflow-y:auto}
+.toc b{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:0 0 8px}
+.toc a{display:block;color:var(--ink2);text-decoration:none;padding:3px 0 3px 10px;border-left:2px solid var(--rule)}
+.toc a:hover,.toc a:focus-visible{color:var(--ink);border-left-color:var(--blue);outline:none}
+.toc .grp{margin-top:12px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);padding-left:12px}
+main{min-width:0;max-width:760px}
+h1,h2,h3{font-family:var(--sans);text-wrap:balance;line-height:1.2;color:var(--ink)}
+h1{font-size:2.2rem;font-weight:700;letter-spacing:-.015em;margin:.2em 0 .3em}
+h2{font-size:1.4rem;font-weight:600;margin:2.4em 0 .5em;padding-top:.6em;border-top:1px solid var(--rule)}
+h3{font-size:1.05rem;font-weight:600;margin:1.6em 0 .4em}
+h2 .n{color:var(--blue);font-weight:500;margin-right:.4em;font-variant-numeric:tabular-nums}
+.part-h{font-family:var(--sans);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin:3em 0 -1.6em;font-weight:600}
+p{margin:.7em 0}
+a{color:var(--blue)}
+.meta{font-family:var(--sans);font-size:13px;color:var(--ink2)}
+.box{background:var(--soft);border-radius:6px;padding:14px 18px;margin:18px 0;font-size:.96rem}
+.box h4{font-family:var(--sans);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink2);margin:0 0 6px}
+.box.int{border-left:3px solid var(--blue)}
+.box.ours{border-left:3px solid var(--orange)}
+.math{font-family:var(--mono);font-size:.86rem;background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:12px 16px;margin:14px 0;overflow-x:auto;white-space:pre;line-height:1.6}
+code{font-family:var(--mono);font-size:.86em;background:var(--soft);padding:.05em .35em;border-radius:3px}
+figure{margin:24px 0;background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:16px 16px 12px}
+figcaption{font-family:var(--sans);font-size:13px;color:var(--ink2);line-height:1.5;margin-top:8px}
+figcaption b{color:var(--ink)}
+.fig{overflow-x:auto}
+svg{display:block;max-width:100%;height:auto}
+svg text{font-family:var(--sans);fill:var(--ink)}
+svg .muted{fill:var(--ink2)}
+.muted{color:var(--ink2)}
+.tbl{overflow-x:auto;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;color:var(--ink2);font-size:12px;letter-spacing:.03em;text-transform:uppercase}
+td.num,th.num{text-align:right}
+.ok{color:var(--good);font-weight:600}.bad{color:var(--bad);font-weight:600}
+ul,ol{padding-left:1.3em}li{margin:.25em 0}
+.ctrl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;font-family:var(--sans);font-size:14px;margin:6px 0 10px}
+.ctrl input[type=range]{flex:1 1 200px;min-width:160px;accent-color:var(--blue)}
+.ctrl output,.readout{font-family:var(--mono);font-size:13px}
+.readout{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:8px;color:var(--ink2)}
+.readout b{color:var(--ink);font-weight:500}
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px}
+.seg button{font-family:var(--sans);font-size:13px;padding:5px 10px;border-radius:4px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.seg button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.tokrow{display:flex;flex-wrap:wrap;align-items:center;gap:4px;font-family:var(--mono);font-size:15px;margin:6px 0}
+.tokrow .lab{font-family:var(--sans);font-size:12.5px;color:var(--ink2);width:92px}
+.tok{border:1px solid var(--blue);background:var(--blue-soft);border-radius:3px;padding:1px 6px;position:relative}
+.tok small{display:block;font-size:10.5px;color:var(--ink2);text-align:right}
+.tok.hit{border-color:var(--orange);background:var(--orange-soft)}
+.back{font-family:var(--sans);font-size:13px}
+@media (max-width:520px){h1{font-size:1.75rem}body{font-size:16px}.tokrow .lab{width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Contents">
+  <b>Contents</b>
+  <a href="#notation">0 · Vectors, matrices, shapes</a>
+  <div class="grp">Building the map</div>
+  <a href="#align">1 · Lining up tokens</a>
+  <a href="#ridge">2 · Ridge regression</a>
+  <a href="#r2">3 · R² and honest holdout</a>
+  <a href="#cka">4 · CKA: which layers match</a>
+  <div class="grp">Is it real?</div>
+  <a href="#control">5 · Token-identity control</a>
+  <a href="#chain">6 · Composing maps</a>
+  <a href="#spearman">7 · Spearman and its p-value</a>
+  <div class="grp">Behaviour</div>
+  <a href="#direction">8 · Directions and steering</a>
+  <a href="#fold">9 · Fold: steering as a weight</a>
+  <a href="#counts">10 · Error bars on rates</a>
+  <div class="grp">Weight-space tests</div>
+  <a href="#transplant">11 · Block transplant</a>
+  <a href="#rank1">12 · The rank-1 edit</a>
+  <a href="#lp">13 · The linear program</a>
+  <a href="#auc">14 · AUC</a>
+  <a href="#port">15 · Porting the edit</a>
+  <a href="#tune">16 · Picking the strength</a>
+  <a href="#cheat">Cheat sheet</a>
+</nav>
+
+<main>
+<p class="back"><a href="notebook.html">← Back to the Weightmap Notebook</a></p>
+<p class="meta">Companion to the Weightmap Notebook · every formula used in the experiments, with a tiny worked example and our real numbers</p>
+<h1>The maths, step by step</h1>
+<p>Each section follows the same pattern. First the <b>idea</b> in one sentence, then the <b>formula</b>, then a <b>toy example</b> small enough to check by hand, then <b>what it meant in our runs</b>. The toy numbers on this page are computed live in your browser, so you can change the sliders and watch the formulas move.</p>
+
+<!-- ============================================================ 0 -->
+<h2 id="notation"><span class="n">0</span>Vectors, matrices and shapes: what the numbers actually are</h2>
+<p>Everything in this project is a table of numbers. If you know what each table's rows and columns mean, every formula later is just "multiply these tables". This section builds that picture with a real sentence and real numbers from the models.</p>
+
+<h3 id="n-d">0.1 · What is d?</h3>
+<p><b>d is how many numbers the model uses to describe one token.</b> It is fixed when the model is designed, the same for every token and every layer. People call it the <i>hidden size</i> or <i>residual width</i>.</p>
+<div class="tbl"><table>
+<tr><th>Model</th><th class="num">d (numbers per token)</th><th class="num">layers (blocks)</th><th class="num">MLP neurons per block</th></tr>
+<tr><td>SmolLM2-135M (tiny / small S)</td><td class="num">576</td><td class="num">30</td><td class="num">1,536</td></tr>
+<tr><td>Qwen2.5-0.5B (small S)</td><td class="num">896</td><td class="num">24</td><td class="num">4,864</td></tr>
+<tr><td>Qwen2.5-1.5B (large L)</td><td class="num">1,536</td><td class="num">28</td><td class="num">8,960</td></tr>
+</table></div>
+<p>Think of it as a spreadsheet row with d columns. Qwen-0.5B describes every token with a row of 896 numbers; Qwen-1.5B uses a wider row of 1,536. A bigger d means more room to store information about the token and its context.</p>
+<div class="box"><h4>Name clash</h4>Later, <b>d</b> also names the loop <i>direction</i> (section 8). That's a different thing: a vector with d entries. When it matters we write "width d" vs "direction d".</div>
+
+<h3 id="n-h">0.2 · What are h₁, h₂, …, h_d?</h3>
+<p>A token's state is the row <code>h = [h₁, h₂, …, h_d]</code>. Each hᵢ is one number, the i-th <b>coordinate</b>. For Qwen-0.5B, h₁ is column 1 of 896, h₂ is column 2, and so on up to h₈₉₆.</p>
+<p>The coordinates have <b>no individual names</b>. There is no "h₄₇ = is a noun". Meaning is spread across many coordinates at once, and what matters is the <i>direction</i> the whole row points. Colour is a good analogy. A colour is 3 numbers (R, G, B). "Orange-ness" isn't any single one of them; it's a particular mix, a direction in RGB space. A model's "this text is looping" is likewise a direction in its 896-number space (section 8).</p>
+<p>This is also why two models can't be compared coordinate by coordinate. Qwen-1.5B's coordinate 1 has nothing to do with Qwen-0.5B's coordinate 1. A rotated or shuffled set of coordinates would describe the same model equally well. So we need a <b>map</b> that learns how to translate one row into the other.</p>
+
+<h3 id="n-real">0.3 · A real example: "Tom has 3 apples."</h3>
+<p>The tokenizer splits the sentence into 6 tokens. Each token is a number, its ID in a vocabulary of 151,936 entries (both Qwen models share it):</p>
+<div class="tokrow"><span class="lab">tokens</span><span class="tok">Tom<small>24732</small></span><span class="tok">␣has<small>702</small></span><span class="tok">␣<small>220</small></span><span class="tok">3<small>18</small></span><span class="tok">␣apples<small>40676</small></span><span class="tok">.<small>13</small></span></div>
+<p><b>Layer 0, the embedding.</b> The model owns a giant table of 151,936 rows × 896 columns, one row per vocabulary entry. Step zero is a lookup: token 702 ("␣has") gets row 702. We checked: the model's layer-0 state is exactly that table row.</p>
+<p><b>Layers 1 to 24, the blocks.</b> Each block reads every token's row, computes something (attention looks at earlier tokens; the MLP processes each token), and <i>adds</i> its result to the row. After 9 blocks the row for "␣has" no longer means just "has". It now reflects "has, after Tom, in this sentence".</p>
+<p>Here are the real first 4 of 896 numbers for each token in Qwen-0.5B, at layer 0 and layer 9, plus the row's length ‖h‖:</p>
+<div class="tbl"><table>
+<tr><th>token</th><th>layer 0: h₁ … h₄ (of 896)</th><th class="num">‖h‖</th><th>layer 9: h₁ … h₄ (of 896)</th><th class="num">‖h‖</th></tr>
+<tr><td>Tom</td><td><code>−0.034, 0.006, 0.013, 0.004, …</code></td><td class="num">0.41</td><td><code>−1.93, −8.62, −4.54, −0.63, …</code></td><td class="num"><b>1555.7</b></td></tr>
+<tr><td>␣has</td><td><code>−0.009, 0.025, 0.002, 0.010, …</code></td><td class="num">0.38</td><td><code>1.16, 0.11, 0.70, 0.10, …</code></td><td class="num">15.7</td></tr>
+<tr><td>␣</td><td><code>−0.015, −0.013, −0.010, −0.008, …</code></td><td class="num">0.60</td><td><code>−0.31, −0.31, 0.90, 0.16, …</code></td><td class="num">14.4</td></tr>
+<tr><td>3</td><td><code>−0.011, −0.009, 0.003, −0.018, …</code></td><td class="num">0.52</td><td><code>0.63, −0.03, 0.06, 0.63, …</code></td><td class="num">14.1</td></tr>
+<tr><td>␣apples</td><td><code>−0.004, 0.012, −0.005, 0.005, …</code></td><td class="num">0.42</td><td><code>0.08, 0.12, −0.01, 0.56, …</code></td><td class="num">15.1</td></tr>
+<tr><td>.</td><td><code>−0.016, 0.005, −0.023, −0.000, …</code></td><td class="num">0.53</td><td><code>0.08, 0.36, 0.57, 0.61, …</code></td><td class="num">14.6</td></tr>
+</table></div>
+<p>Three things to notice:</p>
+<ul>
+<li><b>Rows grow.</b> Embedding rows are tiny (length ≈ 0.5). By layer 9 they are about 15, because every block keeps adding to them.</li>
+<li><b>The first token is a monster.</b> "Tom" has length 1,556, about 100 times the others; in Qwen-1.5B at layer 10 it's 11,637. Models use the first position as a dumping ground (the "attention sink"). That's why every experiment skips position 0 and drops rows longer than 5× the median. One such row would dominate a least-squares fit.</li>
+<li><b>Same text, different width.</b> Qwen-1.5B gives each of these 6 tokens a row of 1,536 numbers. At layer 10, "␣has" starts <code>−1.88, 0.08, −0.86, 1.28, …</code> with length 63.5. The two rows are different lengths and use unrelated coordinates, and the map's job is to translate between them.</li>
+</ul>
+
+<h3 id="n-tensor">0.4 · From one sentence to a block of numbers</h3>
+<p>Run one text through a model and ask for all hidden states. You get one table per layer, each <b>tokens × d</b>:</p>
+<figure>
+<div class="fig" id="fig-tensor"></div>
+<figcaption><b>The stack of tables for one text.</b> Qwen-0.5B returns 25 tables for "Tom has 3 apples." (the embedding plus one after each of 24 blocks). Each table is 6 tokens × 896 numbers. In code: <code>hidden_states[9]</code> has shape <code>[1, 6, 896]</code> (1 text, 6 tokens, 896 numbers). An experiment picks one layer, which means one sheet.</figcaption>
+</figure>
+
+<h3 id="n-stack">0.5 · Stacking many texts: the matrices X and Y</h3>
+<p>To fit a map we need many examples. Take a layer from each model (say Qwen-1.5B layer 10 and Qwen-0.5B layer 9), run both on the same texts, and keep the rows for the same tokens. Stack the rows from all texts on top of each other:</p>
+<div class="math">X = L's rows   n × 1536       row t = Qwen-1.5B's state for token t
+Y = S's rows   n × 896        row t = Qwen-0.5B's state for the SAME token t
+
+n ≈ 12,000 tokens  (up to 32 per text, from a few hundred texts)
+X holds 12,000 × 1,536 ≈ 18.4 million numbers;  Y ≈ 10.8 million</div>
+<p>Row t of X and row t of Y describe the same token in the same text, seen by two different models. That pairing is the whole dataset. The map learns: "when L's row looks like this, S's row looks like that".</p>
+
+<h3 id="n-mult">0.6 · The map is a matrix: what multiplying does</h3>
+<p>The map is a matrix W with 1,536 rows and 896 columns. Multiplying one L row (1 × 1536) by W gives one predicted S row (1 × 896):</p>
+<figure>
+<div class="fig" id="fig-shapes"></div>
+<figcaption><b>The shapes have to chain.</b> (n × 1536) · (1536 × 896) = (n × 896). The inner sizes (1,536) must match and cancel. The outer sizes give the result: one predicted S row for every token. Rectangles are drawn to the real proportions of the column counts.</figcaption>
+</figure>
+<p><b>Toy version you can check by hand.</b> Pretend L uses 3 numbers per token and S uses 2, with 4 tokens:</p>
+<div class="math">        X (4 tokens × 3)          W (3 × 2)              Ŷ = X W (4 × 2)
+      ┌ 1   0   2 ┐            ┌ 0.5   0   ┐          ┌ 1.5  −1   ┐
+      │ 0   1   1 │      ·     │ 0     1   │    =     │ 0.5   0.5 │
+      │ 2   1   0 │            └ 0.5  −0.5 ┘          │ 1     1   │
+      └ 1   1   1 ┘                                   └ 1     0.5 ┘
+
+entry (token 1, S-coordinate 1) = row 1 of X · column 1 of W
+                                = 1×0.5 + 0×0 + 2×0.5 = 1.5
+entry (token 1, S-coordinate 2) = 1×0 + 0×1 + 2×(−0.5) = −1</div>
+<p>How to read W:</p>
+<ul>
+<li><b>Entry W[i, j]</b> says how much L's coordinate i contributes to S's coordinate j.</li>
+<li><b>Column j</b> is the recipe for S's coordinate j: "take 0.5 of L's coordinate 1, plus 0.5 of L's coordinate 3". The real W has 896 such recipes, each mixing all 1,536 of L's numbers.</li>
+<li><b>Every token uses the same recipes.</b> W has 1,536 × 896 ≈ 1.38 million entries, fitted once from the 12,000 paired rows (section 2), then reused for any new token.</li>
+</ul>
+<p>A bias row b (1 × 896) is added to every prediction (ŷ = xW + b). It handles the fact that the two models' rows are centred at different places.</p>
+
+<h3 id="n-all">0.7 · Every object in the experiments, with its shape</h3>
+<p>Each object lives in one of two kinds of space. The <b>residual space</b> (width d) is the row every token carries between blocks. The <b>neuron space</b> is the wider set of MLP neuron activations inside one block. Directions, steering vectors and maps all live in residual space. Weight edits connect the two.</p>
+<div class="tbl"><table>
+<tr><th>Object</th><th>Shape (example model)</th><th>What one row / entry means</th><th>Used in</th></tr>
+<tr><td>token ID</td><td>1 number</td><td>which vocabulary entry</td><td>§1</td></tr>
+<tr><td>embedding table</td><td>151,936 × 896 (Qwen-0.5B)</td><td>row k = starting state for token k</td><td>§5 control</td></tr>
+<tr><td>token state h</td><td>1 × 896 (S) · 1 × 1536 (L)</td><td>one token at one layer</td><td>everywhere</td></tr>
+<tr><td>one text, one layer</td><td>tokens × d</td><td>one sheet of fig. 0.4</td><td>§1</td></tr>
+<tr><td>X, Y</td><td>n × 1536, n × 896 (n ≈ 12k)</td><td>paired rows of L and S</td><td>§2–3</td></tr>
+<tr><td>map W, bias b</td><td>1536 × 896, 1 × 896</td><td>recipes from L's coordinates to S's</td><td>§2</td></tr>
+<tr><td>XᵀX</td><td>1536 × 1536</td><td>how L's coordinates co-vary</td><td>§2</td></tr>
+<tr><td>direction d</td><td>1 × 576 (SmolLM2) · 1 × 896</td><td>"toward looping", same shape as one token state</td><td>§8</td></tr>
+<tr><td>mapped direction d_L W</td><td>(1 × 1536)(1536 × 576) = 1 × 576</td><td>L's direction in S's coordinates</td><td>§8.2</td></tr>
+<tr><td>steering vector c</td><td>1 × 576</td><td>added to every token's state</td><td>§8.4, §9</td></tr>
+<tr><td>MLP activations a</td><td>1 × 1536 (SmolLM2) · 1 × 4864 (Qwen-0.5B)</td><td>how strongly each neuron fires on this token</td><td>§12–13</td></tr>
+<tr><td>down_proj W_down</td><td>576 × 1536 (SmolLM2)</td><td>column j = what neuron j writes into the residual</td><td>§12</td></tr>
+<tr><td>trigger v</td><td>1536 entries, 8 non-zero</td><td>weight per neuron; v·a = "is this a loop token?"</td><td>§12–13</td></tr>
+<tr><td>payload u</td><td>576 entries (unit length)</td><td>which residual direction the edit pushes</td><td>§12</td></tr>
+<tr><td>edit δ u vᵀ</td><td>576 × 1536, only 8 columns non-zero</td><td>4,608 changed weights</td><td>§12</td></tr>
+<tr><td>transplant maps A, B</td><td>896 × 1536, 1536 × 896</td><td>S → L coordinates and back</td><td>§11</td></tr>
+</table></div>
+<p class="muted" style="font-size:.92rem">A note for reading the code: PyTorch stores a layer's weight as (output size × input size) and computes x·Wᵀ. That's why down_proj prints as 576 × 1536 (or 896 × 4864 for Qwen-0.5B): 1,536 neurons in, 576 residual numbers out.</p>
+
+<div class="part-h">Part 1 · Building the map</div>
+
+<!-- ============================================================ 1 -->
+<h2 id="align"><span class="n">1</span>Lining up tokens across tokenizers</h2>
+<p><b>Idea.</b> We can only compare two models' states at moments where both have read exactly the same text.</p>
+<p>Each tokenizer cuts text differently. For each token we record the character position where it <b>ends</b>. We keep only the positions where both tokenizers end a token at the same character.</p>
+<figure>
+<div class="tokrow"><span class="lab">tokenizer A</span>
+  <span class="tok">un<small>2</small></span><span class="tok">believ<small>8</small></span><span class="tok hit">able<small>12</small></span><span class="tok hit">!<small>13</small></span></div>
+<div class="tokrow"><span class="lab">tokenizer B</span>
+  <span class="tok">unbel<small>5</small></span><span class="tok hit">ievable<small>12</small></span><span class="tok hit">!<small>13</small></span></div>
+<figcaption><b>Toy example: "unbelievable!".</b> Small numbers are the character where each token ends. A ends at {2, 8, 12, 13}; B ends at {5, 12, 13}. The shared ends are {12, 13}, giving <b>2 aligned pairs</b>: (A's "able", B's "ievable") and (A's "!", B's "!"). At character 12 both models have read "unbelievable" and nothing more, so their states can be compared.</figcaption>
+</figure>
+<div class="box ours"><h4>In our runs</h4>Qwen-0.5B and Qwen-1.5B share a tokenizer, so every token aligns. Across families (Qwen ↔ SmolLM2) only the shared-boundary positions are used. We take up to 32 aligned positions per text and cap the total at 12,000 tokens to keep memory low. We skip the first token of each text, because every model uses it as a "dump" slot with huge values (the attention sink).</div>
+
+<!-- ============================================================ 2 -->
+<h2 id="ridge"><span class="n">2</span>Ridge regression: fitting the map in one step</h2>
+<p><b>Idea.</b> Find the matrix W so that L's state times W is as close as possible to S's state, across thousands of tokens. A small penalty stops W from blowing up.</p>
+<h3>The 1-number version first</h3>
+<p>Suppose each state were a single number. We want y ≈ w·x. Least squares picks w to minimise the total squared miss Σ(yᵢ − w xᵢ)². Setting the derivative to zero gives:</p>
+<div class="math">plain least squares:   w = Σ xᵢyᵢ / Σ xᵢ²
+ridge (penalty λw²):   w = Σ xᵢyᵢ / (Σ xᵢ² + λ)        ← λ pulls w toward 0</div>
+<p>Toy data: four training points (x, y) = (1, 1.2), (2, 1.9), (3, 3.2), (4, 3.9). Then Σxy = 1.2 + 3.8 + 9.6 + 15.6 = 30.2 and Σx² = 1 + 4 + 9 + 16 = 30, so with λ = 0 the slope is w = 30.2 / 30 ≈ 1.007. Drag λ to see the penalty shrink the slope.</p>
+<figure>
+<div class="ctrl"><label for="lam">λ (penalty)</label><input id="lam" type="range" min="0" max="60" step="1" value="0"><output id="lamv">0</output></div>
+<div class="fig" id="fig-ridge"></div>
+<div class="readout" id="ridge-read"></div>
+<figcaption><b>Ridge in one dimension.</b> Blue dots are used for fitting; orange rings are held out. Here the best λ is near 0, because one clean variable doesn't need a penalty. With 1,536 correlated inputs and noisy data the penalty matters much more, which is why we choose λ on held-out data.</figcaption>
+</figure>
+<h3>The matrix version</h3>
+<p>Now each state is a row of numbers. Stack n aligned tokens: X is L's states (n × 1536) and Y is S's states (n × 896). Each column of W is one little regression like the one above, all solved at once:</p>
+<div class="math">W* = argmin  ‖Y − XW‖² + λ‖W‖²
+   = (XᵀX + λI)⁻¹ XᵀY
+
+shapes:  XᵀX is 1536×1536,  XᵀY is 1536×896,  W is 1536×896
+mapped state:  ŷ = x W + b        (b = intercept, from centring X and Y first)</div>
+<p>XᵀX is the matrix version of Σx², and XᵀY is the matrix version of Σxy. The <b>λI</b> adds λ along the diagonal, exactly like "+ λ" in the 1-number formula. Solving it is one linear-algebra call, a fraction of a second. No gradient descent and no training loop.</p>
+<div class="box ours"><h4>In our runs</h4>λ is picked from {10⁻⁴, 10⁻³, 10⁻², 10⁻¹} by fitting on 80% of the training <i>texts</i> and scoring on the other 20%. The map is then refit on all training texts with that λ.</div>
+
+<!-- ============================================================ 3 -->
+<h2 id="r2"><span class="n">3</span>R², and why "holdout" must mean whole texts</h2>
+<p><b>Idea.</b> R² is the share of the variation in the target that the prediction explains. 1 is perfect; 0 means you might as well predict the average every time.</p>
+<div class="math">R² = 1 − Σ (y − ŷ)² / Σ (y − ȳ)²
+         └─ what you miss ─┘   └─ what "always guess the mean" misses ─┘</div>
+<p><b>Toy example.</b> Targets y = [2, 4, 6, 8], predictions ŷ = [3, 4, 5, 8], mean ȳ = 5.</p>
+<div class="math">misses:          (2−3)² + (4−4)² + (6−5)² + (8−8)² = 1 + 0 + 1 + 0 = 2
+mean's misses:   (2−5)² + (4−5)² + (6−5)² + (8−5)² = 9 + 1 + 1 + 9 = 20
+R² = 1 − 2/20 = 0.90</div>
+<p>For vector targets (896 numbers per token) we add up the squared misses over every coordinate of every token, top and bottom. That is a single R² for the whole map.</p>
+<h3>The leakage trap</h3>
+<p>Two neighbouring tokens in the same text have very similar states. If you split <i>tokens</i> randomly into train and test, the test set is full of near-copies of training tokens. The score looks great but measures memory, not generalisation. So we split by <b>whole texts</b>: no test token's text was ever seen in fitting.</p>
+<div class="box ours"><h4>In our runs</h4>The very first version scored R² = 0.85. Most of that excess came from chat-template tokens, which every text shares and both models encode alike (−0.17); the holdout unit itself cost only 0.02–0.03. On answer text with whole texts held out the figure is about <b>0.66</b>. Every number in the notebook uses the strict version.</div>
+
+<!-- ============================================================ 4 -->
+<h2 id="cka"><span class="n">4</span>CKA: which layer of L matches which layer of S?</h2>
+<p><b>Idea.</b> Two layers "think alike" if they agree on <i>which tokens are similar to which</i>, even if their coordinates are rotated, stretched or of different widths.</p>
+<p>Build each model's <b>token-similarity table</b> K = XXᵀ (entry i,j is the dot product of token i's state with token j's). CKA compares the two tables, after centring each column of X and Y:</p>
+<div class="math">CKA(X, Y) = ‖XᵀY‖²_F / ( ‖XᵀX‖_F · ‖YᵀY‖_F )         ‖M‖²_F = sum of squares of all entries
+
+equivalently: the cosine similarity between the two similarity tables XXᵀ and YYᵀ</div>
+<p><b>Toy example.</b> Four tokens with 2-number states (already centred). Y₁ is X rotated 90° and stretched 3×, so it is "the same geometry in different coordinates". Y₂ is unrelated.</p>
+<figure>
+<div class="tbl" id="cka-tbl"></div>
+<figcaption><b>CKA ignores rotation and scale.</b> Rotating and stretching keeps CKA at exactly 1, because every pairwise similarity changes by the same factor. An unrelated layout scores lower. This is why CKA can compare a 576-wide layer with a 1,536-wide one.</figcaption>
+</figure>
+<div class="box ours"><h4>In our runs</h4>For each S layer we pick the L layer with the highest CKA on 100 texts. The matches come out in depth order (for example, Qwen-0.5B layer 10 ↔ Qwen-1.5B layer 13). Picking the L layer by best held-out R² instead gives the same quality.</div>
+
+<div class="part-h">Part 2 · Is the map real?</div>
+
+<!-- ============================================================ 5 -->
+<h2 id="control"><span class="n">5</span>The token-identity control</h2>
+<p><b>Idea.</b> If both models see the word "the", part of each state is predictable just from that fact, without any shared understanding. How much of R² is only that?</p>
+<p>We fit the same ridge map from three weaker inputs and compare:</p>
+<ul>
+<li><b>L's embedding layer only</b> (layer 0, before any block runs). It knows only "which token is this".</li>
+<li><b>An untrained copy of L</b> (same architecture, random weights). It mixes in neighbouring tokens but has learned nothing.</li>
+<li><b>S's own embedding layer</b>, as a cross-check.</li>
+</ul>
+<div class="math">shared-context part  =  R²(trained L, best layer)  −  R²(L's embedding only)
+
+Qwen-0.5B layer 9:      0.651 − 0.419 = 0.232
+Qwen-0.5B layer 14:     0.641 − 0.346 = 0.295
+SmolLM2-135M layer 12:  0.727 − 0.594 = 0.133
+SmolLM2-135M layer 17:  0.664 − 0.489 = 0.175</div>
+<p><b>Intuition.</b> Imagine predicting a student's essay from another student's essay on the same prompt. Much of the overlap comes from both quoting the prompt. Only what's left over shows they think alike. Here "quoting the prompt" is the token identity, and about two thirds of the headline R² is that.</p>
+<div class="box int"><h4>Why the untrained copy matters</h4>The untrained L scores 0.28–0.49, which is <i>below</i> the plain embedding. Random layers scramble the token identity a little without adding any meaning. So the trained map's extra 0.13–0.30 is real learned structure: small, but real.</div>
+
+<!-- ============================================================ 6 -->
+<h2 id="chain"><span class="n">6</span>Composing maps along a chain</h2>
+<p><b>Idea.</b> If maps are linear, chaining two of them is one linear map, the product of the matrices. Does a chain lose information at every step?</p>
+<div class="math">x₁ W₁₂ = x̂₂,   x̂₂ W₂₃ = x̂₃     ⇒     x̂₃ = x₁ (W₁₂ W₂₃)      (one combined matrix)</div>
+<p>A natural guess: if each step keeps a fraction R² of the variation and the losses are independent, the chain should keep roughly the product. The numbers say otherwise.</p>
+<div class="math">chain Qwen-1.5B → Qwen-0.5B → SmolLM2-360M → SmolLM2-135M
+step R²:              0.645       ×      0.647       ×      0.730    = 0.305   (guess if losses compound)
+composed, measured:   0.629
+direct map 1.5B→135M: 0.659       → the chain keeps 0.629 / 0.659 ≈ 95%</div>
+<p><b>Intuition.</b> What each step loses is mostly the <i>same</i> material: detail that the smaller model can't represent anyway. Once dropped at the first step it can't be dropped again, so the losses overlap instead of multiplying.</p>
+
+<!-- ============================================================ 7 -->
+<h2 id="spearman"><span class="n">7</span>Spearman correlation and an exact p-value</h2>
+<p><b>Idea.</b> Do more capable small models map better? With only 5 models, compare <i>rankings</i>, not raw values, and count exactly how often chance would give a result this strong.</p>
+<div class="tbl"><table>
+<tr><th>model</th><th class="num">bits/byte</th><th class="num">capability rank</th><th class="num">map R²</th><th class="num">R² rank</th><th class="num">d (difference)</th></tr>
+<tr><td>Qwen2.5-0.5B</td><td class="num">0.222</td><td class="num">1</td><td class="num">0.605</td><td class="num">1</td><td class="num">0</td></tr>
+<tr><td>SmolLM2-360M</td><td class="num">0.466</td><td class="num">2</td><td class="num">0.567</td><td class="num">2</td><td class="num">0</td></tr>
+<tr><td>Gemma-3-270M</td><td class="num">0.551</td><td class="num">3</td><td class="num">0.510</td><td class="num">4</td><td class="num">1</td></tr>
+<tr><td>SmolLM2-135M</td><td class="num">0.588</td><td class="num">4</td><td class="num">0.544</td><td class="num">3</td><td class="num">1</td></tr>
+<tr><td>Pythia-160M</td><td class="num">1.012</td><td class="num">5</td><td class="num">0.451</td><td class="num">5</td><td class="num">0</td></tr>
+</table></div>
+<div class="math">ρ = 1 − 6 Σd² / (n(n² − 1)) = 1 − 6·2 / (5·24) = 1 − 12/120 = 0.90</div>
+<p><b>Exact p-value by counting.</b> If capability had nothing to do with map quality, every one of the 5! = 120 orderings of the R² ranks would be equally likely. How many give ρ ≥ 0.9?</p>
+<ul>
+<li>The perfect order (Σd² = 0, ρ = 1): <b>1</b> ordering.</li>
+<li>One swap of two neighbours (Σd² = 2, ρ = 0.9): positions 1↔2, 2↔3, 3↔4 or 4↔5, so <b>4</b> orderings.</li>
+</ul>
+<div class="math">one-sided p = 5/120 ≈ 0.042        two-sided p ≈ 0.083</div>
+<p>So "ρ = 0.9" sounds strong but is a trend, not proof: with 5 points, about 1 random ordering in 12 looks this good in one direction or the other. A 10-model rerun is written (<code>scripts/atlas_extend.py</code>) but not yet run.</p>
+
+<div class="part-h">Part 3 · Moving a behaviour</div>
+
+<!-- ============================================================ 8 -->
+<h2 id="direction"><span class="n">8</span>Directions, transport, cosine and steering</h2>
+<h3>8.1 · A behaviour as a direction</h3>
+<p><b>Idea.</b> Average the states of tokens where the model is looping, average the states where it is productive, and subtract. The result points "toward looping".</p>
+<div class="math">d = mean(h | looping) − mean(h | productive)</div>
+<p>Toy example in 2-D. Looping states (3, 1), (4, 2), (5, 1.5) have mean (4, 1.5). Productive states (1, 2), (2, 3), (0, 2.5) have mean (1, 2.5). So d = (4 − 1, 1.5 − 2.5) = <b>(3, −1)</b>, with length ‖d‖ = √10 ≈ 3.16.</p>
+
+<h3>8.2 · Carrying a direction through the map (the bias cancels)</h3>
+<p>The map is ŷ = xW + b. Map both class means and subtract:</p>
+<div class="math">(mean_loop · W + b) − (mean_prod · W + b) = (mean_loop − mean_prod) · W = d_L · W
+⇒  transported direction  d_{L→S} = d_L W      (no bias: differences don't need it)</div>
+<p>So moving a direction from L to S is a single matrix multiply.</p>
+
+<h3>8.3 · Cosine similarity: do two directions agree?</h3>
+<div class="math">cos(a, b) = a·b / (‖a‖ ‖b‖)       1 = same direction, 0 = unrelated, −1 = opposite
+
+toy:  a = (3, −1),  b = (2.8, −1.4)
+      a·b = 8.4 + 1.4 = 9.8;   ‖a‖ = 3.162,  ‖b‖ = 3.130
+      cos = 9.8 / 9.899 = 0.990      (about 8° apart)</div>
+<div class="box ours"><h4>In our runs</h4>S's own loop direction and L's direction mapped into S have cosine <b>0.985</b>, about 10° apart. In the MATH experiment, L's "correct vs wrong" direction mapped into S had cosine 0.85 with S's own. High agreement means the map gives S a direction it could already find by itself.</div>
+
+<h3>8.4 · Steering: push every token against the direction</h3>
+<div class="math">h ← h − s · ‖d_S‖ · d̂          d̂ = d / ‖d‖  (unit length)
+
+s     = strength, measured in "loop gaps" (s = 1 moves by one gap length)
+‖d_S‖ = length of S's own loop gap, used for every method so they push equally hard
+d̂     = S's own direction, L's mapped direction, or a random direction (control)</div>
+<figure>
+<div class="ctrl"><label for="st">strength s</label><input id="st" type="range" min="0" max="1.5" step="0.05" value="0"><output id="stv">0</output></div>
+<div class="fig" id="fig-steer"></div>
+<figcaption><b>Steering in the toy 2-D space.</b> Orange dots are looping states, blue dots productive, crosses the two means, and the arrow is d. Moving s shifts one looping state (the ringed one) against d. At s = 1 the looping <i>mean</i> would land exactly on the productive mean. In real models we used s = 2 at layer 18 (picked on a tuning slice), because one token's state is far noisier than the average.</figcaption>
+</figure>
+
+<!-- ============================================================ 9 -->
+<h2 id="fold"><span class="n">9</span>Fold: steering is already a weight edit</h2>
+<p><b>Idea.</b> Adding the same vector to every token after layer ℓ is exactly what a bias in that layer's last matrix does. So steering can be written into the weights.</p>
+<div class="math">block output:  h_out = h + Attn(h) + W_down · a          (a = MLP neuron activations)
+steering:      h_out = h + Attn(h) + W_down · a + c        (c = −s‖d_S‖d̂)
+fold:          give W_down a bias b = c                     → identical arithmetic</div>
+<p>We checked it: steering and the folded model differ by 1.4×10⁻⁴, which is bf16 rounding. This shows the line between "activation steering" and "weight editing" is thin. A constant push is a bias edit. Section 12 shows the next step up: a push that switches on only when needed.</p>
+
+<!-- ============================================================ 10 -->
+<h2 id="counts"><span class="n">10</span>Error bars on rates: Wilson interval and z-test</h2>
+<p><b>Idea.</b> "21% looped" from 200 problems is uncertain. How wide is the uncertainty, and is 21% vs 10% a real difference?</p>
+<h3>Wilson 95% interval</h3>
+<div class="math">p̂ = observed rate, n = trials, z = 1.96
+centre = (p̂ + z²/2n) / (1 + z²/n)
+half   = z·√( p̂(1−p̂)/n + z²/4n² ) / (1 + z²/n)
+interval = centre ± half</div>
+<div class="math" id="wilson-ex"></div>
+<p>Wilson is preferred over the textbook p̂ ± 1.96√(p̂(1−p̂)/n) because it behaves well near 0% and 100%, and its interval is never negative.</p>
+<h3>Two-proportion z-test</h3>
+<div class="math" id="z-ex"></div>
+<p>Because all methods use the same 200 problems, a paired test (McNemar) would be sharper, but we didn't save per-problem outcomes. The unpaired test is conservative: if anything it understates the significance.</p>
+
+<div class="part-h">Part 4 · Weight-space tests</div>
+
+<!-- ============================================================ 11 -->
+<h2 id="transplant"><span class="n">11</span>Block transplant</h2>
+<h3>11.1 · The loss we measure: NLL</h3>
+<p><b>Idea.</b> Score a model by how much probability it gives to the actual next token. Negative log likelihood averages −ln(p) over every token in held-out text. Lower is better.</p>
+<div class="math">NLL = − (1/N) Σ ln p(true next token)
+
+toy: if the model gives the true token p = 0.5, 0.8, 0.25:
+     NLL = −(ln 0.5 + ln 0.8 + ln 0.25)/3 = (0.693 + 0.223 + 1.386)/3 = 0.767
+
+reading it back: e^(−NLL) is the "typical" probability of the right token
+     intact Qwen-0.5B: NLL 0.4075 → e^−0.4075 ≈ 0.67
+     block 6 deleted:  NLL 0.5871 → e^−0.5871 ≈ 0.56</div>
+
+<h3>11.2 · The transplant pipeline</h3>
+<div class="math">S's state entering block s ──A──▶ L's coordinates ──L's block l (L's weights, untouched)──▶ ──B──▶ back to S
+A = ridge map  S_in → L_in      fitted on natural states of both models
+B = ridge map  L_out → S_out    "pure": fitted on natural states
+                                "fit":  refitted on what L's block actually outputs when fed A(S_in)</div>
+<p>Controls: <b>skip</b> (delete the block: output = input), <b>linear</b> (a ridge map S_in → S_out built from S's own data, no L at all), and <b>random</b> (a random-weight block with the same architecture as L, output map refitted).</p>
+
+<h3>11.3 · The recovery score</h3>
+<div class="math">recovered = (NLL_skip − NLL_replacement) / (NLL_skip − NLL_intact)
+            0% = as bad as deleting the block,   100% = as good as S's own block,   negative = worse than deleting
+
+block 6:  intact 0.4075, skip 0.5871  → damage = 0.1796
+  linear stand-in       NLL 0.4785   (0.5871 − 0.4785)/0.1796 = +60.5%
+  L's block, pure maps  NLL 0.6045   (0.5871 − 0.6045)/0.1796 =  −9.7%
+  L's block, B refit    NLL 0.5104                             = +42.7%
+  random block, B refit NLL 0.5177                             = +38.6%</div>
+<div class="box int"><h4>Why the pure transplant fails</h4>A only captures about 60% of L's input (validation R² 0.60–0.64). L's block is nonlinear, so the 40% it gets wrong is not a small blur. It pushes the block into input regions it never saw during training, and the output errors grow. At blocks 12 and 18 the pure transplant scores −283% and −341%. Refitting B mostly learns to <i>undo</i> L's block: a random block does almost as well, and S's own linear stand-in beats both.</div>
+<p>A subtle point: at block 6 the pure transplant's output matches S's true output <i>better</i> than deleting the block does (R² 0.77 vs 0.63), yet its loss is worse. Raw R² treats all errors equally, but the model is very sensitive to errors in a few directions. That's why we judge by loss, not by R².</p>
+
+<!-- ============================================================ 12 -->
+<h2 id="rank1"><span class="n">12</span>The rank-1 edit: steering that switches itself on</h2>
+<p><b>Idea.</b> Change one MLP output matrix so that the layer adds the anti-loop push <i>only on tokens that look like looping</i>.</p>
+<p>An MLP layer ends with <code>out = W_down · a</code>, where <code>a</code> holds the neuron activations (1,536 numbers in SmolLM2-135M) and W_down is 576 × 1,536. Add a rank-1 change (here a is a column vector, as in the code):</p>
+<div class="math">ΔW = δ · u vᵀ          u: a direction in the residual stream (576 numbers)  → "what to add"
+                        v: a weight per neuron (1,536 numbers, mostly 0)   → "when to add it"
+
+new output = W_down·a + δ · u · (v·a)
+                            └── t = v·a, one number per token: the trigger</div>
+<p>We choose v so that t ≈ −1 on looping tokens and t ≈ 0 on productive ones, and set u = d̂ (the loop direction) and δ = s‖d_S‖. Then:</p>
+<div class="math">looping token:     t ≈ −1   →  adds −s‖d_S‖d̂    (exactly the steering push)
+productive token:  t ≈  0   →  adds nothing</div>
+<p>Only the columns j where v_j ≠ 0 change. With 8 nonzero entries that is 8 × 576 = <b>4,608 weights</b> out of 885k in that matrix.</p>
+<figure>
+<div class="ctrl"><span>token</span><span class="seg" id="tokseg" role="group" aria-label="Pick a token"></span></div>
+<div class="fig" id="fig-rank1"></div>
+<div class="readout" id="rank1-read"></div>
+<figcaption><b>The trigger in action</b>, using the 4-neuron toy from section 13 (v = [−0.5, 0, 0, 0]) and the 2-D direction from section 8. Looping tokens get t ≤ −1 and are pushed against the loop direction. Productive tokens get t ≈ 0 and are left alone. Strength s = 1.</figcaption>
+</figure>
+
+<!-- ============================================================ 13 -->
+<h2 id="lp"><span class="n">13</span>The linear program that finds v</h2>
+<p><b>Idea.</b> Find the <i>smallest, sparsest</i> neuron weighting v that fires strongly on every looping token and stays quiet on every productive token.</p>
+<div class="math">minimise    Σⱼ |vⱼ|  +  λ Σₜ slackₜ
+subject to  v·aₜ ≤ −1 + slackₜ          for each looping token t      (fire)
+            |v·aₜ| ≤ ε + slackₜ          for each productive token t   (stay quiet)
+            slackₜ ≥ 0
+
+ε = 0.1,  λ = 1   (slack lets a few hopeless tokens break the rule, at a price)</div>
+<p>Every piece is linear, so this is a <b>linear program</b>. Solvers such as HiGHS find the exact optimum in seconds. The |vⱼ| is made linear by splitting vⱼ = vⱼ⁺ − vⱼ⁻ with both parts ≥ 0. The two-sided rule |x| ≤ ε becomes two one-sided rules, x ≤ ε and −x ≤ ε.</p>
+
+<h3>Toy problem, solved</h3>
+<p>Four neurons, three looping tokens and three productive tokens. Neuron 1 is clearly a "loop neuron". Neuron 2 also leans toward loops, but less cleanly.</p>
+<div class="tbl" id="lp-tbl"></div>
+<p>The solver (scipy's HiGHS, run on exactly these numbers) returns <b>v = [−0.5, 0, 0, 0]</b>, objective 0.5, no slack needed. The last column checks every constraint. Why not also use neuron 2? Try v = [−⅓, −⅓, 0, 0]: it still fires on loops, but it costs ⅔ > ½ and gives −0.17 on the first productive token, breaking the |t| ≤ 0.1 rule.</p>
+
+<h3>Why |v| (L1) gives sparse answers</h3>
+<figure>
+<div class="fig" id="fig-l1"></div>
+<figcaption><b>L1 picks corners.</b> Two neurons, one constraint (the line 2v₁ + v₂ = −1). Growing an L1 "diamond" from the origin, it first touches the line at a corner, v = (−0.5, 0), where one neuron is exactly zero. Growing an L2 circle (ridge-style) touches at (−0.4, −0.2), where both neurons are used. That's why the LP chooses <i>which</i> neurons to use, not just how much.</figcaption>
+</figure>
+
+<h3>The full recipe in our runs</h3>
+<ol>
+<li><b>Pre-screen.</b> Keep the 1,000 neurons whose loop-vs-productive gap is largest relative to their spread (|mean_loop − mean_prod| / std), so the LP stays small.</li>
+<li><b>Solve</b> the LP on 400 looping and 400 productive tokens.</li>
+<li><b>Keep 8.</b> Score each neuron by how much it actually moves t, |vⱼ| · std(aⱼ), and keep the top 8.</li>
+<li><b>Re-solve</b> the LP with only those 8 neurons allowed.</li>
+</ol>
+
+<!-- ============================================================ 14 -->
+<h2 id="auc"><span class="n">14</span>AUC: is the trigger any good on new tokens?</h2>
+<p><b>Idea.</b> Pick one random looping token and one random productive token. AUC is the chance that the trigger ranks the looping one as more "loopy" (more negative t). 0.5 is a coin flip; 1 is perfect.</p>
+<div class="math">toy trigger values   looping: −1.2, −0.9, −0.2      productive: 0.0, −0.3, 0.1
+count the 3×3 = 9 pairs where looping < productive:
+  −1.2 beats all 3,   −0.9 beats all 3,   −0.2 beats 0.0 and 0.1 but not −0.3
+AUC = 8 / 9 ≈ 0.89</div>
+<div class="box ours"><h4>In our runs (held-out tokens)</h4>S's own trigger 0.72 · L's trigger inside L 0.77 · L's trigger ported into S 0.61 · random 8 neurons 0.57.</div>
+
+<!-- ============================================================ 15 -->
+<h2 id="port"><span class="n">15</span>Porting the edit from L to S</h2>
+<p><b>Idea.</b> L has its own edit (u_L, v_L). Carry both halves into S without using any of S's loop labels.</p>
+<div class="math">payload:  u_{L→S} = d_L W           (section 8.2: a direction goes through the map)
+
+trigger:  L's trigger value at each aligned token:   yₜ = v_L · aₜᴸ
+          find 8 S neurons that reproduce it:
+          minimise  Σ|cⱼ| + λ Σ slack    subject to   |c·aₜˢ − yₜ| ≤ ε + slackₜ   for every token</div>
+<p>This "port LP" is the same machine as section 13, but now the target is L's trigger value instead of a loop label. Then we measure fidelity: how much of L's trigger the 8 S neurons explain on held-out tokens.</p>
+<div class="math">port fidelity R² = 0.045        → S's neurons capture 4.5% of L's trigger
+compare: the residual-stream map  R² ≈ 0.66</div>
+<div class="box int"><h4>Why the two numbers differ so much</h4>The residual stream is the shared "language" every block reads and writes, so it lines up across models. MLP neurons are private wiring: each model learned its own basis, and nothing forces neuron 4,211 of L to have a twin in S. The <b>hybrid</b> edit uses S's own trigger (found with S's own labels) with L's mapped direction. It cut loops from 21% to 14%, about 55% of what S's own edit achieved (21% → 8.5%).</div>
+
+<!-- ============================================================ 16 -->
+<h2 id="tune"><span class="n">16</span>Picking the strength without cheating</h2>
+<p><b>Idea.</b> Choose s on separate problems, then report on the test problems once.</p>
+<div class="math">tuning slice (60 problems), s ∈ {2, 4, 8, 16}:
+  coherence check: Qwen-1.5B scores the first 48 generated tokens (early NLL)
+  rule: lowest loop rate whose early NLL ≤ 1.15 × the unedited model's
+
+       s=2   loops 18.3%
+       s=4   loops  8.3%   early NLL 1.51   ✓  chosen
+       s=8   loops  6.7%   early NLL 2.41   ✗  (fewer loops, but gibberish)
+       s=16  loops 40%                       (breaks the model)
+
+then on the 200 test problems, once, with s = 4.</div>
+<p>Without the coherence rule you could "cure" loops by pushing so hard the model writes nonsense, which also doesn't repeat itself.</p>
+
+<!-- ============================================================ cheat -->
+<h2 id="cheat">Cheat sheet</h2>
+<div class="tbl"><table>
+<tr><th>Thing</th><th>Formula</th><th>One-line meaning</th></tr>
+<tr><td>Ridge map</td><td><code>W = (XᵀX+λI)⁻¹XᵀY</code></td><td>best linear prediction of S's state from L's</td></tr>
+<tr><td>R²</td><td><code>1 − Σ(y−ŷ)²/Σ(y−ȳ)²</code></td><td>share of variation explained, on unseen texts</td></tr>
+<tr><td>CKA</td><td><code>‖XᵀY‖²/(‖XᵀX‖‖YᵀY‖)</code></td><td>do two layers agree on which tokens are alike</td></tr>
+<tr><td>Shared part</td><td><code>R²(trained) − R²(embedding)</code></td><td>what's left after "same token" is removed</td></tr>
+<tr><td>Spearman</td><td><code>1 − 6Σd²/(n(n²−1))</code></td><td>rank agreement; p by counting orderings</td></tr>
+<tr><td>Direction</td><td><code>mean(loop) − mean(prod)</code></td><td>points toward the behaviour</td></tr>
+<tr><td>Transport</td><td><code>d_L W</code></td><td>bias cancels for differences</td></tr>
+<tr><td>Steering</td><td><code>h − s‖d_S‖d̂</code></td><td>constant push on every token</td></tr>
+<tr><td>Fold</td><td><code>bias += c</code></td><td>the same push, written into a weight</td></tr>
+<tr><td>Rank-1 edit</td><td><code>W += δ u vᵀ</code></td><td>push u, only when the trigger v·a fires</td></tr>
+<tr><td>LP</td><td><code>min Σ|v| s.t. v·a ≤ −1 / |v·a| ≤ ε</code></td><td>sparsest trigger that separates loops</td></tr>
+<tr><td>Recovery</td><td><code>(NLL_skip − NLL)/(NLL_skip − NLL_intact)</code></td><td>0 = deleted block, 1 = original</td></tr>
+<tr><td>AUC</td><td>share of (loop, prod) pairs ranked right</td><td>0.5 chance, 1 perfect</td></tr>
+<tr><td>Wilson / z</td><td>see section 10</td><td>uncertainty of a rate; is a gap real</td></tr>
+</table></div>
+<p class="back"><a href="notebook.html">← Back to the Weightmap Notebook</a></p>
+</main>
+</div>
+
+<script>
+(function(){
+const NS="http://www.w3.org/2000/svg";
+function el(tag,attrs,parent,text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;if(parent)parent.appendChild(e);return e;}
+function svg(id,w,h,label){const host=document.getElementById(id);host.innerHTML="";const s=el("svg",{viewBox:`0 0 ${w} ${h}`,width:w,role:"img","aria-label":label});host.appendChild(s);
+  el("defs",{},s).innerHTML='<marker id="ah-'+id+'" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink)"/></marker>';return s;}
+const C={blue:"var(--blue)",orange:"var(--orange)",grey:"var(--grey)",rule:"var(--rule)",ink:"var(--ink)",ink2:"var(--ink2)",paper:"var(--paper)",good:"var(--good)",bad:"var(--bad)"};
+const f=(v,d=3)=>(Math.abs(v)<5e-13?0:v).toFixed(d);
+
+/* ---------- ridge widget ---------- */
+const TR=[[1,1.2],[2,1.9],[3,3.2],[4,3.9]], TE=[[5,5.1],[6,5.8]];
+function r2(pairs,w){const m=pairs.reduce((a,p)=>a+p[1],0)/pairs.length;let res=0,tot=0;for(const[x,y]of pairs){res+=(y-w*x)**2;tot+=(y-m)**2;}return 1-res/tot;}
+function drawRidge(){
+  const lam=+document.getElementById("lam").value;document.getElementById("lamv").textContent=lam;
+  const sxy=TR.reduce((a,p)=>a+p[0]*p[1],0), sxx=TR.reduce((a,p)=>a+p[0]*p[0],0), w=sxy/(sxx+lam);
+  const W=640,H=300,L=46,R=16,T=14,B=36,X=v=>L+v/6.5*(W-L-R),Y=v=>T+(7-v)/7*(H-T-B);
+  const s=svg("fig-ridge",W,H,"Scatter with fitted ridge line");
+  for(let t=0;t<=6;t++){el("line",{x1:X(t),x2:X(t),y1:T,y2:H-B,stroke:C.rule},s);el("text",{x:X(t),y:H-B+18,"text-anchor":"middle","font-size":11,class:"muted"},s,t);}
+  for(let t=0;t<=7;t++){el("line",{x1:L,x2:W-R,y1:Y(t),y2:Y(t),stroke:C.rule},s);el("text",{x:L-8,y:Y(t)+4,"text-anchor":"end","font-size":11,class:"muted"},s,t);}
+  el("text",{x:W-R,y:H-4,"text-anchor":"end","font-size":11,class:"muted"},s,"x  (L's number)");
+  el("text",{x:L+4,y:T+12,"font-size":11,class:"muted"},s,"y  (S's number)");
+  el("line",{x1:X(0),y1:Y(0),x2:X(6.5),y2:Y(6.5*w),stroke:C.blue,"stroke-width":2.5},s);
+  TR.forEach(p=>el("circle",{cx:X(p[0]),cy:Y(p[1]),r:6,fill:C.blue,stroke:C.paper,"stroke-width":1.5},s));
+  TE.forEach(p=>el("circle",{cx:X(p[0]),cy:Y(p[1]),r:6,fill:"none",stroke:C.orange,"stroke-width":2.5},s));
+  document.getElementById("ridge-read").innerHTML=`<span>w = 30.2 / (30 + ${lam}) = <b>${f(w)}</b></span><span>train R² <b>${f(r2(TR,w))}</b></span><span>held-out R² <b>${f(r2(TE,w))}</b></span>`;
+}
+document.getElementById("lam").addEventListener("input",drawRidge);drawRidge();
+
+/* ---------- CKA table ---------- */
+(function(){
+  const X=[[1,2],[-2,1],[0,-1],[1,-2]];
+  const th=Math.PI/2, Y1=X.map(([a,b])=>[3*(a*Math.cos(th)-b*Math.sin(th)),3*(a*Math.sin(th)+b*Math.cos(th))]);
+  const Y2=[[2,0],[1,1],[-2,0.5],[-1,-1.5]];
+  const center=M=>{const m=[0,1].map(j=>M.reduce((a,r)=>a+r[j],0)/M.length);return M.map(r=>r.map((v,j)=>v-m[j]));};
+  const tmul=(A,B)=>{const out=[];for(let i=0;i<A[0].length;i++){out.push([]);for(let j=0;j<B[0].length;j++){let s=0;for(let k=0;k<A.length;k++)s+=A[k][i]*B[k][j];out[i].push(s);}}return out;};
+  const fro2=M=>M.flat().reduce((a,v)=>a+v*v,0);
+  const cka=(A,B)=>{A=center(A);B=center(B);return fro2(tmul(A,B))/Math.sqrt(fro2(tmul(A,A))*fro2(tmul(B,B)));};
+  const row=(M,i)=>`(${M[i].map(v=>f(v,1)).join(", ")})`;
+  let h=`<table><tr><th>token</th><th>X (layer of model 1)</th><th>Y₁ = X rotated 90°, ×3</th><th>Y₂ (unrelated)</th></tr>`;
+  for(let i=0;i<4;i++)h+=`<tr><td>${i+1}</td><td><code>${row(X,i)}</code></td><td><code>${row(Y1,i)}</code></td><td><code>${row(Y2,i)}</code></td></tr>`;
+  h+=`<tr><td><b>CKA with X</b></td><td class="num">1.000</td><td><b>${f(cka(X,Y1))}</b></td><td><b>${f(cka(X,Y2))}</b></td></tr></table>`;
+  document.getElementById("cka-tbl").innerHTML=h;
+})();
+
+/* ---------- steering widget ---------- */
+const LOOP=[[3,1],[4,2],[5,1.5]], PROD=[[1,2],[2,3],[0,2.5]];
+const mean=P=>[P.reduce((a,p)=>a+p[0],0)/P.length,P.reduce((a,p)=>a+p[1],0)/P.length];
+const mL=mean(LOOP), mP=mean(PROD), D=[mL[0]-mP[0],mL[1]-mP[1]], ND=Math.hypot(D[0],D[1]), DH=[D[0]/ND,D[1]/ND];
+function drawSteer(){
+  const sv=+document.getElementById("st").value;document.getElementById("stv").textContent=sv.toFixed(2);
+  const W=640,H=300,L=40,R=16,T=14,B=30,X=v=>L+(v+1)/7*(W-L-R),Y=v=>T+(4-v)/4.5*(H-T-B);
+  const s=svg("fig-steer",W,H,"Two point clouds with the loop direction and a steered point");
+  for(let t=-1;t<=6;t++){el("line",{x1:X(t),x2:X(t),y1:T,y2:H-B,stroke:C.rule},s);el("text",{x:X(t),y:H-B+16,"text-anchor":"middle","font-size":11,class:"muted"},s,t);}
+  for(let t=0;t<=4;t++){el("line",{x1:L,x2:W-R,y1:Y(t),y2:Y(t),stroke:C.rule},s);el("text",{x:L-8,y:Y(t)+4,"text-anchor":"end","font-size":11,class:"muted"},s,t);}
+  el("line",{x1:X(mP[0]),y1:Y(mP[1]),x2:X(mL[0]),y2:Y(mL[1]),stroke:C.ink,"stroke-width":2,"marker-end":"url(#ah-fig-steer)"},s);
+  el("text",{x:(X(mP[0])+X(mL[0]))/2+6,y:(Y(mP[1])+Y(mL[1]))/2-8,"font-size":12},s,"d = (3, −1)");
+  PROD.forEach(p=>el("circle",{cx:X(p[0]),cy:Y(p[1]),r:6,fill:C.blue,stroke:C.paper,"stroke-width":1.5},s));
+  LOOP.forEach(p=>el("circle",{cx:X(p[0]),cy:Y(p[1]),r:6,fill:C.orange,stroke:C.paper,"stroke-width":1.5},s));
+  [[mP,C.blue,"productive mean"],[mL,C.orange,"looping mean"]].forEach(([m,c,t])=>{const x=X(m[0]),y=Y(m[1]);el("path",{d:`M${x-6},${y-6}L${x+6},${y+6}M${x-6},${y+6}L${x+6},${y-6}`,stroke:c,"stroke-width":2.5},s);el("text",{x:x,y:y+22,"text-anchor":"middle","font-size":11.5,class:"muted"},s,t);});
+  const p0=LOOP[2], p1=[p0[0]-sv*ND*DH[0],p0[1]-sv*ND*DH[1]];
+  if(sv>0)el("line",{x1:X(p0[0]),y1:Y(p0[1]),x2:X(p1[0]),y2:Y(p1[1]),stroke:C.orange,"stroke-width":1.5,"stroke-dasharray":"4 3"},s);
+  el("circle",{cx:X(p1[0]),cy:Y(p1[1]),r:10,fill:"none",stroke:C.orange,"stroke-width":2.5},s);
+  el("text",{x:X(p1[0]),y:Y(p1[1])-15,"text-anchor":"middle","font-size":12},s,`(${f(p1[0],2)}, ${f(p1[1],2)})`);
+}
+document.getElementById("st").addEventListener("input",drawSteer);drawSteer();
+
+/* ---------- LP toy table ---------- */
+const AR=[[2.0,1.0,0.5,1.0],[2.5,1.5,1.0,0.0],[2.0,1.0,0.0,0.5]], AP=[[0.0,0.5,1.0,0.5],[0.1,0.0,0.5,1.0],[0.0,0.5,1.5,0.0]];
+const V=[-0.5,0,0,0], EPS=0.1, dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0);
+(function(){
+  let h=`<table><tr><th>token</th><th>neuron activations a = (a₁, a₂, a₃, a₄)</th><th class="num">t = v·a</th><th>rule</th><th>check</th></tr>`;
+  AR.forEach((a,i)=>{const t=dot(V,a);h+=`<tr><td>looping ${i+1}</td><td><code>(${a.map(x=>x.toFixed(1)).join(", ")})</code></td><td class="num">${f(t,2)}</td><td>t ≤ −1</td><td class="${t<=-1+1e-9?"ok":"bad"}">${t<=-1+1e-9?"✓":"✗"}</td></tr>`;});
+  AP.forEach((a,i)=>{const t=dot(V,a);h+=`<tr><td>productive ${i+1}</td><td><code>(${a.map(x=>x.toFixed(1)).join(", ")})</code></td><td class="num">${f(t,2)}</td><td>|t| ≤ 0.1</td><td class="${Math.abs(t)<=EPS+1e-9?"ok":"bad"}">${Math.abs(t)<=EPS+1e-9?"✓":"✗"}</td></tr>`;});
+  document.getElementById("lp-tbl").innerHTML=h+"</table>";
+})();
+
+/* ---------- rank-1 widget ---------- */
+const TOKS=[...AR.map((a,i)=>({name:`looping ${i+1}`,a,base:LOOP[i],loop:true})),...AP.map((a,i)=>({name:`productive ${i+1}`,a,base:PROD[i],loop:false}))];
+let cur=0;
+const seg=document.getElementById("tokseg");
+TOKS.forEach((t,i)=>{const b=document.createElement("button");b.type="button";b.textContent=t.name;b.setAttribute("aria-pressed",i===0);b.onclick=()=>{cur=i;[...seg.children].forEach((c,j)=>c.setAttribute("aria-pressed",j===i));drawRank1();};seg.appendChild(b);});
+function drawRank1(){
+  const tk=TOKS[cur], t=dot(V,tk.a), delta=1*ND, sh=[delta*t*DH[0],delta*t*DH[1]], p1=[tk.base[0]+sh[0],tk.base[1]+sh[1]];
+  const W=640,H=260,L=40,R=16,T=14,B=30,X=v=>L+(v+1)/7*(W-L-R),Y=v=>T+(4-v)/4.5*(H-T-B);
+  const s=svg("fig-rank1",W,H,"Effect of the rank-1 edit on the chosen token");
+  for(let k=-1;k<=6;k++){el("line",{x1:X(k),x2:X(k),y1:T,y2:H-B,stroke:C.rule},s);el("text",{x:X(k),y:H-B+16,"text-anchor":"middle","font-size":11,class:"muted"},s,k);}
+  for(let k=0;k<=4;k++)el("line",{x1:L,x2:W-R,y1:Y(k),y2:Y(k),stroke:C.rule},s);
+  PROD.forEach(p=>el("circle",{cx:X(p[0]),cy:Y(p[1]),r:5,fill:C.blue,opacity:.35},s));
+  LOOP.forEach(p=>el("circle",{cx:X(p[0]),cy:Y(p[1]),r:5,fill:C.orange,opacity:.35},s));
+  const col=tk.loop?C.orange:C.blue;
+  el("circle",{cx:X(tk.base[0]),cy:Y(tk.base[1]),r:7,fill:col,stroke:C.paper,"stroke-width":1.5},s);
+  if(Math.hypot(sh[0],sh[1])>0.02){el("line",{x1:X(tk.base[0]),y1:Y(tk.base[1]),x2:X(p1[0]),y2:Y(p1[1]),stroke:C.ink,"stroke-width":2,"marker-end":"url(#ah-fig-rank1)"},s);
+    el("circle",{cx:X(p1[0]),cy:Y(p1[1]),r:10,fill:"none",stroke:col,"stroke-width":2.5},s);}
+  else el("text",{x:X(tk.base[0]),y:Y(tk.base[1])-14,"text-anchor":"middle","font-size":12},s,"no change");
+  document.getElementById("rank1-read").innerHTML=`<span>a = (${tk.a.map(x=>x.toFixed(1)).join(", ")})</span><span>t = v·a = −0.5 × ${tk.a[0].toFixed(1)} = <b>${f(t,2)}</b></span><span>added = δ·t·u = (${f(sh[0],2)}, ${f(sh[1],2)})</span>`;
+}
+drawRank1();
+
+/* ---------- L1 vs L2 ---------- */
+(function(){
+  const W=420,H=340,c=[W/2,H/2],S=220,X=v=>c[0]+v*S,Y=v=>c[1]-v*S;
+  const s=svg("fig-l1",W,H,"L1 diamond touches the constraint line at a corner; L2 circle touches elsewhere");
+  el("line",{x1:X(-0.85),x2:X(0.85),y1:Y(0),y2:Y(0),stroke:C.rule,"stroke-width":1.5},s);
+  el("line",{x1:X(0),x2:X(0),y1:Y(-0.7),y2:Y(0.7),stroke:C.rule,"stroke-width":1.5},s);
+  el("text",{x:X(0.85),y:Y(0)-6,"text-anchor":"end","font-size":12,class:"muted"},s,"v₁");
+  el("text",{x:X(0)+6,y:Y(0.7)+12,"font-size":12,class:"muted"},s,"v₂");
+  /* constraint 2v1+v2=-1 */
+  el("line",{x1:X(-0.75),y1:Y(0.5),x2:X(-0.15),y2:Y(-0.7),stroke:C.ink,"stroke-width":2},s);
+  el("text",{x:X(-0.16),y:Y(-0.66),"font-size":12},s,"2v₁ + v₂ = −1");
+  const r=0.5; el("path",{d:`M${X(r)},${Y(0)}L${X(0)},${Y(r)}L${X(-r)},${Y(0)}L${X(0)},${Y(-r)}Z`,fill:"none",stroke:C.orange,"stroke-width":2.5},s);
+  const rr=Math.sqrt(0.2); el("circle",{cx:X(0),cy:Y(0),r:rr*S,fill:"none",stroke:C.blue,"stroke-width":2.5,"stroke-dasharray":"6 4"},s);
+  el("circle",{cx:X(-0.5),cy:Y(0),r:6,fill:C.orange},s);
+  el("text",{x:X(-0.5)-8,y:Y(0)+20,"text-anchor":"end","font-size":12},s,"L1: (−0.5, 0)");
+  el("circle",{cx:X(-0.4),cy:Y(-0.2),r:6,fill:C.blue},s);
+  el("text",{x:X(-0.4)-10,y:Y(-0.2)+6,"text-anchor":"end","font-size":12},s,"L2: (−0.4, −0.2)");
+})();
+
+/* ---------- Wilson + z ---------- */
+(function(){
+  const z=1.96;
+  function wil(p,n){const c=(p+z*z/(2*n))/(1+z*z/n),h=z*Math.sqrt(p*(1-p)/n+z*z/(4*n*n))/(1+z*z/n);return[c,h];}
+  const [c,h]=wil(0.21,200);
+  document.getElementById("wilson-ex").textContent=
+`base model: 42 loops in 200 problems → p̂ = 0.21
+centre = (0.21 + 3.8416/400) / (1 + 3.8416/200) = ${f(c,4)}
+half   = 1.96 · √(0.21·0.79/200 + 3.8416/160000) / 1.0192 = ${f(h,4)}
+95% interval = [${f(c-h,3)}, ${f(c+h,3)}]  →  15.9% to 27.2%`;
+  const p1=0.21,p2=0.10,n=200,pb=(p1+p2)/2,se=Math.sqrt(2*pb*(1-pb)/n),zz=(p1-p2)/se;
+  function erfc(x){const t=1/(1+0.5*x);return t*Math.exp(-x*x-1.26551223+t*(1.00002368+t*(0.37409196+t*(0.09678418+t*(-0.18628806+t*(0.27886807+t*(-1.13520398+t*(1.48851587+t*(-0.82215223+t*0.17087277)))))))));}
+  document.getElementById("z-ex").textContent=
+`is "21% loops (base)" vs "10% loops (L's direction mapped into S)" a real gap?
+pooled rate  p̄ = (0.21 + 0.10)/2 = ${f(pb,3)}
+std. error   = √(2 · p̄(1−p̄) / n) = √(2 · ${f(pb,3)} · ${f(1-pb,3)} / 200) = ${f(se,4)}
+z = (0.21 − 0.10) / ${f(se,4)} = ${f(zz,2)}
+p = chance of a gap this big if nothing changed = ${f(erfc(zz/Math.SQRT2),4)}   → real`;
+})();
+
+/* ---------- tensor stack (fig 0.4) ---------- */
+(function(){
+  const W=660,H=300,s=svg("fig-tensor",W,H,"A stack of 25 tables, each 6 tokens by 896 numbers");
+  const toks=["Tom","␣has","␣","3","␣apples","."], sheets=[0,1,2,9,24], gx=150, gy=150, cw=22, rh=18, ncol=12;
+  sheets.slice().reverse().forEach((L,k)=>{const idx=sheets.length-1-k, dx=idx*34, dy=-idx*26;
+    const x0=gx+dx, y0=gy+dy-40;
+    el("rect",{x:x0,y:y0,width:ncol*cw,height:toks.length*rh,fill:"var(--paper)",stroke:L===9?C.orange:C.blue,"stroke-width":L===9?2.5:1.2},s);
+    if(idx===0){for(let r=1;r<toks.length;r++)el("line",{x1:x0,x2:x0+ncol*cw,y1:y0+r*rh,y2:y0+r*rh,stroke:C.rule},s);
+      for(let c=1;c<ncol;c++)el("line",{x1:x0+c*cw,x2:x0+c*cw,y1:y0,y2:y0+toks.length*rh,stroke:C.rule},s);
+      toks.forEach((t,r)=>el("text",{x:x0-8,y:y0+r*rh+13,"text-anchor":"end","font-size":11.5},s,t));
+      el("text",{x:x0+ncol*cw/2,y:y0+toks.length*rh+18,"text-anchor":"middle","font-size":11.5,class:"muted"},s,"896 numbers per token (h₁ … h₈₉₆) →");}
+    el("text",{x:x0+ncol*cw+8,y:y0+12,"font-size":11.5,fill:L===9?"var(--orange)":"var(--ink2)","font-weight":L===9?600:400},s,L===0?"layer 0 (embedding)":L===24?"layer 24 (last)":`layer ${L}`+(L===9?" ← used":""));
+  });
+  el("text",{x:gx+170,y:H-8,"text-anchor":"middle","font-size":11.5,class:"muted"},s,"25 sheets in all (layers 3–8 and 10–23 not drawn)");
+})();
+
+/* ---------- shapes (fig 0.6) ---------- */
+(function(){
+  const W=680,H=230,s=svg("fig-shapes",W,H,"X (n by 1536) times W (1536 by 896) equals Y-hat (n by 896)");
+  const k=0.085, hX=150, top=40;
+  const box=(x,y,w,h,fill,label,dims)=>{el("rect",{x,y,width:w,height:h,rx:3,fill,"fill-opacity":.2,stroke:fill,"stroke-width":2},s);
+    el("text",{x:x+w/2,y:y+h/2+4,"text-anchor":"middle","font-size":15,"font-weight":600},s,label);
+    el("text",{x:x+w/2,y:y+h+18,"text-anchor":"middle","font-size":11.5,class:"muted"},s,dims);};
+  const wX=1536*k, wY=896*k;
+  box(20,top,wX,hX,C.blue,"X","n tokens × 1536");
+  el("text",{x:20+wX+18,y:top+hX/2+5,"text-anchor":"middle","font-size":20},s,"·");
+  box(20+wX+36,top,wY,wX,C.grey,"W","1536 × 896");
+  el("text",{x:20+wX+36+wY+18,y:top+hX/2+5,"text-anchor":"middle","font-size":20},s,"=");
+  box(20+wX+36+wY+36,top,wY,hX,C.orange,"Ŷ","n tokens × 896");
+  el("text",{x:20,y:24,"font-size":11.5,class:"muted"},s,"one row of X = one token seen by L");
+  el("text",{x:20+wX+36+wY+36,y:24,"font-size":11.5,class:"muted"},s,"one row of Ŷ = prediction of S's row");
+})();
+})();
+</script>
+</body>
+</html>

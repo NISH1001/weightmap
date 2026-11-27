@@ -6,4 +6,4 @@
 07:07:26 T3 S10<-L13 {'all_1536_dims': 0.6379, 'pca_top896_rotated': 0.6264, 'select_896_axes_by_importance': 0.6413, 'random_896_axes': 0.5767, 'select_448_axes_by_importance': 0.6196, 'pca_top448_rotated': 0.5836, 'select_224_axes_by_importance': 0.5571, 'pca_top224_rotated': 0.5301}
 07:22:50 T2 S14<-L17 {'linear': 0.6501, 'linear+rff D=4096 bw=0.5xmedian': 0.6201, 'linear+rff D=4096 bw=1.0xmedian': 0.6197, 'linear+rff D=4096 bw=2.0xmedian': 0.6196, 'best_nonlinear_gain': -0.03}
 07:22:51 T3 S14<-L17 {'all_1536_dims': 0.6501, 'pca_top896_rotated': 0.6412, 'select_896_axes_by_importance': 0.6498, 'random_896_axes': 0.5876, 'select_448_axes_by_importance': 0.6247, 'pca_top448_rotated': 0.6068, 'select_224_axes_by_importance': 0.5629, 'pca_top224_rotated': 0.5599}
-07:22:51 wrote /Users/npantha/dev/impact/experiments/weightmap/scripts/quick_tests_results.json
+07:22:51 wrote scripts/quick_tests_results.json

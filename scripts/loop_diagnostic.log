@@ -23,4 +23,4 @@
 21:03:59 TEST S-native L18 x1 {'loop_rate': 0.24, 'accuracy': 0.01, 'mean_chars': 852.2, 'early_nll_qwen': 1.4187}
 21:04:43 TEST L->S L12 x1 {'loop_rate': 0.24, 'accuracy': 0.03, 'mean_chars': 789.1, 'early_nll_qwen': 1.3809}
 21:05:48 TEST random L12 x1 {'loop_rate': 0.395, 'accuracy': 0.01, 'mean_chars': 785.8, 'early_nll_qwen': 1.4913}
-21:05:48 wrote /Users/npantha/dev/impact/experiments/weightmap/scripts/loop_diagnostic_results.json
+21:05:48 wrote scripts/loop_diagnostic_results.json

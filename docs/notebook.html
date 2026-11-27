@@ -80,12 +80,13 @@ dt{font-family:var(--sans);font-weight:600}dd{margin:0}
   <a href="#caveats">11 · Caveats, next steps</a>
   <a href="#glossary">Glossary</a>
   <a href="#repro">Reproduce</a>
+  <a href="math.html" style="margin-top:10px;color:var(--blue)">The maths, step by step →</a>
 </nav>
 
 <main>
 <p class="meta">Working notes · weightmap project · November 2026 · all experiments training-free, run on one laptop (M3 Max, 36 GB)</p>
 <h1>Can a big model's knowledge be mapped into a small one?</h1>
-<p class="meta">A tutorial on what we did, why, how the maths works, and what we found.</p>
+<p class="meta">A tutorial on what we did, why, how the maths works, and what we found. For every formula worked through with toy examples, see <a href="math.html">The maths, step by step</a>.</p>
 
 <div class="abstract" id="verdict">
 <h4>Verdict in four lines</h4>
@@ -141,7 +142,7 @@ dt{font-family:var(--sans);font-weight:600}dd{margin:0}
 <h3>Step 3 · Score it honestly</h3>
 <p>We measure the map with <b>R²</b> on <i>texts it never saw</i>:</p>
 <div class="math">R² = 1 − Σ‖yₜ − ŷₜ‖² / Σ‖yₜ − ȳ‖²     1 = perfect, 0 = no better than predicting the average</div>
-<p>Holding out whole texts matters. Tokens within one text are very similar, so a token-level split leaks answers. Our first experiment reported R² = 0.85; after switching to text-level holdout and removing chat-template tokens, the real number was about <b>0.66</b>.</p>
+<p>Holding out whole texts matters. Tokens within one text are very similar, so a token-level split leaks answers. Our first experiment reported R² = 0.85; most of that excess came from chat-template tokens that every text shares, and on answer text with whole texts held out the real number was about <b>0.66</b>.</p>
 
 <h3>Step 4 · Choose which layers to pair</h3>
 <p>Linear CKA scores how similar two layers' representations are (1 = same up to rotation and scale):</p>
@@ -186,6 +187,11 @@ dt{font-family:var(--sans);font-weight:600}dd{margin:0}
 <!-- ============================================================ 6 -->
 <h2 id="ability"><span class="n">6</span>Can the map move ability?</h2>
 <p>The first experiment asked the central question directly. Qwen-1.5B solves 38.7% of MATH problems, Qwen-0.5B 20.7%. Of the problems only L solves, 62% are "blocked" (S solves them in at least one of 8 tries) and the rest "absent" (S never does).</p>
+<figure>
+<div class="legend"><span><i style="background:var(--grey)"></i>SmolLM2-135M (tiny)</span><span><i style="background:var(--orange)"></i>Qwen-0.5B (small)</span><span><i style="background:var(--blue)"></i>Qwen-1.5B (large)</span></div>
+<div class="fig" id="fig-venn"></div>
+<figcaption><b>Figure 5a.</b> Which held-out problems each model answers correctly (greedy, one try). Circle areas are proportional to how many problems each model solves, and each two-way overlap is drawn to scale; the three-way middle is approximate. <b>MATH:</b> the circles nest. Tiny solves 5 problems, and 4 of them are ones every model solves. Small mostly sits inside large. <b>NQ (facts):</b> no nesting. Each model knows some facts the others don't: tiny alone gets 10 that neither bigger model does. Reasoning looks like a ladder, facts like scattered memory. MATH here uses a lenient grader for all three models (the boxed answer, or else the last number), because tiny never uses \boxed{}; with the strict grader small solves 31 and large 58. Of the problems only large solves (strict grading), 20 are "blocked" (small gets them in at least 1 of 8 sampled tries) and 12 "absent" (never). Tiny is the Instruct version of SmolLM2-135M, since the base model has no chat format. <span class="muted">Source: scripts/tiny_venn.py; scripts/exp1_qwen_0.5b_1.5b/results</span></figcaption>
+</figure>
 <p>We took L's direction for "solving correctly vs failing", mapped it into S, and pushed S's residual stream along it during generation (<b>steering</b>):</p>
 <div class="math">h ← h + α · d̂          d = mean(h | correct) − mean(h | wrong),  d̂ = d / ‖d‖</div>
 <div class="tbl"><table>
@@ -258,7 +264,7 @@ then keep the 8 strongest columns and re-solve.</div>
 <tr><th>Hypothesis</th><th>Result</th><th>Evidence</th></tr>
 <tr><td>H1 related spaces</td><td class="part">Yes, weakly</td><td>R² 0.64–0.73, but token identity alone gives 0.35–0.59</td></tr>
 <tr><td>H2 a map F exists</td><td class="part">For representations only</td><td>Linear, cross-family; fails on blocks and neurons</td></tr>
-<tr><td>H3 S contained in L</td><td class="yes">Consistent</td><td>Pruning-like structure; L→S beats S→L</td></tr>
+<tr><td>H3 S contained in L</td><td class="part">For reasoning, not facts</td><td>Pruning-like structure; L→S beats S→L; MATH solved sets nest tiny ⊂ small ⊂ large, NQ facts don't (Fig. 5a)</td></tr>
 <tr><td>H4 ability transfer</td><td class="no">No</td><td>MATH −0.9 pts; 0/9 absent problems fixed</td></tr>
 <tr><td>H5 composition</td><td class="yes">Yes</td><td>Chains keep ~95% of direct maps</td></tr>
 <tr><td>Weight programs port</td><td class="part">Half</td><td>Direction ports (cos 0.985; hybrid 21→14%); trigger does not (R² 0.05)</td></tr>
@@ -458,5 +464,44 @@ hbars("fig-lp",[
     words.forEach((t,k)=>el("text",{x:x+12,y:150+k*17,"font-size":11.5,class:"muted"},s,t));
   });
 })();
+})();
+</script>
+<script>
+(function(){
+const NS="http://www.w3.org/2000/svg";
+function el(t,a,p,x){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(x!=null)e.textContent=x;if(p)p.appendChild(e);return e;}
+const W=700,H=380,s=el("svg",{viewBox:`0 0 ${W} ${H}`,width:W,role:"img","aria-label":"Area-proportional Venn diagrams of problems solved by tiny, small and large models on MATH and NQ"});
+document.getElementById("fig-venn").appendChild(s);
+/* region counts: T S L, TS, TL, SL, TSL, none */
+const panels=[{title:"MATH (150 test problems)",x:0,r:{T:1,S:6,L:35,TS:0,TL:0,SL:24,TSL:4,none:80}},
+              {title:"Natural Questions (400 test)",x:350,r:{T:10,S:9,L:18,TS:6,TL:5,SL:12,TSL:13,none:327}}];
+const K=10.5, U=Math.PI*K*K;                      /* circle area = U * problems */
+function lens(r1,r2,d){if(d>=r1+r2)return 0;if(d<=Math.abs(r1-r2))return Math.PI*Math.min(r1,r2)**2;
+  const a=r1*r1*Math.acos((d*d+r1*r1-r2*r2)/(2*d*r1)),b=r2*r2*Math.acos((d*d+r2*r2-r1*r1)/(2*d*r2));
+  return a+b-0.5*Math.sqrt((-d+r1+r2)*(d+r1-r2)*(d-r1+r2)*(d+r1+r2));}
+function dist(r1,r2,n){const g=U*n;let lo=Math.abs(r1-r2),hi=r1+r2;for(let t=0;t<60;t++){const m=(lo+hi)/2;if(lens(r1,r2,m)>g)lo=m;else hi=m;}return (lo+hi)/2;}
+const COL={T:"var(--grey)",S:"var(--orange)",L:"var(--blue)"}, NAME={T:"tiny",S:"small",L:"large"};
+panels.forEach(p=>{
+  const r=p.r, n={T:r.T+r.TS+r.TL+r.TSL,S:r.S+r.TS+r.SL+r.TSL,L:r.L+r.TL+r.SL+r.TSL};
+  const R={T:K*Math.sqrt(n.T),S:K*Math.sqrt(n.S),L:K*Math.sqrt(n.L)};
+  const dSL=dist(R.S,R.L,r.SL+r.TSL),dTS=dist(R.T,R.S,r.TS+r.TSL),dTL=dist(R.T,R.L,r.TL+r.TSL);
+  let xT=(dTS*dTS-dTL*dTL+dSL*dSL)/(2*dSL), yT=-Math.sqrt(Math.max(0,dTS*dTS-xT*xT));
+  const c={S:[0,0],L:[dSL,0],T:[xT,yT]};
+  const minx=Math.min(...["T","S","L"].map(k=>c[k][0]-R[k])),maxx=Math.max(...["T","S","L"].map(k=>c[k][0]+R[k]));
+  const miny=Math.min(...["T","S","L"].map(k=>c[k][1]-R[k])),maxy=Math.max(...["T","S","L"].map(k=>c[k][1]+R[k]));
+  const ox=p.x+175-(minx+maxx)/2, oy=60+(205-(maxy-miny))/2-miny;
+  el("rect",{x:p.x+12,y:36,width:326,height:336,rx:8,fill:"none",stroke:"var(--rule)"},s);
+  el("text",{x:p.x+175,y:24,"text-anchor":"middle","font-size":14,"font-weight":600},s,p.title);
+  ["L","S","T"].forEach(k=>el("circle",{cx:ox+c[k][0],cy:oy+c[k][1],r:R[k],fill:COL[k],"fill-opacity":k==="T"?.35:.18,stroke:COL[k],"stroke-width":2},s));
+  /* circle labels at fixed angles: large upper-right, small lower-left, tiny upper-left */
+  const ANG={L:-40,S:140,T:-130};
+  ["L","S","T"].forEach(k=>{const a=ANG[k]*Math.PI/180,vx=Math.cos(a),vy=Math.sin(a);
+    const lx=ox+c[k][0]+vx*(R[k]+8), ly=oy+c[k][1]+vy*(R[k]+8)+4;
+    el("text",{x:lx,y:ly,"text-anchor":vx<0?"end":"start","font-size":12,"font-weight":600,fill:COL[k]},s,`${NAME[k]} (${n[k]})`);});
+  const rows=[[["tiny only",r.T],["small only",r.S],["large only",r.L]],[["tiny+small",r.TS],["tiny+large",r.TL],["small+large",r.SL]],[["all three",r.TSL],["none",r.none]]];
+  rows.forEach((row,ri)=>row.forEach(([lab,v],ci)=>{const x=p.x+28+ci*104,y=308+ri*19;
+    el("text",{x,y,"font-size":11.5,class:"muted"},s,lab);
+    el("text",{x:x+92,y,"text-anchor":"end","font-size":12,"font-weight":600},s,v);}));
+});
 })();
 </script>
