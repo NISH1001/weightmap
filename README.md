@@ -1,50 +1,79 @@
 # weightmap
 
-**Can a larger language model's representations be mapped into a smaller model, without training, so the small model gains abilities only the large one has?**
+**Training-free linear maps between small and large language models.**
 
-`weightmap` is a small library for building and testing that kind of map, plus the experiments that ran it. It finds the layer correspondence between two causal LMs, fits closed-form linear maps between their hidden states, and lets you translate, steer, transplant, or fold edits into the small model's weights. No gradient descent at any point.
+When two language models read the same text, each turns every token into a vector, its hidden state. This repository asks whether the small model's hidden state can be computed from the large model's by one linear map, fitted in a single closed-form step with no training. It also asks whether that map can transfer anything from the large model into the small one: states, facts, behaviours, weight edits, or ability. We test six models from four families, between 135M and 1.5B parameters (Qwen2.5, SmolLM2, Gemma-3, Pythia).
 
-> Naming note: despite the name, the map lives in **activation (representation) space**: hidden states at aligned tokens. Comparing raw weight spaces across different widths isn't meaningful, because of the dimension mismatch and the permutation and rotation symmetries. The one true weight edit is `fold()`, which writes a steering vector into the small model's weights.
+The short answer: whole hidden states and some facts transfer, a large part of the map is the shared token, and compact objects do not transfer. A single steering direction and an 8-neuron weight edit do not carry over. A dense weight edit does.
 
-**Write-up:** the full technical report, with interactive figures, is at <https://nishparadox.com/research/weightmap/>. The experiment log is [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md).
+**Write-up:** the technical report, with interactive figures and a short plain-language version, is at <https://nishparadox.com/research/weightmap/>. The full experiment log, with every table and the threats to validity, is [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md).
 
-## Hypothesis
+## Background
 
-This was inspired by [*Sparks of Weight-Space Programming*](https://rikiyat.github.io/blog/weight-space-programming/) (MIT, Nov 2026), in which a frontier LLM edits small networks' weights directly.
+The work continues [ConceptGate](https://doi.org/10.5281/zenodo.24287378), which reads and steers concepts inside one frozen model, and was prompted by [*Sparks of Weight-Space Programming*](https://rikiyat.github.io/blog/weight-space-programming/) (Takehi et al., MIT, Nov 2026), in which an LLM reads and edits a small network's weights directly. Both work inside a single model. Here we ask whether a map between two models can move such an edit, or the ability behind it, from one model to the other.
 
-| | Claim |
+Despite the name, the map is in **activation space**: hidden states at tokens that both models have read. The raw weights of models with different widths cannot be compared directly, because the dimensions differ and the weights have permutation and rotation symmetries. The weight-space part of the project is the transfer of weight edits (`fold()` and the rank-1 port in [`scripts/lp_port.py`](scripts/lp_port.py)).
+
+| | Hypothesis |
 |---|---|
-| **H1** | Models of different sizes occupy related *sets* (regions) of a shared space. They aren't identical points, but they are structurally related. |
-| **H2** | There is a map **F** between the small model's space (S) and the large model's (L). |
-| **H3** | S is effectively *contained* in L. |
-| **H4** | F carries capability-relevant information *from L*: it can steer or edit S toward problems only L solves, **without training**. |
-| **H5** | It is recursive: tiny → small → large compose. |
+| **H1** | Models of different sizes occupy related regions of a shared space. |
+| **H2** | A map **F** exists between the small model's space (S) and the large model's (L). |
+| **H3** | S is contained in L. |
+| **H4** | F carries ability from L into S, without training. |
+| **H5** | The maps compose: tiny → small → large. |
 
-## Conclusion so far (experiment 1: Qwen2.5-0.5B ↔ 1.5B, MATH-500 + NQ-Open)
+## Results
 
-| | Verdict | Evidence |
+| Claim | Result | Evidence |
 |---|---|---|
-| Much of L's advantage is latent in S | **Supported** | 62% of MATH problems only L solves are solved by S at least once in 8 samples |
-| H1: related sets | **Supported** | Layer correspondence by CKA is monotone, CKA ≈ 0.92 |
-| H2: a map exists | **Supported** | A linear map predicts **~66%** of S's hidden-state variance from L's on held-out texts¹ (shuffled control −0.15; S's own adjacent layer: 0.86–0.91). It holds across model families too: SmolLM2-360M ← Qwen-1.5B gives 0.66–0.68. S still works when its states are replaced by mapped L states |
-| H3: S inside L | Weak to moderate | R² L→S beats S→L by 0.04 within Qwen and 0.07–0.12 across families (SmolLM2 ← Qwen) |
-| H4: the map transfers ability | **Not supported** | L-derived edits: MATH −0.9 points [95% CI −7, +5], NQ −3.7 [−6, −1]. 0/9 "absent" problems fixed |
-| f is linear | **Yes** | Adding non-linear (random-feature) terms doesn't improve the map (−0.03) |
-| S looks like a *pruned* L | **Supported** | Picking 896 of L's 1,536 coordinates predicts S as well as the full map (0.641 vs 0.638); random picks lose 0.06 |
-| A map between the *weights* (embedding tables) | Weak | R² 0.31 within Qwen, 0.42 SmolLM2←Qwen, about half the hidden-state map |
-| H1 refined: convergence tracks capability | **Supported** | Across 5 small models from 4 families, the more capable the small model, the more of Qwen-1.5B it captures (ρ = 0.9) |
-| The map as a *diagnostic* tool | **Works, no advantage** | Qwen's "looping" direction, mapped into SmolLM2-135M, cuts its loops 21% → 10% (random: 37%). S's own direction does as well (6.5%), and accuracy doesn't change. A failure direction transfers, but no new ability does |
-| H5: recursion | **Supported for compression** | 1.5B → 0.5B → 360M → 135M: chaining the maps keeps 95.5% of a direct map, and errors don't compound. The "small → large adds ability" direction is still unsupported |
+| H1, H2: a map exists | Yes, for representations | Held-out R² 0.64–0.73. L's input embeddings alone give 0.35–0.59 (Figure 1) |
+| H3: containment | Mostly, in behaviour | L solves 82% of S's MATH problems and 62% of its NQ answers. Its overall accuracy is 42% and 12% |
+| H4: ability transfers | No | MATH −0.9 points [95% CI −7.3, +5.5]. 0 of 9 problems that S never solves were fixed |
+| H5: composition | Yes for prediction, unclear for behaviour | R² keeps 95% along a 3-step chain. Fact swap through the chain keeps 53–78% of the direct result, not significant at n = 86 |
+| Facts transfer | Partly | 56–82% of the own-state ceiling. The subject's tokens alone give 26–62% (Figure 2) |
+| A steering direction transfers | No | Through a map fitted on other texts: loops 18.5% against 21% with no edit (Figure 3) |
+| A transplanted block transfers | No | A block mapped in from L is worse than deleting the block |
+| Weight edits transfer | Only when dense | An 8-neuron trigger does not port. A 574-neuron trigger cuts loops from 21% to 10%; three unselective controls give 21.5–32% (Figure 4) |
+| S looks like a pruned L | Yes | 896 of L's 1,536 coordinates predict S as well as all of them (0.641 vs 0.638); a random 896 lose 0.06 |
+| The map is linear | Yes | Adding non-linear features does not help (−0.03) |
 
-¹ Measured on answer text with whole texts held out. Experiment 1 originally reported 0.85 because it fitted and scored on chat-formatted text, where the system prompt and template tokens repeat in every example and are trivially easy to map. Holding out whole texts barely changes this (0.85 → 0.83). Removing the boilerplate is what matters (0.83 → 0.66). See *Measurement check* in [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md#56-measurement-check-text-level-holdout-template-tokens-layer-pairing).
+### Figure 1. Much of the map is the shared token
 
-**In one line:** a small model looks like a compressed, partly *pruned* view of a large one. About two-thirds of it is a linear readout of a subset of the large model's coordinates, even across model families. But the map is a lossy projection, so pushing L's knowledge through it doesn't make S smarter. The extra ability is exactly what the projection discards. This matches the blog's finding that edits unlock existing abilities but don't add new ones.
+![token identity](docs/figures/fig9_token_identity.png)
+
+A map from Qwen-1.5B's hidden state predicts 0.64–0.73 of the small model's hidden state on held-out texts. A map from Qwen-1.5B's input embedding, which only knows which token is present, already gets 0.35–0.59. A map from an untrained copy of Qwen-1.5B gets 0.28–0.49. The part that comes from what the large model computes is the gap between the blue and orange bars: 0.13–0.29 for ridge and 0.18–0.37 for a rotation. Any claim about a shared representation needs this control. ([`scripts/rotation_vs_ridge.py`](scripts/rotation_vs_ridge.py))
+
+### Figure 2. Facts move with the hidden state
+
+![fact swap](docs/figures/fig10_fact_swap.png)
+
+We take a CounterFact prompt, map the donor model's hidden state at the last subject token, and write it into the recipient on a prompt about a different subject. The bars show how often the recipient then states the donor's fact, as a share of the result when the recipient's own state for that subject is written in. The ridge map reaches 56–82%. The control that only gives the recipient the subject's tokens reaches 26–62%, so part of the effect is token identity. The map is above that control in every pair, but the gap is not significant in each pair alone. ([`scripts/fact_swap.py`](scripts/fact_swap.py))
+
+### Figure 3. A single steering direction does not transfer
+
+![loop controls](docs/figures/fig11_loop_controls.png)
+
+We take the "looping minus productive" direction from Qwen-1.5B and map it into SmolLM2-135M. When the map is fitted on the same texts that define the direction, the mapped direction cuts loops to 11%. That result is circular: the map has already seen the labels. With a map fitted on other texts, loops are 18.5% against 21% with no edit, and the direction's cosine with S's own direction (0.82) is within the range of random relabellings (0.51–0.85). Qwen-1.5B itself does not loop on these prompts. ([`scripts/loop_controls.py`](scripts/loop_controls.py))
+
+### Figure 4. Weight edits transfer only in dense form
+
+![weight edit port](docs/figures/fig12_weight_edit_port.png)
+
+A rank-1 edit `ΔW = δ u vᵀ` fires when the trigger `v·a` is large, and writes S's own loop direction `u`. A linear program finds S's own sparse trigger, in 8 neurons, which reduces loops. Porting L's trigger into 8 of S's neurons does nothing (a). Porting it with no limit on the number of neurons gives 574 neurons and cuts loops from 21% to 10%. Three controls over the same neurons do not (b): the same program on shuffled targets, the real weights shuffled over the neurons, and the real weights with random signs. The selective information is spread over many neurons. ([`scripts/lp_port.py`](scripts/lp_port.py), `DENSE=1` and `FOLLOWUP=1..3`)
+
+### Earlier figures
+
+The first experiment (Qwen2.5-0.5B ↔ 1.5B, MATH-500 and NQ-Open) and the atlas across five small models:
 
 ![main result](docs/figures/fig4_main_result.png)
 
 ![recursion](docs/figures/fig7_recursion.png)
 
-Full details, every table, the figures, and the threats to validity are in **[docs/EXPERIMENTS.md](docs/EXPERIMENTS.md)**.
+One measurement note. Experiment 1 first reported R² 0.85 because it fitted and scored on chat-formatted text, where the system prompt and template tokens repeat in every example and are easy to map. On answer text with whole texts held out, the value is 0.66. See [*Measurement check*](docs/EXPERIMENTS.md#56-measurement-check-text-level-holdout-template-tokens-layer-pairing).
+
+**In one line:** a map between models transfers information in distributed form (whole states, facts at a token, a dense weight edit) and fails for compact objects (one direction, a sparse edit, a block). It does not add ability that the small model lacks.
+
+**Concurrent work.** [*Plato's Key*](https://hazyresearch.stanford.edu/blog/2026-11-25-platos-key) (Hazy Research, 25 Nov 2026) appeared while this work was in progress and studies similar maps between models. Figures 1 and 2 run its two central tests, rotation against ridge and the fact swap, on our models with the token-identity controls added.
 
 ## Install
 
@@ -169,12 +198,21 @@ weightmap/              the library
   linalg.py             linear CKA, closed-form ridge, R^2
   models.py             model resolution, hidden states, layer hooks
 tests/                  pytest suite (tiny random models, CPU, ~5 s)
-scripts/                one-off pipelines and checks
+scripts/                one-off experiments; each writes a .log and a *_results.json next to it
   exp1_qwen_0.5b_1.5b/  experiment 1: stages s1–s5, figures, cached results
-  validate_library.py   library vs. experiment 1 + cross-tokenizer sanity run
+  atlas_recursion.py    five small models, composed maps
+  rotation_vs_ridge.py  rotation vs ridge, with the token-identity controls (Figure 1)
+  fact_swap.py          fact transfer by hidden-state swap (Figure 2)
+  loop_controls.py      controls for the mapped loop direction (Figure 3)
+  lp_port.py            rank-1 weight edit and its port from L (Figure 4)
+  block_transplant.py   mapping a whole block from L into S
+  tiny_venn.py          which problems tiny, small and large models solve
+  fig_readme.py         Figures 1–4 above, from the saved results
 docs/
-  EXPERIMENTS.md        full write-up
-  figures/              paper figures (PDF + PNG, color-blind safe)
+  EXPERIMENTS.md        full experiment log
+  math.html             the maths, step by step, with worked examples
+  notebook.html         tutorial notebook
+  figures/              figures (PDF + PNG, colour-blind safe)
 ```
 
 ## Tests
@@ -185,4 +223,17 @@ uv run pytest -q
 
 ## Status
 
-Research code. Experiment 1 is small: about 22 target problems per task, one model family, one simple kind of edit. See *Threats to validity* in the write-up. Next steps planned there: targeted failure-direction edits (the blog's method), recursion with Qwen2.5-3B, and cross-family maps.
+Research code, run on a laptop. The models are small (135M–1.5B parameters). The loop tests use 200 prompts and the fact swaps 86–126 facts per pair, and several pairwise differences are not significant alone. The limitations and next steps are in the [report](https://nishparadox.com/research/weightmap/) and in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md).
+
+## Citation
+
+```bibtex
+@misc{pantha2026weightmap,
+  author       = {Pantha, Nishan},
+  title        = {Weightmap: Training-Free Linear Maps Between Small and Large Language Models},
+  year         = {2026},
+  month        = nov,
+  howpublished = {\url{https://nishparadox.com/research/weightmap/}},
+  note         = {Technical report}
+}
+```

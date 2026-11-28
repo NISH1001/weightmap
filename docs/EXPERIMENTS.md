@@ -439,6 +439,8 @@ S's 8 neurons reproduce L's trigger with R² = 0.05. **Reading.** The payload di
 | SmolLM2-135M, 12 | 0.727 / 0.562 | 0.594 / 0.386 | 0.488 / 0.236 | 0.132 / 0.176 |
 | SmolLM2-135M, 17 | 0.664 / 0.527 | 0.489 / 0.303 | 0.401 / 0.184 | 0.176 / 0.224 |
 
+![Figure 9: token-identity control for the map](figures/fig9_token_identity.png)
+
 **Reading.** The rotation fits less overall but credits token identity less, so its shared part is slightly larger. Token identity is still 34–69% of what the rotation explains.
 
 ### 5.16 Fact swap with token-identity controls
@@ -453,6 +455,8 @@ S's 8 neurons reproduce L's trigger with R² = 0.05. **Reading.** The payload di
 | Qwen-1.5B → SmolLM2-135M | 86 | 30.2% | 22.1% | 20.9% | 18.6% | 14.0% | 10.5% | 3.5% |
 | Qwen-1.5B → Gemma-3-270M | 126 | 24.6% | 17.5% | 9.5% | 6.3% | 6.3% | 1.6% | 0.0% |
 | Qwen-0.5B → Qwen-1.5B | 117 | 50.4% | 28.2% | 29.9% | 25.6% | 10.3% | 7.7% | 0.0% |
+
+![Figure 10: fact swap as a share of the own-state ceiling](figures/fig10_fact_swap.png)
 
 "Subject tokens only" is a ridge map from the mean of the donor's input embeddings of the subject's tokens. Composed chain Qwen-1.5B → 0.5B → 360M → 135M: ridge 11.6% (direct 22.1%), rotation 16.3% (direct 20.9%).
 
@@ -475,6 +479,8 @@ Three independent reviews of the write-up flagged that (a) in §5.9 the map was 
 | L's input embeddings, independent map | 0.64 | 0.49 (0.22–0.76) | 26.5% | 1.51 |
 | random | | | 23.5% | 1.45 |
 
+![Figure 11: loop-direction controls](figures/fig11_loop_controls.png)
+
 Dose response: S's own 23% / 5% / 19% / 58.5% at 1× / 2× / 3× / 4×; L's through the independent map 28% / 18.5% / 31.5% / 60.5%. Qwen-1.5B on the same 200 prompts: 0 looping outputs, 25% correct.
 
 **Reading.** The 0.985 cosine and the 21% → 10% reduction of §5.9 were mostly produced by fitting the map on the looping texts: a random split of the same texts transfers at cosine 0.92. Through an independent map the direction is recognisable (0.82) but does not reduce loops at any strength. S's own direction works only at 2×, at a coherence cost above the +15% rule. *Caveat:* the unrelated texts are fewer and of a different kind, so the independent map is also a weaker map.
@@ -491,6 +497,8 @@ Dose response: S's own 23% / 5% / 19% / 58.5% at 1× / 2× / 3× / 4×; L's thro
 As rank-1 edits with S's own direction as payload (n = 200; base 21%): S's own 8-neuron trigger 15.5% (2×) / 8.5% (4×); ported 8-neuron trigger 21.5% / 28.0%; ported 574-neuron trigger **10.0%** (2×, early NLL 1.48) / 7.0% (4×, NLL 1.85); S's own unreduced trigger (450 neurons) 20.5% / 15.5%. Mean trigger on looping / productive tokens: S's own 8: −0.68 / −0.37; ported 574: −0.62 / −0.29; L in L: −0.79 / −0.24.
 
 **Dense controls** (`FOLLOWUP=3`, `lp_port_dense_controls.json`): same payload (S's own direction), strength 2, each scaled to fire as strongly as the real ported trigger on looping training tokens. Real ported trigger 10.0% (reproduced); port program fitted to shuffled targets 30.0% (NLL 2.56); real weights shuffled over the same 574 neurons 32.0%; real weights with random signs 21.5% (NLL 1.87). The effect is specific to the real trigger. Note the edit uses the port program's 574-neuron fit (R² 0.16, AUC 0.67 against L's trigger), not the ridge fit (R² 0.46, AUC 0.76).
+
+![Figure 12: porting the loop trigger as a weight edit, with controls](figures/fig12_weight_edit_port.png)
 
 **Reading.** The trigger does transfer when dense and fails only under the 8-neuron limit. Combined with the loop-direction control this replaces the §6 interpretation: what transfers is distributed (states, facts, a dense detector); what does not is compact (one steering direction, an 8-neuron trigger) or structural (a block). *Caveat:* L's trigger was fitted with loop labels from S's outputs and the port is fitted on the same texts, so this shows the detector can be re-expressed in S's neurons, not that L supplies information S lacks.
 
